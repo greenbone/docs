@@ -6,6 +6,7 @@ authors = ["Greenbone Networks <info@greenbone.net>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+Sphinx = "^4.0.2"
 
 [tool.poetry.dev-dependencies]
 
