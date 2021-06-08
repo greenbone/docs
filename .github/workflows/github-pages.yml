@@ -4,7 +4,7 @@ on:
 
 jobs:
   build-docs:
-    name: Linting
+    name: Build Documentation
     runs-on: 'ubuntu-latest'
     strategy:
         matrix:
