@@ -1,0 +1,36 @@
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build-docs:
+    name: Linting
+    runs-on: 'ubuntu-latest'
+    strategy:
+        matrix:
+          python-version:
+            - 3.8
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install poetry and dependencies
+        uses: greenbone/actions/poetry@v1
+      - name: Build docs
+        run: poetry run sphinx-build -M html "." "_build"
+      - name: Create GitHub Pages
+        run: |
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          docroot=`mktemp -d`
+          cp -r "_build/html" "${docroot}"
+          pushd "${docroot}"
+          git init
+          git remote add deploy "https://token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git checkout -b gh-pages
+          git add .
+          git commit -m "Updating Docs for commit ${GITHUB_SHA}"
+          git push deploy gh-pages --force
+          popd
