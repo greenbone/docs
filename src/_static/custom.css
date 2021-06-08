@@ -2,6 +2,10 @@ div.sphinxsidebarwrapper p.description {
   font-size: 12px;
 }
 
+div.sphinxsidebarwrapper h1.logo {
+  font-size: 20px;
+}
+
 #contents.toc {
     background-color: #ffffff;
     border: none;
