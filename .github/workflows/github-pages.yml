@@ -29,9 +29,8 @@ jobs:
           docroot=`mktemp -d`
           cp -r "_build/html" "${docroot}"
           pushd "${docroot}"
-          git init
+          git init -b gh-pages
           git remote add deploy "https://token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git checkout -b gh-pages
           git add .
           git commit -m "Updating Docs for commit ${GITHUB_SHA}"
           git push deploy gh-pages --force
