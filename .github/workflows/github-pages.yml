@@ -27,7 +27,7 @@ jobs:
           git config --global user.name "${GITHUB_ACTOR}"
           git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
           docroot=`mktemp -d`
-          cp -r "_build/html/*" "${docroot}"
+          cp -r _build/html/* "${docroot}"
           pushd "${docroot}"
           touch .nojekyll
           git init -b gh-pages
