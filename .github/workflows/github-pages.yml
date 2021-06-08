@@ -29,6 +29,7 @@ jobs:
           docroot=`mktemp -d`
           cp -r "_build/html/*" "${docroot}"
           pushd "${docroot}"
+          touch .nojekyll
           git init -b gh-pages
           git remote add deploy "https://token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git add .
