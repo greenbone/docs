@@ -26,6 +26,8 @@ supported
 
    history
    gvm20.08
+   architecture
+
 
 
 Indices and tables

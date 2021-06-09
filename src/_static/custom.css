@@ -6,6 +6,12 @@ div.sphinxsidebarwrapper h1.logo {
   font-size: 20px;
 }
 
+.highlight-shell-session .go::before {
+  content: "> "
+}
+.highlight .go {
+  color: #3e4349
+}
 #contents.toc {
     background-color: #ffffff;
     border: none;
