@@ -45,3 +45,40 @@ gvm-libs
 
 **gvm-libs** is a C library providing basic functionality like XML parsing and
 network communication. It is used in **openvas-scanner**, **gvmd** and **gsad**.
+
+.. code-block::
+
+  apt install \
+    cmake \
+    pkg-config \
+    libglib2.0-dev \
+    libgpgme-dev \
+    libgnutls28-dev \
+    uuid-dev \
+    libssh-gcrypt-dev \
+    libhiredis-dev \
+    libxml2-dev \
+    libpcap-dev \
+    libnet1-dev
+
+.. code-block::
+
+  apt install \
+    libldap2-dev \
+    libradcli-dev
+
+gvmd
+----
+
+gsad
+----
+
+ospd-openvas
+------------
+
+.. code-block::
+
+  sudo usermod -aG redis gvm
+
+gvm-tools
+---------
