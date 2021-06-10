@@ -1,10 +1,10 @@
+================
 GVM Architecture
-****************
+================
 
-.. toctree::
-   :maxdepth: 3
-   
-   architecture
+.. contents::
+  :local:
+  :depth: 2
 
 The Greenbone Vulnerability Management (GVM) is a framework of several services.
 It is developed as part of the commercial product line `Greenbone Professional Edition`_.
