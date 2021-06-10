@@ -66,8 +66,8 @@ The scanner consists of the components `ospd-openvas`_ and `openvas-scanner`_.
 The OpenVAS Scanner is controlled via OSP.
 The OSP Daemon for the OpenVAS Scanner (ospd-openvas) communicates with gvmd via OSP: VT data is collected, scans are started and stopped, and scan results are transferred to gvmd via ospd.
 
-Other (maybe think of a better heading :D)
-==========================================
+Additional Software
+===================
 
 OSP Scanner
 ^^^^^^^^^^^
