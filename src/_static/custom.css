@@ -7,11 +7,20 @@ div.sphinxsidebarwrapper h1.logo {
 }
 
 .highlight-shell-session .go::before {
-  content: "> "
+  content: ">";
+  padding-right: 1em;
 }
-.highlight .go {
-  color: #3e4349
+
+.highlight pre {
+  color: #cccccc;
+  background-color: #282c34;
+  border-radius: 6px;
+  font-family: Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;
+  font-size: 1em;
+  line-height: 1.4;
+  padding: 1.25rem 1.5rem;
 }
+
 #contents.toc {
     background-color: #ffffff;
     border: none;
