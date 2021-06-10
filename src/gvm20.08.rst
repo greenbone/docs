@@ -1,5 +1,6 @@
+==================
 Building GVM 20.08
-##################
+==================
 
 Building the GVM stack from source requires knowledge about 
 
@@ -14,6 +15,16 @@ Building the GVM stack from source requires knowledge about
 To follow this guide you also should have a basic knowledge about the
 :doc:`GVM architecture <architecture>`.
 
+.. note::
+
+  This guide is intended for developers who want to try out the newest features
+  and/or want to get familiar with the source code. It is not intended for
+  production setups.
+
+.. contents::
+  :local:
+  :depth: 2
+
 This guide assumes you are using Debian Stable (Buster) as your Linux
 distribution. Most likely a Debian derivate like Ubuntu and Kali will work too
 with only small adjustments required.
@@ -21,14 +32,10 @@ with only small adjustments required.
 The ``sudo`` command is used for executing commands that require privileged
 access on the system.
 
-.. note::
-
-  Please follow the guide step by step. Later steps might require settings or
-  output of a previous command.
-
 .. highlight:: shell-session
 
 .. include:: prerequisites.rst
+
 
 Building and Installing the Components
 ======================================
