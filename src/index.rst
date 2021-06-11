@@ -25,8 +25,9 @@ supported
    :caption: Contents
 
    history
-   gvm20.08
    architecture
+   gvm-20.08/index
+   gvm-21.04/index
 
 
 
