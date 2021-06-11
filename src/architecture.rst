@@ -34,7 +34,7 @@ It is grouped into three major parts
 * Greenbone Security Assistant (GSA) with the Greenbone Security Assistant Daemon (gsad)
 
 The GVM framework is released under Open Source licenses as the Greenbone Source Edition (GSE).
- By using it, Linux distributions can create and provide GVM in the form of installation packages.
+By using it, Linux distributions can create and provide GVM in the form of installation packages.
 
 Greenbone Vulnerability Manager Daemon (gvmd)
 =============================================
