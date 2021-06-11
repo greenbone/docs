@@ -78,3 +78,16 @@ a downside they might contain only partly fixed issues and require to update
 more often.
 
 .. _tarballs: https://en.wikipedia.org/wiki/Tar_(computing)
+
+Installing common build dependencies
+------------------------------------
+
+.. code-block::
+
+  sudo apt update
+  sudo apt install \
+    build-essential \
+    cmake \
+    pkg-config \
+    python3 \
+    python3-pip

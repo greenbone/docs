@@ -47,10 +47,9 @@ gvm-libs
 network communication. It is used in **openvas-scanner**, **gvmd** and **gsad**.
 
 .. code-block::
+  :caption: Required dependencies for gvm-libs
 
-  apt install \
-    cmake \
-    pkg-config \
+  sudo apt install \
     libglib2.0-dev \
     libgpgme-dev \
     libgnutls28-dev \
@@ -62,23 +61,137 @@ network communication. It is used in **openvas-scanner**, **gvmd** and **gsad**.
     libnet1-dev
 
 .. code-block::
+  :caption: Optional dependencies for gvm-libs
 
-  apt install \
+  sudo apt install \
     libldap2-dev \
     libradcli-dev
 
 gvmd
 ----
 
-gsad
-----
+.. code-block::
+  :caption: Required dependencies for gvmd
+
+  sudo apt install \
+    libglib2.0-dev \
+    libgnutls28-dev \
+    libpq-dev \
+    postgresql-server-dev-11 \
+    libical-dev \
+    xsltproc
+
+
+.. code-block::
+  :caption: Optional dependencies for gvmd
+
+  sudo apt install \
+    texlive-latex-extra \
+    texlive-fonts-recommended \
+    xmlstarlet \
+    zip \
+    rpm \
+    fakeroot \
+    dpkg \
+    makensis \
+    gnupg \
+    gpgsm \
+    wget \
+    sshpass \
+    scp \
+    socat \
+    snmp \
+    python3 \
+    smbclient \
+    python3-lxml \
+    gnutls-bin \
+    xml-twig-tools
+
+Details about the optional dependencies can be found at
+https://github.com/greenbone/gvmd/blob/gvmd-20.08/INSTALL.md#prerequisites-for-optional-features
+
+gsa
+---
+
+.. code-block::
+  :caption: Required dependencies for gsa
+
+.. code-block::
+  :caption: Optional dependencies for gsa
+
+openvas-smb
+-----------
+
+openvas-smb is a helper module for the openvas-scanner. It includes libraries
+(openvas-wmiclient/openvas-wincmd) to interface with Microsoft Windows Systems
+through the Windows Management Instrumentation API and a winexe binary to
+execute processes remotely on that system.
+
+It is an optional dependency of openvas-scanner but is required for scanning
+Windows based systems.
+
+.. code-block::
+  :caption: Required dependencies for openvas-smb
+
+  sudo apt install \
+    libgnutls28-dev \
+    libglib2.0-dev \
+    libpopt-dev \
+    libunistring-dev
+    heimdal-dev \
+    perl-base
+
+openvas-scanner
+---------------
+
+openvas-scanner is a full-featured scan engine that executes a continuously
+updated and extended feed of Vulnerability Tests (VTs). The feed consist of
+thousands of NASL (Network Attack Scripting Language) scripts which implement
+all kind of vulnerability checks.
+
+.. code-block::
+  :caption: Required dependencies for openvas
+
+  sudo apt install \
+    bison \
+    libglib2.0-dev \
+    libgnutls28-dev \
+    libgcrypt20-dev \
+    libpcap-dev \
+    libgpgme-dev \
+    libksba-dev \
+    nmap \
+    snmp
+
+.. code-block::
+  :caption: Optional dependencies for openvas
 
 ospd-openvas
 ------------
 
 .. code-block::
+  :caption: Required dependencies for ospd-openvas
 
-  sudo usermod -aG redis gvm
+  sudo apt install \
+    python3 \
+    python3-pip
 
 gvm-tools
 ---------
+
+.. code-block::
+  :caption: Required dependencies for gvm-tools
+
+  sudo apt install \
+    python3 \
+    python3-pip
+
+Setup
+=====
+
+Redis
+-----
+
+.. code-block::
+
+  sudo apt install redis-server
