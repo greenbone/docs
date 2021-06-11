@@ -1,5 +1,5 @@
-Greenbone Source Edition
-========================
+Greenbone Source Edition – Documentation
+========================================
 
 The Greenbone Source Edition (GSE) covers the actual source code of the
 Greenbone application stack for vulnerability scanning and vulnerability
@@ -21,8 +21,8 @@ supported
 * GVM 21.04
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 4
+   :caption: Contents
 
    history
    gvm20.08
@@ -30,7 +30,7 @@ supported
 
 
 
-Indices and tables
+Indices and Tables
 ==================
 
 * :ref:`genindex`
