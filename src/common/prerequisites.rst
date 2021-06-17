@@ -75,16 +75,17 @@ depending on the desired stability.
 * building from release branches
 
 Linux distributions use the release `tarballs`_ because that's the most common
-and oldest method to share source code. Newer build systems might stick with the
-git tags.
+and well known method to share source code.
 
-Because this guide is intended for developers familiar with building from source
-already the following sections will use the **release branches**.
+Newer build systems might stick with the git tags.
 
-The release branches have the advantage that they contain the newest
-fixed which might not be included in the release tarballs or git tags yet. As
-a downside they might contain only partly fixed issues and require to update
-more often.
+If you are a developer and very familiar with building from source already you
+might also try out using the git release branches. The release branches have the
+advantage that they contain the newest fixes which might not be included in the
+release tarballs or git tags yet. As a downside they might contain only partly
+fixed issues and require to update more often.
+
+This guide will use the tarballs to build the software.
 
 .. _tarballs: https://en.wikipedia.org/wiki/Tar_(computing)
 
