@@ -1,7 +1,7 @@
 .. code-block::
   :caption: Required dependencies for gsad
 
-  apt install \
+  sudo apt install -y \
     libmicrohttpd-dev \
     libxml2-dev \
     libglib2.0-dev \
@@ -10,6 +10,6 @@
 .. code-block::
   :caption: Required dependencies for gsa
 
-  apt install \
+  sudo apt install -y \
     nodejs \
     yarnpkg
