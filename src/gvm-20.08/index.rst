@@ -41,6 +41,12 @@ gvm-libs
 
 .. include:: ../common/gvm-libs/dependencies.rst
 
+.. include:: ../common/gvm-libs/download.rst
+
+Afterwards gvm-libs can be build and installed
+
+.. include:: ../common/gvm-libs/build.rst
+
 gvmd
 ----
 
