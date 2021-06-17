@@ -23,14 +23,13 @@ Choosing an Install Prefix
 Before building the software stack a (root) directory needs to be chosen where
 the built software will be finally installed into. For example when building packages
 the distribution developers are setting this path to `/usr`. By default it is
-`/usr/local`. For this guide we try to separate the GVM software from other
-system wide installed applications by using `/opt/gvm`. This directory will be
+`/usr/local` which will also be used in this guide. This directory will be
 stored in an environment variable :envvar:`INSTALL_PREFIX` to be able to
 reference it later.
 
 .. code-block::
 
-  export INSTALL_PREFIX=/opt/gvm
+  export INSTALL_PREFIX=/usr/local
 
 Creating a Source, Build and Install Directory
 ----------------------------------------------
