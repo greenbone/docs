@@ -103,3 +103,54 @@ Installing common build dependencies
     python3 \
     python3-pip \
     gnupg
+
+Importing Greenbone Signing key
+-------------------------------
+
+To validate the integrity of the downloaded source files
+`GnuPG <https://www.gnu.org/>`_ is used. It requires downloading the
+Greenbone Community Signing public key and importing it into the current users
+keychain.
+
+.. code-block::
+  :caption: Import Greenbone Community Signing key
+
+  curl -O https://www.greenbone.net/GBCommunitySigningKey.asc
+  gpg --import GBCommunitySigningKey.asc
+
+.. code-block:: none
+  :caption: Setting trustlevel for the Greenbone Community Signing key
+
+  gpg --edit-key 9823FAA60ED1E580
+
+  pub  rsa4096/9823FAA60ED1E580
+     created: 2017-09-06  expires: never       usage: SC
+     trust: unknown       validity: unknown
+  [ unknown] (1). Greenbone Community Feed integrity key
+
+  gpg> trust
+
+  pub  rsa4096/9823FAA60ED1E580
+     created: 2017-09-06  expires: never       usage: SC
+     trust: unknown       validity: unknown
+  [ unknown] (1). Greenbone Community Feed integrity key
+
+  Please decide how far you trust this user to correctly verify other users' keys
+  (by looking at passports, checking fingerprints from different sources, etc.)
+
+    1 = I don't know or won't say
+    2 = I do NOT trust
+    3 = I trust marginally
+    4 = I trust fully
+    5 = I trust ultimately
+    m = back to the main menu
+
+  Your decision? 5
+  Do you really want to set this key to ultimate trust? (y/N) y
+
+  pub  rsa4096/9823FAA60ED1E580
+     created: 2017-09-06  expires: never       usage: SC
+     trust: ultimate      validity: ultimate
+  [ultimate] (1). Greenbone Community Feed integrity key
+
+  gpg> quit
