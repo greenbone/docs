@@ -19,6 +19,17 @@ access on the system.
 
 .. include:: ../common/prerequisites.rst
 
+Setting the version
+-------------------
+
+To make the downloading easier an environment variable for the desired release
+version will be set. Using a variable allows adjusting the version easily after
+a new release.
+
+.. code-block::
+
+  export GVM_VERSION=20.8.1
+
 
 Building and Installing the Components
 ======================================
