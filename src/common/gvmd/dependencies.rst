@@ -21,12 +21,12 @@
     rpm \
     fakeroot \
     dpkg \
-    makensis \
+    nsis \
     gnupg \
     gpgsm \
     wget \
     sshpass \
-    scp \
+    openssh-client \
     socat \
     snmp \
     python3 \
