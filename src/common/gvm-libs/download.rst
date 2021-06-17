@@ -1,8 +1,8 @@
 .. code-block::
   :caption: Download of the gvm-libs sources
 
-  curl -# -L https://github.com/greenbone/gvm-libs/archive/refs/tags/v$GVM_VERSION.tar.gz -o $SOURCE_DIR/gvm-libs-$GVM_VERSION.tar.gz
-  curl -# -L https://github.com/greenbone/gvm-libs/releases/download/v$GVM_VERSION/gvm-libs-$GVM_VERSION.tar.gz.sig -o $SOURCE_DIR/gvm-libs-$GVM_VERSION.tar.gz.sig
+  curl -L https://github.com/greenbone/gvm-libs/archive/refs/tags/v$GVM_VERSION.tar.gz -o $SOURCE_DIR/gvm-libs-$GVM_VERSION.tar.gz
+  curl -L https://github.com/greenbone/gvm-libs/releases/download/v$GVM_VERSION/gvm-libs-$GVM_VERSION.tar.gz.sig -o $SOURCE_DIR/gvm-libs-$GVM_VERSION.tar.gz.sig
 
 .. code-block::
   :caption: Verifying the source file
