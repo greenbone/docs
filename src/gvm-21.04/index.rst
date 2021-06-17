@@ -50,10 +50,16 @@ Afterwards gvm-libs can be build and installed
 gvmd
 ----
 
+.. include:: ../common/gvmd/description.rst
+
 .. include:: ../common/gvmd/dependencies.rst
 
 Details about the optional dependencies can be found at
 https://github.com/greenbone/gvmd/blob/gvmd-21.04/INSTALL.md#prerequisites-for-optional-features
+
+.. include:: ../common/gvmd/download.rst
+
+.. include:: ../common/gvmd/build.rst
 
 gsa
 ---
