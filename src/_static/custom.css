@@ -1,5 +1,14 @@
+div.document {
+
+	width: 1200px;
+}
+
 body {
 	font-family: Helvetica, Verdana;
+}
+
+div.body {
+	max-width: 1200px;
 }
 
 div.body h1,
