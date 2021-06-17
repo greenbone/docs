@@ -95,9 +95,11 @@ Installing common build dependencies
 .. code-block::
 
   sudo apt update
-  sudo apt install \
+  sudo apt install --no-install-recommends --assume-yes \
     build-essential \
+    curl \
     cmake \
     pkg-config \
     python3 \
-    python3-pip
+    python3-pip \
+    gnupg
