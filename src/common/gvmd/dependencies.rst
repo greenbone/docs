@@ -13,7 +13,7 @@
 .. code-block::
   :caption: Optional dependencies for gvmd
 
-  sudo apt install -y \
+  sudo apt install -y --no-install-recommends \
     texlive-latex-extra \
     texlive-fonts-recommended \
     xmlstarlet \
