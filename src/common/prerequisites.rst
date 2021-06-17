@@ -32,16 +32,24 @@ reference it later.
 
   export INSTALL_PREFIX=/opt/gvm
 
-Creating a Build and Install Directory
---------------------------------------
+Creating a Source, Build and Install Directory
+----------------------------------------------
 
-To separate the sources and the build artifacts a build directory has to be
-created. This build directory will be used later in this guide via an
-environment variable :envvar:`BUILD_DIR`. It can be set to an arbitrary
-directory where your current user has write permissions to. Therefore a
-directory in the current users home directory is chosen in this guide.
+To separate the sources and the build artifacts a source and a build directory
+have to be created. This source directory will be used later in this guide via
+an environment variable :envvar:`SOURCE_DIR`. Accordingly for the build
+directory a :envvar:`BUILD_DIR` variable will be set. Both can be set to an
+arbitrary directory where your current user has write permissions to. Therefore
+directories in the current users home directory are chosen in this guide.
 
 .. code-block::
+  :caption: Choosing a source directory
+
+  export SOURCE_DIR=$HOME/source
+  mkdir -p $SOURCE_DIR
+
+.. code-block::
+  :caption: Choosing a build directory
 
   export BUILD_DIR=$HOME/build
   mkdir -p $BUILD_DIR
@@ -51,6 +59,7 @@ Additionally a install directory will be set as an environment variable
 before moving all built artifacts into the final destination.
 
 .. code-block::
+  :caption: Choosing a temporary install directory
 
   export INSTALL_DIR=$HOME/install
   mkdir -p $INSTALL_DIR
