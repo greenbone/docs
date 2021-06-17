@@ -66,6 +66,10 @@ gsa
 
 .. include:: ../common/gsa/dependencies.rst
 
+.. include:: ../common/gsa/download.rst
+
+.. include:: ../common/gsa/build.rst
+
 openvas-smb
 -----------
 
