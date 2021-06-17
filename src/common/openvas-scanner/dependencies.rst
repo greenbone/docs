@@ -1,7 +1,7 @@
 .. code-block::
   :caption: Required dependencies for openvas
 
-  sudo apt install \
+  sudo apt install -y \
     bison \
     libglib2.0-dev \
     libgnutls28-dev \

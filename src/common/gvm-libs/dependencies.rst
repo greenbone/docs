@@ -1,7 +1,7 @@
 .. code-block::
   :caption: Required dependencies for gvm-libs
 
-  sudo apt install \
+  sudo apt install -y \
     libglib2.0-dev \
     libgpgme-dev \
     libgnutls28-dev \
@@ -15,7 +15,7 @@
 .. code-block::
   :caption: Optional dependencies for gvm-libs
 
-  sudo apt install \
+  sudo apt install -y \
     libldap2-dev \
     libradcli-dev
 

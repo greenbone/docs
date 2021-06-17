@@ -1,7 +1,7 @@
 .. code-block::
   :caption: Required dependencies for gvmd
 
-  sudo apt install \
+  sudo apt install -y \
     libglib2.0-dev \
     libgnutls28-dev \
     libpq-dev \
@@ -13,7 +13,7 @@
 .. code-block::
   :caption: Optional dependencies for gvmd
 
-  sudo apt install \
+  sudo apt install -y \
     texlive-latex-extra \
     texlive-fonts-recommended \
     xmlstarlet \
