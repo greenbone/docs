@@ -7,7 +7,8 @@
     libpq-dev \
     postgresql-server-dev-11 \
     libical-dev \
-    xsltproc
+    xsltproc \
+    rsync
 
 
 .. code-block::
