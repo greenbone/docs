@@ -1,3 +1,9 @@
+Building the web application GSA requires to install several JavaScript
+dependencies. These dependencies can be downloaded automatically by yarn (or
+npm) during the build process. But for offline build and reliability all GSA
+releases provide a tarball with all required dependencies that can be used to
+avoid additional downloads via yarn.
+
 .. code-block::
   :caption: Download of the gsa sources
 
