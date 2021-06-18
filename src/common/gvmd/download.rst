@@ -1,5 +1,5 @@
 .. code-block::
-  :caption: Download of the gvm-libs sources
+  :caption: Download of the gvmd sources
 
   curl -L https://github.com/greenbone/gvmd/archive/refs/tags/v$GVM_VERSION.tar.gz -o $SOURCE_DIR/gvmd-$GVM_VERSION.tar.gz
   curl -L https://github.com/greenbone/gvmd/releases/download/v$GVM_VERSION/gvmd-$GVM_VERSION.tar.gz.asc -o $SOURCE_DIR/gvmd-$GVM_VERSION.tar.gz.sig
