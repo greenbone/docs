@@ -93,6 +93,10 @@ ospd-openvas
 
 .. include:: ../common/ospd-openvas/dependencies.rst
 
+.. include:: ./ospd-openvas/download.rst
+
+.. include:: ./ospd-openvas/build.rst
+
 gvm-tools
 ---------
 
