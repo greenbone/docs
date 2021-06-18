@@ -61,8 +61,10 @@ https://github.com/greenbone/gvmd/blob/gvmd-21.04/INSTALL.md#prerequisites-for-o
 
 .. include:: ../common/gvmd/build.rst
 
-gsa
+GSA
 ---
+
+.. include:: ../common/gsa/description.rst
 
 .. include:: ../common/gsa/dependencies.rst
 
