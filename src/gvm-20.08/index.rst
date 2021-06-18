@@ -84,6 +84,10 @@ openvas-scanner
 
 .. include:: ../common/openvas-scanner/dependencies.rst
 
+.. include:: ../common/openvas-scanner/download.rst
+
+.. include:: ../common/openvas-scanner/build.rst
+
 ospd-openvas
 ------------
 
