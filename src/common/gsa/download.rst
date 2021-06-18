@@ -26,10 +26,9 @@ The output of both commands should be similar to
   gpg:                using RSA key 9823FAA60ED1E580
   gpg: Good signature from "Greenbone Community Feed integrity key" [ultimate]
 
-If the signature is valid the tarball can be extracted
+If the signatures are valid the two tarballs can be extracted
 
 .. code-block::
 
   tar -C $SOURCE_DIR -xvzf $SOURCE_DIR/gsa-$GVM_VERSION.tar.gz
   tar -C $SOURCE_DIR/gsa-$GVM_VERSION/gsa -xvzf $SOURCE_DIR/gsa-node-modules-$GVM_VERSION.tar.gz
-
