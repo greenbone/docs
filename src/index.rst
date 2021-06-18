@@ -28,6 +28,7 @@ supported
    architecture
    gvm-20.08/index
    gvm-21.04/index
+   glossary
 
 
 
