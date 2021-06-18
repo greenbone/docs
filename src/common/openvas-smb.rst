@@ -6,13 +6,64 @@ execute processes remotely on that system.
 It is an optional dependency of openvas-scanner but is required for scanning
 Windows based systems.
 
+.. note::
+
+  openvas-smb is released independently of the GVM framework. Therefore the
+  newest compatible version is used.
+
 .. code-block::
   :caption: Required dependencies for openvas-smb
 
-  sudo apt install \
+  sudo apt install -y \
+    gcc-mingw-w64 \
     libgnutls28-dev \
     libglib2.0-dev \
     libpopt-dev \
     libunistring-dev
     heimdal-dev \
     perl-base
+
+.. code-block::
+  :caption: Download of the openvas-smb sources
+
+  curl -L https://github.com/greenbone/openvas-smb/archive/refs/tags/v21.4.0.tar.gz -o $SOURCE_DIR/openvas-smb-21.4.0.tar.gz
+  curl -L https://github.com/greenbone/openvas-smb/releases/download/v21.4.0/openvas-smb-21.4.0.tar.gz.sig -o $SOURCE_DIR/openvas-smb-21.4.0.tar.gz.sig
+
+.. code-block::
+  :caption: Verifying the source file
+
+  gpg --verify $SOURCE_DIR/openvas-smb-21.4.0.tar.gz.sig $SOURCE_DIR/openvas-smb-21.4.0.tar.gz
+
+The output of the last command should be similar to
+
+.. code-block:: none
+
+  gpg: Signature made Fri Apr 16 08:31:02 2021 UTC
+  gpg:                using RSA key 9823FAA60ED1E580
+  gpg: Good signature from "Greenbone Community Feed integrity key" [ultimate]
+
+If the signature is valid the tarball can be extracted
+
+.. code-block::
+
+  tar -C $SOURCE_DIR -xvzf $SOURCE_DIR/openvas-smb-21.4.0.tar.gz
+
+.. code-block::
+  :caption: Building openvas-smb
+
+  mkdir $BUILD_DIR/openvas-smb && cd $BUILD_DIR/openvas-smb
+
+  cmake $SOURCE_DIR/openvas-smb-21.4.0 \
+    -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
+    -DCMAKE_BUILD_TYPE=Release
+
+  make -j6
+
+.. code-block::
+  :caption: Installing openvas-smb
+
+  make DESTDIR=$INSTALL_DIR install
+
+  sudo cp -rv $INSTALL_DIR/* /
+
+  rm -rf $INSTALL_DIR/*
