@@ -107,3 +107,36 @@ Setup
 
 .. include:: ../common/redis.rst
 
+Directory permissions
+---------------------
+
+.. code-block::
+  :caption: Adjusting directory permissions
+
+  sudo chgrp -R gvm /var/lib/gvm
+  sudo chgrp -R gvm /var/log/gvm
+  sudo chgrp -R gvm /var/run/gvm
+  sudo chgrp -R gvm /var/lib/openvas
+
+Systemd
+-------
+
+Setup sudo for Scanning
+-----------------------
+
+Setup PostgreSQL
+----------------
+
+Setup Admin User
+----------------
+
+.. code-block::
+
+  gvmd --create-user=admin --password=<password>
+
+
+Feed Import Owner/Group
+-----------------------
+
+Initial Feed Sync
+-----------------
