@@ -1,5 +1,5 @@
 .. code-block::
-  :caption: Required dependencies for openvas
+  :caption: Required dependencies for openvas-scanner
 
   sudo apt install -y \
     bison \
@@ -9,9 +9,12 @@
     libpcap-dev \
     libgpgme-dev \
     libksba-dev \
-    nmap \
-    snmp
+    rsync \
+    nmap
 
 .. code-block::
-  :caption: Optional dependencies for openvas
+  :caption: Optional dependencies for openvas-scanner
 
+  sudo apt install -y \
+    python-impacket \
+    libsnmp-dev
