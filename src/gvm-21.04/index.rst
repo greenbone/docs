@@ -111,8 +111,7 @@ Setup
 Systemd
 -------
 
-Setup sudo for Scanning
------------------------
+.. include:: ../common/sudo-scanning.rst
 
 Setup PostgreSQL
 ----------------
