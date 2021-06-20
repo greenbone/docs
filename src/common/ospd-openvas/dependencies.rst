@@ -12,5 +12,4 @@
     python3-lxml \
     python3-defusedxml \
     python3-paramiko \
-    python3-redis \
-    redis-server
+    python3-redis
