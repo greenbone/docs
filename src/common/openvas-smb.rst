@@ -19,7 +19,7 @@ Windows based systems.
     libgnutls28-dev \
     libglib2.0-dev \
     libpopt-dev \
-    libunistring-dev
+    libunistring-dev \
     heimdal-dev \
     perl-base
 
