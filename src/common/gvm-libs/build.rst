@@ -1,8 +1,7 @@
 .. code-block::
   :caption: Building gvm-libs
 
-  mkdir $BUILD_DIR/gvm-libs
-  cd $BUILD_DIR/gvm-libs
+  mkdir $BUILD_DIR/gvm-libs && cd $BUILD_DIR/gvm-libs
 
   cmake $SOURCE_DIR/gvm-libs-$GVM_VERSION \
     -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \

@@ -1,8 +1,7 @@
 .. code-block::
   :caption: Building gvmd
 
-  mkdir $BUILD_DIR/gvmd
-  cd $BUILD_DIR/gvmd
+  mkdir $BUILD_DIR/gvmd && cd $BUILD_DIR/gvmd
 
   cmake $SOURCE_DIR/gvmd-$GVM_VERSION \
     -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
