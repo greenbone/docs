@@ -106,17 +106,7 @@ Setup
 =====
 
 .. include:: ../common/redis.rst
-
-Directory permissions
----------------------
-
-.. code-block::
-  :caption: Adjusting directory permissions
-
-  sudo chgrp -R gvm /var/lib/gvm
-  sudo chgrp -R gvm /var/log/gvm
-  sudo chgrp -R gvm /var/run/gvm
-  sudo chgrp -R gvm /var/lib/openvas
+.. include:: ../common/directory-permissions.rst
 
 Systemd
 -------
