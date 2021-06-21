@@ -11,3 +11,4 @@ Redis
   sudo chown redis:redis /etc/redis/redis-openvas.conf
   echo "db_address = /run/redis-openvas/redis.sock" | sudo tee -a /etc/openvas/openvas.conf
   sudo systemctl start redis-server@openvas.service
+  sudo systemctl enable redis-server@openvas.service
