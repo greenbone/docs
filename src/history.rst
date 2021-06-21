@@ -1,8 +1,8 @@
 Greenbone, GVM, OpenVAS and How They Are Connected
-##################################################
+==================================================
 
 When the OpenVAS project was created, it only consisted of an engine for scanning
-vulnerabilities. 
+vulnerabilities.
 
 Shortly after that, Greenbone Networks was founded to achieve
 professional support for vulnerability scanning. Greenbone started to lead the

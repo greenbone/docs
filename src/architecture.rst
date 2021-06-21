@@ -1,10 +1,5 @@
-================
 GVM Architecture
 ================
-
-.. contents::
-  :local:
-  :depth: 2
 
 The Greenbone Vulnerability Management (GVM) is a framework of several services.
 It is developed as part of the commercial product line `Greenbone Professional Edition`_.
@@ -22,9 +17,6 @@ GVM is grouped into three major parts
 * Manager
 * Web interface
 
-Background
-==========
-
 GVM is a originally built as a community project named *OpenVAS* and is primarily developed and forwarded by Greenbone Networks.
 
 It is grouped into three major parts
@@ -37,7 +29,7 @@ The GVM framework is released under Open Source licenses as the Greenbone Source
 By using it, Linux distributions can create and provide GVM in the form of installation packages.
 
 Greenbone Vulnerability Manager Daemon (gvmd)
-=============================================
+---------------------------------------------
 
 The `Greenbone Vulnerability Manager (gvmd)`_ is the central service that consolidates plain vulnerability scanning into a full vulnerability management solution.
 gvmd controls the OpenVAS Scanner via Open Scanner Protocol (OSP).
@@ -48,7 +40,7 @@ Furthermore, gvmd also handles user management including permissions control wit
 And finally, the service has an internal runtime system for scheduled tasks and other events.
 
 Greenbone Security Assistant (GSA)
-==================================
+----------------------------------
 
 The `Greenbone Security Assistant (GSA)`_ is the web interface of GVM that a user controls scans and accesses vulnerability information with.
 It the main contact point for a user with GVM.
@@ -57,7 +49,7 @@ The communication occurs using the Greenbone Management Protocol (GMP) with whic
 
 
 OpenVAS Scanner
-===============
+---------------
 
 The main scanner `OpenVAS Scanner`_ is a full-featured scan engine that executes vulnerability tests (VTs) against target systems.
 For this, it uses the daily updated and comprehensive feeds: the full-featured, extensive, commercial Greenbone Security Feed (GSF) or the free available Greenbone Community Feed (GCF).
@@ -67,7 +59,7 @@ The OpenVAS Scanner is controlled via OSP.
 The OSP Daemon for the OpenVAS Scanner (ospd-openvas) communicates with gvmd via OSP: VT data is collected, scans are started and stopped, and scan results are transferred to gvmd via ospd.
 
 Additional Software
-===================
+-------------------
 
 OSP Scanner
 ^^^^^^^^^^^
@@ -81,7 +73,7 @@ GMP Clients
 The `Greenbone Vulnerability Management Tools (gvm-tools)`_ are a collection of tools that help with remote controlling a Greenbone Security Manager (GSM) appliance and its underlying Greenbone Vulnerability Manager Daemon (gvmd).
 The tools aid in accessing the communication protocols GMP (Greenbone Management Protocol) and OSP (Open Scanner Protocol).
 
-This module is comprised of interactive and non-interactive clients. 
+This module is comprised of interactive and non-interactive clients.
 The programming language Python is supported directly for interactive scripting.
 But it is also possible to issue remote GMP/OSP commands without programming in Python.
 
