@@ -107,25 +107,9 @@ Setup
 
 .. include:: ../common/redis.rst
 .. include:: ../common/directory-permissions.rst
-
-Systemd
--------
-
 .. include:: ../common/sudo-scanning.rst
-
-Setup PostgreSQL
-----------------
-
-Setup Admin User
-----------------
-
-.. code-block::
-
-  gvmd --create-user=admin --password=<password>
-
-
-Feed Import Owner/Group
------------------------
-
-Initial Feed Sync
------------------
+.. include:: ../common/postgres.rst
+.. include:: ../common/admin-user.rst
+.. include:: ../common/feed-import-owner.rst
+.. include:: ../common/initial-feed-sync.rst
+.. include:: ../common/systemd.rst

@@ -102,3 +102,10 @@ Setup
 =====
 
 .. include:: ../common/redis.rst
+.. include:: ../common/directory-permissions.rst
+.. include:: ../common/sudo-scanning.rst
+.. include:: ../common/postgres.rst
+.. include:: ../common/admin-user.rst
+.. include:: ../common/feed-import-owner.rst
+.. include:: ../common/initial-feed-sync.rst
+.. include:: ../common/systemd.rst
