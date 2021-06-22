@@ -102,8 +102,8 @@ gvm-tools
 
 .. include:: ../common/gvm-tools/dependencies.rst
 
-Setup
-=====
+System Setup for GVM
+====================
 
 .. include:: ../common/redis.rst
 .. include:: ../common/directory-permissions.rst
