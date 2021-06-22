@@ -88,3 +88,8 @@ Glossary
     compliance checks, extensive reports formats and special scan configs.
     The feed comes with a service level agreement ensuring support, quality
     assurance and availability.
+
+  VT
+    Vulnerability Tests (VTs) or also known as Network Vulnerability Tests
+    (NVTs) are scripts written in the NASL programming language to detect
+    vulnerabilities at remote hosts.
