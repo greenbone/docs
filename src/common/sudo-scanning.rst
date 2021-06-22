@@ -1,7 +1,7 @@
 Setup sudo for Scanning
 -----------------------
 
-For vulnerability scanning it is required to have several permissions that only
+For vulnerability scanning it is required to have several capabilities that only
 root users are allowed to for example creating raw sockets. Therefore a
 configuration will be added to allow the users of the gvm group to run the
 openvas scanner application as root user via sudo.
