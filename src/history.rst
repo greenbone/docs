@@ -12,9 +12,10 @@ vulnerability management solution still keeping the values of free software.
 After several years it became obvious that using OpenVAS as the brand name for
 the open source project and funding nearly all development of the project was not
 recognized from the outside. Therefore, after the release of the OpenVAS 9
-framework, it got renamed to Greenbone Vulnerability Management (GVM) and
-released as Greenbone Source Edition (GSE). Since GVM 10 the term OpenVAS is
-only used for the scanner component as it was at the beginning of the project.
+framework, it got renamed to :term:`Greenbone Vulnerability Management (GVM)<GVM>`
+and released as :term:`Greenbone Source Edition (GSE)<GSE>`. Since GVM 10 the
+term OpenVAS is only used for the scanner component as it was at the beginning
+of the project.
 
 History of the OpenVAS project
 ==============================
@@ -77,9 +78,9 @@ couple of published code improvements by a growing developer team.
 The year 2017 marked the beginning of a new era: First of all, Greenbone became
 visible as the driving force behind OpenVAS, reducing the brand confusion. This
 included several activities, the most essential one the renaming of the
-"OpenVAS framework" to "Greenbone Vulnerability Management" (GVM), of which the
-OpenVAS Scanner is one of many modules. It also lead to "GVM-10" as the
-successor of "OpenVAS-9". No license changes happened, all modules remained
+"OpenVAS framework" to :term:`Greenbone Vulnerability Management" (GVM)<GVM>`,
+of which the OpenVAS Scanner is one of many modules. It also lead to "GVM-10" as
+the successor of "OpenVAS-9". No license changes happened, all modules remained
 Open Source.
 
 The second big change in 2017 was about the feed service. Apart from the
@@ -88,10 +89,11 @@ and passing it off as their work or claiming to be an alternative to Greenbone's
 product at a better price. Only a minority of them properly complied with the
 GPL licenses. None of them cooperates with Greenbone commercially. For achieving
 better visibility, less misunderstanding and better distinction from other
-OpenVAS-based products, the public feed was renamed to "Greenbone Community
-Feed" and the feed development was internalized. Furthermore, the release scheme
-changed from a 14-days delay to a daily publication without delay where now
-vulnerability tests for enterprise products are not included anymore.
+OpenVAS-based products, the public feed was renamed to
+:term:`Greenbone Community Feed<GCF>` and the feed development was internalized.
+Furthermore, the release scheme changed from a 14-days delay to a daily
+publication without delay where now vulnerability tests for enterprise products
+are not included anymore.
 
 The third big change towards the new era was the transition to a modern
 infrastructure, namely GitHub and a community forum. The whole transition was
@@ -108,8 +110,8 @@ address the challenge of a growing number of vulnerability tests, scanning
 target networks of increasing size and heterogeneity.
 
 OpenVAS released with GVM-11 introduces substantial architectural changes: The
-former service "openvassd" is turned into a command line tool "openvas". It is
-controlled by the service layer ospd-openvas. This concept essentially replaces
-the old stateful, permanent and proprietary OTP (OpenVAS Transfer Protocol) by
-the new state-less, request-response XML-based and generic OSP (Open Scanner
-Protocol).
+former service :term:`openvassd` is turned into a command line tool
+:term:`openvas`. It is controlled by the service layer :term:`ospd-openvas`.
+This concept essentially replaces the old stateful, permanent and proprietary
+OTP (OpenVAS Transfer Protocol) by the new state-less, request-response
+XML-based and generic :term:`OSP (Open Scanner Protocol)<OSP>`.
