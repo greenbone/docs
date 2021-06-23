@@ -23,10 +23,10 @@ Choosing an Install Prefix
 
 Before building the software stack, a (root) directory must be chosen where
 the built software will finally be installed. For example, when building packages,
-the distribution developers set this path to `/usr`. 
+the distribution developers set this path to `/usr`.
 
-By default, it is `/usr/local` which is also used in this guide. This 
-directory will be stored in an environment variable :envvar:`INSTALL_PREFIX` 
+By default, it is `/usr/local` which is also used in this guide. This
+directory will be stored in an environment variable :envvar:`INSTALL_PREFIX`
 to be able to reference it later.
 
 .. code-block::
@@ -38,11 +38,11 @@ Creating a Source, Build and Install Directory
 ----------------------------------------------
 
 To separate the sources and the build artifacts, a source and a build directory
-must be created. 
+must be created.
 
 This source directory will be used later in this guide via
-an environment variable :envvar:`SOURCE_DIR`. Accordingly, a variable 
-:envvar:`BUILD_DIR` will be set for the build directory. Both can be set to any 
+an environment variable :envvar:`SOURCE_DIR`. Accordingly, a variable
+:envvar:`BUILD_DIR` will be set for the build directory. Both can be set to any
 directory to which the current user has write permissions. Therefore
 directories in the current user's home directory are chosen in this guide.
 
@@ -86,7 +86,7 @@ Newer build systems may stick with the git tags.
 If you are a developer and very familiar with building from source already, you
 may also try out using the git release branches. These have the
 advantage that they contain the newest fixes which may not yet be included in the
-release tarballs or git tags. As a downside, the release branches may 
+release tarballs or git tags. As a downside, the release branches may
 contain only partially fixed issues and need to be updated more often.
 
 This guide will use the tarballs to build the software.

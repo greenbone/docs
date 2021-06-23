@@ -9,7 +9,7 @@ Building GVM 20.08
   :depth: 2
 
 This guide assumes that Debian Stable (Buster) is used as the Linux
-distribution. Most likely, a Debian derivate like Ubuntu and Kali will 
+distribution. Most likely, a Debian derivate like Ubuntu and Kali will
 also work with only minor adjustments required.
 
 The command ``sudo`` is used for executing commands that require privileged
