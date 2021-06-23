@@ -6,7 +6,7 @@ standard Python installation tool *pip*.
 
   python3 -m pip install --user gvm-tools
 
-To install it system-wide without running *pip* as root user the following
+To install it system-wide without running *pip* as root user, the following
 commands can be used:
 
 .. code-block::

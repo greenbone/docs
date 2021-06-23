@@ -96,7 +96,7 @@ This guide will use the tarballs to build the software.
 Installing Common Build Dependencies
 ------------------------------------
 
-For downloading, configuring, building and installing the :term:`GVM` components
+For downloading, configuring, building and installing the :term:`GVM` components,
 several tools and applications are required. To install this requirements via
 *apt* the following command can be used:
 
@@ -127,7 +127,7 @@ keychain.
   curl -O https://www.greenbone.net/GBCommunitySigningKey.asc
   gpg --import GBCommunitySigningKey.asc
 
-For understanding the validation output of the gpg tool it is best to mark the
+For understanding the validation output of the gpg tool, it is best to mark the
 Greenbone Community Signing key as fully trusted.
 
 .. code-block:: none
