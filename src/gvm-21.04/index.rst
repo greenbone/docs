@@ -100,7 +100,9 @@ ospd-openvas
 gvm-tools
 ---------
 
+.. include:: ../common/gvm-tools/description.rst
 .. include:: ../common/gvm-tools/dependencies.rst
+.. include:: ../common/gvm-tools/install.rst
 
 Performing a System Setup for GVM
 =================================
