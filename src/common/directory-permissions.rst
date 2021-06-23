@@ -27,4 +27,4 @@ to always run as the *gvm* user and under the *gvm* group.
   :caption: Adjusting gvmd permissions
 
   sudo chown gvm:gvm /usr/local/sbin/gvmd
-  sudo chmod ug+s /usr/local/sbin/gvmd
+  sudo chmod 6750 /usr/local/sbin/gvmd
