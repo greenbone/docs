@@ -1,20 +1,20 @@
-Setup Redis Data Store
-----------------------
+Setting up the Redis Data Store
+-------------------------------
 
-Looking at the :doc:`../architecture` the `Redis <https://redis.io/>`_ key/value
-storage is used by the scanner (openvas-scanner and ospd-openvas) for handling
+Looking at the :doc:`../architecture`, the `Redis <https://redis.io/>`_ key/value
+storage is used by the scanner (*openvas-scanner* and *ospd-openvas*) for handling
 the :term:`VT` information and scan results.
 
 .. code-block::
-  :caption: Install redis server
+  :caption: Installing the Redis server
 
   sudo apt install redis-server
 
-After installing the redis-server package a specific config for the
-openvas-scanner must be added.
+After installing the Redis server package, a specific configuration for the
+*openvas-scanner* must be added.
 
 .. code-block::
-  :caption: Add configuration for running redis server for the scanner
+  :caption: Adding configuration for running the Redis server for the scanner
 
   sudo cp $SOURCE_DIR/openvas-scanner-$GVM_VERSION/config/redis-openvas.conf /etc/redis/
   sudo chown redis:redis /etc/redis/redis-openvas.conf

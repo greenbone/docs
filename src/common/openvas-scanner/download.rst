@@ -1,5 +1,5 @@
 .. code-block::
-  :caption: Download of the openvas-scanner sources
+  :caption: Downloading the openvas-scanner sources
 
   curl -L https://github.com/greenbone/openvas-scanner/archive/refs/tags/v$GVM_VERSION.tar.gz -o $SOURCE_DIR/openvas-scanner-$GVM_VERSION.tar.gz
   curl -L https://github.com/greenbone/openvas-scanner/releases/download/v$GVM_VERSION/openvas-scanner-$GVM_VERSION.tar.gz.sig -o $SOURCE_DIR/openvas-scanner-$GVM_VERSION.tar.gz.sig
@@ -9,7 +9,7 @@
 
   gpg --verify $SOURCE_DIR/openvas-scanner-$GVM_VERSION.tar.gz.sig $SOURCE_DIR/openvas-scanner-$GVM_VERSION.tar.gz
 
-The output of the last command should be similar to
+The output of the last command should be similar to:
 
 .. code-block:: none
 
@@ -17,7 +17,7 @@ The output of the last command should be similar to
   gpg:                using RSA key 9823FAA60ED1E580
   gpg: Good signature from "Greenbone Community Feed integrity key" [ultimate]
 
-If the signature is valid the tarball can be extracted
+If the signature is valid, the tarball can be extracted.
 
 .. code-block::
 

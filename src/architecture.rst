@@ -3,6 +3,10 @@ GVM Architecture
 
 The Greenbone Vulnerability Management (GVM) is a framework of several services.
 It is developed as part of the commercial product line `Greenbone Professional Edition`_.
+
+GVM was originally built as a community project named `OpenVAS`_ and is
+primarily developed and forwarded by Greenbone Networks.
+
 The following figure shows an overview of the architecture for GVM 20.08 and
 GVM 21.04.
 
@@ -11,16 +15,7 @@ GVM 21.04.
 
   Architecture of GVM 20.08 and 21.04
 
-GVM is grouped into three major parts
-
-* Scanner
-* Manager
-* Web interface
-
-GVM is a originally built as a community project named *OpenVAS* and is
-primarily developed and forwarded by Greenbone Networks.
-
-It is grouped into three major parts
+GVM is grouped into three major parts:
 
 * Executable scan application that runs vulnerability tests (VT) against target
   systems
@@ -97,6 +92,7 @@ The programming language Python is supported directly for interactive scripting.
 But it is also possible to issue remote GMP/OSP commands without programming in
 Python.
 
+.. _OpenVAS: https://openvas.org/
 .. _Greenbone Professional Edition: https://www.greenbone.net/en/solutions/
 .. _ospd-openvas: https://github.com/greenbone/ospd-openvas
 .. _openvas-scanner: https://github.com/greenbone/openvas-scanner

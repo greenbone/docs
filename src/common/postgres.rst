@@ -1,17 +1,17 @@
-Setup PostgreSQL
-----------------
+Setting up PostgreSQL
+---------------------
 
 The `PostgreSQL <https://www.postgresql.org/>`_ database is used as a central
 storage for user and scan information.
 
 
 .. code-block::
-  :caption: Install PostgreSQL server
+  :caption: Installing the PostgreSQL server
 
   sudo apt install -y postgresql
 
 .. code-block::
-  :caption: Setup PostgreSQL User and Database
+  :caption: Setting up PostgreSQL user and database
 
   sudo -u postgres bash
   createuser -DRS gvm
@@ -19,7 +19,7 @@ storage for user and scan information.
   exit
 
 .. code-block::
-  :caption: Setup database permissions and extensions
+  :caption: Setting up database permissions and extensions
 
   sudo -u postgres bash
   psql gvmd

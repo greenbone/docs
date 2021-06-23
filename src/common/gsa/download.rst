@@ -1,11 +1,13 @@
-Building the web application GSA requires to install several JavaScript
-dependencies. These dependencies can be downloaded automatically by yarn (or
-npm) during the build process. But for offline build and reliability all GSA
+Building the web application GSA requires the installation of several JavaScript
+dependencies. These dependencies can be downloaded automatically by *yarn* (or
+*npm*) during the build process.
+
+However, for offline build and reliability, all GSA
 releases provide a tarball with all required dependencies that can be used to
-avoid additional downloads via yarn.
+avoid additional downloads via *yarn*.
 
 .. code-block::
-  :caption: Download of the gsa sources
+  :caption: Downloading the gsa sources
 
   curl -L https://github.com/greenbone/gsa/archive/refs/tags/v$GVM_VERSION.tar.gz -o $SOURCE_DIR/gsa-$GVM_VERSION.tar.gz
   curl -L https://github.com/greenbone/gsa/releases/download/v$GVM_VERSION/gsa-$GVM_VERSION.tar.gz.sig -o $SOURCE_DIR/gsa-$GVM_VERSION.tar.gz.sig
@@ -18,7 +20,7 @@ avoid additional downloads via yarn.
   gpg --verify $SOURCE_DIR/gsa-$GVM_VERSION.tar.gz.sig $SOURCE_DIR/gsa-$GVM_VERSION.tar.gz
   gpg --verify $SOURCE_DIR/gsa-node-modules-$GVM_VERSION.tar.gz.sig $SOURCE_DIR/gsa-node-modules-$GVM_VERSION.tar.gz
 
-The output of both commands should be similar to
+The output of both commands should be similar to:
 
 .. code-block:: none
 
@@ -26,7 +28,7 @@ The output of both commands should be similar to
   gpg:                using RSA key 9823FAA60ED1E580
   gpg: Good signature from "Greenbone Community Feed integrity key" [ultimate]
 
-If the signatures are valid the two tarballs can be extracted
+If the signatures are valid, the two tarballs can be extracted.
 
 .. code-block::
 
