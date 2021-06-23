@@ -1,5 +1,5 @@
-Setup Admin User
-----------------
+Setting up an Admin User
+------------------------
 
 .. code-block::
 

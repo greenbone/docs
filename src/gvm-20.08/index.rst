@@ -8,21 +8,21 @@ Building GVM 20.08
   :local:
   :depth: 2
 
-This guide assumes you are using Debian Stable (Buster) as your Linux
-distribution. Most likely a Debian derivate like Ubuntu and Kali will work too
-with only small adjustments required.
+This guide assumes that Debian Stable (Buster) is used as the Linux
+distribution. Most likely, a Debian derivate like Ubuntu and Kali will 
+also work with only minor adjustments required.
 
-The ``sudo`` command is used for executing commands that require privileged
+The command ``sudo`` is used for executing commands that require privileged
 access on the system.
 
 .. highlight:: shell-session
 
 .. include:: ../common/prerequisites.rst
 
-Setting the version
+Setting the Version
 -------------------
 
-To make the downloading easier an environment variable for the desired release
+To make the downloading easier, an environment variable for the desired release
 version will be set. Using a variable allows adjusting the version easily after
 a new release.
 
@@ -43,7 +43,7 @@ gvm-libs
 
 .. include:: ../common/gvm-libs/download.rst
 
-Afterwards gvm-libs can be build and installed
+Afterwards, gvm-libs can be build and installed.
 
 .. include:: ../common/gvm-libs/build.rst
 
@@ -98,8 +98,8 @@ gvm-tools
 
 .. include:: ../common/gvm-tools/dependencies.rst
 
-System Setup for GVM
-====================
+Performing a System Setup for GVM
+=================================
 
 .. include:: ../common/redis.rst
 .. include:: ../common/directory-permissions.rst

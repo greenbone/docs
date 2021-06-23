@@ -10,15 +10,15 @@ Glossary
   openvassd
     Scanner daemon used by GVM 10 and before. It listens for incoming
     connections and starts scan processes to run the actual vulnerability tests.
-    It collects the results and reports them to the management daemon. With
-    GVM 11 release it has been converted into the :term:`openvas` application by
+    It collects the results and reports them to the management daemon. With the
+    GVM 11 release, it has been converted to the :term:`openvas` application by
     removing the daemon and replacing the communication protocol.
     Abbreviation for **OpenVAS** **S**\canner **D**\aemon.
 
   openvas
     Scanner application executable to run vulnerability tests against targets
-    and to store scan results into a redis database. Used in
-    GVM 11 and later. It has originated from the :term:`openvassd` daemon.
+    and to store scan results into a Redis database. Used in
+    GVM 11 and later. It has originated from the :term:`openvassd`.
 
   OSPd
     A `framework <https://github.com/greenbone/ospd>`_ for several scanner
@@ -36,19 +36,19 @@ Glossary
 
   GSM
     The commercial product line `Greenbone Security Manager
-    <https://www.greenbone.net/en/product-comparison/>`_ available as appliances
-    or virtual machines.
+    <https://www.greenbone.net/en/product-comparison/>`_ available as hardware or
+    virtual appliances.
 
   GMP
     The `Greenbone Management Protocol
-    <https://community.greenbone.net/t/about-the-greenbone-management-protocol-gmp-category/83>`_.
-    An XML-based communication protocol provided by :term:`gvmd`.
+    <https://community.greenbone.net/t/about-the-greenbone-management-protocol-gmp-category/83>`_,
+    an XML-based communication protocol provided by :term:`gvmd`.
 
   OSP
     The `Open Scanner Protocol
-    <https://community.greenbone.net/t/about-the-open-scanner-protocol-osp-category/98>`_.
-    An XML-based communication protocol provided by
-    `OSPd <https://github.com/greenbone/ospd>`_ based scanners.
+    <https://community.greenbone.net/t/about-the-open-scanner-protocol-osp-category/98>`_,
+    an XML-based communication protocol provided by
+    `OSPd <https://github.com/greenbone/ospd>`_-based scanners.
 
   GVM
     The `Greenbone Vulnerability Management (GVM)
@@ -70,26 +70,26 @@ Glossary
     The `Greenbone Professional Edition (GPE)
     <https://community.greenbone.net/t/about-the-greenbone-professional-edition-category/146>`_
     is the Greenbone product line for on-premises solutions.
-    Included are virtual or physical :term:`Greenbone Security Manager (GSM) <GSM>`
+    Included are virtual or hardware :term:`Greenbone Security Manager (GSM) <GSM>`
     appliances with the :term:`Greenbone Operating System (GOS)<GOS>`,
     the :term:`Greenbone Vulnerability Management (GVM) framework <GVM>`, and
     the :term:`Greenbone Security Feed (GSF) <GSF>`.
 
   GCF
     The Greenbone Community Feed (GCF) is the freely available feed for vulnerability
-    information licensed as open source. It contains basic scan configs,
-    report formats, port lists and most important vulnerability tests. The
+    information licensed as Open Source. It contains basic scan configurations,
+    report formats, port lists and the most important vulnerability tests. The
     provided data is updated on a daily basis with no warranty or promises for
     fixes or completeness.
 
   GSF
     The Greenbone Security Feed (GSF) is the commercial feed provided by
-    Greenbone containing additional enterprise features like policy and
-    compliance checks, extensive reports formats and special scan configs.
-    The feed comes with a service level agreement ensuring support, quality
+    Greenbone Networks containing additional enterprise features like policy and
+    compliance checks, extensive reports formats and special scan configurations.
+    The feed comes with a service-level agreement ensuring support, quality
     assurance and availability.
 
   VT
-    Vulnerability Tests (VTs) or also known as Network Vulnerability Tests
-    (NVTs) are scripts written in the NASL programming language to detect
+    Vulnerability Tests (VTs), also known as Network Vulnerability Tests
+    (NVTs), are scripts written in the NASL programming language to detect
     vulnerabilities at remote hosts.

@@ -1,15 +1,15 @@
-Building the GVM stack from source requires knowledge about 
+Building the GVM stack from source requires knowledge about:
 
 * Using a terminal
 * Shell programming basic
-* Installing software via apt
+* Installing software via *apt*
 * Using a C compiler
-* Using CMake and make
+* Using *CMake* and *make*
 * The `Linux File System Hierarchy <https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard>`_
-* Running services via systemd
+* Running services via *systemd*
 
-To follow this guide you also should have a basic knowledge about the
-:doc:`GVM architecture <../architecture>`.
+Additionally, a basic knowledge about the :doc:`GVM architecture <../architecture>` 
+is required to follow this guide.
 
 .. note::
 

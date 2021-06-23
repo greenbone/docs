@@ -1,11 +1,11 @@
-Starting Services with Systemd
-------------------------------
+Starting Services with *Systemd*
+--------------------------------
 
-`Systemd <https://systemd.io/>`_ is used to start the daemons ospd-openvas,
-gvmd and gsad. Therefore service files are required.
+`Systemd <https://systemd.io/>`_ is used to start the daemons *ospd-openvas*,
+*gvmd* and *gsad*. Therefore, service files are required.
 
 .. code-block:: none
-  :caption: Systemd Service File for ospd-openvas
+  :caption: Systemd service file for ospd-openvas
 
   cat << EOF > $BUILD_DIR/ospd-openvas.service
   [Unit]
@@ -35,7 +35,7 @@ gvmd and gsad. Therefore service files are required.
   sudo cp $BUILD_DIR/ospd-openvas.service /etc/systemd/system/
 
 .. code-block:: none
-  :caption: Systemd Service File for gvmd
+  :caption: Systemd service file for gvmd
 
   cat << EOF > $BUILD_DIR/gvmd.service
   [Unit]
@@ -63,7 +63,7 @@ gvmd and gsad. Therefore service files are required.
   sudo cp $BUILD_DIR/gvmd.service /etc/systemd/system/
 
 .. code-block:: none
-  :caption: Systemd Service File for gsad
+  :caption: Systemd service file for gsad
 
   cat << EOF > $BUILD_DIR/greenbone-security-assistant.service
   [Unit]
@@ -88,15 +88,15 @@ gvmd and gsad. Therefore service files are required.
 
   sudo cp $BUILD_DIR/greenbone-security-assistant.service /etc/systemd/system/
 
-Afterwards the services need to be activated and started.
+Afterwards, the services need to be activated and started.
 
 .. code-block::
-  :caption: Make systemd aware of the new service files
+  :caption: Making systemd aware of the new service files
 
   systemctl daemon-reload
 
 .. code-block::
-  :caption: Ensure services are run at every system startup
+  :caption: Ensuring services are run at every system startup
 
   systemctl enable ospd-openvas
   systemctl enable gvmd
@@ -107,14 +107,14 @@ Afterwards the services need to be activated and started.
   Please be aware the **first startup** of the services may take several minutes
   or even hours!
 
-  At the first start the scanner needs to load all :term:`VTs<VT>` into redis
-  and gvmd must process the CERT and SCAP data.  gvmd requests all VT
+  At the first start the scanner needs to load all :term:`VTs<VT>` into Redis
+  and *gvmd* must process the CERT and SCAP data. *gvmd* requests all VT
   information from the scanner after they are loaded by the scanner. The scan
-  configs are only available if a *Feed Import Owner* is set, gvmd can connect
+  configurations are only available if a *Feed Import Owner* is set, *gvmd* can connect
   to the scanner and the VTs are fully loaded by both services.
 
 .. code-block::
-  :caption: Finally start the services
+  :caption: Finally starting the services
 
   systemctl start ospd-openvas
   systemctl start gvmd

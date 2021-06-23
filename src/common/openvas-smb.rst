@@ -1,14 +1,14 @@
-openvas-smb is a helper module for the openvas-scanner. It includes libraries
+*openvas-smb* is a helper module for *openvas-scanner*. It includes libraries
 (openvas-wmiclient/openvas-wincmd) to interface with Microsoft Windows Systems
 through the Windows Management Instrumentation API and a winexe binary to
 execute processes remotely on that system.
 
-It is an optional dependency of openvas-scanner but is required for scanning
-Windows based systems.
+It is an optional dependency of *openvas-scanner* but is required for scanning
+Windows-based systems.
 
 .. note::
 
-  openvas-smb is released independently of the GVM framework. Therefore the
+  *openvas-smb* is released independently of the GVM framework. Therefore, the
   newest compatible version is used.
 
 .. code-block::
@@ -24,7 +24,7 @@ Windows based systems.
     perl-base
 
 .. code-block::
-  :caption: Download of the openvas-smb sources
+  :caption: Downloading the openvas-smb sources
 
   curl -L https://github.com/greenbone/openvas-smb/archive/refs/tags/v21.4.0.tar.gz -o $SOURCE_DIR/openvas-smb-21.4.0.tar.gz
   curl -L https://github.com/greenbone/openvas-smb/releases/download/v21.4.0/openvas-smb-21.4.0.tar.gz.sig -o $SOURCE_DIR/openvas-smb-21.4.0.tar.gz.sig
@@ -34,7 +34,7 @@ Windows based systems.
 
   gpg --verify $SOURCE_DIR/openvas-smb-21.4.0.tar.gz.sig $SOURCE_DIR/openvas-smb-21.4.0.tar.gz
 
-The output of the last command should be similar to
+The output of the last command should be similar to:
 
 .. code-block:: none
 
@@ -42,7 +42,7 @@ The output of the last command should be similar to
   gpg:                using RSA key 9823FAA60ED1E580
   gpg: Good signature from "Greenbone Community Feed integrity key" [ultimate]
 
-If the signature is valid the tarball can be extracted
+If the signature is valid, the tarball can be extracted.
 
 .. code-block::
 

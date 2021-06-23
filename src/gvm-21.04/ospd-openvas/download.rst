@@ -1,11 +1,11 @@
 .. code-block::
-  :caption: Download of the ospd sources
+  :caption: Downloading the ospd sources
 
   curl -L https://github.com/greenbone/ospd/archive/refs/tags/v$GVM_VERSION.tar.gz -o $SOURCE_DIR/ospd-$GVM_VERSION.tar.gz
   curl -L https://github.com/greenbone/ospd/releases/download/v$GVM_VERSION/ospd-$GVM_VERSION.tar.gz.sig -o $SOURCE_DIR/ospd-$GVM_VERSION.tar.gz.sig
 
 .. code-block::
-  :caption: Download of the ospd-openvas sources
+  :caption: Downloading the ospd-openvas sources
 
   curl -L https://github.com/greenbone/ospd-openvas/archive/refs/tags/v$GVM_VERSION.tar.gz -o $SOURCE_DIR/ospd-openvas-$GVM_VERSION.tar.gz
   curl -L https://github.com/greenbone/ospd-openvas/releases/download/v$GVM_VERSION/ospd-openvas-$GVM_VERSION.tar.gz.sig -o $SOURCE_DIR/ospd-openvas-$GVM_VERSION.tar.gz.sig
@@ -16,7 +16,7 @@
   gpg --verify $SOURCE_DIR/ospd-$GVM_VERSION.tar.gz.sig $SOURCE_DIR/ospd-$GVM_VERSION.tar.gz
   gpg --verify $SOURCE_DIR/ospd-openvas-$GVM_VERSION.tar.gz.sig $SOURCE_DIR/ospd-openvas-$GVM_VERSION.tar.gz
 
-The output of the last command should be similar to
+The output of the last command should be similar to:
 
 .. code-block:: none
 
@@ -24,7 +24,7 @@ The output of the last command should be similar to
   gpg:                using RSA key 9823FAA60ED1E580
   gpg: Good signature from "Greenbone Community Feed integrity key" [ultimate]
 
-If the signatures are valid the tarballs can be extracted
+If the signatures are valid, the tarballs can be extracted.
 
 .. code-block::
 

@@ -6,8 +6,8 @@ Prerequisites
   Please follow the guide step by step. Later steps might require settings or
   output of a previous command.
 
-Choosing a User and Group
--------------------------
+Creating a User and a Group
+---------------------------
 
 The services provided by the GVM framework should run as a dedicated user and
 group. Therefore a `gvm` user and a group with the same name will be created.
@@ -20,12 +20,13 @@ group. Therefore a `gvm` user and a group with the same name will be created.
 Choosing an Install Prefix
 --------------------------
 
-Before building the software stack a (root) directory needs to be chosen where
-the built software will be finally installed into. For example when building packages
-the distribution developers are setting this path to `/usr`. By default it is
-`/usr/local` which will also be used in this guide. This directory will be
-stored in an environment variable :envvar:`INSTALL_PREFIX` to be able to
-reference it later.
+Before building the software stack, a (root) directory must be chosen where
+the built software will finally be installed. For example, when building packages,
+the distribution developers set this path to `/usr`. 
+
+By default, it is `/usr/local` which is also used in this guide. This 
+directory will be stored in an environment variable :envvar:`INSTALL_PREFIX` 
+to be able to reference it later.
 
 .. code-block::
 
@@ -34,12 +35,14 @@ reference it later.
 Creating a Source, Build and Install Directory
 ----------------------------------------------
 
-To separate the sources and the build artifacts a source and a build directory
-have to be created. This source directory will be used later in this guide via
-an environment variable :envvar:`SOURCE_DIR`. Accordingly for the build
-directory a :envvar:`BUILD_DIR` variable will be set. Both can be set to an
-arbitrary directory where your current user has write permissions to. Therefore
-directories in the current users home directory are chosen in this guide.
+To separate the sources and the build artifacts, a source and a build directory
+must be created. 
+
+This source directory will be used later in this guide via
+an environment variable :envvar:`SOURCE_DIR`. Accordingly, a variable 
+:envvar:`BUILD_DIR` will be set for the build directory. Both can be set to any 
+directory to which the current user has write permissions. Therefore
+directories in the current user's home directory are chosen in this guide.
 
 .. code-block::
   :caption: Choosing a source directory
@@ -53,9 +56,9 @@ directories in the current users home directory are chosen in this guide.
   export BUILD_DIR=$HOME/build
   mkdir -p $BUILD_DIR
 
-Additionally a install directory will be set as an environment variable
-:envvar:`INSTALL_DIR` too. It is used as a temporary installation directory
-before moving all built artifacts into the final destination.
+Additionally, an install directory will be set as an environment variable
+:envvar:`INSTALL_DIR`. It is used as a temporary installation directory
+before moving all built artifacts to the final destination.
 
 .. code-block::
   :caption: Choosing a temporary install directory
@@ -66,29 +69,29 @@ before moving all built artifacts into the final destination.
 Choosing the Installation Source
 --------------------------------
 
-For building the GVM software stack three different sources can be chosen
-depending on the desired stability.
+For building the GVM software stack, three different sources can be chosen
+depending on the desired stability:
 
-* building from release `tarballs`_
-* building from git tags
-* building from release branches
+* Building from release `tarballs`_
+* Building from git tags
+* Building from release branches
 
-Linux distributions use the release `tarballs`_ because that's the most common
+Linux distributions use the release `tarballs`_ because it is the most common
 and well known method to share source code.
 
-Newer build systems might stick with the git tags.
+Newer build systems may stick with the git tags.
 
-If you are a developer and very familiar with building from source already you
-might also try out using the git release branches. The release branches have the
-advantage that they contain the newest fixes which might not be included in the
-release tarballs or git tags yet. As a downside they might contain only partly
-fixed issues and require to update more often.
+If you are a developer and very familiar with building from source already, you
+may also try out using the git release branches. These have the
+advantage that they contain the newest fixes which may not yet be included in the
+release tarballs or git tags. As a downside, the release branches may 
+contain only partially fixed issues and need to be updated more often.
 
 This guide will use the tarballs to build the software.
 
 .. _tarballs: https://en.wikipedia.org/wiki/Tar_(computing)
 
-Installing common build dependencies
+Installing Common Build Dependencies
 ------------------------------------
 
 .. code-block::
@@ -103,22 +106,22 @@ Installing common build dependencies
     python3-pip \
     gnupg
 
-Importing Greenbone Signing key
--------------------------------
+Importing the Greenbone Signing Key
+-----------------------------------
 
-To validate the integrity of the downloaded source files
+To validate the integrity of the downloaded source files,
 `GnuPG <https://www.gnu.org/>`_ is used. It requires downloading the
-Greenbone Community Signing public key and importing it into the current users
+Greenbone Community Signing public key and importing it into the current user's
 keychain.
 
 .. code-block::
-  :caption: Import Greenbone Community Signing key
+  :caption: Importing the Greenbone Community Signing key
 
   curl -O https://www.greenbone.net/GBCommunitySigningKey.asc
   gpg --import GBCommunitySigningKey.asc
 
 .. code-block:: none
-  :caption: Setting trustlevel for the Greenbone Community Signing key
+  :caption: Setting the trust level for the Greenbone Community Signing key
 
   gpg --edit-key 9823FAA60ED1E580
 
