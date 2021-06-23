@@ -13,6 +13,7 @@ The services provided by the GVM framework should run as a dedicated user and
 group. Therefore a `gvm` user and a group with the same name will be created.
 
 .. code-block::
+  :caption: Creating a gvm system user and group
 
   sudo addgroup --system gvm
   sudo adduser --system --disabled-password --no-create-home --ingroup gvm gvm
@@ -29,6 +30,7 @@ directory will be stored in an environment variable :envvar:`INSTALL_PREFIX`
 to be able to reference it later.
 
 .. code-block::
+  :caption: Setting an install prefix environment variable
 
   export INSTALL_PREFIX=/usr/local
 
@@ -95,6 +97,7 @@ Installing Common Build Dependencies
 ------------------------------------
 
 .. code-block::
+  :caption: Installing common build dependencies
 
   sudo apt update
   sudo apt install --no-install-recommends --assume-yes \

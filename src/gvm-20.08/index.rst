@@ -27,6 +27,7 @@ version will be set. Using a variable allows adjusting the version easily after
 a new release.
 
 .. code-block::
+  :caption: Setting a GVM version as environment variable
 
   export GVM_VERSION=20.8.1
 
