@@ -35,6 +35,10 @@ a new release.
 Building and Installing the Components
 ======================================
 
+.. note::
+
+  The components should be build and installed in the listed order.
+
 gvm-libs
 --------
 
