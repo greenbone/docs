@@ -98,7 +98,7 @@ Installing Common Build Dependencies
 
 For downloading, configuring, building and installing the :term:`GVM` components,
 several tools and applications are required. To install this requirements via
-*apt* the following command can be used:
+*apt*, the following command can be used:
 
 .. code-block::
   :caption: Installing common build dependencies
