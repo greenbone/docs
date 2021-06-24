@@ -13,6 +13,7 @@ The services provided by the GVM framework should run as a dedicated user and
 group. Therefore a `gvm` user and a group with the same name will be created.
 
 .. code-block::
+  :caption: Creating a gvm system user and group
 
   sudo addgroup --system gvm
   sudo adduser --system --disabled-password --no-create-home --ingroup gvm gvm
@@ -22,13 +23,14 @@ Choosing an Install Prefix
 
 Before building the software stack, a (root) directory must be chosen where
 the built software will finally be installed. For example, when building packages,
-the distribution developers set this path to `/usr`. 
+the distribution developers set this path to `/usr`.
 
-By default, it is `/usr/local` which is also used in this guide. This 
-directory will be stored in an environment variable :envvar:`INSTALL_PREFIX` 
+By default, it is `/usr/local` which is also used in this guide. This
+directory will be stored in an environment variable :envvar:`INSTALL_PREFIX`
 to be able to reference it later.
 
 .. code-block::
+  :caption: Setting an install prefix environment variable
 
   export INSTALL_PREFIX=/usr/local
 
@@ -36,11 +38,11 @@ Creating a Source, Build and Install Directory
 ----------------------------------------------
 
 To separate the sources and the build artifacts, a source and a build directory
-must be created. 
+must be created.
 
 This source directory will be used later in this guide via
-an environment variable :envvar:`SOURCE_DIR`. Accordingly, a variable 
-:envvar:`BUILD_DIR` will be set for the build directory. Both can be set to any 
+an environment variable :envvar:`SOURCE_DIR`. Accordingly, a variable
+:envvar:`BUILD_DIR` will be set for the build directory. Both can be set to any
 directory to which the current user has write permissions. Therefore
 directories in the current user's home directory are chosen in this guide.
 
@@ -84,7 +86,7 @@ Newer build systems may stick with the git tags.
 If you are a developer and very familiar with building from source already, you
 may also try out using the git release branches. These have the
 advantage that they contain the newest fixes which may not yet be included in the
-release tarballs or git tags. As a downside, the release branches may 
+release tarballs or git tags. As a downside, the release branches may
 contain only partially fixed issues and need to be updated more often.
 
 This guide will use the tarballs to build the software.
@@ -94,7 +96,12 @@ This guide will use the tarballs to build the software.
 Installing Common Build Dependencies
 ------------------------------------
 
+For downloading, configuring, building and installing the :term:`GVM` components,
+several tools and applications are required. To install this requirements via
+*apt*, the following command can be used:
+
 .. code-block::
+  :caption: Installing common build dependencies
 
   sudo apt update
   sudo apt install --no-install-recommends --assume-yes \
@@ -119,6 +126,9 @@ keychain.
 
   curl -O https://www.greenbone.net/GBCommunitySigningKey.asc
   gpg --import GBCommunitySigningKey.asc
+
+For understanding the validation output of the gpg tool, it is best to mark the
+Greenbone Community Signing key as fully trusted.
 
 .. code-block:: none
   :caption: Setting the trust level for the Greenbone Community Signing key

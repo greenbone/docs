@@ -1,9 +1,10 @@
 Setting up PostgreSQL
 ---------------------
 
-The `PostgreSQL <https://www.postgresql.org/>`_ database is used as a central
-storage for user and scan information.
-
+The `PostgreSQL <https://www.postgresql.org/>`_ database management system is
+used as a central storage for user and scan information. *gvmd* connects to
+a PostgreSQL database and queries the data. This database must be created
+and configured.
 
 .. code-block::
   :caption: Installing the PostgreSQL server

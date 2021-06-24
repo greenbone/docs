@@ -9,7 +9,7 @@ Building GVM 21.04
   :depth: 2
 
 This guide assumes that Debian Stable (Buster) is used as the Linux
-distribution. Most likely, a Debian derivate like Ubuntu and Kali will 
+distribution. Most likely, a Debian derivate like Ubuntu and Kali will
 also work with only minor adjustments required.
 
 The command ``sudo`` is used for executing commands that require privileged
@@ -27,12 +27,17 @@ version will be set. Using a variable allows adjusting the version easily after
 a new release.
 
 .. code-block::
+  :caption: Setting a GVM version as environment variable
 
   export GVM_VERSION=21.4.0
 
 
 Building and Installing the Components
 ======================================
+
+.. note::
+
+  The components should be build and installed in the listed order.
 
 gvm-libs
 --------
@@ -100,7 +105,9 @@ ospd-openvas
 gvm-tools
 ---------
 
+.. include:: ../common/gvm-tools/description.rst
 .. include:: ../common/gvm-tools/dependencies.rst
+.. include:: ../common/gvm-tools/install.rst
 
 Performing a System Setup for GVM
 =================================
