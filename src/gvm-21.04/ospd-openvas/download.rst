@@ -2,19 +2,19 @@
   :caption: Downloading the ospd sources
 
   curl -L https://github.com/greenbone/ospd/archive/refs/tags/v$GVM_VERSION.tar.gz -o $SOURCE_DIR/ospd-$GVM_VERSION.tar.gz
-  curl -L https://github.com/greenbone/ospd/releases/download/v$GVM_VERSION/ospd-$GVM_VERSION.tar.gz.sig -o $SOURCE_DIR/ospd-$GVM_VERSION.tar.gz.sig
+  curl -L https://github.com/greenbone/ospd/releases/download/v$GVM_VERSION/ospd-$GVM_VERSION.tar.gz.asc -o $SOURCE_DIR/ospd-$GVM_VERSION.tar.gz.asc
 
 .. code-block::
   :caption: Downloading the ospd-openvas sources
 
   curl -L https://github.com/greenbone/ospd-openvas/archive/refs/tags/v$GVM_VERSION.tar.gz -o $SOURCE_DIR/ospd-openvas-$GVM_VERSION.tar.gz
-  curl -L https://github.com/greenbone/ospd-openvas/releases/download/v$GVM_VERSION/ospd-openvas-$GVM_VERSION.tar.gz.sig -o $SOURCE_DIR/ospd-openvas-$GVM_VERSION.tar.gz.sig
+  curl -L https://github.com/greenbone/ospd-openvas/releases/download/v$GVM_VERSION/ospd-openvas-$GVM_VERSION.tar.gz.asc -o $SOURCE_DIR/ospd-openvas-$GVM_VERSION.tar.gz.asc
 
 .. code-block::
   :caption: Verifying the source files
 
-  gpg --verify $SOURCE_DIR/ospd-$GVM_VERSION.tar.gz.sig $SOURCE_DIR/ospd-$GVM_VERSION.tar.gz
-  gpg --verify $SOURCE_DIR/ospd-openvas-$GVM_VERSION.tar.gz.sig $SOURCE_DIR/ospd-openvas-$GVM_VERSION.tar.gz
+  gpg --verify $SOURCE_DIR/ospd-$GVM_VERSION.tar.gz.asc $SOURCE_DIR/ospd-$GVM_VERSION.tar.gz
+  gpg --verify $SOURCE_DIR/ospd-openvas-$GVM_VERSION.tar.gz.asc $SOURCE_DIR/ospd-openvas-$GVM_VERSION.tar.gz
 
 The output of the last command should be similar to:
 

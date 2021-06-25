@@ -10,15 +10,15 @@ avoid additional downloads via *yarn*.
   :caption: Downloading the gsa sources
 
   curl -L https://github.com/greenbone/gsa/archive/refs/tags/v$GVM_VERSION.tar.gz -o $SOURCE_DIR/gsa-$GVM_VERSION.tar.gz
-  curl -L https://github.com/greenbone/gsa/releases/download/v$GVM_VERSION/gsa-$GVM_VERSION.tar.gz.sig -o $SOURCE_DIR/gsa-$GVM_VERSION.tar.gz.sig
+  curl -L https://github.com/greenbone/gsa/releases/download/v$GVM_VERSION/gsa-$GVM_VERSION.tar.gz.asc -o $SOURCE_DIR/gsa-$GVM_VERSION.tar.gz.asc
   curl -L https://github.com/greenbone/gsa/releases/download/v$GVM_VERSION/gsa-node-modules-$GVM_VERSION.tar.gz -o $SOURCE_DIR/gsa-node-modules-$GVM_VERSION.tar.gz
-  curl -L https://github.com/greenbone/gsa/releases/download/v$GVM_VERSION/gsa-node-modules-$GVM_VERSION.tar.gz.sig -o $SOURCE_DIR/gsa-node-modules-$GVM_VERSION.tar.gz.sig
+  curl -L https://github.com/greenbone/gsa/releases/download/v$GVM_VERSION/gsa-node-modules-$GVM_VERSION.tar.gz.asc -o $SOURCE_DIR/gsa-node-modules-$GVM_VERSION.tar.gz.asc
 
 .. code-block::
   :caption: Verifying the source files
 
-  gpg --verify $SOURCE_DIR/gsa-$GVM_VERSION.tar.gz.sig $SOURCE_DIR/gsa-$GVM_VERSION.tar.gz
-  gpg --verify $SOURCE_DIR/gsa-node-modules-$GVM_VERSION.tar.gz.sig $SOURCE_DIR/gsa-node-modules-$GVM_VERSION.tar.gz
+  gpg --verify $SOURCE_DIR/gsa-$GVM_VERSION.tar.gz.asc $SOURCE_DIR/gsa-$GVM_VERSION.tar.gz
+  gpg --verify $SOURCE_DIR/gsa-node-modules-$GVM_VERSION.tar.gz.asc $SOURCE_DIR/gsa-node-modules-$GVM_VERSION.tar.gz
 
 The output of both commands should be similar to:
 

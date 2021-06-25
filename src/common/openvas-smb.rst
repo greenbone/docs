@@ -27,12 +27,12 @@ Windows-based systems.
   :caption: Downloading the openvas-smb sources
 
   curl -L https://github.com/greenbone/openvas-smb/archive/refs/tags/v21.4.0.tar.gz -o $SOURCE_DIR/openvas-smb-21.4.0.tar.gz
-  curl -L https://github.com/greenbone/openvas-smb/releases/download/v21.4.0/openvas-smb-21.4.0.tar.gz.sig -o $SOURCE_DIR/openvas-smb-21.4.0.tar.gz.sig
+  curl -L https://github.com/greenbone/openvas-smb/releases/download/v21.4.0/openvas-smb-21.4.0.tar.gz.asc -o $SOURCE_DIR/openvas-smb-21.4.0.tar.gz.asc
 
 .. code-block::
   :caption: Verifying the source file
 
-  gpg --verify $SOURCE_DIR/openvas-smb-21.4.0.tar.gz.sig $SOURCE_DIR/openvas-smb-21.4.0.tar.gz
+  gpg --verify $SOURCE_DIR/openvas-smb-21.4.0.tar.gz.asc $SOURCE_DIR/openvas-smb-21.4.0.tar.gz
 
 The output of the last command should be similar to:
 

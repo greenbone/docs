@@ -2,12 +2,12 @@
   :caption: Downloading the gvmd sources
 
   curl -L https://github.com/greenbone/gvmd/archive/refs/tags/v$GVM_VERSION.tar.gz -o $SOURCE_DIR/gvmd-$GVM_VERSION.tar.gz
-  curl -L https://github.com/greenbone/gvmd/releases/download/v$GVM_VERSION/gvmd-$GVM_VERSION.tar.gz.asc -o $SOURCE_DIR/gvmd-$GVM_VERSION.tar.gz.sig
+  curl -L https://github.com/greenbone/gvmd/releases/download/v$GVM_VERSION/gvmd-$GVM_VERSION.tar.gz.asc -o $SOURCE_DIR/gvmd-$GVM_VERSION.tar.gz.asc
 
 .. code-block::
   :caption: Verifying the source file
 
-  gpg --verify $SOURCE_DIR/gvmd-$GVM_VERSION.tar.gz.sig $SOURCE_DIR/gvmd-$GVM_VERSION.tar.gz
+  gpg --verify $SOURCE_DIR/gvmd-$GVM_VERSION.tar.gz.asc $SOURCE_DIR/gvmd-$GVM_VERSION.tar.gz
 
 The output of the last command should be similar to:
 

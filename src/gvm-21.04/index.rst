@@ -29,7 +29,7 @@ a new release.
 .. code-block::
   :caption: Setting a GVM version as environment variable
 
-  export GVM_VERSION=21.4.0
+  export GVM_VERSION=21.4.1
 
 
 Building and Installing the Components

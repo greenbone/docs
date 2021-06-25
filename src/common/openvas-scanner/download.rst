@@ -2,12 +2,12 @@
   :caption: Downloading the openvas-scanner sources
 
   curl -L https://github.com/greenbone/openvas-scanner/archive/refs/tags/v$GVM_VERSION.tar.gz -o $SOURCE_DIR/openvas-scanner-$GVM_VERSION.tar.gz
-  curl -L https://github.com/greenbone/openvas-scanner/releases/download/v$GVM_VERSION/openvas-scanner-$GVM_VERSION.tar.gz.sig -o $SOURCE_DIR/openvas-scanner-$GVM_VERSION.tar.gz.sig
+  curl -L https://github.com/greenbone/openvas-scanner/releases/download/v$GVM_VERSION/openvas-scanner-$GVM_VERSION.tar.gz.asc -o $SOURCE_DIR/openvas-scanner-$GVM_VERSION.tar.gz.asc
 
 .. code-block::
   :caption: Verifying the source file
 
-  gpg --verify $SOURCE_DIR/openvas-scanner-$GVM_VERSION.tar.gz.sig $SOURCE_DIR/openvas-scanner-$GVM_VERSION.tar.gz
+  gpg --verify $SOURCE_DIR/openvas-scanner-$GVM_VERSION.tar.gz.asc $SOURCE_DIR/openvas-scanner-$GVM_VERSION.tar.gz
 
 The output of the last command should be similar to:
 
