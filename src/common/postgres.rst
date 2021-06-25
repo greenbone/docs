@@ -11,6 +11,13 @@ and configured.
 
   sudo apt install -y postgresql
 
+If necessary the PostgreSQL database server needs to be started manually
+
+.. code-block::
+  :caption: Starting the PostgreSQL database server
+
+  sudo pg_ctlcluster 11 main start
+
 .. code-block::
   :caption: Setting up PostgreSQL user and database
 
