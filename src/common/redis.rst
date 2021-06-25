@@ -25,3 +25,12 @@ After installing the Redis server package, a specific configuration for the
 
   # ensure redis with openvas config is started on every system startup
   sudo systemctl enable redis-server@openvas.service
+
+
+Additionally the *gvm* user must be able to access the redis unix socket at
+:file:`/var/run/redis-openvas/redis.sock`.
+
+.. code-block::
+  :caption: Adding the *gvm* user to the redis group
+
+  sudo usermod -aG redis gvm
