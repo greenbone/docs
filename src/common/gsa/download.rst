@@ -9,16 +9,16 @@ avoid additional downloads via *yarn*.
 .. code-block::
   :caption: Downloading the gsa sources
 
-  curl -L https://github.com/greenbone/gsa/archive/refs/tags/v$GVM_VERSION.tar.gz -o $SOURCE_DIR/gsa-$GVM_VERSION.tar.gz
-  curl -L https://github.com/greenbone/gsa/releases/download/v$GVM_VERSION/gsa-$GVM_VERSION.tar.gz.asc -o $SOURCE_DIR/gsa-$GVM_VERSION.tar.gz.asc
-  curl -L https://github.com/greenbone/gsa/releases/download/v$GVM_VERSION/gsa-node-modules-$GVM_VERSION.tar.gz -o $SOURCE_DIR/gsa-node-modules-$GVM_VERSION.tar.gz
-  curl -L https://github.com/greenbone/gsa/releases/download/v$GVM_VERSION/gsa-node-modules-$GVM_VERSION.tar.gz.asc -o $SOURCE_DIR/gsa-node-modules-$GVM_VERSION.tar.gz.asc
+  curl -L https://github.com/greenbone/gsa/archive/refs/tags/v$GSA_VERSION.tar.gz -o $SOURCE_DIR/gsa-$GSA_VERSION.tar.gz
+  curl -L https://github.com/greenbone/gsa/releases/download/v$GSA_VERSION/gsa-$GSA_VERSION.tar.gz.asc -o $SOURCE_DIR/gsa-$GSA_VERSION.tar.gz.asc
+  curl -L https://github.com/greenbone/gsa/releases/download/v$GSA_VERSION/gsa-node-modules-$GSA_VERSION.tar.gz -o $SOURCE_DIR/gsa-node-modules-$GSA_VERSION.tar.gz
+  curl -L https://github.com/greenbone/gsa/releases/download/v$GSA_VERSION/gsa-node-modules-$GSA_VERSION.tar.gz.asc -o $SOURCE_DIR/gsa-node-modules-$GSA_VERSION.tar.gz.asc
 
 .. code-block::
   :caption: Verifying the source files
 
-  gpg --verify $SOURCE_DIR/gsa-$GVM_VERSION.tar.gz.asc $SOURCE_DIR/gsa-$GVM_VERSION.tar.gz
-  gpg --verify $SOURCE_DIR/gsa-node-modules-$GVM_VERSION.tar.gz.asc $SOURCE_DIR/gsa-node-modules-$GVM_VERSION.tar.gz
+  gpg --verify $SOURCE_DIR/gsa-$GSA_VERSION.tar.gz.asc $SOURCE_DIR/gsa-$GSA_VERSION.tar.gz
+  gpg --verify $SOURCE_DIR/gsa-node-modules-$GSA_VERSION.tar.gz.asc $SOURCE_DIR/gsa-node-modules-$GSA_VERSION.tar.gz
 
 The output of both commands should be similar to:
 
@@ -32,5 +32,5 @@ If the signatures are valid, the two tarballs can be extracted.
 
 .. code-block::
 
-  tar -C $SOURCE_DIR -xvzf $SOURCE_DIR/gsa-$GVM_VERSION.tar.gz
-  tar -C $SOURCE_DIR/gsa-$GVM_VERSION/gsa -xvzf $SOURCE_DIR/gsa-node-modules-$GVM_VERSION.tar.gz
+  tar -C $SOURCE_DIR -xvzf $SOURCE_DIR/gsa-$GSA_VERSION.tar.gz
+  tar -C $SOURCE_DIR/gsa-$GSA_VERSION/gsa -xvzf $SOURCE_DIR/gsa-node-modules-$GSA_VERSION.tar.gz

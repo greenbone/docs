@@ -3,7 +3,7 @@
 
   mkdir $BUILD_DIR/gsa && cd $BUILD_DIR/gsa
 
-  cmake $SOURCE_DIR/gsa-$GVM_VERSION \
+  cmake $SOURCE_DIR/gsa-$GSA_VERSION \
     -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
     -DCMAKE_BUILD_TYPE=Release \
     -DSYSCONFDIR=/etc \

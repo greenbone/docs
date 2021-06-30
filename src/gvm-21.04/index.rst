@@ -43,9 +43,8 @@ gvm-libs
 --------
 
 .. include:: ../common/gvm-libs/description.rst
-
+.. include:: ../common/gvm-libs/version.rst
 .. include:: ../common/gvm-libs/dependencies.rst
-
 .. include:: ../common/gvm-libs/download.rst
 
 Afterwards, gvm-libs can be build and installed.
@@ -56,6 +55,11 @@ gvmd
 ----
 
 .. include:: ../common/gvmd/description.rst
+
+.. code-block::
+  :caption: Setting the gvmd version to use
+
+  export GVMD_VERSION=21.4.2
 
 .. include:: ../common/gvmd/dependencies.rst
 
@@ -70,11 +74,9 @@ GSA
 ---
 
 .. include:: ../common/gsa/description.rst
-
+.. include:: ../common/gsa/version.rst
 .. include:: ../common/gsa/dependencies.rst
-
 .. include:: ../common/gsa/download.rst
-
 .. include:: ../common/gsa/build.rst
 
 openvas-smb

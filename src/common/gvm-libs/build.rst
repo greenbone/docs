@@ -3,7 +3,7 @@
 
   mkdir $BUILD_DIR/gvm-libs && cd $BUILD_DIR/gvm-libs
 
-  cmake $SOURCE_DIR/gvm-libs-$GVM_VERSION \
+  cmake $SOURCE_DIR/gvm-libs-$GVM_LIBS_VERSION \
     -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
     -DCMAKE_BUILD_TYPE=Release \
     -DSYSCONFDIR=/etc \

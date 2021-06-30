@@ -24,15 +24,20 @@ Windows-based systems.
     perl-base
 
 .. code-block::
+  :caption: Setting the openvas-smb version to use
+
+  export OPENVAS_SMB_VERSION=21.4.0
+
+.. code-block::
   :caption: Downloading the openvas-smb sources
 
-  curl -L https://github.com/greenbone/openvas-smb/archive/refs/tags/v21.4.0.tar.gz -o $SOURCE_DIR/openvas-smb-21.4.0.tar.gz
-  curl -L https://github.com/greenbone/openvas-smb/releases/download/v21.4.0/openvas-smb-21.4.0.tar.gz.asc -o $SOURCE_DIR/openvas-smb-21.4.0.tar.gz.asc
+  curl -L https://github.com/greenbone/openvas-smb/archive/refs/tags/v$OPENVAS_SMB_VERSION.tar.gz -o $SOURCE_DIR/openvas-smb-$OPENVAS_SMB_VERSION.tar.gz
+  curl -L https://github.com/greenbone/openvas-smb/releases/download/v$OPENVAS_SMB_VERSION/openvas-smb-$OPENVAS_SMB_VERSION.tar.gz.asc -o $SOURCE_DIR/openvas-smb-$OPENVAS_SMB_VERSION.tar.gz.asc
 
 .. code-block::
   :caption: Verifying the source file
 
-  gpg --verify $SOURCE_DIR/openvas-smb-21.4.0.tar.gz.asc $SOURCE_DIR/openvas-smb-21.4.0.tar.gz
+  gpg --verify $SOURCE_DIR/openvas-smb-$OPENVAS_SMB_VERSION.tar.gz.asc $SOURCE_DIR/openvas-smb-$OPENVAS_SMB_VERSION.tar.gz
 
 The output of the last command should be similar to:
 
@@ -46,14 +51,14 @@ If the signature is valid, the tarball can be extracted.
 
 .. code-block::
 
-  tar -C $SOURCE_DIR -xvzf $SOURCE_DIR/openvas-smb-21.4.0.tar.gz
+  tar -C $SOURCE_DIR -xvzf $SOURCE_DIR/openvas-smb-$OPENVAS_SMB_VERSION.tar.gz
 
 .. code-block::
   :caption: Building openvas-smb
 
   mkdir $BUILD_DIR/openvas-smb && cd $BUILD_DIR/openvas-smb
 
-  cmake $SOURCE_DIR/openvas-smb-21.4.0 \
+  cmake $SOURCE_DIR/openvas-smb-$OPENVAS_SMB_VERSION \
     -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
     -DCMAKE_BUILD_TYPE=Release
 

@@ -3,7 +3,7 @@
 
   mkdir $BUILD_DIR/gvmd && cd $BUILD_DIR/gvmd
 
-  cmake $SOURCE_DIR/gvmd-$GVM_VERSION \
+  cmake $SOURCE_DIR/gvmd-$GVMD_VERSION \
     -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
     -DCMAKE_BUILD_TYPE=Release \
     -DLOCALSTATEDIR=/var \
