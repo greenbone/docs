@@ -8,7 +8,7 @@
     -DCMAKE_BUILD_TYPE=Release \
     -DSYSCONFDIR=/etc \
     -DLOCALSTATEDIR=/var \
-    -DGVM_PID_DIR=/var/run/gvm
+    -DGVM_PID_DIR=/run/gvm
 
   make -j6
 

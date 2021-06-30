@@ -9,7 +9,7 @@
     -DSYSCONFDIR=/etc \
     -DLOCALSTATEDIR=/var \
     -DOPENVAS_FEED_LOCK_PATH=/var/lib/openvas/feed-update.lock \
-    -DOPENVAS_RUN_DIR=/var/run/ospd
+    -DOPENVAS_RUN_DIR=/run/ospd
 
   make -j6
 
