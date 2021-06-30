@@ -88,21 +88,25 @@ openvas-scanner
 ---------------
 
 .. include:: ../common/openvas-scanner/description.rst
-
+.. include:: ../common/openvas-scanner/version.rst
 .. include:: ../common/openvas-scanner/dependencies.rst
-
 .. include:: ../common/openvas-scanner/download.rst
-
 .. include:: ../common/openvas-scanner/build.rst
 
 ospd-openvas
 ------------
 
+.. include:: ../common/ospd-openvas/description.rst
+
+.. code-block::
+  :caption: Setting the ospd and ospd-openvas versions to use
+
+  export OSPD_VERSION=$GVM_VERSION
+  export OSPD_OPENVAS_VERSION=$GVM_VERSION
+
 .. include:: ../common/ospd-openvas/dependencies.rst
-
-.. include:: ./ospd-openvas/download.rst
-
-.. include:: ./ospd-openvas/build.rst
+.. include:: ../common/ospd-openvas/download.rst
+.. include:: ../common/ospd-openvas/build.rst
 
 gvm-tools
 ---------
