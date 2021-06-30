@@ -7,7 +7,10 @@
     -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
     -DCMAKE_BUILD_TYPE=Release \
     -DSYSCONFDIR=/etc \
-    -DLOCALSTATEDIR=/var
+    -DLOCALSTATEDIR=/var \
+    -DGVM_RUN_DIR=/run/gvm \
+    -DGSAD_PID_DIR=/run/gvm \
+    -DLOGROTATE_DIR=/etc/logrotate.d
 
   make -j6
 
