@@ -51,7 +51,7 @@ Starting Services with *Systemd*
   PIDFile=/run/gvm/gvmd.pid
   RuntimeDirectory=gvm
   RuntimeDirectoryMode=2775
-  ExecStart=/usr/local/sbin/gvmd --osp-vt-update=/run/ospd/ospd.sock
+  ExecStart=/usr/local/sbin/gvmd --osp-vt-update=/run/ospd/ospd.sock --listen-group=gvm
   Restart=always
   TimeoutStopSec=10
 
@@ -64,9 +64,9 @@ Starting Services with *Systemd*
 .. code-block:: none
   :caption: Systemd service file for gsad
 
-  cat << EOF > $BUILD_DIR/greenbone-security-assistant.service
+  cat << EOF > $BUILD_DIR/gsad.service
   [Unit]
-  Description=Greenbone Security Assistant Web Server (gsad)
+  Description=Greenbone Security Assistant daemon (gsad)
   Documentation=man:gsad(8) https://www.greenbone.net
   After=network.target gvmd.service
   Wants=gvmd.service
@@ -76,13 +76,13 @@ Starting Services with *Systemd*
   User=gvm
   Group=gvm
   PIDFile=/run/gvm/gsad.pid
-  ExecStart=/usr/local/sbin/gsad --listen=127.0.0.1 --port=9392
+  ExecStart=/usr/local/sbin/gsad --listen=127.0.0.1 --port=9392 --http-only
   Restart=always
   TimeoutStopSec=10
 
   [Install]
   WantedBy=multi-user.target
-  Alias=gsad.service
+  Alias=greenbone-security-assistant.service
   EOF
 
   sudo cp $BUILD_DIR/greenbone-security-assistant.service /etc/systemd/system/
