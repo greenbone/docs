@@ -25,7 +25,7 @@ Before building the software stack, a (root) directory must be chosen where
 the built software will finally be installed. For example, when building packages,
 the distribution developers set this path to `/usr`.
 
-By default, it is `/usr/local` which is also used in this guide. This
+By default, it is :file:`/usr/local` which is also used in this guide. This
 directory will be stored in an environment variable :envvar:`INSTALL_PREFIX`
 to be able to reference it later.
 
