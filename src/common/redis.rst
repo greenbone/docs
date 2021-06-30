@@ -8,7 +8,7 @@ the :term:`VT` information and scan results.
 .. code-block::
   :caption: Installing the Redis server
 
-  sudo apt install redis-server
+  sudo apt install -y redis-server
 
 After installing the Redis server package, a specific configuration for the
 *openvas-scanner* must be added.
