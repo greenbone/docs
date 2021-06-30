@@ -28,7 +28,7 @@ After installing the Redis server package, a specific configuration for the
 
 
 Additionally the *gvm* user must be able to access the redis unix socket at
-:file:`/var/run/redis-openvas/redis.sock`.
+:file:`/run/redis-openvas/redis.sock`.
 
 .. code-block::
   :caption: Adding the *gvm* user to the redis group
