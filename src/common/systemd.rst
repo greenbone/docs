@@ -9,7 +9,7 @@ Starting Services with *Systemd*
 
   cat << EOF > $BUILD_DIR/ospd-openvas.service
   [Unit]
-  Description=OpenVAS Wrapper of the Greenbone Vulnerability Management (ospd-openvas)
+  Description=OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)
   Documentation=man:ospd-openvas(8) man:openvas(8)
   After=network.target networking.service redis-server@openvas.service
   Wants=redis-server@openvas.service
@@ -24,7 +24,6 @@ Starting Services with *Systemd*
   PIDFile=/run/ospd/ospd-openvas.pid
   ExecStart=/usr/local/bin/ospd-openvas --unix-socket /run/ospd/ospd.sock --pid-file /run/ospd/ospd-openvas.pid --log-file /var/log/gvm/ospd-openvas.log --lock-file-dir /var/lib/openvas
   SuccessExitStatus=SIGKILL
-  # This works asynchronously, but does not take the daemon down during the reload so it's ok.
   Restart=always
   RestartSec=60
 
@@ -67,7 +66,7 @@ Starting Services with *Systemd*
 
   cat << EOF > $BUILD_DIR/greenbone-security-assistant.service
   [Unit]
-  Description=Greenbone Security Assistant (gsad)
+  Description=Greenbone Security Assistant Web Server (gsad)
   Documentation=man:gsad(8) https://www.greenbone.net
   After=network.target gvmd.service
   Wants=gvmd.service
