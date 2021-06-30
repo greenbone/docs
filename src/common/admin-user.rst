@@ -31,3 +31,11 @@ password, the following command can be used:
   :caption: Creating an administrator user with provided password
 
   gvmd --create-user=admin --password=<password>
+
+If the output doesn't show
+
+.. code-block:: none
+
+  User created.
+
+you need to look at the :file:`/var/log/gvm/gvmd.log` for errors.
