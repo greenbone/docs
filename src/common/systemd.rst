@@ -92,14 +92,14 @@ Afterwards, the services need to be activated and started.
 .. code-block::
   :caption: Making systemd aware of the new service files
 
-  systemctl daemon-reload
+  sudo systemctl daemon-reload
 
 .. code-block::
   :caption: Ensuring services are run at every system startup
 
-  systemctl enable ospd-openvas
-  systemctl enable gvmd
-  systemctl enable gsad
+  sudo systemctl enable ospd-openvas
+  sudo systemctl enable gvmd
+  sudo systemctl enable gsad
 
 .. warning::
 
@@ -115,6 +115,6 @@ Afterwards, the services need to be activated and started.
 .. code-block::
   :caption: Finally starting the services
 
-  systemctl start ospd-openvas
-  systemctl start gvmd
-  systemctl start gsad
+  sudo systemctl start ospd-openvas
+  sudo systemctl start gvmd
+  sudo systemctl start gsad
