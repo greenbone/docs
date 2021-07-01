@@ -15,8 +15,7 @@ group. Therefore a `gvm` user and a group with the same name will be created.
 .. code-block::
   :caption: Creating a gvm system user and group
 
-  sudo addgroup --system gvm
-  sudo adduser --system --disabled-password --no-create-home --ingroup gvm gvm
+  sudo useradd -r -M -U -G sudo -s /usr/sbin/nologin gvm
 
 Choosing an Install Prefix
 --------------------------
