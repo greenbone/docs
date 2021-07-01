@@ -6,16 +6,6 @@ to be created. This user can log in via the Greenbone Security Assistant (GSA)
 web interface. They will have access to all data and will later be configured to
 act as the *Feed Import Owner*.
 
-On Debian systems the locations :file:`/sbin`, :file:`/usr/sbin` and
-:file:`/usr/local/sbin` are not in the :envvar:`PATH` of normal users. To run
-*gvmd* which is located in :file:`/usr/local/sbin` the :envvar:`PATH`
-environment variable should be adjusted.
-
-.. code-block::
-  :caption: Adjusting PATH for running gvmd
-
-  export PATH=$PATH:/usr/local/sbin
-
 .. code-block::
   :caption: Creating an administrator user with generated password
 

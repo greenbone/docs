@@ -17,6 +17,19 @@ group. Therefore a `gvm` user and a group with the same name will be created.
 
   sudo useradd -r -M -U -G sudo -s /usr/sbin/nologin gvm
 
+Setting the PATH
+----------------
+
+On Debian systems the locations :file:`/sbin`, :file:`/usr/sbin` and
+:file:`/usr/local/sbin` are not in the :envvar:`PATH` of normal users. To run
+*gvmd* which is located in :file:`/usr/local/sbin` the :envvar:`PATH`
+environment variable should be adjusted.
+
+.. code-block::
+  :caption: Adjusting PATH for running gvmd
+
+  export PATH=$PATH:/usr/local/sbin
+
 Choosing an Install Prefix
 --------------------------
 
