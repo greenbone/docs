@@ -8,7 +8,7 @@ needs to be download initially before starting the services.
 
 .. note::
 
-  Downloading the data during the initial synchronization may take a while 
+  Downloading the data during the initial synchronization may take a while
   depending on the network connection and server resources.
 
 .. code-block::
@@ -18,7 +18,7 @@ needs to be download initially before starting the services.
 
 .. note::
 
-  The CERT feed synchronization depends on the data provided by the SCAP 
+  The CERT feed synchronization depends on the data provided by the SCAP
   feed and should be called after synchronizing the latter.
 
 .. code-block::
