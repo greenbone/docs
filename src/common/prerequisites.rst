@@ -17,6 +17,20 @@ group. Therefore a `gvm` user and a group with the same name will be created.
 
   sudo useradd -r -M -U -G sudo -s /usr/sbin/nologin gvm
 
+Adjusting the Current User
+--------------------------
+
+To allow the current user to run *gvmd* he must be added to the *gvm* group.
+To make the group change effective either logout and login again or use
+:command:`su`.
+
+.. code-block::
+  :caption: Add current user to gvm group
+
+  sudo usermod -aG gvm $USER
+
+  su $USER
+
 Setting the PATH
 ----------------
 
