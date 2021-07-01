@@ -13,11 +13,11 @@ data like VTs.
   sudo mkdir -p /run/gvm
   sudo mkdir -p /run/ospd
 
-  sudo chgrp -R gvm /var/lib/gvm
-  sudo chgrp -R gvm /var/lib/openvas
-  sudo chgrp -R gvm /var/log/gvm
-  sudo chgrp -R gvm /run/gvm
-  sudo chgrp -R gvm /run/ospd
+  sudo chown -R gvm:gvm /var/lib/gvm
+  sudo chown -R gvm:gvm /var/lib/openvas
+  sudo chown -R gvm:gvm /var/log/gvm
+  sudo chown -R gvm:gvm /run/gvm
+  sudo chown -R gvm:gvm /run/ospd
 
   sudo chmod -R g+srw /var/lib/gvm
   sudo chmod -R g+srw /var/lib/openvas
