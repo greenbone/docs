@@ -85,7 +85,7 @@ Starting Services with *Systemd*
   Alias=greenbone-security-assistant.service
   EOF
 
-  sudo cp $BUILD_DIR/greenbone-security-assistant.service /etc/systemd/system/
+  sudo cp $BUILD_DIR/gsad.service /etc/systemd/system/
 
 Afterwards, the services need to be activated and started.
 
