@@ -22,7 +22,7 @@ Starting Services with *Systemd*
   RuntimeDirectory=ospd
   RuntimeDirectoryMode=2775
   PIDFile=/run/ospd/ospd-openvas.pid
-  ExecStart=/usr/local/bin/ospd-openvas --unix-socket /run/ospd/ospd.sock --pid-file /run/ospd/ospd-openvas.pid --log-file /var/log/gvm/ospd-openvas.log --lock-file-dir /var/lib/openvas
+  ExecStart=/usr/local/bin/ospd-openvas --unix-socket /run/ospd/ospd-openvas.sock --pid-file /run/ospd/ospd-openvas.pid --log-file /var/log/gvm/ospd-openvas.log --lock-file-dir /var/lib/openvas --socket-mode 0o770
   SuccessExitStatus=SIGKILL
   Restart=always
   RestartSec=60
@@ -51,7 +51,7 @@ Starting Services with *Systemd*
   PIDFile=/run/gvm/gvmd.pid
   RuntimeDirectory=gvm
   RuntimeDirectoryMode=2775
-  ExecStart=/usr/local/sbin/gvmd --osp-vt-update=/run/ospd/ospd.sock --listen-group=gvm
+  ExecStart=/usr/local/sbin/gvmd --osp-vt-update=/run/ospd/ospd-openvas.sock --listen-group=gvm
   Restart=always
   TimeoutStopSec=10
 
