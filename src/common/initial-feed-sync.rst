@@ -14,7 +14,7 @@ needs to be download initially before starting the services.
 .. code-block::
   :caption: Syncing :term:`VTs<VT>` processed by the scanner
 
-  greenbone-nvt-sync
+  sudo -u gvm greenbone-nvt-sync
 
 .. note::
 
@@ -24,6 +24,6 @@ needs to be download initially before starting the services.
 .. code-block::
   :caption: Syncing the data processed by gvmd
 
-  greenbone-feed-sync --type SCAP
-  greenbone-feed-sync --type CERT
-  greenbone-feed-sync --type GVMD_DATA
+  sudo -u gvm greenbone-feed-sync --type SCAP
+  sudo -u gvm greenbone-feed-sync --type CERT
+  sudo -u gvm greenbone-feed-sync --type GVMD_DATA
