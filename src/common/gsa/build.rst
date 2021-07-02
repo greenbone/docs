@@ -1,7 +1,7 @@
 .. code-block::
   :caption: Building gsa
 
-  mkdir $BUILD_DIR/gsa && cd $BUILD_DIR/gsa
+  mkdir -p $BUILD_DIR/gsa && cd $BUILD_DIR/gsa
 
   cmake $SOURCE_DIR/gsa-$GSA_VERSION \
     -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \

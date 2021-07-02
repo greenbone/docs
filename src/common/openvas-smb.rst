@@ -52,7 +52,7 @@ If the signature is valid, the tarball can be extracted.
 .. code-block::
   :caption: Building openvas-smb
 
-  mkdir $BUILD_DIR/openvas-smb && cd $BUILD_DIR/openvas-smb
+  mkdir -p $BUILD_DIR/openvas-smb && cd $BUILD_DIR/openvas-smb
 
   cmake $SOURCE_DIR/openvas-smb-$OPENVAS_SMB_VERSION \
     -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
