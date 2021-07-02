@@ -113,7 +113,7 @@ Afterwards, the services need to be activated and started.
   configurations are only available if a *Feed Import Owner* is set, *gvmd* can
   connect to the scanner and the VTs are fully loaded by both services.
 
-  Running vulnerability scan when not all data has been loaded may lead to empty
+  Running a vulnerability scan when not all data has been loaded may lead to empty
   or erroneous reports. You can check the :file:`/var/log/gvm/gvmd.log` file for
   activity and also have a look at the SecInfo pages (for example
   :menuselection:`SecInfo --> NVTs`).
