@@ -10,6 +10,7 @@
     -DSYSCONFDIR=/etc \
     -DGVM_DATA_DIR=/var \
     -DGVM_RUN_DIR=/run/gvm \
+    -DOPENVAS_DEFAULT_SOCKET=/run/ospd/ospd-openvas.sock \
     -DSYSTEMD_SERVICE_DIR=/lib/systemd/system \
     -DDEFAULT_CONFIG_DIR=/etc/default \
     -DLOGROTATE_DIR=/etc/logrotate.d
