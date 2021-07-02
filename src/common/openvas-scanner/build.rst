@@ -1,7 +1,7 @@
 .. code-block::
   :caption: Building openvas-scanner
 
-  mkdir $BUILD_DIR/openvas-scanner && cd $BUILD_DIR/openvas-scanner
+  mkdir -p $BUILD_DIR/openvas-scanner && cd $BUILD_DIR/openvas-scanner
 
   cmake $SOURCE_DIR/openvas-scanner-$OPENVAS_SCANNER_VERSION \
     -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \

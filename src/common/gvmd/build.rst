@@ -1,7 +1,7 @@
 .. code-block::
   :caption: Building gvmd
 
-  mkdir $BUILD_DIR/gvmd && cd $BUILD_DIR/gvmd
+  mkdir -p $BUILD_DIR/gvmd && cd $BUILD_DIR/gvmd
 
   cmake $SOURCE_DIR/gvmd-$GVMD_VERSION \
     -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
@@ -10,6 +10,7 @@
     -DSYSCONFDIR=/etc \
     -DGVM_DATA_DIR=/var \
     -DGVM_RUN_DIR=/run/gvm \
+    -DOPENVAS_DEFAULT_SOCKET=/run/ospd/ospd-openvas.sock \
     -DSYSTEMD_SERVICE_DIR=/lib/systemd/system \
     -DDEFAULT_CONFIG_DIR=/etc/default \
     -DLOGROTATE_DIR=/etc/logrotate.d
