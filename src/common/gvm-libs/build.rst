@@ -10,7 +10,7 @@
     -DLOCALSTATEDIR=/var \
     -DGVM_PID_DIR=/run/gvm
 
-  make -j6
+  make -j$(nproc)
 
 .. code-block::
   :caption: Installing gvm-libs

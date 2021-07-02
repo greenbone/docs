@@ -58,7 +58,7 @@ If the signature is valid, the tarball can be extracted.
     -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
     -DCMAKE_BUILD_TYPE=Release
 
-  make -j6
+  make -j$(nproc)
 
 .. code-block::
   :caption: Installing openvas-smb
