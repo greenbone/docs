@@ -126,3 +126,5 @@ Performing a System Setup for GVM
 .. include:: ../common/feed-import-owner.rst
 .. include:: ../common/initial-feed-sync.rst
 .. include:: ../common/systemd.rst
+
+.. include:: ../common/finish.rst
