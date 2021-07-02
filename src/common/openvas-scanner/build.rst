@@ -11,7 +11,7 @@
     -DOPENVAS_FEED_LOCK_PATH=/var/lib/openvas/feed-update.lock \
     -DOPENVAS_RUN_DIR=/run/ospd
 
-  make -j6
+  make -j$(nproc)
 
 .. code-block::
   :caption: Installing openvas-scanner

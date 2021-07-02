@@ -12,7 +12,7 @@
     -DGSAD_PID_DIR=/run/gvm \
     -DLOGROTATE_DIR=/etc/logrotate.d
 
-  make -j6
+  make -j$(nproc)
 
 .. code-block::
   :caption: Installing gsa
