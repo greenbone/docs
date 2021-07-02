@@ -118,3 +118,11 @@ Afterwards, the services need to be activated and started.
   sudo systemctl start ospd-openvas
   sudo systemctl start gvmd
   sudo systemctl start gsad
+
+
+.. code-block::
+  :caption: Checking the status of the services
+
+  sudo systemctl status ospd-openvas
+  sudo systemctl status gvmd
+  sudo systemctl status gsad
