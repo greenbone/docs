@@ -103,14 +103,20 @@ Afterwards, the services need to be activated and started.
 
 .. warning::
 
-  Please be aware the **first startup** of the services may take several minutes
+  Please be aware even if the :command:`systemctl start` commands are returning
+  immediately the **first startup** of the services may take several minutes
   or even hours!
 
   At the first start the scanner needs to load all :term:`VTs<VT>` into Redis
   and *gvmd* must process the CERT and SCAP data. *gvmd* requests all VT
   information from the scanner after they are loaded by the scanner. The scan
-  configurations are only available if a *Feed Import Owner* is set, *gvmd* can connect
-  to the scanner and the VTs are fully loaded by both services.
+  configurations are only available if a *Feed Import Owner* is set, *gvmd* can
+  connect to the scanner and the VTs are fully loaded by both services.
+
+  Running vulnerability scan when not all data has been loaded may lead to empty
+  or erroneous reports. You can check the :file:`/var/log/gvm/gvmd.log` file for
+  activity and also have a look at the SecInfo pages (for example
+  :menuselection:`SecInfo --> NVTs`).
 
 .. code-block::
   :caption: Finally starting the services
