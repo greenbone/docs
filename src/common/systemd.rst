@@ -103,8 +103,8 @@ Afterwards, the services need to be activated and started.
 
 .. warning::
 
-  Please be aware even if the :command:`systemctl start` commands are returning
-  immediately the **first startup** of the services may take several minutes
+  Please be aware, even if the :command:`systemctl start` commands are returning
+  immediately, the **first startup** of the services may take several minutes
   or even hours!
 
   At the first start the scanner needs to load all :term:`VTs<VT>` into Redis
