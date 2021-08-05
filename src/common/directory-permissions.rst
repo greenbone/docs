@@ -12,6 +12,7 @@ and data like VTs.
   sudo chown -R gvm:gvm /var/lib/gvm
   sudo chown -R gvm:gvm /var/lib/openvas
   sudo chown -R gvm:gvm /var/log/gvm
+  sudo chown -R gvm:gvm /run/gvm
 
   sudo chmod -R g+srw /var/lib/gvm
   sudo chmod -R g+srw /var/lib/openvas
