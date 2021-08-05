@@ -29,7 +29,7 @@ a new release.
 .. code-block::
   :caption: Setting a GVM version as environment variable
 
-  export GVM_VERSION=20.8.2
+  export GVM_VERSION=20.8.3
 
 
 Building and Installing the Components
@@ -101,7 +101,7 @@ ospd-openvas
 .. code-block::
   :caption: Setting the ospd and ospd-openvas versions to use
 
-  export OSPD_VERSION=20.8.3
+  export OSPD_VERSION=20.8.4
   export OSPD_OPENVAS_VERSION=$GVM_VERSION
 
 .. include:: ../common/ospd-openvas/dependencies.rst
