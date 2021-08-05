@@ -7,10 +7,10 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 
 ## 21.8.0 - 2021-08-05
 * Update for GVM 21.4.2 and 20.8.3 releases
-* Changed feed look file location to /var/lib/gvm/feed-update.lock. This file
-  is used by gvmd and greenbone-feed-sync
-* Add option -f to all curl commands to fail if an URL is not available
-* Change permission of /run/gvm initially because otherwise `gvmd` can't create
+* Changed feed look file location to `/var/lib/gvm/feed-update.lock`. This file
+  is used by `gvmd` and `greenbone-feed-sync`
+* Add option `-f` to all curl commands to fail if an URL is not available
+* Change permission of `/run/gvm initially` because otherwise `gvmd` can't create
   the admin user
 
 ## 21.7.0 - 2021-07-05
