@@ -14,19 +14,19 @@ may appear.
 The Greenbone Source Edition is adopted by third parties, for example Linux
 distributions like Kali, Alpine, etc.
 
-Currently, two version of the Greenbone Vulnerability Management (GVM) are
-supported:
+This documentation covers the following versions of the Greenbone Vulnerability
+Management (GVM):
 
-* GVM 20.08
 * GVM 21.04
+* GVM 20.08
 
 .. toctree::
    :maxdepth: 4
    :caption: Contents
 
    background
-   gvm-20.08/index
    gvm-21.04/index
+   gvm-20.08/index
    faq
    glossary
    changelog
