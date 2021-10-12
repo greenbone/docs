@@ -2,6 +2,11 @@
 Building GVM 20.08
 ==================
 
+.. warning::
+
+  GVM 20.08 is end-of-life and will not get any further updates and releases.
+  Please consider switching to :doc:`GVM 21.04<../gvm-21.04/index>`.
+
 .. include:: ../common/introduction.rst
 
 .. contents::
