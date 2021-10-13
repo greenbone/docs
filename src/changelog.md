@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
+## 21.10.1 - 2021-10-13
+* Drop usage of gsa-node-modules. These tarballs are only useful for specific
+  nodejs versions.
+
 ## 21.10.0 - 2021-10-12
 * Update for GVM 21.4.3 and 20.8.4 releases
 * Mark GVM 20.08 as end-of-life. User should switch to 21.04.
