@@ -1,2 +1,7 @@
 # default reviewers
 *                 @greenbone/docs-maintainers
+
+# devops
+.github/          @greenbone/devops @greenbone/python-gvm-maintainers
+pyproject.toml    @greenbone/devops @greenbone/python-gvm-maintainers
+poetry.lock       @greenbone/devops @greenbone/python-gvm-maintainers
