@@ -8,7 +8,7 @@
     -DCMAKE_BUILD_TYPE=Release \
     -DSYSCONFDIR=/etc \
     -DLOCALSTATEDIR=/var \
-    -DGVM_PID_DIR=/run/gvm
+    -DGVM_RUN_DIR=/run/gvm
 
   make -j$(nproc)
 

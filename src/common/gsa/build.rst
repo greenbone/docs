@@ -9,6 +9,8 @@
     -DSYSCONFDIR=/etc \
     -DLOCALSTATEDIR=/var \
     -DGVM_RUN_DIR=/run/gvm \
+    -DGVMD_RUN_DIR=/run/gvmd \
+    -DGSAD_RUN_DIR=/run/gsad \
     -DGSAD_PID_DIR=/run/gvm \
     -DLOGROTATE_DIR=/etc/logrotate.d
 

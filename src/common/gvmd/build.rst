@@ -10,6 +10,7 @@
     -DSYSCONFDIR=/etc \
     -DGVM_DATA_DIR=/var \
     -DGVM_RUN_DIR=/run/gvm \
+    -DGVMD_RUN_DIR=/run/gvmd \
     -DOPENVAS_DEFAULT_SOCKET=/run/ospd/ospd-openvas.sock \
     -DGVM_FEED_LOCK_PATH=/var/lib/gvm/feed-update.lock \
     -DSYSTEMD_SERVICE_DIR=/lib/systemd/system \
