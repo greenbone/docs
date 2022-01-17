@@ -1,3 +1,5 @@
+name: Build the Greenbone Documentation
+
 on:
   pull_request:
     branches: [ main ]
