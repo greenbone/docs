@@ -16,7 +16,7 @@ For a comprehensive background see {doc}`History of OpenVAS <history>`.
 See [Solution Comparison paper](https://www.greenbone.net/wp-content/uploads/Solution_Comparison_EN.pdf)
 and the {doc}`glossary`.
 
-## Can you help to update my GVM version on Kali, Cent OS, XYZ distribution
+## Can you help to update my GVM version on Kali, Cent OS, XYZ distribution?
 
 [https://community.greenbone.net/t/openvas-showing-503-error/5465/4](https://community.greenbone.net/t/openvas-showing-503-error/5465/4)
 
@@ -32,9 +32,9 @@ the provider really depends and varies.
 We are **not** able to offer any help on updating packages from **any** external
 source like Kali, Cent OS, Docker Image, ....!
 
-## Please help me installing GVM and please advise on recommended platform OS too
+## Please help me installing GVM and please advise on recommended platform OS, too
 
-This is very similar to [Can you help to update my GVM version on Kali, Cent OS, XYZ distribution](#heading--heading--update-my-gvm-version).
+This is very similar to [Can you help to update my GVM version on Kali, Cent OS, XYZ distribution](#can-you-help-to-update-my-gvm-version-on-kali-cent-os-xyz-distribution).
 Greenbone can't provide installation docs for the many available Linux
 distributions available. Setups, configurations, build systems, packaging tools,
 available software, best practices, ... diverge to much to offer *official*
