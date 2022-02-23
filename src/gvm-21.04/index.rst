@@ -70,6 +70,14 @@ https://github.com/greenbone/gvmd/blob/gvmd-21.04/INSTALL.md#prerequisites-for-o
 
 .. include:: ../common/gvmd/build.rst
 
+Greenbone Security Assistant
+----------------------------
+
+The Greenbone Security Assistant (GSA) sources consist of two parts:
+
+* Web server *gsad*
+* Web application *GSA*
+
 GSA
 ---
 
@@ -79,7 +87,7 @@ GSA
 .. include:: ../common/gsa/download.rst
 .. include:: ../common/gsa/build.rst
 
-GSAd
+gsad
 ----
 
 .. include:: ../common/gsad/description.rst
