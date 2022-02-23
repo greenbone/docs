@@ -29,7 +29,7 @@ a new release.
 .. code-block::
   :caption: Setting a GVM version as environment variable
 
-  export GVM_VERSION=21.4.3
+  export GVM_VERSION=21.4.4
 
 
 Building and Installing the Components
@@ -59,7 +59,7 @@ gvmd
 .. code-block::
   :caption: Setting the gvmd version to use
 
-  export GVMD_VERSION=21.4.4
+  export GVMD_VERSION=21.4.5
 
 .. include:: ../common/gvmd/dependencies.rst
 
@@ -78,6 +78,15 @@ GSA
 .. include:: ../common/gsa/dependencies.rst
 .. include:: ../common/gsa/download.rst
 .. include:: ../common/gsa/build.rst
+
+GSAd
+----
+
+.. include:: ../common/gsad/description.rst
+.. include:: ../common/gsad/version.rst
+.. include:: ../common/gsad/dependencies.rst
+.. include:: ../common/gsad/download.rst
+.. include:: ../common/gsad/build.rst
 
 openvas-smb
 -----------
@@ -101,7 +110,6 @@ ospd-openvas
 .. code-block::
   :caption: Setting the ospd and ospd-openvas versions to use
 
-  export OSPD_VERSION=21.4.4
   export OSPD_OPENVAS_VERSION=$GVM_VERSION
 
 .. include:: ../common/ospd-openvas/dependencies.rst
