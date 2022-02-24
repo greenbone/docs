@@ -8,8 +8,8 @@
     -DCMAKE_BUILD_TYPE=Release \
     -DSYSCONFDIR=/etc \
     -DLOCALSTATEDIR=/var \
-    -DGVM_RUN_DIR=/run/gvm \
-    -DGSAD_PID_DIR=/run/gvm \
+    -DGVMD_RUN_DIR=/run/gvmd \
+    -DGSAD_RUN_DIR=/run/gsad \
     -DLOGROTATE_DIR=/etc/logrotate.d
 
   make -j$(nproc)
