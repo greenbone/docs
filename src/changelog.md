@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
+## 22.2.0 - 2022-02-24
+* Drop GVM 20.8.
+* Split of GSA and gsad
+* Merge of ospd and ospd-openvas
+
 ## 21.10.1 - 2021-10-13
 * Drop usage of gsa-node-modules. These tarballs are only useful for specific
   nodejs versions.

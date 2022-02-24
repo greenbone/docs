@@ -7,13 +7,12 @@ It is developed as part of the commercial product line `Greenbone Professional E
 GVM was originally built as a community project named `OpenVAS`_ and is
 primarily developed and forwarded by Greenbone Networks.
 
-The following figure shows an overview of the architecture for GVM 20.08 and
-GVM 21.04.
+The following figure shows an overview of the architecture for GVM 21.04.
 
 .. figure:: images/gvm-architecture.png
   :alt: GVM Architecture
 
-  Architecture of GVM 20.08 and 21.04
+  Architecture of GVM 21.04
 
 GVM is grouped into three major parts:
 

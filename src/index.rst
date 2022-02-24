@@ -18,7 +18,6 @@ This documentation covers the following versions of the Greenbone Vulnerability
 Management (GVM):
 
 * GVM 21.04
-* GVM 20.08
 
 .. toctree::
    :maxdepth: 4
@@ -26,7 +25,6 @@ Management (GVM):
 
    background
    gvm-21.04/index
-   gvm-20.08/index
    faq
    glossary
    changelog
