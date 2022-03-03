@@ -5,8 +5,8 @@
 
   rm -rf build
 
-  yarn
-  yarn build
+  yarnpkg
+  yarnpkg build
 
 
 .. code-block::
@@ -14,4 +14,3 @@
 
   sudo mkdir -p $INSTALL_PREFIX/share/gvm/gsad/web/
   sudo cp -r build/* $INSTALL_PREFIX/share/gvm/gsad/web/
-
