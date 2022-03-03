@@ -1,9 +1,9 @@
 .. code-block::
-  :caption: Building gsa
+  :caption: Building gsad
 
-  mkdir -p $BUILD_DIR/gsa && cd $BUILD_DIR/gsa
+  mkdir -p $BUILD_DIR/gsad && cd $BUILD_DIR/gsad
 
-  cmake $SOURCE_DIR/gsa-$GSA_VERSION \
+  cmake $SOURCE_DIR/gsad-$GSA_VERSION \
     -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
     -DCMAKE_BUILD_TYPE=Release \
     -DSYSCONFDIR=/etc \
