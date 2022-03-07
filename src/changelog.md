@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
+## 22.3.0 - 2022-03-07
+* Fix source paths for gsad
+* Fix build and installation of GSA
+* Add hint about yarn package on Debian
+* Fix PIDFile settings in systemd service files for gsad and gvmd
+
 ## 22.2.0 - 2022-02-24
 * Drop GVM 20.8.
 * Split of GSA and gsad
