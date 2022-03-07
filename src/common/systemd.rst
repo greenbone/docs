@@ -48,7 +48,7 @@ Starting Services with *Systemd*
   Type=forking
   User=gvm
   Group=gvm
-  PIDFile=/run/gvm/gvmd.pid
+  PIDFile=/run/gvmd/gvmd.pid
   RuntimeDirectory=gvm
   RuntimeDirectoryMode=2775
   ExecStart=/usr/local/sbin/gvmd --osp-vt-update=/run/ospd/ospd-openvas.sock --listen-group=gvm
@@ -75,7 +75,7 @@ Starting Services with *Systemd*
   Type=forking
   User=gvm
   Group=gvm
-  PIDFile=/run/gvm/gsad.pid
+  PIDFile=/run/gsad/gsad.pid
   ExecStart=/usr/local/sbin/gsad --listen=127.0.0.1 --port=9392 --http-only
   Restart=always
   TimeoutStopSec=10
