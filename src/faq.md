@@ -7,11 +7,11 @@ depth: 2
 ---
 ```
 
-## Greenbone, GVM and OpenVAS how are they connected
+## Greenbone, GVM and OpenVAS – How are they connected?
 
 For a comprehensive background see {doc}`History of OpenVAS <history>`.
 
-## GVM, GSE, GSM TRIAL, GCF, GSF, GSM, GPE,  ... what are these things about
+## GVM, GSE, GSM TRIAL, GCF, GSF, GSM, GPE,  ... what are these things about?
 
 See [Solution Comparison paper](https://www.greenbone.net/wp-content/uploads/Solution_Comparison_EN.pdf)
 and the {doc}`glossary`.
@@ -32,7 +32,7 @@ the provider really depends and varies.
 We are **not** able to offer any help on updating packages from **any** external
 source like Kali, Cent OS, Docker Image, ....!
 
-## Please help me installing GVM and please advise on recommended platform OS, too
+## Please help me installing GVM and please advise on recommended platform OS, too.
 
 This is very similar to [Can you help to update my GVM version on Kali, Cent OS, XYZ distribution](#can-you-help-to-update-my-gvm-version-on-kali-cent-os-xyz-distribution).
 Greenbone can't provide installation docs for the many available Linux
@@ -56,21 +56,21 @@ with the 20.08 release we changed our versioning scheme to
 components (besides the extra software openvas-smb, gvm-tools and python-gvm),
 GVM and GOS are using the same major and minor version.
 
-| GVM | GOS | gvmd | GMP | GSA  | gvm-libs | scanner | status | release |
+| GVM | GOS | gvmd | GMP | GSA  | gvm-libs | Scanner | Status | Release |
 |:--------|-------:|---------|--------|--------:|-------------|------------|----------|------------|
 | [GVM 21.04](https://community.greenbone.net/t/gvm-21-04-stable-initial-release-2021-04-16/8942) | 21.04| 21.4 | 21.4 | 21.4 | 21.4 | 21.4| stable | 2021-04-16 |
-| [GVM 20.08](https://community.greenbone.net/t/gvm-20-08-stable-initial-release-2020-08-12/6312) | [20.08](https://community.greenbone.net/t/greenbone-os-20-08-0-released/6535) | gvmd 20.8 | 20.8 | 20.8 | 20.8 | 20.8| old stable | 2020-08-12 |
-| [GVM 11](https://community.greenbone.net/t/gvm-11-stable-initial-release-2019-10-14/3674) | 6 |  9 | 9 | 9 | 11 | 7 | end-of-life (since 31.12.2020) | 2019-10-14 |
-| [GVM 10](https://community.greenbone.net/t/gvm-10-old-stable-initial-release-2019-04-05/208) | 5 | 8 | 8 |8 | 10 | 6 | end-of-life (since 31.12.2020) | 2019-04-05 |
+| [GVM 20.08](https://community.greenbone.net/t/gvm-20-08-stable-initial-release-2020-08-12/6312) | [20.08](https://community.greenbone.net/t/greenbone-os-20-08-0-released/6535) | gvmd 20.8 | 20.8 | 20.8 | 20.8 | 20.8| end-of-life (since 2021-12-02) | 2020-08-12 |
+| [GVM 11](https://community.greenbone.net/t/gvm-11-stable-initial-release-2019-10-14/3674) | 6 |  9 | 9 | 9 | 11 | 7 | end-of-life (since 2020-12-31) | 2019-10-14 |
+| [GVM 10](https://community.greenbone.net/t/gvm-10-old-stable-initial-release-2019-04-05/208) | 5 | 8 | 8 |8 | 10 | 6 | end-of-life (since 2020-13-31) | 2019-04-05 |
 | [OpenVAS  9](https://community.greenbone.net/t/gvm-9-end-of-life-initial-release-2017-03-07/211) | 4 | openvas-manager 7 | OMP 7 | 7 | openvas-libraries 9 | 5.1 | end-of-life | 2017-03-07 |
 
-## My self compiled version of GVM isn't working as expected. Can you help me?
+## My self-compiled version of GVM isn't working as expected. Can you help me?
 
 All questions should be handled at the [community forum]
-but please are aware your questions are answered on voluntary basis. Therefore
+but please be aware that your questions are answered on a voluntary basis. Therefore,
 please don't expect immediate responses. The community forum is for individuals
 to exchange experiences and problems about a [Free Software](https://en.wikipedia.org/wiki/Free_software)
-project and not to get instance advises from the developers or professional
+project and not to get instant advises from the developers or professional
 support to fix your current issue.
 
 If you are using a self-compiled version of our GVM stack not build from this
@@ -81,7 +81,7 @@ If we are able to reproduce your issue it will be much easier to fix.
 
 ## Can I mix components from different releases?
 
-Short answer **no**. You must **never** mix versions of our components from
+Short answer: **no**. You must **never** mix versions of our components from
 different releases. Often people try to use version e.g. the scanner from the
 master branch in combination with a release version of the other components like
 gvmd to check if their failing scan works with a newer version. While it may
