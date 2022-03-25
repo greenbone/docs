@@ -8,7 +8,7 @@ Building the GVM stack from source requires knowledge about:
 * The `Linux File System Hierarchy <https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard>`_
 * Running services via *systemd*
 
-Additionally, a basic knowledge about the :doc:`GVM architecture <../architecture>` 
+Additionally, a basic knowledge about the :doc:`GVM architecture <../architecture>`
 is required to follow this guide.
 
 .. note::
@@ -17,3 +17,6 @@ is required to follow this guide.
   and/or want to get familiar with the source code. It is not intended for
   production setups.
 
+  It assumes that **Debian Stable** is used as the Linux distribution. Most
+  likely, a Debian derivate like Ubuntu and Kali will also work with only minor
+  adjustments required.

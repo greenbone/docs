@@ -6,6 +6,9 @@ Prerequisites
   Please follow the guide step by step. Later steps might require settings or
   output of a previous command.
 
+The command ``sudo`` is used for executing commands that require privileged
+access on the system.
+
 Creating a User and a Group
 ---------------------------
 
