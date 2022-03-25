@@ -3,7 +3,7 @@
 
   mkdir -p $BUILD_DIR/gsad && cd $BUILD_DIR/gsad
 
-  cmake $SOURCE_DIR/gsad-$GSA_VERSION \
+  cmake $SOURCE_DIR/gsad-$GSAD_VERSION \
     -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
     -DCMAKE_BUILD_TYPE=Release \
     -DSYSCONFDIR=/etc \
