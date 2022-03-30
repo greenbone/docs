@@ -7,8 +7,7 @@
     -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
     -DCMAKE_BUILD_TYPE=Release \
     -DSYSCONFDIR=/etc \
-    -DLOCALSTATEDIR=/var \
-    -DGVM_PID_DIR=/run/gvm
+    -DLOCALSTATEDIR=/var
 
   make -j$(nproc)
 
