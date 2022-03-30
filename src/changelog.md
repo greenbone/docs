@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
+## 22.3.2 - 2022-03-30
+* The build guide uses Debian Stable (Bullseye)
+* Fix installing dependencies of gvmd and openvas-scanner for Debian Bullseye
+* Remove obsolete cmake parameter when building gvm-libs to avoid a warning
+
 ## 22.3.1 - 2022-03-21
 * Fix runtime directory for gvmd in systemd service file
 * Add runtime directory and mode for gsad in systemd service file
