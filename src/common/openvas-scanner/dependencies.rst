@@ -16,5 +16,5 @@
   :caption: Optional dependencies for openvas-scanner
 
   sudo apt install -y \
-    python-impacket \
+    python3-impacket \
     libsnmp-dev
