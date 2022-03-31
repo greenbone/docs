@@ -16,7 +16,7 @@ If necessary the PostgreSQL database server needs to be started manually
 .. code-block::
   :caption: Starting the PostgreSQL database server
 
-  sudo systemctl start postgresql@11-main
+  sudo systemctl start postgresql@13-main
 
 .. code-block::
   :caption: Setting up PostgreSQL user and database
