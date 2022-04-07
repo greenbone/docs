@@ -9,7 +9,7 @@ configuration will be added to allow the users of the *gvm* group to run the
 .. warning::
 
   Make sure that only necessary users have access to the *gvm* group. Each user
-  of the *gvm* group has access to can manipulate the Vulnerability Test (VT) scripts
+  of the *gvm* group can manipulate the Vulnerability Test (VT) scripts
   (.nasl files). These scripts are run with root privileges and therefore can 
   be used for exploits. See
   `<https://csal.medium.com/pentesters-tricks-local-privilege-escalation-in-openvas-fe933d7f161f>`_.
