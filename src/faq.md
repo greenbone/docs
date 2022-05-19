@@ -29,11 +29,11 @@ or even some random docker image, Greenbone was not involved in providing this
 installation method to you.
 
 The development of the Greenbone Community Edition and packaging for a
-distribution or container image is completely independent. Therefore our
+distribution or container image is completely independent. Therefore, our
 software provided from these sources may be heavily adjusted, outdated or even
-completely broken. If you have issues with the software please contact the
+completely broken. If you have issues with the software, please contact the
 provider of the packages first and create a ticket at their issue tracker. How
-to contact the provider really depends and varies.
+to contact the provider depends and varies.
 
 We are **not** able to offer any help on updating packages from **any** external
 source like Kali, Cent OS, Docker Image, .... because we are not aware of their
@@ -45,20 +45,20 @@ This is very similar to [Can you help with my issue on Kali, Cent OS, XYZ distri
 Greenbone can't provide installation docs for the many available Linux
 distributions available. Setups, configurations, build systems, packaging tools,
 available software, best practices, ... diverge to much to offer *official*
-packages, scripts or anything else from Greenbone. We offer this Greenbone Community
-documentation and the [community forum] for discussing setup problems. Therefore
+packages, scripts or anything else from Greenbone. We offer this Greenbone Community Edition
+documentation and the [community forum] for discussing setup problems. Therefore,
 Greenbone also doesn't recommend any distribution nor do we prefer one
-distribution over the other. Most of the time we are even not aware which
+distribution over the other. Most of the time, we are not even aware which
 distribution ships which version of our software.
 
 ## Which release contains which component? GOS version vs. GVM version?
 
 It was often confusing to find out which software component of the
 {term}`Greenbone Community Edition` belongs to which GVM release.
-Additionally the {term}`Greenbone OS <GOS>`
+Additionally, the {term}`Greenbone OS <GOS>`
 used in the [Greenbone Enterprise TRIAL Virtual Machine](https://www.greenbone.net/en/testnow/)
-had a different versioning scheme then GVM. We are aware of this and therefore
-with the 20.08 release we changed our versioning scheme to
+had a different versioning scheme then GVM. We are aware of this and 
+with the 20.08 release, we changed our versioning scheme to
 [Calendar Versioning](https://calver.org/). With this change all software
 components (besides the extra software openvas-smb, gvm-tools and python-gvm),
 GVM and GOS are using the same major and minor version.
