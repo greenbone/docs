@@ -11,11 +11,11 @@ depth: 2
 
 For a comprehensive background see {doc}`History of OpenVAS <history>`.
 
-## Where can I ask question and get support?
+## Where can I ask questions and get support?
 
-Support is only provided for the Greenbone Enterprise Appliance products.
-Besides that the Greenbone Community can be reached at [https://community.greenbone.net][community forum]
-to ask question. In this forum several Greenbone developers trying to help on a
+Support is only provided for the Greenbone Enterprise product line.
+Besides that, the Greenbone Community can be reached at [https://community.greenbone.net][community forum]
+to ask question. In this forum, several Greenbone developers try to help on a
 voluntary basis.
 
 ## Can you help with my issue on Kali, Cent OS, XYZ distribution?
@@ -24,8 +24,8 @@ voluntary basis.
 
 Greenbone doesn't provide any packages for any Linux distribution besides the
 commercial Greenbone OS. If you have installed the Greenbone Community Edition
-software from your distribution like Kali Linux, an external package repository
-or even some random docker image Greenbone wasn't involved in providing this
+from your distribution like Kali Linux, an external package repository
+or even some random docker image, Greenbone was not involved in providing this
 installation method to you.
 
 The development of the Greenbone Community Edition and packaging for a

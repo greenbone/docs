@@ -1,5 +1,5 @@
 ==========================
-Building 21.04 from source
+Building 21.04 from Source
 ==========================
 
 .. include:: ../common/introduction.rst

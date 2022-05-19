@@ -22,7 +22,7 @@ The architecture for the version 21.04 is grouped into three major parts:
 * Greenbone Security Assistant (GSA) with the Greenbone Security Assistant
   Daemon (gsad)
 
-The Greenbone Community Edition is released under Open Source licenses. By using
+The Greenbone Community Edition is released under open-source licenses. By using
 it, Linux distributions can create and provide the software components in the
 form of installation packages.
 
@@ -44,7 +44,7 @@ Greenbone Security Assistant (GSA)
 ----------------------------------
 
 The `Greenbone Security Assistant (GSA)`_ is the web interface that a
-user controls scans and accesses vulnerability information with. It the main
+user controls scans and accesses vulnerability information with. It is the main
 contact point for a user. It connects to gvmd via the web server `Greenbone
 Security Assistant Daemon (gsad)`_ to provide a full-featured web application for
 vulnerability management. The communication occurs using the
