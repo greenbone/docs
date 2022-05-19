@@ -11,47 +11,54 @@ depth: 2
 
 For a comprehensive background see {doc}`History of OpenVAS <history>`.
 
-## GVM, GSE, GSM TRIAL, GCF, GSF, GSM, GPE,  ... what are these things about?
+## Where can I ask questions and get support?
 
-See [Solution Comparison paper](https://www.greenbone.net/wp-content/uploads/Solution_Comparison_EN.pdf)
-and the {doc}`glossary`.
+Support is only provided for the Greenbone Enterprise product line.
+Besides that, the Greenbone Community can be reached at the [https://community.greenbone.net][community forum]
+to ask question. In this forum, several Greenbone developers try to help on a
+voluntary basis.
 
-## Can you help to update my GVM version on Kali, Cent OS, XYZ distribution?
+## Can you help with my issue on Kali, Cent OS, XYZ distribution?
 
 [https://community.greenbone.net/t/openvas-showing-503-error/5465/4](https://community.greenbone.net/t/openvas-showing-503-error/5465/4)
 
 Greenbone doesn't provide any packages for any Linux distribution besides the
-commercial Greenbone OS. If you have installed GVM software from your
-distribution, an external package repository or even a docker image Greenbone
-wasn't involved in providing this installation method to you. The software from
-these sources may be heavily adjusted, outdated or even completely broken.
-Therefore if you have issues with the software please contact the provider of
-the packages first and create a ticket at their issue tracker. How to contact
-the provider really depends and varies.
+commercial Greenbone OS. If you have installed the Greenbone Community Edition
+from your distribution like Kali Linux, an external package repository
+or even some random docker image, Greenbone was not involved in providing this
+installation method to you.
+
+The development of the Greenbone Community Edition and packaging for a
+distribution or container image is completely independent. Therefore, our
+software provided from these sources may be heavily adjusted, outdated or even
+completely broken. If you have issues with the software, please contact the
+provider of the packages first and create a ticket at their issue tracker. How
+to contact the provider depends and varies.
 
 We are **not** able to offer any help on updating packages from **any** external
-source like Kali, Cent OS, Docker Image, ....!
+source like Kali, Cent OS, Docker Image, .... because we are not aware of their
+specific needs and changes!
 
-## Please help me installing GVM and please advise on recommended platform OS, too.
+## Please help me installing OpenVAS and please advise on recommended platform OS, too.
 
-This is very similar to [Can you help to update my GVM version on Kali, Cent OS, XYZ distribution](#can-you-help-to-update-my-gvm-version-on-kali-cent-os-xyz-distribution).
+This is very similar to [Can you help with my issue on Kali, Cent OS, XYZ distribution](#can-you-help-with-my-issue-on-kali-cent-os-xyz-distribution).
 Greenbone can't provide installation docs for the many available Linux
 distributions available. Setups, configurations, build systems, packaging tools,
 available software, best practices, ... diverge to much to offer *official*
-packages, scripts or anything else from Greenbone. We offer this installation
-documentation and the [community forum](https://community.greenbone.net)
-for discussing setup problems. Therefore Greenbone also doesn't recommend any
-distribution nor do we prefer one distribution over the other. Most of the time
-we are even not aware which distribution ships which version of our software.
+packages, scripts or anything else from Greenbone. We offer this Greenbone Community Edition
+documentation and the [community forum] for discussing setup problems. Therefore,
+Greenbone also doesn't recommend any distribution nor do we prefer one
+distribution over the other. Most of the time, we are not even aware which
+distribution ships which version of our software.
 
-## Which release contains which component? GOS version vs. GSE version?
+## Which release contains which component? GOS version vs. GVM version?
 
 It was often confusing to find out which software component of the
-{term}`Greenbone Source Edition <GSE>` belongs to which GVM release.
-Additionally the [Greenbone OS](https://community.greenbone.net/t/about-the-greenbone-os-gos-category/214)
-used in the [GSM Trial Virtual Machine](https://community.greenbone.net/t/setting-up-the-greenbone-security-manager-trial-gsm-trial-virtual-machine/6939)
-had a different versioning scheme then GVM. We are aware of this and therefore
-with the 20.08 release we changed our versioning scheme to
+{term}`Greenbone Community Edition` belongs to which GVM release.
+Additionally, the {term}`Greenbone OS <GOS>`
+used in the [Greenbone Enterprise TRIAL Virtual Machine](https://www.greenbone.net/en/testnow/)
+had a different versioning scheme then GVM. We are aware of this and 
+with the 20.08 release, we changed our versioning scheme to
 [Calendar Versioning](https://calver.org/). With this change all software
 components (besides the extra software openvas-smb, gvm-tools and python-gvm),
 GVM and GOS are using the same major and minor version.
@@ -64,7 +71,7 @@ GVM and GOS are using the same major and minor version.
 | [GVM 10](https://community.greenbone.net/t/gvm-10-old-stable-initial-release-2019-04-05/208) | 5 | 8 | 8 |8 | 10 | 6 | end-of-life (since 2020-13-31) | 2019-04-05 |
 | [OpenVAS  9](https://community.greenbone.net/t/gvm-9-end-of-life-initial-release-2017-03-07/211) | 4 | openvas-manager 7 | OMP 7 | 7 | openvas-libraries 9 | 5.1 | end-of-life | 2017-03-07 |
 
-## My self-compiled version of GVM isn't working as expected. Can you help me?
+## My self-compiled version isn't working as expected. Can you help me?
 
 All questions should be handled at the [community forum]
 but please be aware that your questions are answered on a voluntary basis. Therefore,
@@ -73,10 +80,9 @@ to exchange experiences and problems about a [Free Software](https://en.wikipedi
 project and not to get instant advises from the developers or professional
 support to fix your current issue.
 
-If you are using a self-compiled version of our GVM stack not build from this
+If you are using a self-compiled version of the Greenbone software stack not build from this
 guide or packages from an external third party like a distribution please always
-check if you can reproduce the same behavior with the
-[GSM Trial VM](https://community.greenbone.net/t/setting-up-the-greenbone-security-manager-trial-gsm-trial-virtual-machine/6939).
+check if you can reproduce the same behavior with the [Greenbone Enterprise TRIAL Virtual Machine](https://www.greenbone.net/en/testnow/)
 If we are able to reproduce your issue it will be much easier to fix.
 
 ## Can I mix components from different releases?
@@ -96,9 +102,10 @@ be used and are known to work flawlessly.
 
 ## I am looking for an overview about OpenVAS
 
-The thing you are looking for is named Greenbone Vulnerability Management (GVM)
-now. openvas is only the name of the scanner application nowadays. GVM consists
-of several software components and openvas is only one of them. All components
+See {doc}`Greenbone, GVM, OpenVAS and How They Are Connected <history>` for some
+background about Greenbone OpenVAS.
+
+Our software consists of several software components. All components
 are free software and can be found at [GitHub](https://github.com/greenbone/).
 
 For an overview of the components and their connections please take a look at

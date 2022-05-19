@@ -3,7 +3,7 @@ Performing an Initial Feed Synchronization
 
 For the actual vulnerability scanning, :term:`Vulnerability Test scripts<VT>`,
 security information like CVEs, port lists and scan configurations are required.
-All this data is provided by the :term:`Greenbone Community Feed <GCF>` and
+All this data is provided by the :term:`Greenbone Community Feed` and
 needs to be download initially before starting the services.
 
 .. note::

@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
+## Unreleased
+* Update index page, history, architecture, faq and glossary for adjusted terms
+  and naming.
+
 ## 22.3.3 - 2022-03-31
 * Fix setting cmake parameter of runtime directory for gvmd
 * Fix starting the correct postgresql cluster

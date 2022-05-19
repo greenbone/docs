@@ -29,63 +29,67 @@ Glossary
     executable for reporting scan results to the management daemon :term:`gvmd`.
     Used in GVM 11 and later.
 
+  gsad
+    A web server providing the :term:`Greenbone Security Assistant <GSA>` web
+    application.
+
+  GSA
+    The Greenbone Security Assistant (GSA) web application to control scans and
+    access vulnerability information via a web interface in a browser.
+
   GOS
     Greenbone Operating System, the operating system of the
-    :term:`GSM appliances <GSM>`. It provides the commercial version of the
-    :term:`GVM framework <GVM>` with enterprise support and features.
+    :term:`Greenbone Enterprise` Appliance. It provides the commercial version
+    of the :term:`GVM framework <GVM>` with enterprise support and features.
 
   GSM
-    The commercial product line `Greenbone Security Manager
-    <https://www.greenbone.net/en/product-comparison/>`_ available as hardware or
-    virtual appliances.
+    Greenbone Security Manager is the former name of our commercial product line
+    :term:`Greenbone Enterprise` as hardware or virtual appliances.
 
   GMP
-    The `Greenbone Management Protocol
-    <https://community.greenbone.net/t/about-the-greenbone-management-protocol-gmp-category/83>`_,
-    an XML-based communication protocol provided by :term:`gvmd`.
+    The Greenbone Management Protocol (GMP) is an XML-based communication
+    protocol provided by :term:`gvmd`. It provides an API to create, read, update
+    and delete scans and vulnerability information.
 
   OSP
-    The `Open Scanner Protocol
-    <https://community.greenbone.net/t/about-the-open-scanner-protocol-osp-category/98>`_,
-    an XML-based communication protocol provided by
-    `OSPd <https://github.com/greenbone/ospd>`_-based scanners.
+    The Open Scanner Protocol is an XML-based communication protocol provided by
+    :term:`ospd-openvas`. It provides an API to start scans, get :term:`VT`
+    information and to receive scan results.
 
   GVM
-    The `Greenbone Vulnerability Management (GVM)
-    <https://community.greenbone.net/t/about-gvm-architecture/1231>`_ is a
-    framework of several services. It is developed as part of the commercial
-    product line :term:`Greenbone Security Manager <GSM>`. Formerly known as
-    OpenVAS.
+    The :term:`Greenbone Community Edition` consists of several services. This
+    software framework has been released as Greenbone Vulnerability Management (GVM).
+    It is developed as part of the commercial :term:`Greenbone Enterprise`
+    product line. Sometimes referred to as the OpenVAS framework.
 
-  GSE
-    The `Greenbone Source Edition (GSE)
-    <https://community.greenbone.net/t/about-the-greenbone-source-edition-gse-category/176>`_
-    covers the actual source codes of the Greenbone application stack
-    for vulnerability scanning and vulnerability management :term:`GVM`.
-    The source edition is adopted by external third parties, e.g., if the
+  Greenbone Community Edition
+    The Greenbone Community Edition covers the actual releases of the Greenbone
+    application stack for vulnerability scanning and vulnerability management
+    :term:`GVM` provided as open-source software to the community.
+    The Greenbone Community Edition is adopted by external third parties, e.g., if the
     :term:`GVM` stack is provided by a Linux distribution, it is build from
-    the Greenbone Source Edition.
+    the Greenbone Community Edition.
 
-  GPE
-    The `Greenbone Professional Edition (GPE)
-    <https://community.greenbone.net/t/about-the-greenbone-professional-edition-category/146>`_
-    is the Greenbone product line for on-premises solutions.
-    Included are virtual or hardware :term:`Greenbone Security Manager (GSM) <GSM>`
-    appliances with the :term:`Greenbone Operating System (GOS)<GOS>`,
+  Greenbone Enterprise
+    Greenbone Enterprise is the `Greenbone product line for on-premises solutions
+    <https://www.greenbone.net/en/product-comparison/>`_.
+    Included are virtual or hardware Greenbone Enterprise Appliances with the
+    :term:`Greenbone Operating System (GOS)<GOS>`,
     the :term:`Greenbone Vulnerability Management (GVM) framework <GVM>`, and
-    the :term:`Greenbone Security Feed (GSF) <GSF>`.
+    the :term:`Greenbone Enterprise Feed`.
 
-  GCF
-    The Greenbone Community Feed (GCF) is the freely available feed for vulnerability
-    information licensed as Open Source. It contains basic scan configurations,
+  Greenbone Community Feed
+    The Greenbone Community Feed is the freely available feed for vulnerability
+    information licensed as open-source. It contains basic scan configurations,
     report formats, port lists and the most important vulnerability tests. The
     provided data is updated on a daily basis with no warranty or promises for
     fixes or completeness.
 
-  GSF
-    The Greenbone Security Feed (GSF) is the commercial feed provided by
-    Greenbone Networks containing additional enterprise features like policy and
-    compliance checks, extensive reports formats and special scan configurations.
+  Greenbone Enterprise Feed
+    The Greenbone Enterprise Feed is the commercial feed provided by
+    Greenbone Networks containing additional enterprise features like
+    vulnerability tests for enterprise products, policy and compliance checks,
+    extensive reports formats and special scan configurations.
     The feed comes with a service-level agreement ensuring support, quality
     assurance and availability.
 

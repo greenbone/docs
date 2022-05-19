@@ -1,6 +1,6 @@
-==================
-Building GVM 21.04
-==================
+==========================
+Building 21.04 from Source
+==========================
 
 .. include:: ../common/introduction.rst
 
