@@ -39,7 +39,7 @@ Glossary
 
   GOS
     Greenbone Operating System, the operating system of the
-    :term:`Greenbone Enterprise` appliance. It provides the commercial version
+    :term:`Greenbone Enterprise` Appliance. It provides the commercial version
     of the :term:`GVM framework <GVM>` with enterprise support and features.
 
   GSM
@@ -60,27 +60,27 @@ Glossary
     The :term:`Greenbone Community Edition` consists of several services. This
     software framework has been released as Greenbone Vulnerability Management (GVM).
     It is developed as part of the commercial :term:`Greenbone Enterprise`
-    product line. Sometimes referred as the OpenVAS framework.
+    product line. Sometimes referred to as the OpenVAS framework.
 
   Greenbone Community Edition
     The Greenbone Community Edition covers the actual releases of the Greenbone
     application stack for vulnerability scanning and vulnerability management
-    :term:`GVM` provided as Open Source software to the community.
-    The community edition is adopted by external third parties, e.g., if the
+    :term:`GVM` provided as open-source software to the community.
+    The Greenbone Community Edition is adopted by external third parties, e.g., if the
     :term:`GVM` stack is provided by a Linux distribution, it is build from
     the Greenbone Community Edition.
 
   Greenbone Enterprise
     Greenbone Enterprise is the `Greenbone product line for on-premises solutions
     <https://www.greenbone.net/en/product-comparison/>`_.
-    Included are virtual or hardware Greenbone Enterprise appliances with the
+    Included are virtual or hardware Greenbone Enterprise Appliances with the
     :term:`Greenbone Operating System (GOS)<GOS>`,
     the :term:`Greenbone Vulnerability Management (GVM) framework <GVM>`, and
     the :term:`Greenbone Enterprise Feed`.
 
   Greenbone Community Feed
     The Greenbone Community Feed is the freely available feed for vulnerability
-    information licensed as Open Source. It contains basic scan configurations,
+    information licensed as open-source. It contains basic scan configurations,
     report formats, port lists and the most important vulnerability tests. The
     provided data is updated on a daily basis with no warranty or promises for
     fixes or completeness.

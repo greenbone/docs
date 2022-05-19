@@ -1,5 +1,5 @@
-Greenbone Community – Documentation
-===================================
+Greenbone Community Edition – Documentation
+===========================================
 
 The Greenbone Community Edition covers the actual source code of the Greenbone
 OpenVAS stack.

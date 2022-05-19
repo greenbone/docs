@@ -13,7 +13,7 @@ software. This vulnerability management solution was later named
 brand changes. Therefore, after the release of the OpenVAS 9
 framework, the following releases got named GVM.
 
-With this in mind Greenbone OpenVAS can be
+With this in mind, Greenbone OpenVAS can be
 
 * a vulnerability scanner (OpenVAS Scanner)
 * a name for a software framework of several components (GVM)
@@ -64,11 +64,11 @@ In 2009, Greenbone added the first additional modules to build a vulnerability
 management solution. The web interface and the central management service were
 developed from scratch, with generic protocols defined as their API. At the same
 time, the OpenVAS scanner was carefully improved and quickly lost compatibility
-with its ancestor. All Open Source work was branded "OpenVAS". The first
+with its ancestor. All open-source work was branded "OpenVAS". The first
 "Greenbone Security Manager" appliance products entered the market in spring 2010.
 
 In the years 2010 to 2016, the commercial product was systematically improved
-and extended, and so were the Open Source modules. The vulnerability
+and extended, and so were the open-source modules. The vulnerability
 management was extended to include daily updated security advisories, which were
 made available to the public with a GPL-compatible license by the German CERTs
 DFN-CERT and CERT-Bund, a division of the BSI.
@@ -84,7 +84,7 @@ included several activities, the most essential one using the term
 :term:`Greenbone Vulnerability Management" (GVM)<GVM>` instead of "OpenVAS framework"
 for the releases. Since then the OpenVAS Scanner is only one of many modules. This
 led to "GVM-10" as the successor of "OpenVAS-9". There were no license changes,
-all modules remained free and Open Source software.
+all modules remained free and open-source software.
 
 The second major change in 2017 involved the feed service. Apart from the
 branding confusion, several companies integrated the technology and feed, passing
@@ -112,10 +112,10 @@ This concept essentially replaces the old stateful, permanent and proprietary
 OTP (OpenVAS Transfer Protocol) by the new stateless, request-response
 XML-based and generic :term:`OSP (Open Scanner Protocol)<OSP>`.
 
-With GVM 20.08 the release versioning changed to `Calendar Versioning <https://calver.org/>`_.
+With GVM 20.08, the release versioning changed to `Calendar Versioning <https://calver.org/>`_.
 Most important change in this release was to ship and sync the gvmd object data
 consisting of the report formats, port lists, policies and scan configs with the
 feed.
 
-Besides removing legacy features like GMP Scanners the 21.04 release got support
+Besides removing legacy features like GMP scanners, the 21.04 release got support
 for CVSSv3/CVSSv3.1.
