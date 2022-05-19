@@ -14,7 +14,7 @@ For a comprehensive background see {doc}`History of OpenVAS <history>`.
 ## Where can I ask questions and get support?
 
 Support is only provided for the Greenbone Enterprise product line.
-Besides that, the Greenbone Community can be reached at [https://community.greenbone.net][community forum]
+Besides that, the Greenbone Community can be reached at the [https://community.greenbone.net][community forum]
 to ask question. In this forum, several Greenbone developers try to help on a
 voluntary basis.
 
@@ -80,7 +80,7 @@ to exchange experiences and problems about a [Free Software](https://en.wikipedi
 project and not to get instant advises from the developers or professional
 support to fix your current issue.
 
-If you are using a self-compiled version of our software stack not build from this
+If you are using a self-compiled version of the Greenbone software stack not build from this
 guide or packages from an external third party like a distribution please always
 check if you can reproduce the same behavior with the [Greenbone Enterprise TRIAL Virtual Machine](https://www.greenbone.net/en/testnow/)
 If we are able to reproduce your issue it will be much easier to fix.
