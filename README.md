@@ -1,6 +1,6 @@
 ![Greenbone Logo](https://www.greenbone.net/wp-content/uploads/gb_new-logo_horizontal_rgb_small.png)
 
-# Documentation for the Greenbone Source Edition
+# Documentation for the Greenbone Community Edition
 
 The documentation is build automatically via GitHub Actions and available at
 https://greenbone.github.io/docs/
