@@ -70,6 +70,13 @@ Glossary
     :term:`GVM` stack is provided by a Linux distribution, it is build from
     the Greenbone Community Edition.
 
+  Greenbone Community Containers
+    Container images that a pre-build on [GitHub](https://github.com/greenbone)
+    and available via [dockerhub](https://hub.docker.com/u/greenbone). These
+    images can be used to run the newest versions of the :term:`Greenbone Community Edition`
+    without having to care about the operating system, compiler and build
+    tool chains.
+
   Greenbone Enterprise
     Greenbone Enterprise is the `Greenbone product line for on-premises solutions
     <https://www.greenbone.net/en/product-comparison/>`_.
@@ -97,3 +104,19 @@ Glossary
     Vulnerability Tests (VTs), also known as Network Vulnerability Tests
     (NVTs), are scripts written in the NASL programming language to detect
     vulnerabilities at remote hosts.
+
+  SCAP
+    Abbreviation for `Security Content Automation Protocol <https://csrc.nist.gov/projects/security-content-automation-protocol/>`_.
+    It is used for providing :term:`CPE` and :term:`CVE` data via the Greenbone
+    Enterprise and Community Feeds.
+
+  CPE
+    Abbreviation for `Common Platform Enumeration <https://csrc.nist.gov/Projects/Security-Content-Automation-Protocol/Specifications/cpe>`_.
+    Common Platform Enumeration (CPE) is a standardized method of describing and
+    identifying classes of applications, operating systems, and hardware devices
+    present among an enterprise's computing assets.
+
+  CVE
+    Abbreviation for `Common Vulnerabilities and Exposures <https://www.cve.org/>`_.
+    It provides unique, common identifiers for publicly known information-security
+    vulnerabilities in publicly released software packages.
