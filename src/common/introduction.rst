@@ -1,4 +1,5 @@
-Building the GVM stack from source requires knowledge about:
+Building the Greenbone Community Edition stack from source requires knowledge
+about:
 
 * Using a terminal
 * Shell programming basic
@@ -8,8 +9,8 @@ Building the GVM stack from source requires knowledge about:
 * The `Linux File System Hierarchy <https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard>`_
 * Running services via *systemd*
 
-Additionally, a basic knowledge about the :doc:`GVM architecture <../architecture>`
-is required to follow this guide.
+Additionally, a basic knowledge about the :doc:`architecture <../architecture>`
+of the Greenbone Community Edition is required to follow this guide.
 
 .. note::
 
