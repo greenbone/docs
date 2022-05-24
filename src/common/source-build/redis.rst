@@ -1,7 +1,7 @@
 Setting up the Redis Data Store
 -------------------------------
 
-Looking at the :doc:`../architecture`, the `Redis <https://redis.io/>`_ key/value
+Looking at the :doc:`/architecture`, the `Redis <https://redis.io/>`_ key/value
 storage is used by the scanner (*openvas-scanner* and *ospd-openvas*) for handling
 the :term:`VT` information and scan results.
 

@@ -11,7 +11,7 @@
 
 The output of both commands should be similar to:
 
-.. include:: /common/verify.rst
+.. include:: /common/source-build/verify.rst
 
 If the signatures are valid, the two tarballs can be extracted.
 

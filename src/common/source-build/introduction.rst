@@ -9,7 +9,7 @@ about:
 * The `Linux File System Hierarchy <https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard>`_
 * Running services via *systemd*
 
-Additionally, a basic knowledge about the :doc:`architecture <../architecture>`
+Additionally, a basic knowledge about the :doc:`architecture </architecture>`
 of the Greenbone Community Edition is required to follow this guide.
 
 .. note::
