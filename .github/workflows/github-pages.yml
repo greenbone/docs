@@ -1,6 +1,7 @@
 name: "Build and deploy the Greenbone Documentation"
 
 on:
+  workflow_dispatch:
   push:
     branches: [ main ]
 
