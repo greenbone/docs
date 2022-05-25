@@ -23,7 +23,7 @@ Edition
    :caption: Contents
 
    background
-   21.04/index
+   21.04/source-build/index
    faq
    glossary
    changelog
