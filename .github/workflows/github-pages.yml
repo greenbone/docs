@@ -6,34 +6,28 @@ on:
 
 jobs:
   build-docs:
-    name: Build and Deploy Documentation
+    name: Build Documentation
     runs-on: 'ubuntu-latest'
-    strategy:
-        matrix:
-          python-version:
-            - 3.8
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "3.9"
       - name: Install poetry and dependencies
         uses: greenbone/actions/poetry@v1
       - name: Build docs
         run: poetry run sphinx-build -M html src _build
-      - name: Create GitHub Pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config --global user.name "${GITHUB_ACTOR}"
-          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          docroot=`mktemp -d`
-          cp -r _build/html/* "${docroot}"
-          cd "${docroot}"
-          touch .nojekyll
-          git init -b gh-pages
-          git remote add deploy "https://token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git add .
-          git commit -m "Updating Docs for commit ${GITHUB_SHA}"
-          git push deploy gh-pages --force
+      - name: Upload Documentation Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: greenbone-community-docs
+          path: _build/html/
+
+  deploy-docs:
+    needs: build-docs
+    name: Build Documentation
+    uses: ./.github/workflows/deployment.yml
+    with:
+      doc_root: latest
+      artifact_name: greenbone-community-docs

@@ -1,0 +1,30 @@
+on:
+  workflow_call:
+    inputs:
+      doc_root:
+        required: true
+        default: "latest"
+        type: string
+      artifact_name:
+        default: "greenbone-community-docs"
+        required: true
+        type: string
+
+jobs:
+  deploy-docs:
+    name: Deploy Documentation to GitHub Pages
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: actions/checkout@v2
+        ref: "gh-pages"
+      - name: Download Documentation Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: ${{inputs.artifact_name }}
+          path: ${{ inputs.doc_root }}
+      - name: Create GitHub Pages
+        run: |
+          cd ${{ inputs.doc_root }}
+          git add .
+          git commit --amend -m "Updating Docs for commit ${GITHUB_SHA}"
+          git push --force-with-lease
