@@ -1,13 +1,15 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to this documentation will be listed in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
-## Unreleased
+## Latest
 * Update index page, history, architecture, faq and glossary for adjusted terms
   and naming.
+* Allow to copy & paste commands via a button click
+* Re-arrange page structure and therefore the URLs of the documents
 
 ## 22.3.3 - 2022-03-31
 * Fix setting cmake parameter of runtime directory for gvmd
