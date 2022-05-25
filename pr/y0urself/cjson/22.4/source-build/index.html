@@ -1,0 +1,2669 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="Greenbone Community Edition – Documentation" lang="en" name="description" xml:lang="en" />
+<meta content="Greenbone Community Edition – Dokumentation" lang="de" name="description" xml:lang="de" />
+<meta content="OpenVAS, Greenbone, Community, Greenbone Community Edition, GVM, Container, Docker, Documentation" name="keywords" />
+<meta content="en_US" property="og:locale" />
+<meta property="og:title" content="Building from Source" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://greenbone.github.io/docs/latest/22.4/source-build/index.html" />
+<meta property="og:site_name" content="Greenbone Community Documentation" />
+<meta property="og:description" content="Building the Greenbone Community Edition from source requires knowledge about: Using a terminal, Shell programming basics, Installing software via apt or dnf, Using a C compiler, Using CMake and ma..." />
+<meta property="og:image" content="https://greenbone.github.io/docs/latest/_images/greenbone-banner.png" />
+<meta property="og:image:alt" content="Greenbone Community Documentation" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Workflows" href="workflows.html" /><link rel="prev" title="Background" href="../../background.html" />
+
+    <link rel="shortcut icon" href="../../_static/favicon.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
+        <title>Building from Source - Greenbone Community Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=c824535d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=6a40824e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #3f3f3f;
+  --color-code-foreground: #dcdccc;
+  --color-content-foreground: #4D4D4D;
+  --color-foreground-primary: 4D4D4D;
+  --color-foreground-secondary: #808080;
+  --color-code-background: #333333;
+  --color-code-foreground: #E6E6E6;
+  --color-admonition-title--note: #11AB51;
+  --admonition-font-size: 0.9rem;
+  --color-background-primary: #FFFFFF;
+  --color-background-secondary: #F5F5F5;
+  --color-sidebar-background: #F5F5F5;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-content-foreground: #F5F5F5;
+  --color-foreground-primary: F5F5F5;
+  --color-foreground-secondary: #E6E6E6;
+  --color-code-background: #333333;
+  --color-code-foreground: #E6E6E6;
+  --color-admonition-title--note: #11AB51;
+  --admonition-font-size: 0.9rem;
+  --color-background-primary: #171717;
+  --color-background-secondary: #4D4D4D;
+  --color-sidebar-background: #333333;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-content-foreground: #F5F5F5;
+  --color-foreground-primary: F5F5F5;
+  --color-foreground-secondary: #E6E6E6;
+  --color-code-background: #333333;
+  --color-code-foreground: #E6E6E6;
+  --color-admonition-title--note: #11AB51;
+  --admonition-font-size: 0.9rem;
+  --color-background-primary: #171717;
+  --color-background-secondary: #4D4D4D;
+  --color-sidebar-background: #333333;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Greenbone Community Documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../_static/logo.svg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Greenbone Community Documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../background.html">Background</a></li>
+<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Building from Source</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Building from Source</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="workflows.html">Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../container/index.html">Greenbone Community Containers</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Greenbone Community Containers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../container/workflows.html">Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../container/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../kali/index.html">Kali Linux Install Guide</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Kali Linux Install Guide</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../kali/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq.html">Frequently Asked Questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/greenbone/docs/blob/main/src/22.4/source-build/index.md?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/greenbone/docs/edit/main/src/22.4/source-build/index.md" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="building-from-source">
+<h1>Building from Source<a class="headerlink" href="#building-from-source" title="Link to this heading">¶</a></h1>
+<p>Building the Greenbone Community Edition from source requires knowledge about:</p>
+<ul class="simple">
+<li><p>Using a terminal</p></li>
+<li><p>Shell programming basics</p></li>
+<li><p>Installing software via <em>apt</em> or <em>dnf</em></p></li>
+<li><p>Using a C compiler</p></li>
+<li><p>Using <em>CMake</em> and <em>make</em></p></li>
+<li><p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard">Linux File System Hierarchy</a></p></li>
+<li><p>Running services via <em>systemd</em></p></li>
+</ul>
+<p>Additionally, a basic knowledge about the <a class="reference internal" href="../../architecture.html"><span class="doc">architecture</span></a>
+of the Greenbone Community Edition is required to follow this guide.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This guide is intended for developers who want to try out the newest features
+and/or want to get familiar with the source code. It is not intended for
+production setups.</p>
+<p>Currently the docs support the following distributions</p>
+<ul class="simple">
+<li><p><strong>Debian stable</strong> <a class="reference external" href="https://www.debian.org/releases/stable">(bookworm)</a></p></li>
+<li><p><strong>Ubuntu 22.04 LTS</strong></p></li>
+<li><p><strong>Fedora 38</strong></p></li>
+<li><p><strong>CentOS 9 Stream</strong></p></li>
+</ul>
+<p>Most likely, other Debian derivatives like Mint and Kali will also work with
+only minor adjustments required.</p>
+</div>
+<section id="hardware-requirements">
+<h2>Hardware Requirements<a class="headerlink" href="#hardware-requirements" title="Link to this heading">¶</a></h2>
+<p>Minimal:</p>
+<ul class="simple">
+<li><p>CPU Cores: 2</p></li>
+<li><p>Random-Access Memory: 4GB</p></li>
+<li><p>Hard Disk: 20GB free</p></li>
+</ul>
+<p>Recommended:</p>
+<ul class="simple">
+<li><p>CPU Cores: 4</p></li>
+<li><p>Random-Access Memory: 8GB</p></li>
+<li><p>Hard Disk: 60GB free</p></li>
+</ul>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please follow the guide step by step. Later steps might require settings or
+output of a previous command.</p>
+</div>
+<p>The command <code class="docutils literal notranslate"><span class="pre">sudo</span></code> is used for executing commands that require privileged
+access on the system.</p>
+<section id="creating-a-user-and-a-group">
+<h3>Creating a User and a Group<a class="headerlink" href="#creating-a-user-and-a-group" title="Link to this heading">¶</a></h3>
+<p>The services provided by the Greenbone Community Edition should run as a dedicated user and
+group. Therefore a <code class="docutils literal notranslate"><span class="pre">gvm</span></code> user and a group with the same name will be created.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Debian/Ubuntu</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Fedora/CentOS</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Creating a gvm system user and group</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo useradd -r -M -U -G sudo -s /usr/sbin/nologin gvm</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Creating a gvm system user and group</span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo useradd -r -M -U -G wheel -s /usr/sbin/nologin gvm</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="adjusting-the-current-user">
+<h3>Adjusting the Current User<a class="headerlink" href="#adjusting-the-current-user" title="Link to this heading">¶</a></h3>
+<p>To allow the current user to run <em>gvmd</em> he must be added to the <em>gvm</em> group.
+To make the group change effective either logout and login again or use
+<strong class="command">su</strong>.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Add current user to gvm group</span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo usermod -aG gvm $USER</span>
+
+<span class="go">su $USER</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="choosing-an-install-prefix">
+<h3>Choosing an Install Prefix<a class="headerlink" href="#choosing-an-install-prefix" title="Link to this heading">¶</a></h3>
+<p>Before building the software stack, a (root) directory must be chosen where
+the built software will finally be installed. For example, when building packages,
+the distribution developers set this path to <code class="file docutils literal notranslate"><span class="pre">/usr</span></code>.</p>
+<p>By default, it is <code class="file docutils literal notranslate"><span class="pre">/usr/local</span></code> which is also used in this guide. This
+directory will be stored in an environment variable <span class="target" id="index-0"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">INSTALL_PREFIX</span></code>
+to be able to reference it later.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Setting an install prefix environment variable</span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">export INSTALL_PREFIX=/usr/local</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="setting-the-path">
+<h3>Setting the PATH<a class="headerlink" href="#setting-the-path" title="Link to this heading">¶</a></h3>
+<p>On Debian systems the locations <code class="file docutils literal notranslate"><span class="pre">/sbin</span></code>, <code class="file docutils literal notranslate"><span class="pre">/usr/sbin</span></code> and
+<code class="file docutils literal notranslate"><span class="pre">/usr/local/sbin</span></code> are not in the <span class="target" id="index-1"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PATH</span></code> of normal users. To run
+<em>gvmd</em> which is located in <code class="file docutils literal notranslate"><span class="pre">/usr/local/sbin</span></code> the <span class="target" id="index-2"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PATH</span></code>
+environment variable should be adjusted.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Adjusting PATH for running gvmd</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">export PATH=$PATH:$INSTALL_PREFIX/sbin</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="creating-a-source-build-and-install-directory">
+<h3>Creating a Source, Build and Install Directory<a class="headerlink" href="#creating-a-source-build-and-install-directory" title="Link to this heading">¶</a></h3>
+<p>To separate the sources and the build artifacts, a source and a build directory
+must be created.</p>
+<p>This source directory will be used later in this guide via
+an environment variable <span class="target" id="index-3"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">SOURCE_DIR</span></code>. Accordingly, a variable
+<span class="target" id="index-4"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">BUILD_DIR</span></code> will be set for the build directory. Both can be set to any
+directory to which the current user has write permissions. Therefore
+directories in the current user’s home directory are chosen in this guide.</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">Choosing a source directory</span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">export SOURCE_DIR=$HOME/source</span>
+<span class="go">mkdir -p $SOURCE_DIR</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">Choosing a build directory</span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">export BUILD_DIR=$HOME/build</span>
+<span class="go">mkdir -p $BUILD_DIR</span>
+</pre></div>
+</div>
+</div>
+<p>Additionally, an install directory will be set as an environment variable
+<span class="target" id="index-5"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">INSTALL_DIR</span></code>. It is used as a temporary installation directory
+before moving all built artifacts to the final destination.</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">Choosing a temporary install directory</span><a class="headerlink" href="#id8" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">export INSTALL_DIR=$HOME/install</span>
+<span class="go">mkdir -p $INSTALL_DIR</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="choosing-the-installation-source">
+<h3>Choosing the Installation Source<a class="headerlink" href="#choosing-the-installation-source" title="Link to this heading">¶</a></h3>
+<p>For building the GVM software stack, three different sources can be chosen
+depending on the desired stability:</p>
+<ul class="simple">
+<li><p>Building from release <a class="reference external" href="https://en.wikipedia.org/wiki/Tar_(computing)">tarballs</a></p></li>
+<li><p>Building from git tags</p></li>
+<li><p>Building from release branches</p></li>
+</ul>
+<p>Linux distributions use the release <a class="reference external" href="https://en.wikipedia.org/wiki/Tar_(computing)">tarballs</a> because it is the most common
+and well known method to share source code.</p>
+<p>Newer build systems may stick with the git tags.</p>
+<p>If you are a developer and very familiar with building from source already, you
+may also try out using the git release branches. These have the
+advantage that they contain the newest fixes which may not yet be included in the
+release tarballs or git tags. As a downside, the release branches may
+contain only partially fixed issues and need to be updated more often.</p>
+<p>This guide will use the tarballs to build the software.</p>
+</section>
+<section id="installing-common-build-dependencies">
+<h3>Installing Common Build Dependencies<a class="headerlink" href="#installing-common-build-dependencies" title="Link to this heading">¶</a></h3>
+<p>For downloading, configuring, building and installing the Greenbone Community
+Edition components, several tools and applications are required. To install this
+requirements the following commands can be used:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Debian/Ubuntu</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Fedora</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">CentOS</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">Installing common build dependencies</span><a class="headerlink" href="#id9" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt update</span>
+<span class="go">sudo apt install --no-install-recommends --assume-yes \</span>
+<span class="go">  build-essential \</span>
+<span class="go">  curl \</span>
+<span class="go">  cmake \</span>
+<span class="go">  pkg-config \</span>
+<span class="go">  python3 \</span>
+<span class="go">  python3-pip \</span>
+<span class="go">  gnupg</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">Installing common build dependencies</span><a class="headerlink" href="#id10" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo dnf upgrade -y</span>
+<span class="go">sudo dnf groupinstall &#39;Development Tools&#39; -y</span>
+<span class="go">sudo dnf install -y \</span>
+<span class="go">  cmake \</span>
+<span class="go">  python3-pip \</span>
+<span class="go">  tar \</span>
+<span class="go">  gcc-c++</span>
+
+<span class="go">sudo tee /etc/ld.so.conf.d/local.conf &lt;&lt;EOF</span>
+<span class="go">/usr/local/lib</span>
+<span class="go">/usr/local/lib64</span>
+<span class="go">EOF</span>
+
+<span class="go">sudo ldconfig</span>
+
+<span class="go">sudo dnf remove net-snmp net-snmp-devel</span>
+<span class="go">sudo dnf install -y \</span>
+<span class="go">  systemd \</span>
+<span class="go">  gcc \</span>
+<span class="go">  openssl-devel \</span>
+<span class="go">  bzip2-devel \</span>
+<span class="go">  elfutils-devel \</span>
+<span class="go">  libselinux-devel \</span>
+<span class="go">  elfutils-libelf-devel \</span>
+<span class="go">  rpm-devel \</span>
+<span class="go">  perl-devel \</span>
+<span class="go">  procps \</span>
+<span class="go">  python3-devel \</span>
+<span class="go">  python3-setuptools \</span>
+<span class="go">  chrpath \</span>
+<span class="go">  mariadb-connector-c-devel</span>
+
+<span class="go">curl -O https://netcologne.dl.sourceforge.net/project/net-snmp/net-snmp/5.9.1/net-snmp-5.9.1.tar.gz</span>
+<span class="go">tar xzf net-snmp-5.9.1.tar.gz</span>
+<span class="go">cd net-snmp-5.9.1</span>
+<span class="go">./configure</span>
+<span class="go">make sedscript</span>
+<span class="go">make -j$(nproc)</span>
+<span class="go">sudo make install</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-1-1-2" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-2" name="1-2" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">Installing common build dependencies</span><a class="headerlink" href="#id11" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo dnf config-manager --set-enabled crb</span>
+<span class="go">sudo dnf install -y epel-release epel-next-release</span>
+<span class="go">sudo dnf upgrade -y</span>
+<span class="go">sudo dnf groupinstall &#39;Development Tools&#39; -y</span>
+<span class="go">sudo dnf install -y \</span>
+<span class="go">  cmake \</span>
+<span class="go">  python3-pip \</span>
+<span class="go">  tar \</span>
+<span class="go">  gcc-c++ \</span>
+<span class="go">  doxygen \</span>
+<span class="go">  xmltoman</span>
+
+<span class="go">sudo tee /etc/ld.so.conf.d/local.conf &lt;&lt;EOF</span>
+<span class="go">/usr/local/lib</span>
+<span class="go">/usr/local/lib64</span>
+<span class="go">EOF</span>
+
+<span class="go">sudo ldconfig</span>
+
+<span class="go">sudo dnf remove net-snmp net-snmp-devel</span>
+<span class="go">sudo dnf install -y \</span>
+<span class="go">  systemd \</span>
+<span class="go">  gcc \</span>
+<span class="go">  openssl-devel \</span>
+<span class="go">  bzip2-devel \</span>
+<span class="go">  elfutils-devel \</span>
+<span class="go">  libselinux-devel \</span>
+<span class="go">  elfutils-libelf-devel \</span>
+<span class="go">  rpm-devel \</span>
+<span class="go">  perl-devel \</span>
+<span class="go">  procps \</span>
+<span class="go">  python3-devel \</span>
+<span class="go">  python3-setuptools \</span>
+<span class="go">  chrpath \</span>
+<span class="go">  mariadb-connector-c-devel</span>
+
+<span class="go">curl -O https://netcologne.dl.sourceforge.net/project/net-snmp/net-snmp/5.9.1/net-snmp-5.9.1.tar.gz</span>
+<span class="go">tar xzf net-snmp-5.9.1.tar.gz</span>
+<span class="go">cd net-snmp-5.9.1</span>
+<span class="go">./configure</span>
+<span class="go">make -j$(nproc)</span>
+<span class="go">sudo make install</span>
+
+<span class="go">curl -o paho.mqtt.c.tar.gz https://codeload.github.com/eclipse/paho.mqtt.c/tar.gz/refs/tags/v1.3.10</span>
+<span class="go">tar xzf paho.mqtt.c.tar.gz</span>
+<span class="go">cd paho.mqtt.c-1.3.10</span>
+<span class="go">mkdir build &amp;&amp; cd build</span>
+<span class="go">cmake ..</span>
+<span class="go">make -j$(nproc)</span>
+<span class="go">sudo make install</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="importing-the-greenbone-signing-key">
+<h3>Importing the Greenbone Signing Key<a class="headerlink" href="#importing-the-greenbone-signing-key" title="Link to this heading">¶</a></h3>
+<p>To validate the integrity of the downloaded source files,
+<a class="reference external" href="https://www.gnu.org/">GnuPG</a> is used. It requires downloading the
+Greenbone Community Signing public key and importing it into the current user’s
+keychain.</p>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">Importing the Greenbone Community Signing key</span><a class="headerlink" href="#id12" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">curl -f -L https://www.greenbone.net/GBCommunitySigningKey.asc -o /tmp/GBCommunitySigningKey.asc</span>
+<span class="go">gpg --import /tmp/GBCommunitySigningKey.asc</span>
+</pre></div>
+</div>
+</div>
+<p>For understanding the validation output of the gpg tool, it is best to mark the
+Greenbone Community Signing key as fully trusted.</p>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-text">Setting the trust level for the Greenbone Community Signing key</span><a class="headerlink" href="#id13" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">echo &quot;8AE4BE429B60A59B311C2E739823FAA60ED1E580:6:&quot; | gpg --import-ownertrust</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="building-and-installing-the-components">
+<h2>Building and Installing the Components<a class="headerlink" href="#building-and-installing-the-components" title="Link to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The components should be build and installed in the listed order.</p>
+</div>
+<section id="gvm-libs">
+<h3>gvm-libs<a class="headerlink" href="#gvm-libs" title="Link to this heading">¶</a></h3>
+<p><em>gvm-libs</em> is a C library providing basic functionality like XML parsing and
+network communication. It is used in <em>openvas-scanner</em>, <em>gvmd</em>, <em>gsad</em> and <em>pg-gvm</em>.</p>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-text">Setting the gvm-libs version to use</span><a class="headerlink" href="#id14" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">export GVM_LIBS_VERSION=22.10.0</span>
+</pre></div>
+</div>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Debian/Ubuntu</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Fedora</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">CentOS</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for gvm-libs</span><a class="headerlink" href="#id15" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install -y \</span>
+<span class="go">  libglib2.0-dev \</span>
+<span class="go">  libgpgme-dev \</span>
+<span class="go">  libcjson-dev \</span>
+<span class="go">  libgnutls28-dev \</span>
+<span class="go">  uuid-dev \</span>
+<span class="go">  libssh-dev \</span>
+<span class="go">  libhiredis-dev \</span>
+<span class="go">  libxml2-dev \</span>
+<span class="go">  libpcap-dev \</span>
+<span class="go">  libnet1-dev \</span>
+<span class="go">  libpaho-mqtt-dev</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-text">Optional dependencies for gvm-libs</span><a class="headerlink" href="#id16" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install -y \</span>
+<span class="go">  libldap2-dev \</span>
+<span class="go">  libradcli-dev</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for gvm-libs</span><a class="headerlink" href="#id17" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo dnf install -y \</span>
+<span class="go">  glib2-devel \</span>
+<span class="go">  gpgme-devel \</span>
+<span class="go">  gnutls-devel \</span>
+<span class="go">  libgcrypt-devel \</span>
+<span class="go">  libuuid-devel \</span>
+<span class="go">  libssh-devel \</span>
+<span class="go">  hiredis-devel \</span>
+<span class="go">  libxml2-devel \</span>
+<span class="go">  libpcap-devel \</span>
+<span class="go">  libnet-devel \</span>
+<span class="go">  paho-c-devel</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-text">Optional dependencies for gvm-libs</span><a class="headerlink" href="#id18" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo dnf install -y \</span>
+<span class="go">  openldap-devel \</span>
+<span class="go">  radcli-devel</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-2-2-2" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-2" name="2-2" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for gvm-libs</span><a class="headerlink" href="#id19" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo dnf install -y \</span>
+<span class="go">  glib2-devel \</span>
+<span class="go">  gpgme-devel \</span>
+<span class="go">  gnutls-devel \</span>
+<span class="go">  libgcrypt-devel \</span>
+<span class="go">  libuuid-devel \</span>
+<span class="go">  libssh-devel \</span>
+<span class="go">  hiredis-devel \</span>
+<span class="go">  libxml2-devel \</span>
+<span class="go">  libpcap-devel \</span>
+<span class="go">  libnet-devel \</span>
+<span class="go">  uuid-devel</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-text">Optional dependencies for gvm-libs</span><a class="headerlink" href="#id20" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo dnf install -y \</span>
+<span class="go">  openldap-devel \</span>
+<span class="go">  radcli-devel</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="literal-block-wrapper docutils container" id="id21">
+<div class="code-block-caption"><span class="caption-text">Downloading the gvm-libs sources</span><a class="headerlink" href="#id21" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">curl -f -L https://github.com/greenbone/gvm-libs/archive/refs/tags/v$GVM_LIBS_VERSION.tar.gz -o $SOURCE_DIR/gvm-libs-$GVM_LIBS_VERSION.tar.gz</span>
+<span class="go">curl -f -L https://github.com/greenbone/gvm-libs/releases/download/v$GVM_LIBS_VERSION/gvm-libs-v$GVM_LIBS_VERSION.tar.gz.asc -o $SOURCE_DIR/gvm-libs-$GVM_LIBS_VERSION.tar.gz.asc</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id22">
+<div class="code-block-caption"><span class="caption-text">Verifying the source file</span><a class="headerlink" href="#id22" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">gpg --verify $SOURCE_DIR/gvm-libs-$GVM_LIBS_VERSION.tar.gz.asc $SOURCE_DIR/gvm-libs-$GVM_LIBS_VERSION.tar.gz</span>
+</pre></div>
+</div>
+</div>
+<p>The output of the last command should be similar to:</p>
+<div class="no-copybutton highlight-none notranslate"><div class="highlight"><pre><span></span>gpg: Signature made Fri Apr 16 08:31:02 2021 UTC
+gpg:                using RSA key 9823FAA60ED1E580
+gpg: Good signature from &quot;Greenbone Community Feed integrity key&quot; [ultimate]
+</pre></div>
+</div>
+<p>If the signature is valid, the tarball can be extracted.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">tar -C $SOURCE_DIR -xvzf $SOURCE_DIR/gvm-libs-$GVM_LIBS_VERSION.tar.gz</span>
+</pre></div>
+</div>
+<p>Afterwards, gvm-libs can be build and installed.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">Debian/Ubuntu</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">Fedora/CentOS</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id23">
+<div class="code-block-caption"><span class="caption-text">Building gvm-libs</span><a class="headerlink" href="#id23" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p $BUILD_DIR/gvm-libs &amp;&amp; cd $BUILD_DIR/gvm-libs</span>
+
+<span class="go">cmake $SOURCE_DIR/gvm-libs-$GVM_LIBS_VERSION \</span>
+<span class="go">  -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \</span>
+<span class="go">  -DCMAKE_BUILD_TYPE=Release \</span>
+<span class="go">  -DSYSCONFDIR=/etc \</span>
+<span class="go">  -DLOCALSTATEDIR=/var</span>
+
+<span class="go">make -j$(nproc)</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-3-3-1" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-1" name="3-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id24">
+<div class="code-block-caption"><span class="caption-text">Building gvm-libs</span><a class="headerlink" href="#id24" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p $BUILD_DIR/gvm-libs &amp;&amp; cd $BUILD_DIR/gvm-libs</span>
+
+<span class="go">cmake $SOURCE_DIR/gvm-libs-$GVM_LIBS_VERSION \</span>
+<span class="go">  -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \</span>
+<span class="go">  -DCMAKE_BUILD_TYPE=Release \</span>
+<span class="go">  -DSYSCONFDIR=/etc \</span>
+<span class="go">  -DLOCALSTATEDIR=/var \</span>
+<span class="go">  -DCMAKE_C_FLAGS=&quot;-O2&quot; \</span>
+<span class="go">  -DCMAKE_C_FLAGS_RELEASE=&quot;-O2&quot;</span>
+
+<span class="go">make -j$(nproc)</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="literal-block-wrapper docutils container" id="id25">
+<div class="code-block-caption"><span class="caption-text">Installing gvm-libs</span><a class="headerlink" href="#id25" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p $INSTALL_DIR/gvm-libs</span>
+
+<span class="go">make DESTDIR=$INSTALL_DIR/gvm-libs install</span>
+
+<span class="go">sudo cp -rv $INSTALL_DIR/gvm-libs/* /</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="gvmd">
+<h3>gvmd<a class="headerlink" href="#gvmd" title="Link to this heading">¶</a></h3>
+<p>The Greenbone Vulnerability Management Daemon (gvmd) is the main service of the
+Greenbone Community Edition. It handles authentication, scan management, vulnerability
+information, reporting, alerting, scheduling and much more. As a storage backend,
+it uses a PostgreSQL database.</p>
+<div class="literal-block-wrapper docutils container" id="id26">
+<div class="code-block-caption"><span class="caption-text">Setting the gvmd version to use</span><a class="headerlink" href="#id26" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">export GVMD_VERSION=23.8.1</span>
+</pre></div>
+</div>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">Debian</button><button aria-controls="panel-4-4-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-1" name="4-1" role="tab" tabindex="-1">Ubuntu</button><button aria-controls="panel-4-4-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-2" name="4-2" role="tab" tabindex="-1">Fedora</button><button aria-controls="panel-4-4-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-3" name="4-3" role="tab" tabindex="-1">CentOS</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id27">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for gvmd</span><a class="headerlink" href="#id27" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install -y \</span>
+<span class="go">  libglib2.0-dev \</span>
+<span class="go">  libgnutls28-dev \</span>
+<span class="go">  libcjson-dev \</span>
+<span class="go">  libpq-dev \</span>
+<span class="go">  postgresql-server-dev-15 \</span>
+<span class="go">  libical-dev \</span>
+<span class="go">  xsltproc \</span>
+<span class="go">  rsync \</span>
+<span class="go">  libbsd-dev \</span>
+<span class="go">  libgpgme-dev</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id28">
+<div class="code-block-caption"><span class="caption-text">Optional dependencies for gvmd</span><a class="headerlink" href="#id28" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install -y --no-install-recommends \</span>
+<span class="go">  texlive-latex-extra \</span>
+<span class="go">  texlive-fonts-recommended \</span>
+<span class="go">  xmlstarlet \</span>
+<span class="go">  zip \</span>
+<span class="go">  rpm \</span>
+<span class="go">  fakeroot \</span>
+<span class="go">  dpkg \</span>
+<span class="go">  nsis \</span>
+<span class="go">  gnupg \</span>
+<span class="go">  gpgsm \</span>
+<span class="go">  wget \</span>
+<span class="go">  sshpass \</span>
+<span class="go">  openssh-client \</span>
+<span class="go">  socat \</span>
+<span class="go">  snmp \</span>
+<span class="go">  python3 \</span>
+<span class="go">  smbclient \</span>
+<span class="go">  python3-lxml \</span>
+<span class="go">  gnutls-bin \</span>
+<span class="go">  xml-twig-tools</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-4-4-1" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-1" name="4-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id29">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for gvmd</span><a class="headerlink" href="#id29" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install -y \</span>
+<span class="go">  libglib2.0-dev \</span>
+<span class="go">  libgnutls28-dev \</span>
+<span class="go">  libcjson-dev \</span>
+<span class="go">  libpq-dev \</span>
+<span class="go">  postgresql-server-dev-14 \</span>
+<span class="go">  libical-dev \</span>
+<span class="go">  xsltproc \</span>
+<span class="go">  rsync \</span>
+<span class="go">  libbsd-dev \</span>
+<span class="go">  libgpgme-dev</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id30">
+<div class="code-block-caption"><span class="caption-text">Optional dependencies for gvmd</span><a class="headerlink" href="#id30" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install -y --no-install-recommends \</span>
+<span class="go">  texlive-latex-extra \</span>
+<span class="go">  texlive-fonts-recommended \</span>
+<span class="go">  xmlstarlet \</span>
+<span class="go">  zip \</span>
+<span class="go">  rpm \</span>
+<span class="go">  fakeroot \</span>
+<span class="go">  dpkg \</span>
+<span class="go">  nsis \</span>
+<span class="go">  gnupg \</span>
+<span class="go">  gpgsm \</span>
+<span class="go">  wget \</span>
+<span class="go">  sshpass \</span>
+<span class="go">  openssh-client \</span>
+<span class="go">  socat \</span>
+<span class="go">  snmp \</span>
+<span class="go">  python3 \</span>
+<span class="go">  smbclient \</span>
+<span class="go">  python3-lxml \</span>
+<span class="go">  gnutls-bin \</span>
+<span class="go">  xml-twig-tools</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-4-4-2" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-2" name="4-2" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id31">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for gvmd</span><a class="headerlink" href="#id31" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo dnf install -y \</span>
+<span class="go">  glib2-devel \</span>
+<span class="go">  gnutls-devel \</span>
+<span class="go">  postgresql-server-devel \</span>
+<span class="go">  libical-devel \</span>
+<span class="go">  xsltproc \</span>
+<span class="go">  rsync \</span>
+<span class="go">  libbsd-devel \</span>
+<span class="go">  gpgme-devel</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id32">
+<div class="code-block-caption"><span class="caption-text">Optional dependencies for gvmd</span><a class="headerlink" href="#id32" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo dnf install -y --setopt=install_weak_deps=False \</span>
+<span class="go">  texlive-scheme-medium \</span>
+<span class="go">  texlive-fontawesome \</span>
+<span class="go">  texlive-fontmfizz \</span>
+<span class="go">  texlive-fonts-churchslavonic \</span>
+<span class="go">  texlive-fontsetup \</span>
+<span class="go">  texlive-fontsize \</span>
+<span class="go">  texlive-fonttable \</span>
+<span class="go">  fontawesome-fonts \</span>
+<span class="go">  gnupg2-smime \</span>
+<span class="go">  openssh-clients \</span>
+<span class="go">  xmlstarlet \</span>
+<span class="go">  zip \</span>
+<span class="go">  rpm \</span>
+<span class="go">  fakeroot \</span>
+<span class="go">  dpkg \</span>
+<span class="go">  mingw64-nsis \</span>
+<span class="go">  gnupg \</span>
+<span class="go">  wget \</span>
+<span class="go">  sshpass \</span>
+<span class="go">  socat \</span>
+<span class="go">  samba-client \</span>
+<span class="go">  python3-lxml \</span>
+<span class="go">  gnutls-utils \</span>
+<span class="go">  perl-XML-Twig</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-4-4-3" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-3" name="4-3" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id33">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for gvmd</span><a class="headerlink" href="#id33" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo dnf install -y \</span>
+<span class="go">  glib2-devel \</span>
+<span class="go">  gnutls-devel \</span>
+<span class="go">  postgresql-server-devel \</span>
+<span class="go">  libical-devel \</span>
+<span class="go">  libxslt \</span>
+<span class="go">  rsync \</span>
+<span class="go">  libbsd-devel \</span>
+<span class="go">  gpgme-devel</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id34">
+<div class="code-block-caption"><span class="caption-text">Optional dependencies for gvmd</span><a class="headerlink" href="#id34" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo dnf install -y --setopt=install_weak_deps=False \</span>
+<span class="go">  texlive* \</span>
+<span class="go">  gnupg2-smime \</span>
+<span class="go">  openssh-clients \</span>
+<span class="go">  xmlstarlet \</span>
+<span class="go">  zip \</span>
+<span class="go">  rpm \</span>
+<span class="go">  fakeroot \</span>
+<span class="go">  dpkg \</span>
+<span class="go">  gnupg \</span>
+<span class="go">  wget \</span>
+<span class="go">  sshpass \</span>
+<span class="go">  socat \</span>
+<span class="go">  samba-client \</span>
+<span class="go">  python3-lxml \</span>
+<span class="go">  gnutls-utils \</span>
+<span class="go">  perl-XML-Twig</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<p>Details about the optional dependencies can be found at
+<a class="reference external" href="https://github.com/greenbone/gvmd/blob/stable/INSTALL.md#prerequisites-for-optional-features">https://github.com/greenbone/gvmd/blob/stable/INSTALL.md#prerequisites-for-optional-features</a>.</p>
+<div class="literal-block-wrapper docutils container" id="id35">
+<div class="code-block-caption"><span class="caption-text">Downloading the gvmd sources</span><a class="headerlink" href="#id35" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">curl -f -L https://github.com/greenbone/gvmd/archive/refs/tags/v$GVMD_VERSION.tar.gz -o $SOURCE_DIR/gvmd-$GVMD_VERSION.tar.gz</span>
+<span class="go">curl -f -L https://github.com/greenbone/gvmd/releases/download/v$GVMD_VERSION/gvmd-$GVMD_VERSION.tar.gz.asc -o $SOURCE_DIR/gvmd-$GVMD_VERSION.tar.gz.asc</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id36">
+<div class="code-block-caption"><span class="caption-text">Verifying the source file</span><a class="headerlink" href="#id36" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">gpg --verify $SOURCE_DIR/gvmd-$GVMD_VERSION.tar.gz.asc $SOURCE_DIR/gvmd-$GVMD_VERSION.tar.gz</span>
+</pre></div>
+</div>
+</div>
+<p>The output of the last command should be similar to:</p>
+<div class="no-copybutton highlight-none notranslate"><div class="highlight"><pre><span></span>gpg: Signature made Fri Apr 16 08:31:02 2021 UTC
+gpg:                using RSA key 9823FAA60ED1E580
+gpg: Good signature from &quot;Greenbone Community Feed integrity key&quot; [ultimate]
+</pre></div>
+</div>
+<p>If the signature is valid the tarball can be extracted.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">tar -C $SOURCE_DIR -xvzf $SOURCE_DIR/gvmd-$GVMD_VERSION.tar.gz</span>
+</pre></div>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-5-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-5-5-0" name="5-0" role="tab" tabindex="0">Debian/Ubuntu</button><button aria-controls="panel-5-5-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-1" name="5-1" role="tab" tabindex="-1">Fedora/CentOS</button></div><div aria-labelledby="tab-5-5-0" class="sphinx-tabs-panel" id="panel-5-5-0" name="5-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id37">
+<div class="code-block-caption"><span class="caption-text">Building gvmd</span><a class="headerlink" href="#id37" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p $BUILD_DIR/gvmd &amp;&amp; cd $BUILD_DIR/gvmd</span>
+
+<span class="go">cmake $SOURCE_DIR/gvmd-$GVMD_VERSION \</span>
+<span class="go">  -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \</span>
+<span class="go">  -DCMAKE_BUILD_TYPE=Release \</span>
+<span class="go">  -DLOCALSTATEDIR=/var \</span>
+<span class="go">  -DSYSCONFDIR=/etc \</span>
+<span class="go">  -DGVM_DATA_DIR=/var \</span>
+<span class="go">  -DGVMD_RUN_DIR=/run/gvmd \</span>
+<span class="go">  -DOPENVAS_DEFAULT_SOCKET=/run/ospd/ospd-openvas.sock \</span>
+<span class="go">  -DGVM_FEED_LOCK_PATH=/var/lib/gvm/feed-update.lock \</span>
+<span class="go">  -DSYSTEMD_SERVICE_DIR=/lib/systemd/system \</span>
+<span class="go">  -DLOGROTATE_DIR=/etc/logrotate.d</span>
+
+<span class="go">make -j$(nproc)</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-5-5-1" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-1" name="5-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id38">
+<div class="code-block-caption"><span class="caption-text">Building gvmd</span><a class="headerlink" href="#id38" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p $BUILD_DIR/gvmd &amp;&amp; cd $BUILD_DIR/gvmd</span>
+
+<span class="go">cmake $SOURCE_DIR/gvmd-$GVMD_VERSION \</span>
+<span class="go">  -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \</span>
+<span class="go">  -DCMAKE_BUILD_TYPE=Release \</span>
+<span class="go">  -DLOCALSTATEDIR=/var \</span>
+<span class="go">  -DSYSCONFDIR=/etc \</span>
+<span class="go">  -DGVM_DATA_DIR=/var \</span>
+<span class="go">  -DGVMD_RUN_DIR=/run/gvmd \</span>
+<span class="go">  -DOPENVAS_DEFAULT_SOCKET=/run/ospd/ospd-openvas.sock \</span>
+<span class="go">  -DGVM_FEED_LOCK_PATH=/var/lib/gvm/feed-update.lock \</span>
+<span class="go">  -DSYSTEMD_SERVICE_DIR=/lib/systemd/system \</span>
+<span class="go">  -DLOGROTATE_DIR=/etc/logrotate.d</span>
+
+<span class="go">sudo mkdir /usr/include/postgresql</span>
+<span class="go">sudo cp /usr/include/libpq-fe.h /usr/include/postgresql/libpq-fe.h</span>
+
+<span class="go">make -j$(nproc)</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-6-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-6-6-0" name="6-0" role="tab" tabindex="0">Debian/Ubuntu</button><button aria-controls="panel-6-6-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-6-6-1" name="6-1" role="tab" tabindex="-1">Fedora/CentOS</button></div><div aria-labelledby="tab-6-6-0" class="sphinx-tabs-panel" id="panel-6-6-0" name="6-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id39">
+<div class="code-block-caption"><span class="caption-text">Installing gvmd</span><a class="headerlink" href="#id39" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p $INSTALL_DIR/gvmd</span>
+
+<span class="go">make DESTDIR=$INSTALL_DIR/gvmd install</span>
+
+<span class="go">sudo cp -rv $INSTALL_DIR/gvmd/* /</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-6-6-1" class="sphinx-tabs-panel" hidden="true" id="panel-6-6-1" name="6-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id40">
+<div class="code-block-caption"><span class="caption-text">Installing gvmd</span><a class="headerlink" href="#id40" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p $INSTALL_DIR/gvmd</span>
+
+<span class="go">make DESTDIR=$INSTALL_DIR/gvmd install</span>
+
+<span class="go">sudo cp -rv $INSTALL_DIR/gvmd/* /</span>
+
+
+<span class="go">sudo rm /usr/include/postgresql/libpq-fe.h &amp;&amp; sudo rmdir /usr/include/postgresql</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="pg-gvm">
+<h3>pg-gvm<a class="headerlink" href="#pg-gvm" title="Link to this heading">¶</a></h3>
+<p><em>pg-gvm</em> is a PostgreSQL server extension that adds several functions used by <em>gvmd</em>, e.g., iCalendar and host range evaluation.
+In previous versions, these functions were managed directly by <em>gvmd</em> while <em>pg-gvm</em> uses the extension management built into PostgreSQL.</p>
+<div class="literal-block-wrapper docutils container" id="id41">
+<div class="code-block-caption"><span class="caption-text">Setting the pg-gvm version to use</span><a class="headerlink" href="#id41" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">export PG_GVM_VERSION=22.6.5</span>
+</pre></div>
+</div>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-7-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-7-7-0" name="7-0" role="tab" tabindex="0">Debian</button><button aria-controls="panel-7-7-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-7-7-1" name="7-1" role="tab" tabindex="-1">Ubuntu</button><button aria-controls="panel-7-7-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-7-7-2" name="7-2" role="tab" tabindex="-1">Fedora/CentOS</button></div><div aria-labelledby="tab-7-7-0" class="sphinx-tabs-panel" id="panel-7-7-0" name="7-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id42">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for pg-gvm</span><a class="headerlink" href="#id42" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install -y \</span>
+<span class="go">  libglib2.0-dev \</span>
+<span class="go">  postgresql-server-dev-15 \</span>
+<span class="go">  libical-dev</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-7-7-1" class="sphinx-tabs-panel" hidden="true" id="panel-7-7-1" name="7-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id43">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for pg-gvm</span><a class="headerlink" href="#id43" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install -y \</span>
+<span class="go">  libglib2.0-dev \</span>
+<span class="go">  postgresql-server-dev-14 \</span>
+<span class="go">  libical-dev</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-7-7-2" class="sphinx-tabs-panel" hidden="true" id="panel-7-7-2" name="7-2" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id44">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for pg-gvm</span><a class="headerlink" href="#id44" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo dnf install -y \</span>
+<span class="go">  glib2-devel \</span>
+<span class="go">  gnutls-devel \</span>
+<span class="go">  postgresql-server-devel \</span>
+<span class="go">  libical-devel</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="literal-block-wrapper docutils container" id="id45">
+<div class="code-block-caption"><span class="caption-text">Downloading the pg-gvm sources</span><a class="headerlink" href="#id45" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">curl -f -L https://github.com/greenbone/pg-gvm/archive/refs/tags/v$PG_GVM_VERSION.tar.gz -o $SOURCE_DIR/pg-gvm-$PG_GVM_VERSION.tar.gz</span>
+<span class="go">curl -f -L https://github.com/greenbone/pg-gvm/releases/download/v$PG_GVM_VERSION/pg-gvm-$PG_GVM_VERSION.tar.gz.asc -o $SOURCE_DIR/pg-gvm-$PG_GVM_VERSION.tar.gz.asc</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id46">
+<div class="code-block-caption"><span class="caption-text">Verifying the source file</span><a class="headerlink" href="#id46" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">gpg --verify $SOURCE_DIR/pg-gvm-$PG_GVM_VERSION.tar.gz.asc $SOURCE_DIR/pg-gvm-$PG_GVM_VERSION.tar.gz</span>
+</pre></div>
+</div>
+</div>
+<p>The output of the last command should be similar to:</p>
+<div class="no-copybutton highlight-none notranslate"><div class="highlight"><pre><span></span>gpg: Signature made Fri Apr 16 08:31:02 2021 UTC
+gpg:                using RSA key 9823FAA60ED1E580
+gpg: Good signature from &quot;Greenbone Community Feed integrity key&quot; [ultimate]
+</pre></div>
+</div>
+<p>If the signature is valid the tarball can be extracted.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">tar -C $SOURCE_DIR -xvzf $SOURCE_DIR/pg-gvm-$PG_GVM_VERSION.tar.gz</span>
+</pre></div>
+</div>
+<p>Afterwards, pg-gvm can be build and installed.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-8-8-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-8-8-0" name="8-0" role="tab" tabindex="0">Debian/Ubuntu</button><button aria-controls="panel-8-8-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-8-8-1" name="8-1" role="tab" tabindex="-1">Fedora/CentOS</button></div><div aria-labelledby="tab-8-8-0" class="sphinx-tabs-panel" id="panel-8-8-0" name="8-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id47">
+<div class="code-block-caption"><span class="caption-text">Building pg-gvm</span><a class="headerlink" href="#id47" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p $BUILD_DIR/pg-gvm &amp;&amp; cd $BUILD_DIR/pg-gvm</span>
+
+<span class="go">cmake $SOURCE_DIR/pg-gvm-$PG_GVM_VERSION \</span>
+<span class="go">  -DCMAKE_BUILD_TYPE=Release</span>
+
+<span class="go">make -j$(nproc)</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-8-8-1" class="sphinx-tabs-panel" hidden="true" id="panel-8-8-1" name="8-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id48">
+<div class="code-block-caption"><span class="caption-text">Building pg-gvm</span><a class="headerlink" href="#id48" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p $BUILD_DIR/pg-gvm &amp;&amp; cd $BUILD_DIR/pg-gvm</span>
+
+<span class="go">cmake $SOURCE_DIR/pg-gvm-$PG_GVM_VERSION \</span>
+<span class="go">  -DCMAKE_BUILD_TYPE=Release</span>
+
+<span class="go">make -j$(nproc)</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="literal-block-wrapper docutils container" id="id49">
+<div class="code-block-caption"><span class="caption-text">Installing pg-gvm</span><a class="headerlink" href="#id49" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p $INSTALL_DIR/pg-gvm</span>
+
+<span class="go">make DESTDIR=$INSTALL_DIR/pg-gvm install</span>
+
+<span class="go">sudo cp -rv $INSTALL_DIR/pg-gvm/* /</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="greenbone-security-assistant">
+<h3>Greenbone Security Assistant<a class="headerlink" href="#greenbone-security-assistant" title="Link to this heading">¶</a></h3>
+<p>The Greenbone Security Assistant (GSA) sources consist of two parts:</p>
+<ul class="simple">
+<li><p>Web server <em>gsad</em></p></li>
+<li><p>Web application <em>GSA</em></p></li>
+</ul>
+<section id="gsa">
+<h4>GSA<a class="headerlink" href="#gsa" title="Link to this heading">¶</a></h4>
+<p>The web application is written in JavaScript and relies on the
+<a class="reference external" href="https://reactjs.org/">react framework</a>. It uses <a class="reference external" href="https://nodejs.org/">nodejs</a>
+for building the application and <a class="reference external" href="https://classic.yarnpkg.com/lang/en/">yarn</a>
+for maintaining the JavaScript dependencies. Because the installation of yarn
+and the specific nodejs version requires a setup of external package
+repositories and the build process takes a lot of time, pre-built distributable
+files are available. These pre-built distributable files are used in this docs.</p>
+<div class="literal-block-wrapper docutils container" id="id50">
+<div class="code-block-caption"><span class="caption-text">Setting the GSA version to use</span><a class="headerlink" href="#id50" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">export GSA_VERSION=23.2.1</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id51">
+<div class="code-block-caption"><span class="caption-text">Downloading the gsa sources</span><a class="headerlink" href="#id51" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">curl -f -L https://github.com/greenbone/gsa/releases/download/v$GSA_VERSION/gsa-dist-$GSA_VERSION.tar.gz -o $SOURCE_DIR/gsa-$GSA_VERSION.tar.gz</span>
+<span class="go">curl -f -L https://github.com/greenbone/gsa/releases/download/v$GSA_VERSION/gsa-dist-$GSA_VERSION.tar.gz.asc -o $SOURCE_DIR/gsa-$GSA_VERSION.tar.gz.asc</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id52">
+<div class="code-block-caption"><span class="caption-text">Verifying the source files</span><a class="headerlink" href="#id52" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">gpg --verify $SOURCE_DIR/gsa-$GSA_VERSION.tar.gz.asc $SOURCE_DIR/gsa-$GSA_VERSION.tar.gz</span>
+</pre></div>
+</div>
+</div>
+<p>The output of both commands should be similar to:</p>
+<div class="no-copybutton highlight-none notranslate"><div class="highlight"><pre><span></span>gpg: Signature made Fri Apr 16 08:31:02 2021 UTC
+gpg:                using RSA key 9823FAA60ED1E580
+gpg: Good signature from &quot;Greenbone Community Feed integrity key&quot; [ultimate]
+</pre></div>
+</div>
+<p>If the signatures are valid, the two tarballs can be extracted.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p $SOURCE_DIR/gsa-$GSA_VERSION</span>
+<span class="go">tar -C $SOURCE_DIR/gsa-$GSA_VERSION -xvzf $SOURCE_DIR/gsa-$GSA_VERSION.tar.gz</span>
+</pre></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id53">
+<div class="code-block-caption"><span class="caption-text">Installing gsa</span><a class="headerlink" href="#id53" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo mkdir -p $INSTALL_PREFIX/share/gvm/gsad/web/</span>
+<span class="go">sudo cp -rv $SOURCE_DIR/gsa-$GSA_VERSION/* $INSTALL_PREFIX/share/gvm/gsad/web/</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="gsad">
+<h4>gsad<a class="headerlink" href="#gsad" title="Link to this heading">¶</a></h4>
+<p>The web server <em>gsad</em> is written in the C programming language. It serves
+static content like images and provides an API for the web application.
+Internally it communicates with <em>gvmd</em> using <a class="reference internal" href="../../glossary.html#term-GMP"><span class="xref std std-term">GMP</span></a>.</p>
+<div class="literal-block-wrapper docutils container" id="id54">
+<div class="code-block-caption"><span class="caption-text">Setting the GSAd version to use</span><a class="headerlink" href="#id54" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">export GSAD_VERSION=22.11.0</span>
+</pre></div>
+</div>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-9-9-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-9-9-0" name="9-0" role="tab" tabindex="0">Debian/Ubuntu</button><button aria-controls="panel-9-9-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-9-9-1" name="9-1" role="tab" tabindex="-1">Fedora/CentOS</button></div><div aria-labelledby="tab-9-9-0" class="sphinx-tabs-panel" id="panel-9-9-0" name="9-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id55">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for gsad</span><a class="headerlink" href="#id55" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install -y \</span>
+<span class="go">  libmicrohttpd-dev \</span>
+<span class="go">  libxml2-dev \</span>
+<span class="go">  libglib2.0-dev \</span>
+<span class="go">  libgnutls28-dev</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-9-9-1" class="sphinx-tabs-panel" hidden="true" id="panel-9-9-1" name="9-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id56">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for gsad</span><a class="headerlink" href="#id56" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo firewall-cmd --add-port=9392/tcp</span>
+<span class="go">sudo firewall-cmd --runtime-to-permanent</span>
+
+<span class="go">sudo dnf install -y \</span>
+<span class="go">  glib2-devel \</span>
+<span class="go">  gnutls-devel \</span>
+<span class="go">  libmicrohttpd-devel \</span>
+<span class="go">  libxml2-devel</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="literal-block-wrapper docutils container" id="id57">
+<div class="code-block-caption"><span class="caption-text">Downloading the gsad sources</span><a class="headerlink" href="#id57" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">curl -f -L https://github.com/greenbone/gsad/archive/refs/tags/v$GSAD_VERSION.tar.gz -o $SOURCE_DIR/gsad-$GSAD_VERSION.tar.gz</span>
+<span class="go">curl -f -L https://github.com/greenbone/gsad/releases/download/v$GSAD_VERSION/gsad-$GSAD_VERSION.tar.gz.asc -o $SOURCE_DIR/gsad-$GSAD_VERSION.tar.gz.asc</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id58">
+<div class="code-block-caption"><span class="caption-text">Verifying the source files</span><a class="headerlink" href="#id58" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">gpg --verify $SOURCE_DIR/gsad-$GSAD_VERSION.tar.gz.asc $SOURCE_DIR/gsad-$GSAD_VERSION.tar.gz</span>
+</pre></div>
+</div>
+</div>
+<p>The output of both commands should be similar to:</p>
+<div class="no-copybutton highlight-none notranslate"><div class="highlight"><pre><span></span>gpg: Signature made Fri Apr 16 08:31:02 2021 UTC
+gpg:                using RSA key 9823FAA60ED1E580
+gpg: Good signature from &quot;Greenbone Community Feed integrity key&quot; [ultimate]
+</pre></div>
+</div>
+<p>If the signatures are valid, the two tarballs can be extracted.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">tar -C $SOURCE_DIR -xvzf $SOURCE_DIR/gsad-$GSAD_VERSION.tar.gz</span>
+</pre></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id59">
+<div class="code-block-caption"><span class="caption-text">Building gsad</span><a class="headerlink" href="#id59" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p $BUILD_DIR/gsad &amp;&amp; cd $BUILD_DIR/gsad</span>
+
+<span class="go">cmake $SOURCE_DIR/gsad-$GSAD_VERSION \</span>
+<span class="go">  -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \</span>
+<span class="go">  -DCMAKE_BUILD_TYPE=Release \</span>
+<span class="go">  -DSYSCONFDIR=/etc \</span>
+<span class="go">  -DLOCALSTATEDIR=/var \</span>
+<span class="go">  -DGVMD_RUN_DIR=/run/gvmd \</span>
+<span class="go">  -DGSAD_RUN_DIR=/run/gsad \</span>
+<span class="go">  -DLOGROTATE_DIR=/etc/logrotate.d</span>
+
+<span class="go">make -j$(nproc)</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id60">
+<div class="code-block-caption"><span class="caption-text">Installing gsad</span><a class="headerlink" href="#id60" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p $INSTALL_DIR/gsad</span>
+
+<span class="go">make DESTDIR=$INSTALL_DIR/gsad install</span>
+
+<span class="go">sudo cp -rv $INSTALL_DIR/gsad/* /</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="openvas-smb">
+<h3>openvas-smb<a class="headerlink" href="#openvas-smb" title="Link to this heading">¶</a></h3>
+<p><em>openvas-smb</em> is a helper module for <em>openvas-scanner</em>. It includes libraries
+(openvas-wmiclient/openvas-wincmd) to interface with Microsoft Windows Systems
+through the Windows Management Instrumentation API and a winexe binary to
+execute processes remotely on that system.</p>
+<p>It is an optional dependency of <em>openvas-scanner</em> but is required for scanning
+Windows-based systems.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><em>openvas-smb</em> doesn’t work on CentOS at the moment!
+It is not a hard requirement.</p>
+</div>
+<div class="literal-block-wrapper docutils container" id="id61">
+<div class="code-block-caption"><span class="caption-text">Setting the openvas-smb version to use</span><a class="headerlink" href="#id61" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">export OPENVAS_SMB_VERSION=22.5.3</span>
+</pre></div>
+</div>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-10-10-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-10-10-0" name="10-0" role="tab" tabindex="0">Debian/Ubuntu</button><button aria-controls="panel-10-10-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-10-10-1" name="10-1" role="tab" tabindex="-1">Fedora</button></div><div aria-labelledby="tab-10-10-0" class="sphinx-tabs-panel" id="panel-10-10-0" name="10-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id62">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for openvas-smb</span><a class="headerlink" href="#id62" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install -y \</span>
+<span class="go">  gcc-mingw-w64 \</span>
+<span class="go">  libgnutls28-dev \</span>
+<span class="go">  libglib2.0-dev \</span>
+<span class="go">  libpopt-dev \</span>
+<span class="go">  libunistring-dev \</span>
+<span class="go">  heimdal-dev \</span>
+<span class="go">  perl-base</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-10-10-1" class="sphinx-tabs-panel" hidden="true" id="panel-10-10-1" name="10-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id63">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for openvas-smb</span><a class="headerlink" href="#id63" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo dnf install -y \</span>
+<span class="go">  glib2-devel \</span>
+<span class="go">  gnutls-devel \</span>
+<span class="go">  popt-devel \</span>
+<span class="go">  mingw64-gcc \</span>
+<span class="go">  libunistring-devel \</span>
+<span class="go">  heimdal-devel \</span>
+<span class="go">  perl</span>
+
+<span class="go">  sudo cp /usr/lib64/heimdal/lib/pkgconfig/heimdal-gssapi.pc /lib64/pkgconfig/heimdal-gssapi.pc</span>
+<span class="go">  sudo cp /usr/lib64/heimdal/lib/pkgconfig/heimdal-krb5.pc /lib64/pkgconfig/heimdal-krb5.pc</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="literal-block-wrapper docutils container" id="id64">
+<div class="code-block-caption"><span class="caption-text">Downloading the openvas-smb sources</span><a class="headerlink" href="#id64" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">curl -f -L https://github.com/greenbone/openvas-smb/archive/refs/tags/v$OPENVAS_SMB_VERSION.tar.gz -o $SOURCE_DIR/openvas-smb-$OPENVAS_SMB_VERSION.tar.gz</span>
+<span class="go">curl -f -L https://github.com/greenbone/openvas-smb/releases/download/v$OPENVAS_SMB_VERSION/openvas-smb-v$OPENVAS_SMB_VERSION.tar.gz.asc -o $SOURCE_DIR/openvas-smb-$OPENVAS_SMB_VERSION.tar.gz.asc</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id65">
+<div class="code-block-caption"><span class="caption-text">Verifying the source file</span><a class="headerlink" href="#id65" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">gpg --verify $SOURCE_DIR/openvas-smb-$OPENVAS_SMB_VERSION.tar.gz.asc $SOURCE_DIR/openvas-smb-$OPENVAS_SMB_VERSION.tar.gz</span>
+</pre></div>
+</div>
+</div>
+<p>The output of the last command should be similar to:</p>
+<div class="no-copybutton highlight-none notranslate"><div class="highlight"><pre><span></span>gpg: Signature made Fri Apr 16 08:31:02 2021 UTC
+gpg:                using RSA key 9823FAA60ED1E580
+gpg: Good signature from &quot;Greenbone Community Feed integrity key&quot; [ultimate]
+</pre></div>
+</div>
+<p>If the signature is valid, the tarball can be extracted.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">tar -C $SOURCE_DIR -xvzf $SOURCE_DIR/openvas-smb-$OPENVAS_SMB_VERSION.tar.gz</span>
+</pre></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id66">
+<div class="code-block-caption"><span class="caption-text">Building openvas-smb</span><a class="headerlink" href="#id66" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p $BUILD_DIR/openvas-smb &amp;&amp; cd $BUILD_DIR/openvas-smb</span>
+
+<span class="go">cmake $SOURCE_DIR/openvas-smb-$OPENVAS_SMB_VERSION \</span>
+<span class="go">  -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \</span>
+<span class="go">  -DCMAKE_BUILD_TYPE=Release</span>
+
+<span class="go">make -j$(nproc)</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id67">
+<div class="code-block-caption"><span class="caption-text">Installing openvas-smb</span><a class="headerlink" href="#id67" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p $INSTALL_DIR/openvas-smb</span>
+
+<span class="go">make DESTDIR=$INSTALL_DIR/openvas-smb install</span>
+
+<span class="go">sudo cp -rv $INSTALL_DIR/openvas-smb/* /</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="openvas-scanner">
+<h3>openvas-scanner<a class="headerlink" href="#openvas-scanner" title="Link to this heading">¶</a></h3>
+<p><em>openvas-scanner</em> is a full-featured scan engine that executes a continuously
+updated and extended feed of <a class="reference internal" href="../../glossary.html#term-VT"><span class="xref std std-term">Vulnerability Tests (VTs)</span></a>. The feed consist of
+thousands of NASL (Network Attack Scripting Language) scripts which implement
+all kind of vulnerability checks.</p>
+<div class="literal-block-wrapper docutils container" id="id68">
+<div class="code-block-caption"><span class="caption-text">Setting the openvas-scanner version to use</span><a class="headerlink" href="#id68" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">export OPENVAS_SCANNER_VERSION=23.8.2</span>
+</pre></div>
+</div>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-11-11-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-11-11-0" name="11-0" role="tab" tabindex="0">Debian/Ubuntu</button><button aria-controls="panel-11-11-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-11-11-1" name="11-1" role="tab" tabindex="-1">Fedora</button><button aria-controls="panel-11-11-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-11-11-2" name="11-2" role="tab" tabindex="-1">CentOS</button></div><div aria-labelledby="tab-11-11-0" class="sphinx-tabs-panel" id="panel-11-11-0" name="11-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id69">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for openvas-scanner</span><a class="headerlink" href="#id69" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install -y \</span>
+<span class="go">  bison \</span>
+<span class="go">  libglib2.0-dev \</span>
+<span class="go">  libgnutls28-dev \</span>
+<span class="go">  libgcrypt20-dev \</span>
+<span class="go">  libpcap-dev \</span>
+<span class="go">  libgpgme-dev \</span>
+<span class="go">  libksba-dev \</span>
+<span class="go">  rsync \</span>
+<span class="go">  nmap \</span>
+<span class="go">  libjson-glib-dev \</span>
+<span class="go">  libcurl4-gnutls-dev \</span>
+<span class="go">  libbsd-dev</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id70">
+<div class="code-block-caption"><span class="caption-text">Debian optional dependencies for openvas-scanner</span><a class="headerlink" href="#id70" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install -y \</span>
+<span class="go">  python3-impacket \</span>
+<span class="go">  libsnmp-dev</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-11-11-1" class="sphinx-tabs-panel" hidden="true" id="panel-11-11-1" name="11-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id71">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for openvas-scanner</span><a class="headerlink" href="#id71" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo dnf install -y \</span>
+<span class="go">  bison \</span>
+<span class="go">  glib2-devel \</span>
+<span class="go">  gnutls-devel \</span>
+<span class="go">  libgcrypt-devel \</span>
+<span class="go">  libpcap-devel \</span>
+<span class="go">  gpgme-devel \</span>
+<span class="go">  libksba-devel \</span>
+<span class="go">  rsync \</span>
+<span class="go">  nmap \</span>
+<span class="go">  json-glib-devel \</span>
+<span class="go">  libcurl-devel \</span>
+<span class="go">  libbsd-devel</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id72">
+<div class="code-block-caption"><span class="caption-text">Fedora optional dependencies for openvas-scanner</span><a class="headerlink" href="#id72" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo dnf install -y \</span>
+<span class="go">  python3-impacket</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-11-11-2" class="sphinx-tabs-panel" hidden="true" id="panel-11-11-2" name="11-2" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id73">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for openvas-scanner</span><a class="headerlink" href="#id73" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo dnf install -y \</span>
+<span class="go">  bison \</span>
+<span class="go">  glib2-devel \</span>
+<span class="go">  gnutls-devel \</span>
+<span class="go">  libgcrypt-devel \</span>
+<span class="go">  libpcap-devel \</span>
+<span class="go">  gpgme-devel \</span>
+<span class="go">  libksba-devel \</span>
+<span class="go">  rsync \</span>
+<span class="go">  nmap \</span>
+<span class="go">  json-glib-devel \</span>
+<span class="go">  libcurl-devel \</span>
+<span class="go">  libbsd-devel</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="literal-block-wrapper docutils container" id="id74">
+<div class="code-block-caption"><span class="caption-text">Downloading the openvas-scanner sources</span><a class="headerlink" href="#id74" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">curl -f -L https://github.com/greenbone/openvas-scanner/archive/refs/tags/v$OPENVAS_SCANNER_VERSION.tar.gz -o $SOURCE_DIR/openvas-scanner-$OPENVAS_SCANNER_VERSION.tar.gz</span>
+<span class="go">curl -f -L https://github.com/greenbone/openvas-scanner/releases/download/v$OPENVAS_SCANNER_VERSION/openvas-scanner-v$OPENVAS_SCANNER_VERSION.tar.gz.asc -o $SOURCE_DIR/openvas-scanner-$OPENVAS_SCANNER_VERSION.tar.gz.asc</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id75">
+<div class="code-block-caption"><span class="caption-text">Verifying the source file</span><a class="headerlink" href="#id75" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">gpg --verify $SOURCE_DIR/openvas-scanner-$OPENVAS_SCANNER_VERSION.tar.gz.asc $SOURCE_DIR/openvas-scanner-$OPENVAS_SCANNER_VERSION.tar.gz</span>
+</pre></div>
+</div>
+</div>
+<p>The output of the last command should be similar to:</p>
+<div class="no-copybutton highlight-none notranslate"><div class="highlight"><pre><span></span>gpg: Signature made Fri Apr 16 08:31:02 2021 UTC
+gpg:                using RSA key 9823FAA60ED1E580
+gpg: Good signature from &quot;Greenbone Community Feed integrity key&quot; [ultimate]
+</pre></div>
+</div>
+<p>If the signature is valid, the tarball can be extracted.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">tar -C $SOURCE_DIR -xvzf $SOURCE_DIR/openvas-scanner-$OPENVAS_SCANNER_VERSION.tar.gz</span>
+</pre></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id76">
+<div class="code-block-caption"><span class="caption-text">Building openvas-scanner</span><a class="headerlink" href="#id76" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p $BUILD_DIR/openvas-scanner &amp;&amp; cd $BUILD_DIR/openvas-scanner</span>
+
+<span class="go">cmake $SOURCE_DIR/openvas-scanner-$OPENVAS_SCANNER_VERSION \</span>
+<span class="go">  -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \</span>
+<span class="go">  -DCMAKE_BUILD_TYPE=Release \</span>
+<span class="go">  -DINSTALL_OLD_SYNC_SCRIPT=OFF \</span>
+<span class="go">  -DSYSCONFDIR=/etc \</span>
+<span class="go">  -DLOCALSTATEDIR=/var \</span>
+<span class="go">  -DOPENVAS_FEED_LOCK_PATH=/var/lib/openvas/feed-update.lock \</span>
+<span class="go">  -DOPENVAS_RUN_DIR=/run/ospd</span>
+
+<span class="go">make -j$(nproc)</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id77">
+<div class="code-block-caption"><span class="caption-text">Installing openvas-scanner</span><a class="headerlink" href="#id77" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p $INSTALL_DIR/openvas-scanner</span>
+
+<span class="go">make DESTDIR=$INSTALL_DIR/openvas-scanner install</span>
+
+<span class="go">sudo cp -rv $INSTALL_DIR/openvas-scanner/* /</span>
+</pre></div>
+</div>
+</div>
+<p>As of version 23.0 the <code class="docutils literal notranslate"><span class="pre">openvasd_server</span></code> configuration needs to be set to a running <code class="docutils literal notranslate"><span class="pre">OpenVASD</span></code> instance.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">printf &quot;table_driven_lsc = yes\n&quot; | sudo tee /etc/openvas/openvas.conf</span>
+<span class="go">printf &quot;openvasd_server = http://127.0.0.1:3000\n&quot; | sudo tee -a /etc/openvas/openvas.conf</span>
+</pre></div>
+</div>
+</section>
+<section id="ospd-openvas">
+<h3>ospd-openvas<a class="headerlink" href="#ospd-openvas" title="Link to this heading">¶</a></h3>
+<p><em>ospd-openvas</em> is an <a class="reference internal" href="../../glossary.html#term-OSP"><span class="xref std std-term">OSP server</span></a> implementation to allow
+<a class="reference internal" href="../../glossary.html#term-gvmd"><span class="xref std std-term">gvmd</span></a> to remotely control an openvas-scanner. It is running as a daemon
+and waits for incoming OSP requests from <em>gvmd</em>.</p>
+<div class="literal-block-wrapper docutils container" id="id78">
+<div class="code-block-caption"><span class="caption-text">Setting the ospd and ospd-openvas versions to use</span><a class="headerlink" href="#id78" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">export OSPD_OPENVAS_VERSION=22.7.1</span>
+</pre></div>
+</div>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-12-12-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-12-12-0" name="12-0" role="tab" tabindex="0">Debian/Ubuntu</button><button aria-controls="panel-12-12-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-12-12-1" name="12-1" role="tab" tabindex="-1">Fedora</button><button aria-controls="panel-12-12-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-12-12-2" name="12-2" role="tab" tabindex="-1">CentOS</button></div><div aria-labelledby="tab-12-12-0" class="sphinx-tabs-panel" id="panel-12-12-0" name="12-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id79">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for ospd-openvas</span><a class="headerlink" href="#id79" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install -y \</span>
+<span class="go">  python3 \</span>
+<span class="go">  python3-pip \</span>
+<span class="go">  python3-setuptools \</span>
+<span class="go">  python3-packaging \</span>
+<span class="go">  python3-wrapt \</span>
+<span class="go">  python3-cffi \</span>
+<span class="go">  python3-psutil \</span>
+<span class="go">  python3-lxml \</span>
+<span class="go">  python3-defusedxml \</span>
+<span class="go">  python3-paramiko \</span>
+<span class="go">  python3-redis \</span>
+<span class="go">  python3-gnupg \</span>
+<span class="go">  python3-paho-mqtt</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-12-12-1" class="sphinx-tabs-panel" hidden="true" id="panel-12-12-1" name="12-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id80">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for ospd-openvas</span><a class="headerlink" href="#id80" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo dnf install -y \</span>
+<span class="go">  python3 \</span>
+<span class="go">  python3-pip \</span>
+<span class="go">  python3-setuptools \</span>
+<span class="go">  python3-packaging \</span>
+<span class="go">  python3-wrapt \</span>
+<span class="go">  python3-cffi \</span>
+<span class="go">  python3-psutil \</span>
+<span class="go">  python3-lxml \</span>
+<span class="go">  python3-defusedxml \</span>
+<span class="go">  python3-paramiko \</span>
+<span class="go">  python3-redis \</span>
+<span class="go">  python3-gnupg \</span>
+<span class="go">  python3-paho-mqtt</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-12-12-2" class="sphinx-tabs-panel" hidden="true" id="panel-12-12-2" name="12-2" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id81">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for ospd-openvas</span><a class="headerlink" href="#id81" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo dnf install -y \</span>
+<span class="go">  python3 \</span>
+<span class="go">  python3-pip \</span>
+<span class="go">  python3-setuptools \</span>
+<span class="go">  python3-packaging \</span>
+<span class="go">  python3-wrapt \</span>
+<span class="go">  python3-cffi \</span>
+<span class="go">  python3-psutil \</span>
+<span class="go">  python3-lxml \</span>
+<span class="go">  python3-defusedxml \</span>
+<span class="go">  python3-paramiko \</span>
+<span class="go">  python3-redis \</span>
+<span class="go">  python3-gnupg \</span>
+<span class="go">  python3-wheel</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="literal-block-wrapper docutils container" id="id82">
+<div class="code-block-caption"><span class="caption-text">Downloading the ospd-openvas sources</span><a class="headerlink" href="#id82" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">curl -f -L https://github.com/greenbone/ospd-openvas/archive/refs/tags/v$OSPD_OPENVAS_VERSION.tar.gz -o $SOURCE_DIR/ospd-openvas-$OSPD_OPENVAS_VERSION.tar.gz</span>
+<span class="go">curl -f -L https://github.com/greenbone/ospd-openvas/releases/download/v$OSPD_OPENVAS_VERSION/ospd-openvas-v$OSPD_OPENVAS_VERSION.tar.gz.asc -o $SOURCE_DIR/ospd-openvas-$OSPD_OPENVAS_VERSION.tar.gz.asc</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id83">
+<div class="code-block-caption"><span class="caption-text">Verifying the source files</span><a class="headerlink" href="#id83" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">gpg --verify $SOURCE_DIR/ospd-openvas-$OSPD_OPENVAS_VERSION.tar.gz.asc $SOURCE_DIR/ospd-openvas-$OSPD_OPENVAS_VERSION.tar.gz</span>
+</pre></div>
+</div>
+</div>
+<p>The output of the last command should be similar to:</p>
+<div class="no-copybutton highlight-none notranslate"><div class="highlight"><pre><span></span>gpg: Signature made Fri Apr 16 08:31:02 2021 UTC
+gpg:                using RSA key 9823FAA60ED1E580
+gpg: Good signature from &quot;Greenbone Community Feed integrity key&quot; [ultimate]
+</pre></div>
+</div>
+<p>If the signatures are valid, the tarballs can be extracted.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">tar -C $SOURCE_DIR -xvzf $SOURCE_DIR/ospd-openvas-$OSPD_OPENVAS_VERSION.tar.gz</span>
+</pre></div>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-13-13-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-13-13-0" name="13-0" role="tab" tabindex="0">Debian/Ubuntu</button><button aria-controls="panel-13-13-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-13-13-1" name="13-1" role="tab" tabindex="-1">Fedora/CentOS</button></div><div aria-labelledby="tab-13-13-0" class="sphinx-tabs-panel" id="panel-13-13-0" name="13-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id84">
+<div class="code-block-caption"><span class="caption-text">Installing ospd-openvas</span><a class="headerlink" href="#id84" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">cd $SOURCE_DIR/ospd-openvas-$OSPD_OPENVAS_VERSION</span>
+
+<span class="go">mkdir -p $INSTALL_DIR/ospd-openvas</span>
+
+<span class="go">python3 -m pip install --root=$INSTALL_DIR/ospd-openvas --no-warn-script-location .</span>
+
+<span class="go">sudo cp -rv $INSTALL_DIR/ospd-openvas/* /</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-13-13-1" class="sphinx-tabs-panel" hidden="true" id="panel-13-13-1" name="13-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id85">
+<div class="code-block-caption"><span class="caption-text">Installing ospd-openvas</span><a class="headerlink" href="#id85" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">cd $SOURCE_DIR/ospd-openvas-$OSPD_OPENVAS_VERSION</span>
+
+<span class="go">mkdir -p $INSTALL_DIR/ospd-openvas</span>
+
+<span class="go">python3 -m pip install --prefix=$INSTALL_PREFIX --root=$INSTALL_DIR/ospd-openvas --no-warn-script-location .</span>
+
+<span class="go">sudo cp -rv $INSTALL_DIR/ospd-openvas/* /</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="openvasd">
+<h3>openvasd<a class="headerlink" href="#openvasd" title="Link to this heading">¶</a></h3>
+<p><em>OpenVASD</em> is used for detecting vulnerable products.</p>
+<p>Currently only the <a class="reference external" href="https://greenbone.github.io/scanner-api/#/notus/notus_run">notus</a> is integrated into gvmd.
+That means that <code class="docutils literal notranslate"><span class="pre">openvas</span></code> is using <code class="docutils literal notranslate"><span class="pre">openvasd</span></code> for static version checks if a scan with ssh credentials is started and packages got found.</p>
+<p>If you want to enable the full functionality you either need to adapt the <code class="docutils literal notranslate"><span class="pre">openvasd.service</span></code> file and remove the <code class="docutils literal notranslate"><span class="pre">--mode</span> <span class="pre">service_notus</span></code> flag and create a <a class="reference external" href="https://github.com/greenbone/openvas-scanner/blob/main/rust/examples/openvasd/config.example.toml">configuration file</a> within <code class="docutils literal notranslate"><span class="pre">/etc/openvasd/openvasd.toml</span></code> or adapt the <a class="reference external" href="https://github.com/greenbone/openvas-scanner/tree/main/rust/openvasd#options">arguments</a> within <code class="docutils literal notranslate"><span class="pre">openvasd.service</span></code> if you don’t want to create a configuration file.</p>
+<p>For more information see:</p>
+<ul class="simple">
+<li><p>https://greenbone.github.io/scanner-api/</p></li>
+<li><p>https://github.com/greenbone/openvas-scanner/tree/main/rust/openvasd</p></li>
+<li><p>https://github.com/greenbone/openvas-scanner/blob/main/rust/examples/openvasd/config.example.toml</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id86">
+<div class="code-block-caption"><span class="caption-text">Setting the openvas versions to use</span><a class="headerlink" href="#id86" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">export OPENVAS_DAEMON=23.8.2</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For debian and centos systems you have to follow <a class="reference external" href="https://rustup.rs">rustup</a> instructions because the default Rust version is too dated for <code class="docutils literal notranslate"><span class="pre">OpenVASD</span></code></p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-14-14-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-14-14-0" name="14-0" role="tab" tabindex="0">Debian</button><button aria-controls="panel-14-14-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-14-14-1" name="14-1" role="tab" tabindex="-1">Ubuntu</button><button aria-controls="panel-14-14-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-14-14-2" name="14-2" role="tab" tabindex="-1">Fedora</button><button aria-controls="panel-14-14-3" aria-selected="false" class="sphinx-tabs-tab" id="tab-14-14-3" name="14-3" role="tab" tabindex="-1">CentOS</button></div><div aria-labelledby="tab-14-14-0" class="sphinx-tabs-panel" id="panel-14-14-0" name="14-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id87">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for openvasd</span><a class="headerlink" href="#id87" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Follow<span class="w"> </span>instuctions<span class="w"> </span>of<span class="w"> </span>https://rustup.rs
+
+<span class="go">sudo apt install -y \</span>
+<span class="go">  pkg-config \</span>
+<span class="go">  libssl-dev</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-14-14-1" class="sphinx-tabs-panel" hidden="true" id="panel-14-14-1" name="14-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id88">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for openvasd</span><a class="headerlink" href="#id88" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install -y \</span>
+<span class="go">  cargo \</span>
+<span class="go">  pkg-config \</span>
+<span class="go">  libssl-dev</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-14-14-2" class="sphinx-tabs-panel" hidden="true" id="panel-14-14-2" name="14-2" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id89">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for openvasd</span><a class="headerlink" href="#id89" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo dnf install -y \</span>
+<span class="go">  cargo \</span>
+<span class="go">  pkg-config \</span>
+<span class="go">  openssl-devel</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-14-14-3" class="sphinx-tabs-panel" hidden="true" id="panel-14-14-3" name="14-3" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id90">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for openvasd</span><a class="headerlink" href="#id90" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Follow<span class="w"> </span>instuctions<span class="w"> </span>of<span class="w"> </span>https://rustup.rs
+
+<span class="go">sudo dnf install -y \</span>
+<span class="go">  pkg-config \</span>
+<span class="go">  openssl-devel</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<div class="literal-block-wrapper docutils container" id="id91">
+<div class="code-block-caption"><span class="caption-text">Downloading the openvas-scanner sources</span><a class="headerlink" href="#id91" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">curl -f -L https://github.com/greenbone/openvas-scanner/archive/refs/tags/v$OPENVAS_DAEMON.tar.gz -o $SOURCE_DIR/openvas-scanner-$OPENVAS_DAEMON.tar.gz</span>
+<span class="go">curl -f -L https://github.com/greenbone/openvas-scanner/releases/download/v$OPENVAS_DAEMON/openvas-scanner-v$OPENVAS_DAEMON.tar.gz.asc -o $SOURCE_DIR/openvas-scanner-$OPENVAS_DAEMON.tar.gz.asc</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id92">
+<div class="code-block-caption"><span class="caption-text">Verifying the source file</span><a class="headerlink" href="#id92" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">gpg --verify $SOURCE_DIR/openvas-scanner-$OPENVAS_DAEMON.tar.gz.asc $SOURCE_DIR/openvas-scanner-$OPENVAS_DAEMON.tar.gz</span>
+</pre></div>
+</div>
+</div>
+<p>The output of the last command should be similar to:</p>
+<div class="no-copybutton highlight-none notranslate"><div class="highlight"><pre><span></span>gpg: Signature made Fri Apr 16 08:31:02 2021 UTC
+gpg:                using RSA key 9823FAA60ED1E580
+gpg: Good signature from &quot;Greenbone Community Feed integrity key&quot; [ultimate]
+</pre></div>
+</div>
+<p>If the signature is valid, the tarball can be extracted.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">tar -C $SOURCE_DIR -xvzf $SOURCE_DIR/openvas-scanner-$OPENVAS_DAEMON.tar.gz</span>
+</pre></div>
+</div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p $INSTALL_DIR/openvasd/usr/local/bin</span>
+<span class="go">cd $SOURCE_DIR/openvas-scanner-$OPENVAS_DAEMON/rust/openvasd</span>
+<span class="go">cargo build --release</span>
+
+<span class="go">cd $SOURCE_DIR/openvas-scanner-$OPENVAS_DAEMON/rust/scannerctl</span>
+<span class="go">cargo build --release</span>
+
+<span class="go">sudo cp -v ../target/release/openvasd $INSTALL_DIR/openvasd/usr/local/bin/</span>
+<span class="go">sudo cp -v ../target/release/scannerctl $INSTALL_DIR/openvasd/usr/local/bin/</span>
+<span class="go">sudo cp -rv $INSTALL_DIR/openvasd/* /</span>
+</pre></div>
+</div>
+</section>
+<section id="greenbone-feed-sync">
+<h3>greenbone-feed-sync<a class="headerlink" href="#greenbone-feed-sync" title="Link to this heading">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">greenbone-feed-sync</span></code> tool is a Python based script to download all
+<a class="reference internal" href="../../glossary.html#term-Feed"><span class="xref std std-term">feed data</span></a> from the <a class="reference internal" href="../../glossary.html#term-Greenbone-Community-Feed"><span class="xref std std-term">Greenbone Community Feed</span></a> to your local
+machine. It is an improved version of two former shell scripts.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>greenbone-feed-sync</em> is released independently of the Greenbone Community
+Edition. Therefore, the newest version is used.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-15-15-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-15-15-0" name="15-0" role="tab" tabindex="0">Debian/Ubuntu</button><button aria-controls="panel-15-15-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-15-15-1" name="15-1" role="tab" tabindex="-1">Fedora/CentOS</button></div><div aria-labelledby="tab-15-15-0" class="sphinx-tabs-panel" id="panel-15-15-0" name="15-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id93">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for greenbone-feed-sync</span><a class="headerlink" href="#id93" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install -y \</span>
+<span class="go">  python3 \</span>
+<span class="go">  python3-pip</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-15-15-1" class="sphinx-tabs-panel" hidden="true" id="panel-15-15-1" name="15-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id94">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for greenbone-feed-sync</span><a class="headerlink" href="#id94" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo dnf install -y \</span>
+<span class="go">  python3 \</span>
+<span class="go">  python3-pip</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<p>The latest version of <em>greeenbone-feed-sync</em> can be installed by using standard
+Python installation tool <em>pip</em>.</p>
+<p>To install it system-wide for all users without running <em>pip</em> as root user, the
+following commands can be used:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-16-16-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-16-16-0" name="16-0" role="tab" tabindex="0">Debian/Ubuntu</button><button aria-controls="panel-16-16-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-16-16-1" name="16-1" role="tab" tabindex="-1">Fedora/CentOS</button></div><div aria-labelledby="tab-16-16-0" class="sphinx-tabs-panel" id="panel-16-16-0" name="16-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id95">
+<div class="code-block-caption"><span class="caption-text">Installing greenbone-feed-sync system-wide for all users</span><a class="headerlink" href="#id95" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p $INSTALL_DIR/greenbone-feed-sync</span>
+
+<span class="go">python3 -m pip install --root=$INSTALL_DIR/greenbone-feed-sync --no-warn-script-location greenbone-feed-sync</span>
+
+<span class="go">sudo cp -rv $INSTALL_DIR/greenbone-feed-sync/* /</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-16-16-1" class="sphinx-tabs-panel" hidden="true" id="panel-16-16-1" name="16-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id96">
+<div class="code-block-caption"><span class="caption-text">Installing greenbone-feed-sync system-wide for all users</span><a class="headerlink" href="#id96" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p $INSTALL_DIR/greenbone-feed-sync</span>
+
+<span class="go">python3 -m pip install --prefix $INSTALL_PREFIX --root=$INSTALL_DIR/greenbone-feed-sync --no-warn-script-location greenbone-feed-sync</span>
+
+<span class="go">sudo cp -rv $INSTALL_DIR/greenbone-feed-sync/* /</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="gvm-tools">
+<h3>gvm-tools<a class="headerlink" href="#gvm-tools" title="Link to this heading">¶</a></h3>
+<p>The Greenbone Vulnerability Management Tools, or <em>gvm-tools</em> in short, are a
+collection of tools that help with controlling Greenbone Community Edition
+installations or Greenbone Enterprise Appliances remotely.</p>
+<p>Essentially, the tools aid accessing the communication protocols
+<a class="reference internal" href="../../glossary.html#term-GMP"><span class="xref std std-term">Greenbone Management Protocol (GMP)</span></a> and
+<a class="reference internal" href="../../glossary.html#term-OSP"><span class="xref std std-term">Open Scanner Protocol (OSP)</span></a>.</p>
+<p><em>gvm-tools</em> are optional and not required for a functional GVM stack.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><em>gvm-tools</em> is released independently of the Greenbone Community Edition.
+Therefore, the newest version is used.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-17-17-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-17-17-0" name="17-0" role="tab" tabindex="0">Debian/Ubuntu</button><button aria-controls="panel-17-17-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-17-17-1" name="17-1" role="tab" tabindex="-1">Fedora/CentOS</button></div><div aria-labelledby="tab-17-17-0" class="sphinx-tabs-panel" id="panel-17-17-0" name="17-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id97">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for gvm-tools</span><a class="headerlink" href="#id97" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install -y \</span>
+<span class="go">  python3 \</span>
+<span class="go">  python3-pip \</span>
+<span class="go">  python3-venv \</span>
+<span class="go">  python3-setuptools \</span>
+<span class="go">  python3-packaging \</span>
+<span class="go">  python3-lxml \</span>
+<span class="go">  python3-defusedxml \</span>
+<span class="go">  python3-paramiko</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-17-17-1" class="sphinx-tabs-panel" hidden="true" id="panel-17-17-1" name="17-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id98">
+<div class="code-block-caption"><span class="caption-text">Required dependencies for gvm-tools</span><a class="headerlink" href="#id98" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo dnf install -y \</span>
+<span class="go">  python3 \</span>
+<span class="go">  python3-pip \</span>
+<span class="go">  python3-setuptools \</span>
+<span class="go">  python3-packaging \</span>
+<span class="go">  python3-lxml \</span>
+<span class="go">  python3-defusedxml \</span>
+<span class="go">  python3-paramiko</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<p>The latest version of <em>gvm-tools</em> can be installed for each user via the
+standard Python installation tool <em>pip</em>.</p>
+<p>Alternatively to install it system-wide without running <em>pip</em> as root user, the
+following commands can be used:</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-18-18-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-18-18-0" name="18-0" role="tab" tabindex="0">Debian/Ubuntu</button><button aria-controls="panel-18-18-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-18-18-1" name="18-1" role="tab" tabindex="-1">Fedora/CentOS</button></div><div aria-labelledby="tab-18-18-0" class="sphinx-tabs-panel" id="panel-18-18-0" name="18-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id99">
+<div class="code-block-caption"><span class="caption-text">Installing gvm-tools system-wide</span><a class="headerlink" href="#id99" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p $INSTALL_DIR/gvm-tools</span>
+
+<span class="go">python3 -m pip install --root=$INSTALL_DIR/gvm-tools --no-warn-script-location gvm-tools</span>
+
+<span class="go">sudo cp -rv $INSTALL_DIR/gvm-tools/* /</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-18-18-1" class="sphinx-tabs-panel" hidden="true" id="panel-18-18-1" name="18-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id100">
+<div class="code-block-caption"><span class="caption-text">Installing gvm-tools system-wide</span><a class="headerlink" href="#id100" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">mkdir -p $INSTALL_DIR/gvm-tools</span>
+
+<span class="go">python3 -m pip install --prefix=$INSTALL_PREFIX --root=$INSTALL_DIR/gvm-tools --no-warn-script-location gvm-tools</span>
+
+<span class="go">sudo cp -rv $INSTALL_DIR/gvm-tools/* /</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+</section>
+</section>
+<section id="performing-a-system-setup">
+<h2>Performing a System Setup<a class="headerlink" href="#performing-a-system-setup" title="Link to this heading">¶</a></h2>
+<section id="setting-up-the-redis-data-store">
+<h3>Setting up the Redis Data Store<a class="headerlink" href="#setting-up-the-redis-data-store" title="Link to this heading">¶</a></h3>
+<p>Looking at the <a class="reference internal" href="../../architecture.html"><span class="doc">Architecture</span></a>, the <a class="reference external" href="https://redis.io/">Redis</a> key/value
+storage is used by the scanner (<em>openvas-scanner</em> and <em>ospd-openvas</em>) for handling
+the <a class="reference internal" href="../../glossary.html#term-VT"><span class="xref std std-term">VT</span></a> information and scan results.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-19-19-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-19-19-0" name="19-0" role="tab" tabindex="0">Debian/Ubuntu</button><button aria-controls="panel-19-19-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-19-19-1" name="19-1" role="tab" tabindex="-1">Fedora/CentOS</button></div><div aria-labelledby="tab-19-19-0" class="sphinx-tabs-panel" id="panel-19-19-0" name="19-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id101">
+<div class="code-block-caption"><span class="caption-text">Installing the Redis server</span><a class="headerlink" href="#id101" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install -y redis-server</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-19-19-1" class="sphinx-tabs-panel" hidden="true" id="panel-19-19-1" name="19-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id102">
+<div class="code-block-caption"><span class="caption-text">Installing the Redis server</span><a class="headerlink" href="#id102" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo dnf install -y redis</span>
+<span class="go">sudo dnf install -y policycoreutils-python-utils</span>
+<span class="go">sudo semanage fcontext -a -f a -t redis_var_run_t -r s0 &#39;/var/run/redis-openvas(/.*)?&#39;</span>
+
+<span class="go">sudo sh -c &#39;cat &lt;&lt; EOF &gt; /etc/tmpfiles.d/redis-openvas.conf</span>
+<span class="go">d       /var/lib/redis/openvas   0750 redis redis - -</span>
+<span class="go">z       /var/lib/redis/openvas   0750 redis redis - -</span>
+<span class="go">d       /run/redis-openvas       0750 redis redis - -</span>
+<span class="go">z       /run/redis-openvas       0750 redis redis - -</span>
+<span class="go">EOF&#39;</span>
+
+<span class="go">sudo systemd-tmpfiles  --create</span>
+
+<span class="go">sudo sh -c &#39;cat &lt;&lt; EOF &gt; /etc/systemd/system/redis-server@.service</span>
+<span class="go">[Unit]</span>
+<span class="go">Description=Redis persistent key-value database</span>
+<span class="go">After=network.target</span>
+<span class="go">After=network-online.target</span>
+<span class="go">Wants=network-online.target</span>
+
+<span class="go">[Service]</span>
+<span class="go">WorkingDirectory=/var/lib/redis/%i</span>
+<span class="go">ExecStart=/usr/bin/redis-server /etc/redis/redis-%i.conf --daemonize no --supervised systemd</span>
+<span class="go">ExecStop=/usr/libexec/redis-shutdown</span>
+<span class="go">Type=notify</span>
+<span class="go">User=redis</span>
+<span class="go">Group=redis</span>
+<span class="go">RuntimeDirectory=%i</span>
+<span class="go">RuntimeDirectoryMode=0755</span>
+
+<span class="go">[Install]</span>
+<span class="go">WantedBy=multi-user.target</span>
+<span class="go">EOF&#39;</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<p>After installing the Redis server package, a specific configuration for the
+<em>openvas-scanner</em> must be added.</p>
+<div class="literal-block-wrapper docutils container" id="id103">
+<div class="code-block-caption"><span class="caption-text">Adding configuration for running the Redis server for the scanner</span><a class="headerlink" href="#id103" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo cp $SOURCE_DIR/openvas-scanner-$OPENVAS_SCANNER_VERSION/config/redis-openvas.conf /etc/redis/</span>
+<span class="go">sudo chown redis:redis /etc/redis/redis-openvas.conf</span>
+<span class="go">echo &quot;db_address = /run/redis-openvas/redis.sock&quot; | sudo tee -a /etc/openvas/openvas.conf</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id104">
+<div class="code-block-caption"><span class="caption-text">Start redis with openvas config</span><a class="headerlink" href="#id104" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo systemctl start redis-server@openvas.service</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id105">
+<div class="code-block-caption"><span class="caption-text">Ensure redis with openvas config is started on every system startup</span><a class="headerlink" href="#id105" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo systemctl enable redis-server@openvas.service</span>
+</pre></div>
+</div>
+</div>
+<p>Additionally the <em>gvm</em> user must be able to access the redis unix socket at
+<code class="file docutils literal notranslate"><span class="pre">/run/redis-openvas/redis.sock</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id106">
+<div class="code-block-caption"><span class="caption-text">Adding the <em>gvm</em> user to the redis group</span><a class="headerlink" href="#id106" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo usermod -aG redis gvm</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="adjusting-permissions">
+<h3>Adjusting Permissions<a class="headerlink" href="#adjusting-permissions" title="Link to this heading">¶</a></h3>
+<p>For a system-wide multi-user installation, it must be ensured that the
+directory permissions are set correctly and are matching the group setup.
+All users of the group <em>gvm</em> should be able to read and write logs, lock files
+and data like VTs.</p>
+<div class="literal-block-wrapper docutils container" id="id107">
+<div class="code-block-caption"><span class="caption-text">Adjusting directory permissions</span><a class="headerlink" href="#id107" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo mkdir -p /var/lib/notus</span>
+<span class="go">sudo mkdir -p /run/gvmd</span>
+
+<span class="go">sudo chown -R gvm:gvm /var/lib/gvm</span>
+<span class="go">sudo chown -R gvm:gvm /var/lib/openvas</span>
+<span class="go">sudo chown -R gvm:gvm /var/lib/notus</span>
+<span class="go">sudo chown -R gvm:gvm /var/log/gvm</span>
+<span class="go">sudo chown -R gvm:gvm /run/gvmd</span>
+
+<span class="go">sudo chmod -R g+srw /var/lib/gvm</span>
+<span class="go">sudo chmod -R g+srw /var/lib/openvas</span>
+<span class="go">sudo chmod -R g+srw /var/log/gvm</span>
+</pre></div>
+</div>
+</div>
+<p>To allow all users of the group <em>gvm</em> access to the postgres database via the
+various <em>gvmd</em> commands, the permissions of the <em>gvmd</em> executable will be adjusted
+to always run as the <em>gvm</em> user and under the <em>gvm</em> group.</p>
+<div class="literal-block-wrapper docutils container" id="id108">
+<div class="code-block-caption"><span class="caption-text">Adjusting gvmd permissions</span><a class="headerlink" href="#id108" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo chown gvm:gvm /usr/local/sbin/gvmd</span>
+<span class="go">sudo chmod 6750 /usr/local/sbin/gvmd</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="feed-validation">
+<h3>Feed Validation<a class="headerlink" href="#feed-validation" title="Link to this heading">¶</a></h3>
+<p>For validating the feed content, a GnuPG keychain with the <em>Greenbone Community
+Feed integrity key</em> needs to be created.</p>
+<div class="literal-block-wrapper docutils container" id="id109">
+<div class="code-block-caption"><span class="caption-text">Creating a GPG keyring for feed content validation</span><a class="headerlink" href="#id109" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">curl -f -L https://www.greenbone.net/GBCommunitySigningKey.asc -o /tmp/GBCommunitySigningKey.asc</span>
+
+<span class="go">export GNUPGHOME=/tmp/openvas-gnupg</span>
+<span class="go">mkdir -p $GNUPGHOME</span>
+
+<span class="go">gpg --import /tmp/GBCommunitySigningKey.asc</span>
+<span class="go">echo &quot;8AE4BE429B60A59B311C2E739823FAA60ED1E580:6:&quot; | gpg --import-ownertrust</span>
+
+<span class="go">export OPENVAS_GNUPG_HOME=/etc/openvas/gnupg</span>
+<span class="go">sudo mkdir -p $OPENVAS_GNUPG_HOME</span>
+<span class="go">sudo cp -r /tmp/openvas-gnupg/* $OPENVAS_GNUPG_HOME/</span>
+<span class="go">sudo chown -R gvm:gvm $OPENVAS_GNUPG_HOME</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="setting-up-sudo-for-scanning">
+<h3>Setting up <em>sudo</em> for Scanning<a class="headerlink" href="#setting-up-sudo-for-scanning" title="Link to this heading">¶</a></h3>
+<p>For vulnerability scanning, it is required to have several capabilities for which
+only root users are authorized, e.g., creating raw sockets. Therefore, a
+configuration will be added to allow the users of the <em>gvm</em> group to run the
+<em>openvas-scanner</em> application as root user via <em>sudo</em>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure that only necessary users have access to the <em>gvm</em> group. Each user
+of the <em>gvm</em> group can manipulate the Vulnerability Test (VT) scripts
+(.nasl files). These scripts are run with root privileges and therefore can
+be used for exploits. See
+<a class="reference external" href="https://csal.medium.com/pentesters-tricks-local-privilege-escalation-in-openvas-fe933d7f161f">https://csal.medium.com/pentesters-tricks-local-privilege-escalation-in-openvas-fe933d7f161f</a>.</p>
+</div>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-20-20-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-20-20-0" name="20-0" role="tab" tabindex="0">Debian/Ubuntu</button><button aria-controls="panel-20-20-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-20-20-1" name="20-1" role="tab" tabindex="-1">Fedora</button><button aria-controls="panel-20-20-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-20-20-2" name="20-2" role="tab" tabindex="-1">CentOS</button></div><div aria-labelledby="tab-20-20-0" class="sphinx-tabs-panel" id="panel-20-20-0" name="20-0" role="tabpanel" tabindex="0"><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo visudo
+
+...
+
+# allow users of the gvm group run openvas
+%gvm ALL = NOPASSWD: /usr/local/sbin/openvas
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-20-20-1" class="sphinx-tabs-panel" hidden="true" id="panel-20-20-1" name="20-1" role="tabpanel" tabindex="0"><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo visudo
+
+...
+
+# allow users of the gvm group run openvas
+%gvm ALL = NOPASSWD: /usr/local/sbin/openvas
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-20-20-2" class="sphinx-tabs-panel" hidden="true" id="panel-20-20-2" name="20-2" role="tabpanel" tabindex="0"><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo visudo
+
+...
+
+# Allow /usr/local path
+Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
+
+# allow users of the gvm group run openvas
+%gvm ALL = NOPASSWD: /usr/local/sbin/openvas
+</pre></div>
+</div>
+</div></div>
+</section>
+<section id="setting-up-postgresql">
+<h3>Setting up PostgreSQL<a class="headerlink" href="#setting-up-postgresql" title="Link to this heading">¶</a></h3>
+<p>The <a class="reference external" href="https://www.postgresql.org/">PostgreSQL</a> database management system is
+used as a central storage for user and scan information. <em>gvmd</em> connects to
+a PostgreSQL database and queries the data. This database must be created
+and configured.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-21-21-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-21-21-0" name="21-0" role="tab" tabindex="0">Debian/Ubuntu</button><button aria-controls="panel-21-21-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-21-21-1" name="21-1" role="tab" tabindex="-1">Fedora/CentOS</button></div><div aria-labelledby="tab-21-21-0" class="sphinx-tabs-panel" id="panel-21-21-0" name="21-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id110">
+<div class="code-block-caption"><span class="caption-text">Installing the PostgreSQL server</span><a class="headerlink" href="#id110" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install -y postgresql</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-21-21-1" class="sphinx-tabs-panel" hidden="true" id="panel-21-21-1" name="21-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id111">
+<div class="code-block-caption"><span class="caption-text">Installing the PostgreSQL server</span><a class="headerlink" href="#id111" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo dnf install -y postgresql-server postgresql-contrib</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<p>If necessary the PostgreSQL database server needs to be started manually</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-22-22-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-22-22-0" name="22-0" role="tab" tabindex="0">Debian</button><button aria-controls="panel-22-22-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-22-22-1" name="22-1" role="tab" tabindex="-1">Ubuntu</button><button aria-controls="panel-22-22-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-22-22-2" name="22-2" role="tab" tabindex="-1">Fedora/CentOS</button></div><div aria-labelledby="tab-22-22-0" class="sphinx-tabs-panel" id="panel-22-22-0" name="22-0" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id112">
+<div class="code-block-caption"><span class="caption-text">Starting the PostgreSQL database server</span><a class="headerlink" href="#id112" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo systemctl start postgresql@15-main</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-22-22-1" class="sphinx-tabs-panel" hidden="true" id="panel-22-22-1" name="22-1" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id113">
+<div class="code-block-caption"><span class="caption-text">Starting the PostgreSQL database server</span><a class="headerlink" href="#id113" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo systemctl start postgresql@14-main</span>
+</pre></div>
+</div>
+</div>
+</div><div aria-labelledby="tab-22-22-2" class="sphinx-tabs-panel" hidden="true" id="panel-22-22-2" name="22-2" role="tabpanel" tabindex="0"><div class="literal-block-wrapper docutils container" id="id114">
+<div class="code-block-caption"><span class="caption-text">Starting the PostgreSQL database server</span><a class="headerlink" href="#id114" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo postgresql-setup --initdb --unit postgresql</span>
+<span class="go">sudo systemctl start postgresql</span>
+</pre></div>
+</div>
+</div>
+</div></div>
+<p>For setting up the PostgreSQL database it is required to become the postgres
+user.</p>
+<div class="literal-block-wrapper docutils container" id="id115">
+<div class="code-block-caption"><span class="caption-text">Changing to the postgres user</span><a class="headerlink" href="#id115" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo -u postgres bash</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id116">
+<div class="code-block-caption"><span class="caption-text">Setting up PostgreSQL user and database for the Greenbone Community Edition</span><a class="headerlink" href="#id116" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">cd</span>
+<span class="go">createuser -DRS gvm</span>
+<span class="go">createdb -O gvm gvmd</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id117">
+<div class="code-block-caption"><span class="caption-text">Setting up database permissions and extensions</span><a class="headerlink" href="#id117" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">psql gvmd -c &quot;create role dba with superuser noinherit; grant dba to gvm;&quot;</span>
+
+<span class="go">exit</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="setting-up-an-admin-user">
+<h3>Setting up an Admin User<a class="headerlink" href="#setting-up-an-admin-user" title="Link to this heading">¶</a></h3>
+<p>For accessing and configuring the vulnerability data, an administrator user needs
+to be created. This user can log in via the Greenbone Security Assistant (GSA)
+web interface. They will have access to all data and will later be configured to
+act as the <em>Feed Import Owner</em>.</p>
+<div class="literal-block-wrapper docutils container" id="id118">
+<div class="code-block-caption"><span class="caption-text">Creating an administrator user with generated password</span><a class="headerlink" href="#id118" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">/usr/local/sbin/gvmd --create-user=admin</span>
+</pre></div>
+</div>
+</div>
+<p>The new administrator user’s password is printed on success. An administrator user can
+later create further users or administrators via the GSA web interface.</p>
+<p>To create the administrator user with a password of your choice instead of the generated
+password, the following command can be used:</p>
+<div class="literal-block-wrapper docutils container" id="id119">
+<div class="code-block-caption"><span class="caption-text">Creating an administrator user with provided password</span><a class="headerlink" href="#id119" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">/usr/local/sbin/gvmd --create-user=admin --password=&#39;&lt;password&gt;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please be aware if your password includes special characters like <code class="docutils literal notranslate"><span class="pre">$</span></code> it needs
+to be quoted in single quotes.</p>
+</div>
+<p>If the output doesn’t show</p>
+<div class="no-copybutton highlight-none notranslate"><div class="highlight"><pre><span></span>User created.
+</pre></div>
+</div>
+<p>you need to look at the <code class="file docutils literal notranslate"><span class="pre">/var/log/gvm/gvmd.log</span></code> for errors.</p>
+</section>
+<section id="setting-the-feed-import-owner">
+<h3>Setting the Feed Import Owner<a class="headerlink" href="#setting-the-feed-import-owner" title="Link to this heading">¶</a></h3>
+<p>Certain resources that were previously part of the gvmd source code are now
+shipped via the feed. An example is the scan configuration “Full and Fast”.</p>
+<p>Currently every resource needs an owner to apply the permissions and manage
+the access to the resources.</p>
+<p>Therefore, <em>gvmd</em> will only create these resources if a <em>Feed Import Owner</em> is
+configured. Here the previously created admin user will be used as the
+<em>Feed Import Owner</em>.</p>
+<div class="literal-block-wrapper docutils container" id="id120">
+<div class="code-block-caption"><span class="caption-text">Setting the Feed Import Owner</span><a class="headerlink" href="#id120" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">/usr/local/sbin/gvmd --modify-setting 78eceaec-3385-11ea-b237-28d24461215b --value `/usr/local/sbin/gvmd --get-users --verbose | grep admin | awk &#39;{print $2}&#39;`</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="setting-up-services-for-systemd">
+<h3>Setting up Services for <em>Systemd</em><a class="headerlink" href="#setting-up-services-for-systemd" title="Link to this heading">¶</a></h3>
+<p><a class="reference external" href="https://systemd.io/">Systemd</a> is used to start the daemons <em>ospd-openvas</em>,
+<em>openvasd</em>, <em>gvmd</em> and <em>gsad</em>. Therefore, service files are required.</p>
+<div class="literal-block-wrapper docutils container" id="id121">
+<div class="code-block-caption"><span class="caption-text">Systemd service file for ospd-openvas</span><a class="headerlink" href="#id121" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">cat &lt;&lt; EOF &gt; $BUILD_DIR/ospd-openvas.service</span>
+<span class="go">[Unit]</span>
+<span class="go">Description=OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)</span>
+<span class="go">Documentation=man:ospd-openvas(8) man:openvas(8)</span>
+<span class="go">After=network.target networking.service redis-server@openvas.service openvasd.service</span>
+<span class="go">Wants=redis-server@openvas.service openvasd.service</span>
+<span class="go">ConditionKernelCommandLine=!recovery</span>
+
+<span class="go">[Service]</span>
+<span class="go">Type=exec</span>
+<span class="go">User=gvm</span>
+<span class="go">Group=gvm</span>
+<span class="go">RuntimeDirectory=ospd</span>
+<span class="go">RuntimeDirectoryMode=2775</span>
+<span class="go">PIDFile=/run/ospd/ospd-openvas.pid</span>
+<span class="go">ExecStart=/usr/local/bin/ospd-openvas --foreground --unix-socket /run/ospd/ospd-openvas.sock --pid-file /run/ospd/ospd-openvas.pid --log-file /var/log/gvm/ospd-openvas.log --lock-file-dir /var/lib/openvas --socket-mode 0o770 --notus-feed-dir /var/lib/notus/advisories</span>
+<span class="go">SuccessExitStatus=SIGKILL</span>
+<span class="go">Restart=always</span>
+<span class="go">RestartSec=60</span>
+
+<span class="go">[Install]</span>
+<span class="go">WantedBy=multi-user.target</span>
+<span class="go">EOF</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id122">
+<div class="code-block-caption"><span class="caption-text">Install systemd service file for ospd-openvas</span><a class="headerlink" href="#id122" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo cp -v $BUILD_DIR/ospd-openvas.service /etc/systemd/system/</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id123">
+<div class="code-block-caption"><span class="caption-text">Systemd service file for gvmd</span><a class="headerlink" href="#id123" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">cat &lt;&lt; EOF &gt; $BUILD_DIR/gvmd.service</span>
+<span class="go">[Unit]</span>
+<span class="go">Description=Greenbone Vulnerability Manager daemon (gvmd)</span>
+<span class="go">After=network.target networking.service postgresql.service ospd-openvas.service</span>
+<span class="go">Wants=postgresql.service ospd-openvas.service</span>
+<span class="go">Documentation=man:gvmd(8)</span>
+<span class="go">ConditionKernelCommandLine=!recovery</span>
+
+<span class="go">[Service]</span>
+<span class="go">Type=exec</span>
+<span class="go">User=gvm</span>
+<span class="go">Group=gvm</span>
+<span class="go">PIDFile=/run/gvmd/gvmd.pid</span>
+<span class="go">RuntimeDirectory=gvmd</span>
+<span class="go">RuntimeDirectoryMode=2775</span>
+<span class="go">ExecStart=/usr/local/sbin/gvmd --foreground --osp-vt-update=/run/ospd/ospd-openvas.sock --listen-group=gvm</span>
+<span class="go">Restart=always</span>
+<span class="go">TimeoutStopSec=10</span>
+
+<span class="go">[Install]</span>
+<span class="go">WantedBy=multi-user.target</span>
+<span class="go">EOF</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id124">
+<div class="code-block-caption"><span class="caption-text">Install systemd service file for gvmd</span><a class="headerlink" href="#id124" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo cp -v $BUILD_DIR/gvmd.service /etc/systemd/system/</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id125">
+<div class="code-block-caption"><span class="caption-text">Systemd service file for gsad</span><a class="headerlink" href="#id125" title="Link to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cat &lt;&lt; EOF &gt; $BUILD_DIR/gsad.service
+[Unit]
+Description=Greenbone Security Assistant daemon (gsad)
+Documentation=man:gsad(8) https://www.greenbone.net
+After=network.target gvmd.service
+Wants=gvmd.service
+
+[Service]
+Type=exec
+User=gvm
+Group=gvm
+RuntimeDirectory=gsad
+RuntimeDirectoryMode=2775
+PIDFile=/run/gsad/gsad.pid
+ExecStart=/usr/local/sbin/gsad --foreground --listen=127.0.0.1 --port=9392 --http-only
+Restart=always
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target
+Alias=greenbone-security-assistant.service
+EOF
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id126">
+<div class="code-block-caption"><span class="caption-text">Install systemd service file for gsad</span><a class="headerlink" href="#id126" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo cp -v $BUILD_DIR/gsad.service /etc/systemd/system/</span>
+</pre></div>
+</div>
+</div>
+<p>Afterwards, the services need to be activated and started.</p>
+<div class="literal-block-wrapper docutils container" id="id127">
+<div class="code-block-caption"><span class="caption-text">Making systemd aware of the new service files</span><a class="headerlink" href="#id127" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo systemctl daemon-reload</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id128">
+<div class="code-block-caption"><span class="caption-text">Systemd service file for openvasd</span><a class="headerlink" href="#id128" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">cat &lt;&lt; EOF &gt; $BUILD_DIR/openvasd.service</span>
+<span class="go">[Unit]</span>
+<span class="go">Description=OpenVASD</span>
+<span class="go">Documentation=https://github.com/greenbone/openvas-scanner/tree/main/rust/openvasd</span>
+<span class="go">ConditionKernelCommandLine=!recovery</span>
+<span class="go">[Service]</span>
+<span class="go">Type=exec</span>
+<span class="go">User=gvm</span>
+<span class="go">RuntimeDirectory=openvasd</span>
+<span class="go">RuntimeDirectoryMode=2775</span>
+<span class="go">ExecStart=/usr/local/bin/openvasd --mode service_notus --products /var/lib/notus/products --advisories /var/lib/notus/advisories --listening 127.0.0.1:3000</span>
+<span class="go">SuccessExitStatus=SIGKILL</span>
+<span class="go">Restart=always</span>
+<span class="go">RestartSec=60</span>
+<span class="go">[Install]</span>
+<span class="go">WantedBy=multi-user.target</span>
+<span class="go">EOF</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id129">
+<div class="code-block-caption"><span class="caption-text">Install systemd service file for openvasd</span><a class="headerlink" href="#id129" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo cp -v $BUILD_DIR/openvasd.service /etc/systemd/system/</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="performing-a-feed-synchronization">
+<h2>Performing a Feed Synchronization<a class="headerlink" href="#performing-a-feed-synchronization" title="Link to this heading">¶</a></h2>
+<p>For the actual vulnerability scanning, <a class="reference internal" href="../../glossary.html#term-VT"><span class="xref std std-term">Vulnerability Test scripts</span></a>,
+security information like <a class="reference internal" href="../../glossary.html#term-CVE"><span class="xref std std-term">CVEs</span></a>, port lists and scan configurations
+are required. All this data is provided by the <a class="reference internal" href="../../glossary.html#term-Greenbone-Community-Feed"><span class="xref std std-term">Greenbone Community Feed</span></a>
+and should be downloaded initially before starting the services.</p>
+<p>A synchronization always consists of two parts:</p>
+<ol class="arabic simple">
+<li><p>Downloading the changes via <a class="reference external" href="https://en.wikipedia.org/wiki/Rsync">rsync</a></p></li>
+<li><p>Loading the changes into memory and a database by a daemon</p></li>
+</ol>
+<p>Both steps may take a while, from several minutes up to hours, especially for the
+initial synchronization. Only if both steps are finished, the synchronized data
+is up-to-date and can be used.</p>
+<p>The first step is done via the <strong class="command">greenbone-feed-sync</strong> script. The second
+step is done automatically when the daemons are started.</p>
+<section id="downloading-the-data">
+<h3>Downloading the Data<a class="headerlink" href="#downloading-the-data" title="Link to this heading">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Downloading the data during the synchronization may take a while
+depending on the network connection and server resources.</p>
+</div>
+<p>The downloaded data consist of four different kind of data:</p>
+<ul class="simple">
+<li><p>VT data</p></li>
+<li><p>SCAP data</p></li>
+<li><p>CERT data</p></li>
+<li><p>GVMD data</p></li>
+</ul>
+<p>VT data contain <code class="file docutils literal notranslate"><span class="pre">.nasl</span></code> and <code class="file docutils literal notranslate"><span class="pre">.notus</span></code> files for creating results
+during a vulnerability scan. The <code class="file docutils literal notranslate"><span class="pre">.nasl</span></code> files are processed by the OpenVAS
+Scanner and the <code class="file docutils literal notranslate"><span class="pre">.notus</span></code> files by the <a class="reference internal" href="../../glossary.html#term-notus-scanner"><span class="xref std std-term">Notus Scanner</span></a>.</p>
+<p><a class="reference internal" href="../../glossary.html#term-SCAP"><span class="xref std std-term">SCAP</span></a> data contains <a class="reference internal" href="../../glossary.html#term-CPE"><span class="xref std std-term">CPE</span></a> and <a class="reference internal" href="../../glossary.html#term-CVE"><span class="xref std std-term">CVE</span></a> information.</p>
+<p>CERT data contain vulnerability information from the German <a class="reference external" href="https://www.dfn-cert.de/">DFN-CERT</a>
+and <a class="reference external" href="https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Cyber-Sicherheitslage/Reaktion/CERT-Bund/cert-bund_node.html">CERT-Bund</a> agencies.</p>
+<p>GVMD data (or also called “data objects”) are scan configurations, compliance
+policies, port lists and report formats.</p>
+<div class="literal-block-wrapper docutils container" id="id130">
+<div class="code-block-caption"><span class="caption-text">Downloading the data from the Greenbone Community Feed</span><a class="headerlink" href="#id130" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo /usr/local/bin/greenbone-feed-sync</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="starting-the-greenbone-community-edition-services">
+<h3>Starting the Greenbone Community Edition Services<a class="headerlink" href="#starting-the-greenbone-community-edition-services" title="Link to this heading">¶</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>When the feed content has been downloaded, the new data must be loaded by
+the corresponding daemons. This may take several minutes up to hours, especially
+for the initial loading of the data. Without loaded data, scans will contain
+incomplete and erroneous results.</p>
+</div>
+<p>After starting the Greenbone Community Edition services via systemd, the running
+daemons will pick up the feed content and load the data automatically.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please be aware, even if the <strong class="command">systemctl start</strong> commands are returning
+immediately, the <strong>first startup</strong> of the services may take several minutes
+or even hours!</p>
+</div>
+<div class="literal-block-wrapper docutils container" id="id131">
+<div class="code-block-caption"><span class="caption-text">Finally starting the services</span><a class="headerlink" href="#id131" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo systemctl start ospd-openvas</span>
+<span class="go">sudo systemctl start gvmd</span>
+<span class="go">sudo systemctl start gsad</span>
+<span class="go">sudo systemctl start openvasd</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id132">
+<div class="code-block-caption"><span class="caption-text">Ensuring services are run at every system startup</span><a class="headerlink" href="#id132" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo systemctl enable ospd-openvas</span>
+<span class="go">sudo systemctl enable gvmd</span>
+<span class="go">sudo systemctl enable gsad</span>
+<span class="go">sudo systemctl enable openvasd</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id133">
+<div class="code-block-caption"><span class="caption-text">Checking the status of the services</span><a class="headerlink" href="#id133" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">sudo systemctl status ospd-openvas</span>
+<span class="go">sudo systemctl status gvmd</span>
+<span class="go">sudo systemctl status gsad</span>
+<span class="go">sudo systemctl status openvasd</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="vulnerability-tests-data">
+<h3>Vulnerability Tests Data<a class="headerlink" href="#vulnerability-tests-data" title="Link to this heading">¶</a></h3>
+<p>If the log file of ospd-openvas (<code class="file docutils literal notranslate"><span class="pre">/var/log/gvm/ospd-openvas.log</span></code>)
+contains the following output, the OpenVAS Scanner starts to load the new VT
+data:</p>
+<div class="literal-block-wrapper docutils container" id="id134">
+<div class="code-block-caption"><span class="caption-text">ospd-openvas VT loading log message</span><a class="headerlink" href="#id134" title="Link to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Loading VTs. Scans will be [requested|queued] until VTs are loaded. This may
+take a few minutes, please wait ...
+</pre></div>
+</div>
+</div>
+<p>The loading of the VT data is finished if the following log message can be found:</p>
+<div class="literal-block-wrapper docutils container" id="id135">
+<div class="code-block-caption"><span class="caption-text">ospd-openvas VTs loading finished log message</span><a class="headerlink" href="#id135" title="Link to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Finished loading VTs. The VT cache has been updated from version X to Y.
+</pre></div>
+</div>
+</div>
+<p>After the scanner is aware of the VT data, the data will be requested by gvmd. This
+will result in the following log message in <code class="file docutils literal notranslate"><span class="pre">/var/log/gvm/gvmd.log</span></code>:</p>
+<div class="literal-block-wrapper docutils container" id="id136">
+<div class="code-block-caption"><span class="caption-text">gvmd VTs loading log message</span><a class="headerlink" href="#id136" title="Link to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>OSP service has different VT status (version X) from database (version (Y), Z VTs). Starting update ...
+</pre></div>
+</div>
+</div>
+<p>When gvmd has finished loading all VTs, the following message appears:</p>
+<div class="literal-block-wrapper docutils container" id="id137">
+<div class="code-block-caption"><span class="caption-text">gvmd VTs loading finished log message</span><a class="headerlink" href="#id137" title="Link to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Updating VTs in database ... done (X VTs).
+</pre></div>
+</div>
+</div>
+</section>
+<section id="scap-data">
+<h3>SCAP Data<a class="headerlink" href="#scap-data" title="Link to this heading">¶</a></h3>
+<p>gvmd starts loading the <a class="reference internal" href="../../glossary.html#term-SCAP"><span class="xref std std-term">SCAP</span></a> data containing <a class="reference internal" href="../../glossary.html#term-CPE"><span class="xref std std-term">CPE</span></a> and <a class="reference internal" href="../../glossary.html#term-CVE"><span class="xref std std-term">CVE</span></a>
+information when the following message can be found in the logs
+(<code class="file docutils literal notranslate"><span class="pre">/var/log/gvm/gvmd.log</span></code>):</p>
+<div class="literal-block-wrapper docutils container" id="id138">
+<div class="code-block-caption"><span class="caption-text">gvmd SCAP data loading log message</span><a class="headerlink" href="#id138" title="Link to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>update_scap: Updating data from feed
+</pre></div>
+</div>
+</div>
+<p>The SCAP data is loaded and the synchronization is finished when the (gvmd) log
+contains the following message:</p>
+<div class="literal-block-wrapper docutils container" id="id139">
+<div class="code-block-caption"><span class="caption-text">gvmd SCAP data loading finished log message</span><a class="headerlink" href="#id139" title="Link to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>update_scap_end: Updating SCAP info succeeded
+</pre></div>
+</div>
+</div>
+</section>
+<section id="cert-data">
+<h3>CERT Data<a class="headerlink" href="#cert-data" title="Link to this heading">¶</a></h3>
+<p>gvmd starts loading the CERT data containing DFN-CERT and CERT-Bund advisories
+when the following message can be found in the logs (<code class="file docutils literal notranslate"><span class="pre">/var/log/gvm/gvmd.log</span></code>):</p>
+<div class="literal-block-wrapper docutils container" id="id140">
+<div class="code-block-caption"><span class="caption-text">gvmd CERT data loading log message</span><a class="headerlink" href="#id140" title="Link to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sync_cert: Updating data from feed
+</pre></div>
+</div>
+</div>
+<p>The CERT data is loaded and the synchronization is finished when the (gvmd) log
+contains the following message:</p>
+<div class="literal-block-wrapper docutils container" id="id141">
+<div class="code-block-caption"><span class="caption-text">gvmd CERT data finished loading log message</span><a class="headerlink" href="#id141" title="Link to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sync_cert: Updating CERT info succeeded.
+</pre></div>
+</div>
+</div>
+</section>
+<section id="gvmd-data">
+<h3>GVMD Data<a class="headerlink" href="#gvmd-data" title="Link to this heading">¶</a></h3>
+<p>The log (<code class="file docutils literal notranslate"><span class="pre">/var/log/gvm/gvmd.log</span></code>) contains several messages when the gvmd
+data is loaded. For port lists, these messages are similar to:</p>
+<div class="literal-block-wrapper docutils container" id="id142">
+<div class="code-block-caption"><span class="caption-text">gvmd port list loaded log message</span><a class="headerlink" href="#id142" title="Link to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Port list All IANA assigned TCP (33d0cd82-57c6-11e1-8ed1-406186ea4fc5) has been created by admin
+</pre></div>
+</div>
+</div>
+<p>For report formats:</p>
+<div class="literal-block-wrapper docutils container" id="id143">
+<div class="code-block-caption"><span class="caption-text">gvmd report format loaded log message</span><a class="headerlink" href="#id143" title="Link to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Report format XML (a994b278-1f62-11e1-96ac-406186ea4fc5) has been created by admin
+</pre></div>
+</div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Scan Configs can only be loaded if the VT data is available in gvmd and a <em>Feed
+Import Owner</em> is set.</p>
+</div>
+<p>For scan configs:</p>
+<div class="literal-block-wrapper docutils container" id="id144">
+<div class="code-block-caption"><span class="caption-text">gvmd scan config loaded log message</span><a class="headerlink" href="#id144" title="Link to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Scan config Full and fast (daba56c8-73ec-11df-a475-002264764cea) has been created by admin
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="starting-the-vulnerability-management">
+<h2>Starting the Vulnerability Management<a class="headerlink" href="#starting-the-vulnerability-management" title="Link to this heading">¶</a></h2>
+<p>After the services have started and all data has been loaded, the <a class="reference internal" href="../../glossary.html#term-GSA"><span class="xref std std-term">Greenbone Security Assistant web interface – GSA –</span></a> can be opened in the browser.</p>
+<div class="literal-block-wrapper docutils container" id="id145">
+<div class="code-block-caption"><span class="caption-text">Opening Greenbone Security Assistant in the browser</span><a class="headerlink" href="#id145" title="Link to this code">¶</a></div>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="go">xdg-open &quot;http://127.0.0.1:9392&quot; 2&gt;/dev/null &gt;/dev/null &amp;</span>
+</pre></div>
+</div>
+</div>
+<p>The browser will show the login page of <em>GSA</em> and after using the credentials
+created in the <em>Setting Up an Admin User</em> chapter,
+it is possible to start with the vulnerability scanning.</p>
+<figure class="align-default" id="id146">
+<img alt="Launching Greenbone Security Assistant for the first time" src="../../_images/GSA-22.4.png" />
+<figcaption>
+<p><span class="caption-text">Greenbone Security Assistant after logging in for the first time</span><a class="headerlink" href="#id146" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="workflows.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Workflows</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../../background.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Background</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2021–2024, Greenbone AG
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://github.com/greenbone/docs/" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Building from Source</a><ul>
+<li><a class="reference internal" href="#hardware-requirements">Hardware Requirements</a></li>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a><ul>
+<li><a class="reference internal" href="#creating-a-user-and-a-group">Creating a User and a Group</a></li>
+<li><a class="reference internal" href="#adjusting-the-current-user">Adjusting the Current User</a></li>
+<li><a class="reference internal" href="#choosing-an-install-prefix">Choosing an Install Prefix</a></li>
+<li><a class="reference internal" href="#setting-the-path">Setting the PATH</a></li>
+<li><a class="reference internal" href="#creating-a-source-build-and-install-directory">Creating a Source, Build and Install Directory</a></li>
+<li><a class="reference internal" href="#choosing-the-installation-source">Choosing the Installation Source</a></li>
+<li><a class="reference internal" href="#installing-common-build-dependencies">Installing Common Build Dependencies</a></li>
+<li><a class="reference internal" href="#importing-the-greenbone-signing-key">Importing the Greenbone Signing Key</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#building-and-installing-the-components">Building and Installing the Components</a><ul>
+<li><a class="reference internal" href="#gvm-libs">gvm-libs</a></li>
+<li><a class="reference internal" href="#gvmd">gvmd</a></li>
+<li><a class="reference internal" href="#pg-gvm">pg-gvm</a></li>
+<li><a class="reference internal" href="#greenbone-security-assistant">Greenbone Security Assistant</a><ul>
+<li><a class="reference internal" href="#gsa">GSA</a></li>
+<li><a class="reference internal" href="#gsad">gsad</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#openvas-smb">openvas-smb</a></li>
+<li><a class="reference internal" href="#openvas-scanner">openvas-scanner</a></li>
+<li><a class="reference internal" href="#ospd-openvas">ospd-openvas</a></li>
+<li><a class="reference internal" href="#openvasd">openvasd</a></li>
+<li><a class="reference internal" href="#greenbone-feed-sync">greenbone-feed-sync</a></li>
+<li><a class="reference internal" href="#gvm-tools">gvm-tools</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#performing-a-system-setup">Performing a System Setup</a><ul>
+<li><a class="reference internal" href="#setting-up-the-redis-data-store">Setting up the Redis Data Store</a></li>
+<li><a class="reference internal" href="#adjusting-permissions">Adjusting Permissions</a></li>
+<li><a class="reference internal" href="#feed-validation">Feed Validation</a></li>
+<li><a class="reference internal" href="#setting-up-sudo-for-scanning">Setting up <em>sudo</em> for Scanning</a></li>
+<li><a class="reference internal" href="#setting-up-postgresql">Setting up PostgreSQL</a></li>
+<li><a class="reference internal" href="#setting-up-an-admin-user">Setting up an Admin User</a></li>
+<li><a class="reference internal" href="#setting-the-feed-import-owner">Setting the Feed Import Owner</a></li>
+<li><a class="reference internal" href="#setting-up-services-for-systemd">Setting up Services for <em>Systemd</em></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#performing-a-feed-synchronization">Performing a Feed Synchronization</a><ul>
+<li><a class="reference internal" href="#downloading-the-data">Downloading the Data</a></li>
+<li><a class="reference internal" href="#starting-the-greenbone-community-edition-services">Starting the Greenbone Community Edition Services</a></li>
+<li><a class="reference internal" href="#vulnerability-tests-data">Vulnerability Tests Data</a></li>
+<li><a class="reference internal" href="#scap-data">SCAP Data</a></li>
+<li><a class="reference internal" href="#cert-data">CERT Data</a></li>
+<li><a class="reference internal" href="#gvmd-data">GVMD Data</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#starting-the-vulnerability-management">Starting the Vulnerability Management</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=6b89569b"></script>
+    <script src="../../_static/tabs.js?v=3030b3cb"></script>
+    </body>
+</html>

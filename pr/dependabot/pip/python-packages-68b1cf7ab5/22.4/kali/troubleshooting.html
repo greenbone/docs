@@ -1,0 +1,724 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="Greenbone Community Edition – Documentation" lang="en" name="description" xml:lang="en" />
+<meta content="Greenbone Community Edition – Dokumentation" lang="de" name="description" xml:lang="de" />
+<meta content="OpenVAS, Greenbone, Community, Greenbone Community Edition, GVM, Container, Docker, Documentation" name="keywords" />
+<meta content="en_US" property="og:locale" />
+<meta property="og:title" content="Troubleshooting" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://greenbone.github.io/docs/latest/22.4/kali/troubleshooting.html" />
+<meta property="og:site_name" content="Greenbone Community Documentation" />
+<meta property="og:description" content="Troubleshooting A Kali Linux Installation: Here are some common issues encountered during installation and steps to fix them. Upgrading The Default PostgreSQL Version: If you encounter an error reg..." />
+<meta property="og:image" content="https://greenbone.github.io/docs/latest/_images/greenbone-banner.png" />
+<meta property="og:image:alt" content="Greenbone Community Documentation" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Frequently Asked Questions (FAQ)" href="../../faq.html" /><link rel="prev" title="Kali Linux Install Guide" href="index.html" />
+
+    <link rel="shortcut icon" href="../../_static/favicon.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
+        <title>Troubleshooting - Greenbone Community Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=c824535d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=6a40824e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #3f3f3f;
+  --color-code-foreground: #dcdccc;
+  --color-content-foreground: #4D4D4D;
+  --color-foreground-primary: 4D4D4D;
+  --color-foreground-secondary: #808080;
+  --color-code-background: #333333;
+  --color-code-foreground: #E6E6E6;
+  --color-admonition-title--note: #11AB51;
+  --admonition-font-size: 0.9rem;
+  --color-background-primary: #FFFFFF;
+  --color-background-secondary: #F5F5F5;
+  --color-sidebar-background: #F5F5F5;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-content-foreground: #F5F5F5;
+  --color-foreground-primary: F5F5F5;
+  --color-foreground-secondary: #E6E6E6;
+  --color-code-background: #333333;
+  --color-code-foreground: #E6E6E6;
+  --color-admonition-title--note: #11AB51;
+  --admonition-font-size: 0.9rem;
+  --color-background-primary: #171717;
+  --color-background-secondary: #4D4D4D;
+  --color-sidebar-background: #333333;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-content-foreground: #F5F5F5;
+  --color-foreground-primary: F5F5F5;
+  --color-foreground-secondary: #E6E6E6;
+  --color-code-background: #333333;
+  --color-code-foreground: #E6E6E6;
+  --color-admonition-title--note: #11AB51;
+  --admonition-font-size: 0.9rem;
+  --color-background-primary: #171717;
+  --color-background-secondary: #4D4D4D;
+  --color-sidebar-background: #333333;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Greenbone Community Documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../_static/logo.svg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Greenbone Community Documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../background.html">Background</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../source-build/index.html">Building from Source</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Building from Source</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../source-build/workflows.html">Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source-build/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../container/index.html">Greenbone Community Containers</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Greenbone Community Containers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../container/workflows.html">Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../container/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Kali Linux Install Guide</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Kali Linux Install Guide</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq.html">Frequently Asked Questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/greenbone/docs/blob/main/src/22.4/kali/troubleshooting.md?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/greenbone/docs/edit/main/src/22.4/kali/troubleshooting.md" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="troubleshooting">
+<h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading">¶</a></h1>
+<section id="troubleshooting-a-kali-linux-installation">
+<h2>Troubleshooting A Kali Linux Installation<a class="headerlink" href="#troubleshooting-a-kali-linux-installation" title="Link to this heading">¶</a></h2>
+<p>Here are some common issues encountered during installation and steps to fix them.</p>
+</section>
+<section id="upgrading-the-default-postgresql-version">
+<h2>Upgrading The Default PostgreSQL Version<a class="headerlink" href="#upgrading-the-default-postgresql-version" title="Link to this heading">¶</a></h2>
+<p>If you encounter an error regarding the PostgreSQL version when running <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">gvm-setup</span></code>, you must upgrade the installed version of PostgreSQL to the newest version required by the Kali native <code class="docutils literal notranslate"><span class="pre">gvm</span></code> package. In the example below shows the upgrade from PostgreSQL version 15 to version 16, but these steps will work to upgrade between any versions.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Error indicating the need to upgrade your PostgreSQL cluster</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌──(dev㉿kali)-[~]
+└─$ sudo gvm-setup
+
+[&gt;] Starting PostgreSQL service
+[-] ERROR: The default PostgreSQL version (15) is not 16 that is required by libgvmd
+[-] ERROR: libgvmd needs PostgreSQL 16 to use the port 5432
+[-] ERROR: Use pg_upgradecluster to update your PostgreSQL cluster
+</pre></div>
+</div>
+</div>
+<p>To complete the Greenbone Community Edition setup you must:</p>
+<ol class="arabic simple">
+<li><p>Migrate PostgreSQL settings and data to a new upgraded cluster</p></li>
+<li><p>Configure the new cluster to use port <code class="docutils literal notranslate"><span class="pre">5432</span></code></p></li>
+<li><p>Install the newest pg-gvm extension</p></li>
+<li><p>Fix the gmvd database COLLATION mismatch</p></li>
+<li><p>Resolve Any Outstanding Dependencies</p></li>
+<li><p>Complete the Greenbone Community Edition Setup</p></li>
+</ol>
+<section id="upgrade-postgresql-cluster">
+<h3>1. Upgrade PostgreSQL Cluster<a class="headerlink" href="#upgrade-postgresql-cluster" title="Link to this heading">¶</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You should consider the contents of your existing PostgreSQL database and complete any backups of that data before you complete the following steps. It’s also important to consider that upgrading Kali Linux packages could disrupt the functionality of your system.</p>
+</div>
+<p>You can list all existing PostgreSQL clusters using the command <code class="docutils literal notranslate"><span class="pre">pg_lsclusters</span></code>.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Listing the existing PostgreSQL clusters</span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌──(dev㉿kali)-[~]
+└─$ pg_lsclusters
+Ver Cluster Port Status Owner    Data directory              Log file
+15  main    5432 online postgres /var/lib/postgresql/15/main /var/log/postgresql/postgresql-15-main.log
+16  main    5433 online postgres /var/lib/postgresql/16/main /var/log/postgresql/postgresql-16-main.log
+</pre></div>
+</div>
+</div>
+<p>The output above shows two online clusters listening on ports <code class="docutils literal notranslate"><span class="pre">5432</span></code> and <code class="docutils literal notranslate"><span class="pre">5433</span></code>. Since the target cluster <code class="docutils literal notranslate"><span class="pre">16/main</span></code> already exists, it must be temporarily deleted to avoid the error <code class="docutils literal notranslate"><span class="pre">Error:</span> <span class="pre">target</span> <span class="pre">cluster</span> <span class="pre">16/main</span> <span class="pre">already</span> <span class="pre">exists</span></code>. The existence of the <code class="docutils literal notranslate"><span class="pre">16/main</span></code> cluster does not necessarily mean that the old cluster has already been upgraded; it simply means that a cluster for that version is present.</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Trying to upgrade to an existing cluster will fail.</span><a class="headerlink" href="#id3" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌──(dev㉿kali)-[~]
+└─$ sudo pg_upgradecluster 15 main 16
+Error: target cluster 16/main already exists
+</pre></div>
+</div>
+</div>
+<p>To complete the upgrade, the <code class="docutils literal notranslate"><span class="pre">16/main</span></code> cluster must first be stopped and deleted.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>pg_ctlcluster<span class="w"> </span><span class="m">16</span><span class="w"> </span>main<span class="w"> </span>stop
+sudo<span class="w"> </span>pg_dropcluster<span class="w"> </span><span class="m">16</span><span class="w"> </span>main
+</pre></div>
+</div>
+<p>Now upgrade the old cluster to a new one. The <code class="docutils literal notranslate"><span class="pre">pg_upgradecluster</span></code> command migrates databases from the old cluster to the new cluster.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">The basic syntax of the pg_upgradecluster command.</span><a class="headerlink" href="#id4" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pg_upgradecluster</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span> <span class="n">oldversion</span> <span class="n">oldclustername</span> <span class="p">[</span><span class="n">newversion</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>To upgrade your PostgreSQL cluster, you should use the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>pg_upgradecluster<span class="w"> </span><span class="m">15</span><span class="w"> </span>main
+</pre></div>
+</div>
+<p>If you do not need the older PostgreSQL cluster, you should delete it.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>pg_dropcluster<span class="w"> </span><span class="m">15</span><span class="w"> </span>main
+</pre></div>
+</div>
+<p>And remove the PostgreSQL 15 packages</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>autoremove
+</pre></div>
+</div>
+<p>Now only the new PostgreSQL cluster exists.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Listing the existing PostgreSQL clusters</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌──(dev㉿kali)-[~]
+└─$ pg_lsclusters
+Ver Cluster Port Status Owner    Data directory              Log file
+16  main    5433 online postgres /var/lib/postgresql/16/main /var/log/postgresql/postgresql-16-main.log
+</pre></div>
+</div>
+</div>
+</section>
+<section id="configure-the-postgresql-port">
+<h3>2. Configure The PostgreSQL Port<a class="headerlink" href="#configure-the-postgresql-port" title="Link to this heading">¶</a></h3>
+<p>Typically, the <code class="docutils literal notranslate"><span class="pre">pg_upgradecluster</span></code> will also configure the new version of PostgreSQL to use the standard port <code class="docutils literal notranslate"><span class="pre">5432</span></code>, which is required by Greenbone Community Edition. However, if the port is not automatically changed, you must change it manually by editing the <code class="docutils literal notranslate"><span class="pre">postgresql.conf</span></code> configuration file and restarting the PostgreSQL systemd service. On Kali the <code class="docutils literal notranslate"><span class="pre">postgresql.conf</span></code> configuration file is located in the <code class="docutils literal notranslate"><span class="pre">/etc/postgresql/&lt;version&gt;/main</span></code> directory, but to be sure you can issue a command to locate the configuration file.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>-u<span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;SHOW config_file&#39;</span>
+</pre></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">Executing command to locate the PostgreSQL config file</span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌──(dev㉿kali)-[~]
+└─$ sudo -u postgres psql -c &#39;SHOW config_file&#39;
+
+               config_file
+-----------------------------------------
+ /etc/postgresql/16/main/postgresql.conf
+(1 row)
+</pre></div>
+</div>
+</div>
+<p>Edit the configuration file and change the connection settings port to <code class="docutils literal notranslate"><span class="pre">5432</span></code> and restart the PostgreSQL port.</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">Use nano to edit the postgresql.conf file</span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">postgresql</span><span class="o">/</span><span class="mi">16</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">postgresql</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+</div>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span># - Connection Settings -
+
+#listen_addresses = &#39;localhost&#39;         # what IP address(es) to listen on;
+<span class="w"> </span>                                       # comma-separated list of addresses;
+<span class="w"> </span>                                       # defaults to &#39;localhost&#39;; use &#39;*&#39; for all
+<span class="w"> </span>                                       # (change requires restart)
+<span class="gd">-port = 5433                             # (change requires restart)</span>
+<span class="gi">+port = 5432                             # (change requires restart)</span>
+max_connections = 100                   # (change requires restart)
+#reserved_connections = 0               # (change requires restart)
+#superuser_reserved_connections = 3     # (change requires restart)
+</pre></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">Restart the PostgreSQL systemd service</span><a class="headerlink" href="#id8" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">postgresql</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="install-the-newest-pg-gvm-extension-for-postgresql">
+<h3>3. Install The Newest pg-gvm Extension For PostgreSQL<a class="headerlink" href="#install-the-newest-pg-gvm-extension-for-postgresql" title="Link to this heading">¶</a></h3>
+<p>When upgrading PostgreSQL cluster to a newer version, the <code class="docutils literal notranslate"><span class="pre">pg-gvm</span></code> package must also be updated. If you do not update this package before running <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">gvm-check-setup</span></code>, you will encounter the following error when rebuilding the <code class="docutils literal notranslate"><span class="pre">gvmd</span></code> database:</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">Missing pg-gvm extention error when running gvm-check-setup</span><a class="headerlink" href="#id9" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">Creating</span> <span class="n">extension</span> <span class="n">pg</span><span class="o">-</span><span class="n">gvm</span>
+<span class="n">ERROR</span><span class="p">:</span>  <span class="n">extension</span> <span class="s2">&quot;pg-gvm&quot;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">available</span>
+<span class="n">DETAIL</span><span class="p">:</span>  <span class="n">Could</span> <span class="ow">not</span> <span class="nb">open</span> <span class="n">extension</span> <span class="n">control</span> <span class="n">file</span> <span class="s2">&quot;/usr/share/postgresql/16/extension/pg-gvm.control&quot;</span><span class="p">:</span> <span class="n">No</span> <span class="n">such</span> <span class="n">file</span> <span class="ow">or</span> <span class="n">directory</span><span class="o">.</span>
+<span class="n">HINT</span><span class="p">:</span>  <span class="n">The</span> <span class="n">extension</span> <span class="n">must</span> <span class="n">first</span> <span class="n">be</span> <span class="n">installed</span> <span class="n">on</span> <span class="n">the</span> <span class="n">system</span> <span class="n">where</span> <span class="n">PostgreSQL</span> <span class="ow">is</span> <span class="n">running</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<p>You can find all available versions of <code class="docutils literal notranslate"><span class="pre">pg-gvm</span></code> using the <code class="docutils literal notranslate"><span class="pre">apt-cache</span> <span class="pre">search</span></code> command:</p>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">Searching the Linux package repository for all versions of pg-gvm</span><a class="headerlink" href="#id10" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌──(dev㉿kali)-[~]
+└─$ apt-cache search pg-gvm
+postgresql-16-pg-gvm - PostgreSQL extension for ical object manipulation
+</pre></div>
+</div>
+</div>
+<p>After updating the aptitude package repository is <code class="docutils literal notranslate"><span class="pre">postgresql-16-pg-gvm</span></code> which matches the new PostgreSQL version. So, you need to install that package:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>postgresql-16-pg-gvm<span class="w"> </span>-y
+</pre></div>
+</div>
+</section>
+<section id="fixing-the-gvmd-collation-version-mismatch">
+<h3>4. Fixing The gvmd COLLATION Version Mismatch<a class="headerlink" href="#fixing-the-gvmd-collation-version-mismatch" title="Link to this heading">¶</a></h3>
+<p>During a PostgreSQL cluster upgrade you may encounter a COLLATION mismatch warning. This warning must be resolved before <code class="docutils literal notranslate"><span class="pre">gvm-setup</span></code> can be completed.</p>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">Error message indicating a COLLATION version mismatch</span><a class="headerlink" href="#id11" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WARNING</span><span class="p">:</span>  <span class="n">database</span> <span class="s2">&quot;gvmd&quot;</span> <span class="n">has</span> <span class="n">a</span> <span class="n">collation</span> <span class="n">version</span> <span class="n">mismatch</span>
+<span class="n">DETAIL</span><span class="p">:</span>  <span class="n">The</span> <span class="n">database</span> <span class="n">was</span> <span class="n">created</span> <span class="n">using</span> <span class="n">collation</span> <span class="n">version</span> <span class="mf">2.36</span><span class="p">,</span> <span class="n">but</span> <span class="n">the</span> <span class="n">operating</span> <span class="n">system</span> <span class="n">provides</span> <span class="n">version</span> <span class="mf">2.37</span><span class="o">.</span>
+<span class="n">HINT</span><span class="p">:</span>  <span class="n">Rebuild</span> <span class="nb">all</span> <span class="n">objects</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">database</span> <span class="n">that</span> <span class="n">use</span> <span class="n">the</span> <span class="n">default</span> <span class="n">collation</span> <span class="ow">and</span> <span class="n">run</span> <span class="n">ALTER</span> <span class="n">DATABASE</span> <span class="n">gvmd</span> <span class="n">REFRESH</span> <span class="n">COLLATION</span> <span class="n">VERSION</span><span class="p">,</span> <span class="ow">or</span> <span class="n">build</span> <span class="n">PostgreSQL</span> <span class="k">with</span> <span class="n">the</span> <span class="n">right</span> <span class="n">library</span> <span class="n">version</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<p>To fix the collation mismatch, login to the <code class="docutils literal notranslate"><span class="pre">psql</span></code> command line and execute the suggested commands to update all databases in the cluster.  This will at least include the <code class="docutils literal notranslate"><span class="pre">gvmd</span></code> and <code class="docutils literal notranslate"><span class="pre">postgres</span></code> databases.</p>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">Become the postgres user to access the psql shell as a superadmin</span><a class="headerlink" href="#id12" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">su</span> <span class="n">postgres</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-text">Start the PostgreSQL shell</span><a class="headerlink" href="#id13" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">psql</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-text">Update each database COLLATION version</span><a class="headerlink" href="#id14" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>postgres=# ALTER DATABASE postgres REFRESH COLLATION VERSION;
+NOTICE:  changing version from 2.36 to 2.37
+ALTER DATABASE
+postgres=# ALTER DATABASE gvmd REFRESH COLLATION VERSION;
+NOTICE:  changing version from 2.36 to 2.37
+ALTER DATABASE
+postgres-# \q
+postgres@kali:/home/dev$ exit
+</pre></div>
+</div>
+</div>
+</section>
+<section id="resolve-any-outstanding-dependencies">
+<h3>5. Resolve Any Outstanding Dependencies<a class="headerlink" href="#resolve-any-outstanding-dependencies" title="Link to this heading">¶</a></h3>
+<p>In order to complete the database cluster migration, you may also need to update various outdated extensions depending on the particular changes between PostgreSQL versions. For example, when migrating between PostgreSQL 15 and 16, the <code class="docutils literal notranslate"><span class="pre">pgcrypto</span></code> module must be updated. To update any unresolved dependencies…</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>pgcrypto
+</pre></div>
+</div>
+</section>
+<section id="complete-the-greenbone-community-edition-setup">
+<h3>6. Complete The Greenbone Community Edition Setup<a class="headerlink" href="#complete-the-greenbone-community-edition-setup" title="Link to this heading">¶</a></h3>
+<p>You can now run the <code class="docutils literal notranslate"><span class="pre">gvm-setup</span></code> command to complete the setup.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">gvm</span><span class="o">-</span><span class="n">setup</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>During setup it’s important to note and record the default password created for the GVM admin user.</p>
+</div>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-text">The admin password is included in gvm-setup output</span><a class="headerlink" href="#id15" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="o">+</span><span class="p">]</span> <span class="n">Done</span>
+<span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">Please</span> <span class="n">note</span> <span class="n">the</span> <span class="n">password</span> <span class="k">for</span> <span class="n">the</span> <span class="n">admin</span> <span class="n">user</span>
+<span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">User</span> <span class="n">created</span> <span class="k">with</span> <span class="n">password</span> <span class="s1">&#39;ff006a29-8977-4ffa-882c-cd430fdc9bb8&#39;</span><span class="o">.</span>
+
+<span class="p">[</span><span class="o">&gt;</span><span class="p">]</span> <span class="n">You</span> <span class="n">can</span> <span class="n">now</span> <span class="n">run</span> <span class="n">gvm</span><span class="o">-</span><span class="n">check</span><span class="o">-</span><span class="n">setup</span> <span class="n">to</span> <span class="n">make</span> <span class="n">sure</span> <span class="n">everything</span> <span class="ow">is</span> <span class="n">correctly</span> <span class="n">configured</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="other-common-setup-errors">
+<h2>Other Common Setup Errors<a class="headerlink" href="#other-common-setup-errors" title="Link to this heading">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here are some other common setup errors you may encounter when installing Greenbone Community Edition from the native Kali Linux package. In most cases, hints are available in the <code class="docutils literal notranslate"><span class="pre">gvm-setup</span></code> and <code class="docutils literal notranslate"><span class="pre">gvm-check-setup</span></code> command output.</p>
+</div>
+<section id="error-extention-pg-gvm-is-not-available">
+<h3>ERROR: extention “pg-gvm” is not available<a class="headerlink" href="#error-extention-pg-gvm-is-not-available" title="Link to this heading">¶</a></h3>
+<p><a class="reference internal" href="#install-the-newest-pg-gvm-extension-for-postgresql">See the instructions here</a> to find and install the latest version of <code class="docutils literal notranslate"><span class="pre">pg-gvm</span></code>.</p>
+</section>
+<section id="error-no-users-found">
+<h3>ERROR: No users found<a class="headerlink" href="#error-no-users-found" title="Link to this heading">¶</a></h3>
+<p>If you encounter the error <strong>ERROR: No users found.</strong> when running <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">gvm-check-setup</span></code>, you will need to create at least one an admin user. Replace <code class="docutils literal notranslate"><span class="pre">&lt;your-password&gt;</span></code> with your own password.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>runuser<span class="w"> </span>-u<span class="w"> </span>_gvm<span class="w"> </span>--<span class="w"> </span>gvmd<span class="w"> </span>--create-user<span class="o">=</span>admin<span class="w"> </span>--password<span class="o">=</span><span class="s1">&#39;&lt;your-password&gt;&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="error-the-postgresql-db-does-not-exist">
+<h3>ERROR: The Postgresql DB does not exist<a class="headerlink" href="#error-the-postgresql-db-does-not-exist" title="Link to this heading">¶</a></h3>
+<p>If the PostgreSQL database was not created during initial setup of Greenbone Community Edition, or not transferred when migrating to a new cluster, you must manually create the database with the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">runuser</span> <span class="o">-</span><span class="n">u</span> <span class="n">postgres</span> <span class="o">--</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">gvm</span><span class="o">/</span><span class="n">create</span><span class="o">-</span><span class="n">postgresql</span><span class="o">-</span><span class="n">database</span>
+</pre></div>
+</div>
+</section>
+<section id="error-required-systemd-service-did-not-start">
+<h3>ERROR: Required systemd service did not start<a class="headerlink" href="#error-required-systemd-service-did-not-start" title="Link to this heading">¶</a></h3>
+<p>If the ospd-openvas service or any other required Greenbone <code class="docutils literal notranslate"><span class="pre">systemd</span></code> services did not start during the setup or initialization, you can attempt to manually start the process. Here is an example for troubleshooting the <code class="docutils literal notranslate"><span class="pre">ospd-openvas</span></code> systemd service, but you can use this process for other services as well:</p>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-text">Try to manually start the service</span><a class="headerlink" href="#id16" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">ospd</span><span class="o">-</span><span class="n">openvas</span>
+</pre></div>
+</div>
+</div>
+<p>If the service still fails to start properly, you can check for errors using the following methods:</p>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-text">Display the systemd service status including any errors</span><a class="headerlink" href="#id17" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">status</span> <span class="n">ospd</span><span class="o">-</span><span class="n">openvas</span> <span class="o">|</span> <span class="n">less</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-text">View detailed system logs with extended output</span><a class="headerlink" href="#id18" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">journalctl</span> <span class="o">-</span><span class="n">xe</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-text">View most recent items in the ospd-openvas log file</span><a class="headerlink" href="#id19" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tail</span> <span class="o">-</span><span class="mi">20</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">gvm</span><span class="o">/</span><span class="n">ospd</span><span class="o">-</span><span class="n">openvas</span><span class="o">.</span><span class="n">log</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can find all the Greenbone Community Edition log files in the <code class="docutils literal notranslate"><span class="pre">/var/log/gvm</span></code> directory.</p>
+</div>
+</section>
+<section id="error-the-client-certificate-file-of-gsad-is-not-valid">
+<h3>ERROR: The client certificate file of gsad is not valid<a class="headerlink" href="#error-the-client-certificate-file-of-gsad-is-not-valid" title="Link to this heading">¶</a></h3>
+<p>If the required SSL/TLS certificates failed to generate during the standard setup process, or if the existing certificates are not valid any longer, you must generate the necessary SSL/TLS certificate files. The script <code class="docutils literal notranslate"><span class="pre">gvm-manage-certs</span></code> is used for managing the certificates required by Greenbone Community Edition.</p>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-text">Generate all required SSL/TLS certificates</span><a class="headerlink" href="#id20" title="Link to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">runuser</span> <span class="o">-</span><span class="n">u</span> <span class="n">_gvm</span> <span class="o">--</span> <span class="n">gvm</span><span class="o">-</span><span class="n">manage</span><span class="o">-</span><span class="n">certs</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">f</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="error-database-is-wrong-version-you-have-installed-a-new-gvmd-version">
+<h3>ERROR: Database is wrong version. You have installed a new gvmd version<a class="headerlink" href="#error-database-is-wrong-version-you-have-installed-a-new-gvmd-version" title="Link to this heading">¶</a></h3>
+<p>When upgrading Greenbone Community Edition, you may need to also update the <code class="docutils literal notranslate"><span class="pre">gvmd</span></code> PostgreSQL database schema. You can update the <code class="docutils literal notranslate"><span class="pre">gvmd</span></code> database to the with the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>runuser<span class="w"> </span>-u<span class="w"> </span>_gvm<span class="w"> </span>--<span class="w"> </span>gvmd<span class="w"> </span>--migrate
+</pre></div>
+</div>
+</section>
+<section id="error-no-postgresql-version-uses-the-port-5432">
+<h3>ERROR: No postgresql version uses the port 5432.<a class="headerlink" href="#error-no-postgresql-version-uses-the-port-5432" title="Link to this heading">¶</a></h3>
+<p>Greenbone Community Edition requires a PostgreSQL connection on port 5432. <a class="reference internal" href="#configure-the-postgresql-port">See instructions here</a> to change the PostgreSQL port.</p>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../../faq.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Frequently Asked Questions (FAQ)</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Kali Linux Install Guide</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2021–2024, Greenbone AG
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://github.com/greenbone/docs/" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Troubleshooting</a><ul>
+<li><a class="reference internal" href="#troubleshooting-a-kali-linux-installation">Troubleshooting A Kali Linux Installation</a></li>
+<li><a class="reference internal" href="#upgrading-the-default-postgresql-version">Upgrading The Default PostgreSQL Version</a><ul>
+<li><a class="reference internal" href="#upgrade-postgresql-cluster">1. Upgrade PostgreSQL Cluster</a></li>
+<li><a class="reference internal" href="#configure-the-postgresql-port">2. Configure The PostgreSQL Port</a></li>
+<li><a class="reference internal" href="#install-the-newest-pg-gvm-extension-for-postgresql">3. Install The Newest pg-gvm Extension For PostgreSQL</a></li>
+<li><a class="reference internal" href="#fixing-the-gvmd-collation-version-mismatch">4. Fixing The gvmd COLLATION Version Mismatch</a></li>
+<li><a class="reference internal" href="#resolve-any-outstanding-dependencies">5. Resolve Any Outstanding Dependencies</a></li>
+<li><a class="reference internal" href="#complete-the-greenbone-community-edition-setup">6. Complete The Greenbone Community Edition Setup</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#other-common-setup-errors">Other Common Setup Errors</a><ul>
+<li><a class="reference internal" href="#error-extention-pg-gvm-is-not-available">ERROR: extention “pg-gvm” is not available</a></li>
+<li><a class="reference internal" href="#error-no-users-found">ERROR: No users found</a></li>
+<li><a class="reference internal" href="#error-the-postgresql-db-does-not-exist">ERROR: The Postgresql DB does not exist</a></li>
+<li><a class="reference internal" href="#error-required-systemd-service-did-not-start">ERROR: Required systemd service did not start</a></li>
+<li><a class="reference internal" href="#error-the-client-certificate-file-of-gsad-is-not-valid">ERROR: The client certificate file of gsad is not valid</a></li>
+<li><a class="reference internal" href="#error-database-is-wrong-version-you-have-installed-a-new-gvmd-version">ERROR: Database is wrong version. You have installed a new gvmd version</a></li>
+<li><a class="reference internal" href="#error-no-postgresql-version-uses-the-port-5432">ERROR: No postgresql version uses the port 5432.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=6b89569b"></script>
+    </body>
+</html>
