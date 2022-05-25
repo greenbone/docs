@@ -18,12 +18,12 @@ jobs:
       - name: Install poetry and dependencies
         uses: greenbone/actions/poetry@v1
       - name: Build docs
-        run: poetry run sphinx-build -M html src _build
+        run: poetry run sphinx-build -b html src _build
       - name: Upload Documentation Artifact
         uses: actions/upload-artifact@v3
         with:
           name: greenbone-community-docs
-          path: _build/html/
+          path: _build/
 
   deploy-docs:
     needs: build-docs
