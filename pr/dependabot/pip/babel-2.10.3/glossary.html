@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Glossary &#8212; Greenbone Community Documentation  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="Frequently Asked Questions (FAQ)" href="faq.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="glossary">
+<h1>Glossary<a class="headerlink" href="#glossary" title="Permalink to this heading">¶</a></h1>
+<dl class="simple glossary">
+<dt id="term-gvmd">gvmd<a class="headerlink" href="#term-gvmd" title="Permalink to this term">¶</a></dt><dd><p>Management daemon shipped with GVM 10 and later. Abbreviation for
+<strong>G</strong>reenbone <strong>V</strong>ulnerability <strong>M</strong>anager <strong>D</strong>aemon.</p>
+</dd>
+<dt id="term-openvassd">openvassd<a class="headerlink" href="#term-openvassd" title="Permalink to this term">¶</a></dt><dd><p>Scanner daemon used by GVM 10 and before. It listens for incoming
+connections and starts scan processes to run the actual vulnerability tests.
+It collects the results and reports them to the management daemon. With the
+GVM 11 release, it has been converted to the <a class="reference internal" href="#term-openvas"><span class="xref std std-term">openvas</span></a> application by
+removing the daemon and replacing the communication protocol.
+Abbreviation for <strong>OpenVAS</strong> <strong>S</strong>canner <strong>D</strong>aemon.</p>
+</dd>
+<dt id="term-openvas">openvas<a class="headerlink" href="#term-openvas" title="Permalink to this term">¶</a></dt><dd><p>Scanner application executable to run vulnerability tests against targets
+and to store scan results into a Redis database. Used in
+GVM 11 and later. It has originated from the <a class="reference internal" href="#term-openvassd"><span class="xref std std-term">openvassd</span></a>.</p>
+</dd>
+<dt id="term-OSPd">OSPd<a class="headerlink" href="#term-OSPd" title="Permalink to this term">¶</a></dt><dd><p>A <a class="reference external" href="https://github.com/greenbone/ospd">framework</a> for several scanner
+daemons speaking the <a class="reference internal" href="#term-OSP"><span class="xref std std-term">Open Scanner Protocol (OSP)</span></a>.</p>
+</dd>
+<dt id="term-ospd-openvas">ospd-openvas<a class="headerlink" href="#term-ospd-openvas" title="Permalink to this term">¶</a></dt><dd><p>A <a class="reference internal" href="#term-OSP"><span class="xref std std-term">OSP</span></a> scanner daemon managing the <a class="reference internal" href="#term-openvas"><span class="xref std std-term">openvas</span></a>
+executable for reporting scan results to the management daemon <a class="reference internal" href="#term-gvmd"><span class="xref std std-term">gvmd</span></a>.
+Used in GVM 11 and later.</p>
+</dd>
+<dt id="term-gsad">gsad<a class="headerlink" href="#term-gsad" title="Permalink to this term">¶</a></dt><dd><p>A web server providing the <a class="reference internal" href="#term-GSA"><span class="xref std std-term">Greenbone Security Assistant</span></a> web
+application.</p>
+</dd>
+<dt id="term-GSA">GSA<a class="headerlink" href="#term-GSA" title="Permalink to this term">¶</a></dt><dd><p>The Greenbone Security Assistant (GSA) web application to control scans and
+access vulnerability information via a web interface in a browser.</p>
+</dd>
+<dt id="term-GOS">GOS<a class="headerlink" href="#term-GOS" title="Permalink to this term">¶</a></dt><dd><p>Greenbone Operating System, the operating system of the
+<a class="reference internal" href="#term-Greenbone-Enterprise"><span class="xref std std-term">Greenbone Enterprise</span></a> Appliance. It provides the commercial version
+of the <a class="reference internal" href="#term-GVM"><span class="xref std std-term">GVM framework</span></a> with enterprise support and features.</p>
+</dd>
+<dt id="term-GSM">GSM<a class="headerlink" href="#term-GSM" title="Permalink to this term">¶</a></dt><dd><p>Greenbone Security Manager is the former name of our commercial product line
+<a class="reference internal" href="#term-Greenbone-Enterprise"><span class="xref std std-term">Greenbone Enterprise</span></a> as hardware or virtual appliances.</p>
+</dd>
+<dt id="term-GMP">GMP<a class="headerlink" href="#term-GMP" title="Permalink to this term">¶</a></dt><dd><p>The Greenbone Management Protocol (GMP) is an XML-based communication
+protocol provided by <a class="reference internal" href="#term-gvmd"><span class="xref std std-term">gvmd</span></a>. It provides an API to create, read, update
+and delete scans and vulnerability information.</p>
+</dd>
+<dt id="term-OSP">OSP<a class="headerlink" href="#term-OSP" title="Permalink to this term">¶</a></dt><dd><p>The Open Scanner Protocol is an XML-based communication protocol provided by
+<a class="reference internal" href="#term-ospd-openvas"><span class="xref std std-term">ospd-openvas</span></a>. It provides an API to start scans, get <a class="reference internal" href="#term-VT"><span class="xref std std-term">VT</span></a>
+information and to receive scan results.</p>
+</dd>
+<dt id="term-GVM">GVM<a class="headerlink" href="#term-GVM" title="Permalink to this term">¶</a></dt><dd><p>The <a class="reference internal" href="#term-Greenbone-Community-Edition"><span class="xref std std-term">Greenbone Community Edition</span></a> consists of several services. This
+software framework has been released as Greenbone Vulnerability Management (GVM).
+It is developed as part of the commercial <a class="reference internal" href="#term-Greenbone-Enterprise"><span class="xref std std-term">Greenbone Enterprise</span></a>
+product line. Sometimes referred to as the OpenVAS framework.</p>
+</dd>
+<dt id="term-Greenbone-Community-Edition">Greenbone Community Edition<a class="headerlink" href="#term-Greenbone-Community-Edition" title="Permalink to this term">¶</a></dt><dd><p>The Greenbone Community Edition covers the actual releases of the Greenbone
+application stack for vulnerability scanning and vulnerability management
+<a class="reference internal" href="#term-GVM"><span class="xref std std-term">GVM</span></a> provided as open-source software to the community.
+The Greenbone Community Edition is adopted by external third parties, e.g., if the
+<a class="reference internal" href="#term-GVM"><span class="xref std std-term">GVM</span></a> stack is provided by a Linux distribution, it is build from
+the Greenbone Community Edition.</p>
+</dd>
+<dt id="term-Greenbone-Community-Containers">Greenbone Community Containers<a class="headerlink" href="#term-Greenbone-Community-Containers" title="Permalink to this term">¶</a></dt><dd><p>Container images that are pre-build on <a class="reference external" href="https://github.com/greenbone">GitHub</a>
+and available via <a class="reference external" href="https://hub.docker.com/u/greenbone">dockerhub</a>. These
+images can be used to run the newest versions of the <a class="reference internal" href="#term-Greenbone-Community-Edition"><span class="xref std std-term">Greenbone Community Edition</span></a>
+without having to care about the operating system, compiler and build
+tool chains.</p>
+</dd>
+<dt id="term-Greenbone-Enterprise">Greenbone Enterprise<a class="headerlink" href="#term-Greenbone-Enterprise" title="Permalink to this term">¶</a></dt><dd><p>Greenbone Enterprise is the <a class="reference external" href="https://www.greenbone.net/en/product-comparison/">Greenbone product line for on-premises solutions</a>.
+Included are virtual or hardware Greenbone Enterprise Appliances with the
+<a class="reference internal" href="#term-GOS"><span class="xref std std-term">Greenbone Operating System (GOS)</span></a>,
+the <a class="reference internal" href="#term-GVM"><span class="xref std std-term">Greenbone Vulnerability Management (GVM) framework</span></a>, and
+the <a class="reference internal" href="#term-Greenbone-Enterprise-Feed"><span class="xref std std-term">Greenbone Enterprise Feed</span></a>.</p>
+</dd>
+<dt id="term-Greenbone-Community-Feed">Greenbone Community Feed<a class="headerlink" href="#term-Greenbone-Community-Feed" title="Permalink to this term">¶</a></dt><dd><p>The Greenbone Community Feed is the freely available feed for vulnerability
+information licensed as open-source. It contains basic scan configurations,
+report formats, port lists and the most important vulnerability tests. The
+provided data is updated on a daily basis with no warranty or promises for
+fixes or completeness.</p>
+</dd>
+<dt id="term-Greenbone-Enterprise-Feed">Greenbone Enterprise Feed<a class="headerlink" href="#term-Greenbone-Enterprise-Feed" title="Permalink to this term">¶</a></dt><dd><p>The Greenbone Enterprise Feed is the commercial feed provided by
+Greenbone Networks containing additional enterprise features like
+vulnerability tests for enterprise products, policy and compliance checks,
+extensive reports formats and special scan configurations.
+The feed comes with a service-level agreement ensuring support, quality
+assurance and availability.</p>
+</dd>
+<dt id="term-VT">VT<a class="headerlink" href="#term-VT" title="Permalink to this term">¶</a></dt><dd><p>Vulnerability Tests (VTs), also known as Network Vulnerability Tests
+(NVTs), are scripts written in the NASL programming language to detect
+vulnerabilities at remote hosts.</p>
+</dd>
+<dt id="term-SCAP">SCAP<a class="headerlink" href="#term-SCAP" title="Permalink to this term">¶</a></dt><dd><p>Abbreviation for <a class="reference external" href="https://csrc.nist.gov/projects/security-content-automation-protocol/">Security Content Automation Protocol</a>.
+It is used for providing <a class="reference internal" href="#term-CPE"><span class="xref std std-term">CPE</span></a> and <a class="reference internal" href="#term-CVE"><span class="xref std std-term">CVE</span></a> data via the Greenbone
+Enterprise and Community Feeds.</p>
+</dd>
+<dt id="term-CPE">CPE<a class="headerlink" href="#term-CPE" title="Permalink to this term">¶</a></dt><dd><p>Abbreviation for <a class="reference external" href="https://csrc.nist.gov/Projects/Security-Content-Automation-Protocol/Specifications/cpe">Common Platform Enumeration</a>.
+Common Platform Enumeration (CPE) is a standardized method of describing and
+identifying classes of applications, operating systems, and hardware devices
+present among an enterprise’s computing assets.</p>
+</dd>
+<dt id="term-CVE">CVE<a class="headerlink" href="#term-CVE" title="Permalink to this term">¶</a></dt><dd><p>Abbreviation for <a class="reference external" href="https://www.cve.org/">Common Vulnerabilities and Exposures</a>.
+It provides unique, common identifiers for publicly known information-security
+vulnerabilities in publicly released software packages.</p>
+</dd>
+</dl>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="index.html">
+    <img
+      class="logo"
+      src="_static/logo.svg"
+      alt="Greenbone Logo"
+    />
+    <h1 class="logo logo-name">Greenbone Community Documentation</h1>
+  </a>
+</p>
+<p class="description">
+  Documentation for the Greenbone Community Edition
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="faq.html" title="previous chapter">Frequently Asked Questions (FAQ)</a></li>
+      <li>Next: <a href="changelog.html" title="next chapter">Changelog</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021–2022, Greenbone Networks.
+      
+      |
+      <a href="_sources/glossary.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/greenbone/docs" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,112 @@
+div.document {
+
+	width: 1200px;
+}
+
+body {
+	font-family: Helvetica, Verdana;
+}
+
+div.body {
+	max-width: 1200px;
+}
+
+div.body h1,
+div.body h2,
+div.body h3,
+div.body h4,
+div.body h5,
+div.body h6 {
+    font-family: Helvetica, Verdana;
+ }
+ 
+a {
+    color: #3E4349;
+    text-decoration: none;
+}
+
+a:hover {
+	color: #66c430;
+}
+
+div.body p.caption {
+	font-size: 240%;
+	margin-bottom: 0px;
+}
+
+div.sphinxsidebar h3 {
+    font-family: Helvetica, Verdana;
+}
+
+div.sphinxsidebar a {
+    border: 0px;
+}
+
+div.sphinxsidebarwrapper p.description {
+  font-size: 15px;
+}
+
+div.sphinxsidebarwrapper h1.logo {
+  font-size: 25px;
+}
+
+div.sphinxsidebarwrapper h1.logo-name {
+	margin-top:50px;
+}
+
+div.sphinxsidebarwrapper p.description {
+	margin-bottom: 50px;
+}
+
+
+div.sphinxsidebarwrapper img {
+  max-width: 70%;
+}
+
+.highlight-shell-session .go::before {
+  content: ">";
+  padding-right: 1em;
+}
+
+.highlight pre {
+  color: #cccccc;
+  background-color: #282c34;
+  border-radius: 6px;
+  font-family: Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;
+  font-size: 0.9em;
+  line-height: 1.4;
+  padding: 1.25rem 1.5rem;
+}
+
+#contents.toc {
+    background-color: #ffffff;
+    border: none;
+}
+
+
+
+div.admonition {
+    padding: 20px 20px;
+    border-radius: 4px;
+}
+
+div.admonition p.admonition-title {
+    font-family: Helvetica, Verdana;
+    font-weight: bold;
+}
+
+div.topic {
+	border-radius: 4px;
+}
+
+div.topic a.reference.internal {
+	border: 0px;
+}
+
+div.toctree-wrapper.compound a.reference.internal {
+	border: 0px;
+}
+
+#indices-and-tables a.reference.internal {
+	border: 0px;
+}

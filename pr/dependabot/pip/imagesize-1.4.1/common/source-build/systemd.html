@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Starting Services with Systemd &#8212; Greenbone Community Documentation  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="starting-services-with-systemd">
+<h1>Starting Services with <em>Systemd</em><a class="headerlink" href="#starting-services-with-systemd" title="Permalink to this heading">¶</a></h1>
+<p><a class="reference external" href="https://systemd.io/">Systemd</a> is used to start the daemons <em>ospd-openvas</em>,
+<em>gvmd</em> and <em>gsad</em>. Therefore, service files are required.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Systemd service file for ospd-openvas</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cat &lt;&lt; EOF &gt; $BUILD_DIR/ospd-openvas.service
+[Unit]
+Description=OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)
+Documentation=man:ospd-openvas(8) man:openvas(8)
+After=network.target networking.service redis-server@openvas.service
+Wants=redis-server@openvas.service
+ConditionKernelCommandLine=!recovery
+
+[Service]
+Type=forking
+User=gvm
+Group=gvm
+RuntimeDirectory=ospd
+RuntimeDirectoryMode=2775
+PIDFile=/run/ospd/ospd-openvas.pid
+ExecStart=/usr/local/bin/ospd-openvas --unix-socket /run/ospd/ospd-openvas.sock --pid-file /run/ospd/ospd-openvas.pid --log-file /var/log/gvm/ospd-openvas.log --lock-file-dir /var/lib/openvas --socket-mode 0o770
+SuccessExitStatus=SIGKILL
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo cp $BUILD_DIR/ospd-openvas.service /etc/systemd/system/
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Systemd service file for gvmd</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cat &lt;&lt; EOF &gt; $BUILD_DIR/gvmd.service
+[Unit]
+Description=Greenbone Vulnerability Manager daemon (gvmd)
+After=network.target networking.service postgresql.service ospd-openvas.service
+Wants=postgresql.service ospd-openvas.service
+Documentation=man:gvmd(8)
+ConditionKernelCommandLine=!recovery
+
+[Service]
+Type=forking
+User=gvm
+Group=gvm
+PIDFile=/run/gvmd/gvmd.pid
+RuntimeDirectory=gvmd
+RuntimeDirectoryMode=2775
+ExecStart=/usr/local/sbin/gvmd --osp-vt-update=/run/ospd/ospd-openvas.sock --listen-group=gvm
+Restart=always
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo cp $BUILD_DIR/gvmd.service /etc/systemd/system/
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Systemd service file for gsad</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cat &lt;&lt; EOF &gt; $BUILD_DIR/gsad.service
+[Unit]
+Description=Greenbone Security Assistant daemon (gsad)
+Documentation=man:gsad(8) https://www.greenbone.net
+After=network.target gvmd.service
+Wants=gvmd.service
+
+[Service]
+Type=forking
+User=gvm
+Group=gvm
+RuntimeDirectory=gsad
+RuntimeDirectoryMode=2775
+PIDFile=/run/gsad/gsad.pid
+ExecStart=/usr/local/sbin/gsad --listen=127.0.0.1 --port=9392 --http-only
+Restart=always
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target
+Alias=greenbone-security-assistant.service
+EOF
+
+sudo cp $BUILD_DIR/gsad.service /etc/systemd/system/
+</pre></div>
+</div>
+</div>
+<p>Afterwards, the services need to be activated and started.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Making systemd aware of the new service files</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">daemon</span><span class="o">-</span><span class="n">reload</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Ensuring services are run at every system startup</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">ospd</span><span class="o">-</span><span class="n">openvas</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">gvmd</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">enable</span> <span class="n">gsad</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please be aware, even if the <strong class="command">systemctl start</strong> commands are returning
+immediately, the <strong>first startup</strong> of the services may take several minutes
+or even hours!</p>
+<p>At the first start the scanner needs to load all <a class="reference internal" href="../../glossary.html#term-VT"><span class="xref std std-term">VTs</span></a> into Redis
+and <em>gvmd</em> must process the CERT and SCAP data. <em>gvmd</em> requests all VT
+information from the scanner after they are loaded by the scanner. The scan
+configurations are only available if a <em>Feed Import Owner</em> is set, <em>gvmd</em> can
+connect to the scanner and the VTs are fully loaded by both services.</p>
+<p>Running a vulnerability scan when not all data has been loaded may lead to empty
+or erroneous reports. You can check the <code class="file docutils literal notranslate"><span class="pre">/var/log/gvm/gvmd.log</span></code> file for
+activity and also have a look at the SecInfo pages (for example
+<span class="menuselection">SecInfo ‣ NVTs</span>).</p>
+</div>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">Finally starting the services</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">ospd</span><span class="o">-</span><span class="n">openvas</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">gvmd</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">start</span> <span class="n">gsad</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">Checking the status of the services</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">status</span> <span class="n">ospd</span><span class="o">-</span><span class="n">openvas</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">status</span> <span class="n">gvmd</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">status</span> <span class="n">gsad</span>
+</pre></div>
+</div>
+</div>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="../../index.html">
+    <img
+      class="logo"
+      src="../../_static/logo.svg"
+      alt="Greenbone Logo"
+    />
+    <h1 class="logo logo-name">Greenbone Community Documentation</h1>
+  </a>
+</p>
+<p class="description">
+  Documentation for the Greenbone Community Edition
+</p><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021–2022, Greenbone Networks.
+      
+      |
+      <a href="../../_sources/common/source-build/systemd.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/greenbone/docs" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>

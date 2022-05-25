@@ -1,0 +1,313 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Background &#8212; Greenbone Community Documentation  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Building 21.04 from Source" href="21.04/source-build/index.html" />
+    <link rel="prev" title="Greenbone Community Edition – Documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="background">
+<h1>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#architecture" id="id5">Architecture</a></p>
+<ul>
+<li><p><a class="reference internal" href="#greenbone-vulnerability-manager-daemon-gvmd" id="id6">Greenbone Vulnerability Manager Daemon (gvmd)</a></p></li>
+<li><p><a class="reference internal" href="#greenbone-security-assistant-gsa" id="id7">Greenbone Security Assistant (GSA)</a></p></li>
+<li><p><a class="reference internal" href="#openvas-scanner" id="id8">OpenVAS Scanner</a></p></li>
+<li><p><a class="reference internal" href="#additional-software" id="id9">Additional Software</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#greenbone-gvm-openvas-and-how-they-are-connected" id="id10">Greenbone, GVM, OpenVAS and How They Are Connected</a></p></li>
+<li><p><a class="reference internal" href="#history-of-the-openvas-project" id="id11">History of the OpenVAS project</a></p></li>
+</ul>
+</div>
+<section id="architecture">
+<h2><a class="toc-backref" href="#id5">Architecture</a><a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h2>
+<p>The Greenbone Community Edition consists of a framework with several services.
+It is developed as part of the commercial <a class="reference external" href="https://www.greenbone.net/en/products/">Greenbone Enterprise</a> product line .</p>
+<p>The Greenbone Community Edition was originally built as a community project
+named <a class="reference external" href="https://openvas.org/">OpenVAS</a> and is primarily developed and forwarded by Greenbone Networks.</p>
+<p>The following figure shows an overview of the architecture for the 21.04 release.</p>
+<figure class="align-default" id="id4">
+<img alt="Greenbone Community Edition Architecture" src="_images/gvm-architecture.png" />
+<figcaption>
+<p><span class="caption-text">Architecture in release 21.04</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The architecture for the version 21.04 is grouped into three major parts:</p>
+<ul class="simple">
+<li><p>Executable scan application that runs vulnerability tests (VT) against target
+systems</p></li>
+<li><p>Greenbone Vulnerability Manager Daemon (gvmd)</p></li>
+<li><p>Greenbone Security Assistant (GSA) with the Greenbone Security Assistant
+Daemon (gsad)</p></li>
+</ul>
+<p>The Greenbone Community Edition is released under open-source licenses. By using
+it, Linux distributions can create and provide the software components in the
+form of installation packages.</p>
+<section id="greenbone-vulnerability-manager-daemon-gvmd">
+<h3><a class="toc-backref" href="#id6">Greenbone Vulnerability Manager Daemon (gvmd)</a><a class="headerlink" href="#greenbone-vulnerability-manager-daemon-gvmd" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="https://github.com/greenbone/gvmd">Greenbone Vulnerability Manager (gvmd)</a> is the central service that
+consolidates plain vulnerability scanning into a full vulnerability management
+solution. gvmd controls the OpenVAS Scanner via Open Scanner Protocol (OSP).</p>
+<p>The service itself offers the XML-based, stateless
+<a class="reference internal" href="glossary.html#term-GMP"><span class="xref std std-term">Greenbone Management Protocol (GMP)</span></a>. gvmd also controls an SQL
+database (PostgreSQL) where all configuration and scan result data is centrally
+stored. Furthermore, gvmd also handles user management including permissions
+control with groups and roles. And finally, the service has an internal runtime
+system for scheduled tasks and other events.</p>
+</section>
+<section id="greenbone-security-assistant-gsa">
+<h3><a class="toc-backref" href="#id7">Greenbone Security Assistant (GSA)</a><a class="headerlink" href="#greenbone-security-assistant-gsa" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="https://github.com/greenbone/gsa">Greenbone Security Assistant (GSA)</a> is the web interface that a
+user controls scans and accesses vulnerability information with. It is the main
+contact point for a user. It connects to gvmd via the web server <a class="reference external" href="https://github.com/greenbone/gsad">Greenbone
+Security Assistant Daemon (gsad)</a> to provide a full-featured web application for
+vulnerability management. The communication occurs using the
+<a class="reference internal" href="glossary.html#term-GMP"><span class="xref std std-term">Greenbone Management Protocol (GMP)</span></a> with which the user can also
+communicate directly by using different tools.</p>
+</section>
+<section id="openvas-scanner">
+<h3><a class="toc-backref" href="#id8">OpenVAS Scanner</a><a class="headerlink" href="#openvas-scanner" title="Permalink to this headline">¶</a></h3>
+<p>The main scanner <a class="reference external" href="https://github.com/greenbone/openvas-scanner">OpenVAS Scanner</a> is a full-featured scan engine that executes
+vulnerability tests (VTs) against target systems. For this, it uses the daily
+updated and comprehensive feeds: the full-featured, extensive, commercial
+<a class="reference internal" href="glossary.html#term-Greenbone-Enterprise-Feed"><span class="xref std std-term">Greenbone Enterprise Feed</span></a> or the free
+available <a class="reference internal" href="glossary.html#term-Greenbone-Community-Feed"><span class="xref std std-term">Greenbone Community Feed</span></a>.</p>
+<p>The scanner consists of the components <a class="reference external" href="https://github.com/greenbone/ospd-openvas">ospd-openvas</a> and <a class="reference external" href="https://github.com/greenbone/openvas-scanner">openvas-scanner</a>.
+The OpenVAS Scanner is controlled via <a class="reference internal" href="glossary.html#term-OSP"><span class="xref std std-term">OSP</span></a>. The OSP Daemon for the
+OpenVAS Scanner (ospd-openvas) communicates with gvmd via OSP: VT data is
+collected, scans are started and stopped, and scan results are transferred to
+gvmd via ospd.</p>
+</section>
+<section id="additional-software">
+<h3><a class="toc-backref" href="#id9">Additional Software</a><a class="headerlink" href="#additional-software" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference external" href="https://github.com/greenbone/gvm-tools">Greenbone Vulnerability Management Tools (gvm-tools)</a> are a collection of
+tools that help with remote controlling a Greenbone Enterprise Appliance.
+and its underlying Greenbone Vulnerability Manager Daemon (gvmd). The tools aid
+in accessing the communication protocols
+<a class="reference internal" href="glossary.html#term-GMP"><span class="xref std std-term">GMP (Greenbone Management Protocol)</span></a> and
+<a class="reference internal" href="glossary.html#term-OSP"><span class="xref std std-term">OSP (Open Scanner Protocol)</span></a>.</p>
+<p>This module is comprised of interactive and non-interactive clients.
+The programming language Python is supported directly for interactive scripting.
+But it is also possible to issue remote GMP/OSP commands without programming in
+Python.</p>
+</section>
+</section>
+<section id="greenbone-gvm-openvas-and-how-they-are-connected">
+<h2><a class="toc-backref" href="#id10">Greenbone, GVM, OpenVAS and How They Are Connected</a><a class="headerlink" href="#greenbone-gvm-openvas-and-how-they-are-connected" title="Permalink to this headline">¶</a></h2>
+<p>When the OpenVAS project was launched, it only consisted of an engine for scanning
+vulnerabilities.</p>
+<p>Shortly after that, Greenbone Networks was founded to achieve
+professional support for vulnerability scanning. Greenbone started to lead the
+development of OpenVAS, added several software components and turned OpenVAS
+into a vulnerability management solution while keeping the values of free
+software. This vulnerability management solution was later named
+<a class="reference internal" href="glossary.html#term-GVM"><span class="xref std std-term">Greenbone Vulnerability Management (GVM)</span></a> to reflect the origins and
+brand changes. Therefore, after the release of the OpenVAS 9
+framework, the following releases got named GVM.</p>
+<p>With this in mind, Greenbone OpenVAS can be</p>
+<ul class="simple">
+<li><p>a vulnerability scanner (OpenVAS Scanner)</p></li>
+<li><p>a name for a software framework of several components (GVM)</p></li>
+<li><p>a software project lead by Greenbone (Greenbone Community Edition)</p></li>
+<li><p>a source code release of vulnerability management solution (OpenVAS 9, GVM 21.04)</p></li>
+<li><p>a community of users and developers (Greenbone Community)</p></li>
+</ul>
+<p>depending on the context.</p>
+</section>
+<section id="history-of-the-openvas-project">
+<h2><a class="toc-backref" href="#id11">History of the OpenVAS project</a><a class="headerlink" href="#history-of-the-openvas-project" title="Permalink to this headline">¶</a></h2>
+<p>In 2005, the developers of the vulnerability scanner Nessus decided to
+discontinue the work under Open Source licenses and switch to a proprietary
+business model.</p>
+<p>At this point, developers from Intevation and DN-Systems – the two companies
+which would later found Greenbone Networks – were already contributing
+developments to Nessus, focusing on client tools. The works were primarily
+supported by the German Federal Office for Information Security (BSI).</p>
+<p>In 2006, several forks of Nessus were created in response to the
+discontinuation of the Open Source solution. Of these forks, only one has continued
+to show activity: OpenVAS, the Open Vulnerability Assessment System. OpenVAS was
+registered as a project at Software in the Public Interest, Inc. to hold and
+protect the domain “openvas.org”.</p>
+<p>The years 2006 and 2007 brought little activity other than cleanups of the status quo.
+But in late 2008, the company Greenbone Networks GmbH, based in Osnabrück,
+Germany was founded to drive OpenVAS forward. Essentially, Greenbone’s business
+plan was about 3 cornerstones:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Go beyond plain vulnerability scanning towards a comprehensive
+vulnerability management solution.</p></li>
+<li><p>Create a turn-key appliance product for enterprise customers.</p></li>
+<li><p>Continue the Open Source concept of creating a transparent security
+technology.</p></li>
+</ol>
+</div></blockquote>
+<p>Also in 2008, two further companies became active: Secpod from India and
+Security Space from Canada. Both of them had a focus on contributing
+vulnerability tests, and teamed up with Greenbone Networks to start producing
+a reliable and up-to-date feed of vulnerability tests. This started with removing
+any source code and vulnerability tests where the license was not clear or not
+compatible. Several thousands of vulnerability tests were eliminated to get a clean
+starting point. Shortly after, the feed content grew quickly and steadily.</p>
+<p>In 2009, Greenbone added the first additional modules to build a vulnerability
+management solution. The web interface and the central management service were
+developed from scratch, with generic protocols defined as their API. At the same
+time, the OpenVAS scanner was carefully improved and quickly lost compatibility
+with its ancestor. All open-source work was branded “OpenVAS”. The first
+“Greenbone Security Manager” appliance products entered the market in spring 2010.</p>
+<p>In the years 2010 to 2016, the commercial product was systematically improved
+and extended, and so were the open-source modules. The vulnerability
+management was extended to include daily updated security advisories, which were
+made available to the public with a GPL-compatible license by the German CERTs
+DFN-CERT and CERT-Bund, a division of the BSI.</p>
+<p>In March 2017, the OpenVAS framework reached version 9. Many new
+modules and numerous features were added during the release cycles. Several hundreds
+of thousands of lines of code were produced and there was almost no day without a
+couple of released code improvements by a growing development team.</p>
+<p>The year 2017 marked the beginning of a new era: first of all, Greenbone Networks became
+visible as the driving force behind OpenVAS, by introducing several naming changes. This
+included several activities, the most essential one using the term
+<a class="reference internal" href="glossary.html#term-GVM"><span class="xref std std-term">Greenbone Vulnerability Management” (GVM)</span></a> instead of “OpenVAS framework”
+for the releases. Since then the OpenVAS Scanner is only one of many modules. This
+led to “GVM-10” as the successor of “OpenVAS-9”. There were no license changes,
+all modules remained free and open-source software.</p>
+<p>The second major change in 2017 involved the feed service. Apart from the
+branding confusion, several companies integrated the technology and feed, passing
+it off as their work or claiming to be an alternative to Greenbone’s
+product at a better price. Only a minority of them properly complied with the
+GPL licenses. None of them cooperates with Greenbone Networks commercially. To achieve
+better visibility, less misunderstanding, and better differentiation from
+other OpenVAS-based products, the public feed was renamed to
+<a class="reference internal" href="glossary.html#term-Greenbone-Community-Feed"><span class="xref std std-term">Greenbone Community Feed</span></a> and the feed development was internalized.
+Furthermore, the release scheme has been changed from a 14-day delay to a daily
+publication without delay, now excluding vulnerability tests for enterprise products.</p>
+<p>The third major change to the new era was the transition to a modern
+infrastructure, namely GitHub and a community forum. The whole transition was
+completed in 2018 and boosted both productivity and community activity.</p>
+<p>The OpenVAS Scanner released with GVM-10 received numerous performance optimization
+to meet the challenge of a growing number of vulnerability tests scanning
+target networks of increasing size and heterogeneity.</p>
+<p>GVM-11 introduced substantial architectural changes: the former service
+<a class="reference internal" href="glossary.html#term-openvassd"><span class="xref std std-term">openvassd</span></a> was turned into a command-line tool <a class="reference internal" href="glossary.html#term-openvas"><span class="xref std std-term">openvas</span></a>. It is
+controlled by the service layer <a class="reference internal" href="glossary.html#term-ospd-openvas"><span class="xref std std-term">ospd-openvas</span></a>.
+This concept essentially replaces the old stateful, permanent and proprietary
+OTP (OpenVAS Transfer Protocol) by the new stateless, request-response
+XML-based and generic <a class="reference internal" href="glossary.html#term-OSP"><span class="xref std std-term">OSP (Open Scanner Protocol)</span></a>.</p>
+<p>With GVM 20.08, the release versioning changed to <a class="reference external" href="https://calver.org/">Calendar Versioning</a>.
+Most important change in this release was to ship and sync the gvmd object data
+consisting of the report formats, port lists, policies and scan configs with the
+feed.</p>
+<p>Besides removing legacy features like GMP scanners, the 21.04 release got support
+for CVSSv3/CVSSv3.1.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p class="logo">
+  <a href="index.html">
+    <img
+      class="logo"
+      src="_static/logo.svg"
+      alt="Greenbone Logo"
+    />
+    <h1 class="logo logo-name">Greenbone Community Documentation</h1>
+  </a>
+</p>
+<p class="description">
+  Documentation for the Greenbone Community Edition
+</p>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Background</a><ul>
+<li><a class="reference internal" href="#architecture">Architecture</a><ul>
+<li><a class="reference internal" href="#greenbone-vulnerability-manager-daemon-gvmd">Greenbone Vulnerability Manager Daemon (gvmd)</a></li>
+<li><a class="reference internal" href="#greenbone-security-assistant-gsa">Greenbone Security Assistant (GSA)</a></li>
+<li><a class="reference internal" href="#openvas-scanner">OpenVAS Scanner</a></li>
+<li><a class="reference internal" href="#additional-software">Additional Software</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#greenbone-gvm-openvas-and-how-they-are-connected">Greenbone, GVM, OpenVAS and How They Are Connected</a></li>
+<li><a class="reference internal" href="#history-of-the-openvas-project">History of the OpenVAS project</a></li>
+</ul>
+</li>
+</ul>
+
+  </div><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Greenbone Community Edition – Documentation</a></li>
+      <li>Next: <a href="21.04/source-build/index.html" title="next chapter">Building 21.04 from Source</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021–2022, Greenbone Networks.
+      
+      |
+      <a href="_sources/background.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+    <a href="https://github.com/greenbone/docs" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
+  </body>
+</html>
