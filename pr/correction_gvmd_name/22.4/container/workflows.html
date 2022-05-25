@@ -1,0 +1,772 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<meta content="Greenbone Community Edition - Documentation" lang="en" name="description" xml:lang="en" />
+<meta content="Greenbone Community Edition - Dokumentation" lang="de" name="description" xml:lang="de" />
+<meta content="OpenVAS, Greenbone, Community, Greenbone Community Edition, GVM, Container, Docker, Documentation" name="keywords" />
+<meta content="en_US" property="og:locale" />
+<meta property="og:title" content="Workflows" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://greenbone.github.io/docs/latest/22.4/container/workflows.html" />
+<meta property="og:site_name" content="Greenbone Community Documentation" />
+<meta property="og:description" content="Updating the Greenbone Community Containers: To update the Greenbone Community Containers to the latest version, it is required to pull the images and restart the containers which have new images. ..." />
+<meta property="og:image" content="https://greenbone.github.io/docs/latest/_images/greenbone-banner.png" />
+<meta property="og:image:alt" content="Greenbone Community Documentation" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Troubleshooting" href="troubleshooting.html" /><link rel="prev" title="Greenbone Community Containers 22.4" href="index.html" />
+
+    <link rel="shortcut icon" href="../../_static/favicon.png"/><!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
+        <title>Workflows - Greenbone Community Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=c824535d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=57401450" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #3f3f3f;
+  --color-code-foreground: #dcdccc;
+  --color-content-foreground: #4C4C4C;
+  --color-foreground-primary: 4C4C4C;
+  --color-foreground-secondary: #7F7F7F;
+  --color-code-background: #333333;
+  --color-code-foreground: #E5E5E5;
+  --color-admonition-title--note: #11AB51;
+  --admonition-font-size: 0.9rem;
+  --color-background-primary: #FFFFFF;
+  --color-background-secondary: #F3F3F3;
+  --color-sidebar-background: #F3F3F3;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-content-foreground: #F3F3F3;
+  --color-foreground-primary: F3F3F3;
+  --color-foreground-secondary: #E5E5E5;
+  --color-code-background: #333333;
+  --color-code-foreground: #E5E5E5;
+  --color-admonition-title--note: #11AB51;
+  --admonition-font-size: 0.9rem;
+  --color-background-primary: #171717;
+  --color-background-secondary: #4C4C4C;
+  --color-sidebar-background: #333333;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-content-foreground: #F3F3F3;
+  --color-foreground-primary: F3F3F3;
+  --color-foreground-secondary: #E5E5E5;
+  --color-code-background: #333333;
+  --color-code-foreground: #E5E5E5;
+  --color-admonition-title--note: #11AB51;
+  --admonition-font-size: 0.9rem;
+  --color-background-primary: #171717;
+  --color-background-secondary: #4C4C4C;
+  --color-sidebar-background: #333333;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Greenbone Community Documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../_static/logo.svg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Greenbone Community Documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../background.html">Background</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../source-build/index.html">Building 22.4 from Source</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Building 22.4 from Source</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../source-build/troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source-build/workflows.html">Workflows</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">Greenbone Community Containers 22.4</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Greenbone Community Containers 22.4</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq.html">Frequently Asked Questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/greenbone/docs/edit/main/src/22.4/container/workflows.md" title="Edit this page">
+    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
+      <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" />
+    </svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="workflows">
+<h1>Workflows<a class="headerlink" href="#workflows" title="Link to this heading">#</a></h1>
+<section id="updating-the-greenbone-community-containers">
+<h2>Updating the Greenbone Community Containers<a class="headerlink" href="#updating-the-greenbone-community-containers" title="Link to this heading">#</a></h2>
+<p>To update the Greenbone Community Containers to the latest version, it is required
+to pull the images and restart the containers which have new images. This can
+be done with:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Downloading the Greenbone Community Containers</span><a class="headerlink" href="#id1" title="Link to this code">#</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span><span class="nv">$DOWNLOAD_DIR</span>/docker-compose.yml<span class="w"> </span>-p<span class="w"> </span>greenbone-community-edition<span class="w"> </span>pull
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Starting the Greenbone Community Containers</span><a class="headerlink" href="#id2" title="Link to this code">#</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span><span class="nv">$DOWNLOAD_DIR</span>/docker-compose.yml<span class="w"> </span>-p<span class="w"> </span>greenbone-community-edition<span class="w"> </span>up<span class="w"> </span>-d
+</pre></div>
+</div>
+</div>
+</section>
+<section id="performing-a-feed-synchronization">
+<h2>Performing a Feed Synchronization<a class="headerlink" href="#performing-a-feed-synchronization" title="Link to this heading">#</a></h2>
+<p>For the actual vulnerability scanning, <a class="reference internal" href="../../glossary.html#term-VT"><span class="xref std std-term">Vulnerability Tests</span></a>,
+security information like CVEs, port lists and scan configurations are required.
+All this data is provided by the <a class="reference internal" href="../../glossary.html#term-Greenbone-Community-Feed"><span class="xref std std-term">Greenbone Community Feed</span></a> via dedicated
+data container images.</p>
+<p>A feed synchronization always consists of two parts:</p>
+<ol class="arabic simple">
+<li><p>Downloading the changes via pulling new container images</p></li>
+<li><p>Loading the changes into memory and a database by a daemon</p></li>
+</ol>
+<p>Both steps may take a while, from several minutes up to hours, especially for the
+initial synchronization. Only if both steps are finished, the synchronized data
+is up-to-date and can be used.</p>
+<p>The first step is done via the <strong class="command">docker compose pull</strong>. The second step is
+done automatically when the daemons are running.</p>
+<section id="downloading-the-feed-changes">
+<h3>Downloading the Feed Changes<a class="headerlink" href="#downloading-the-feed-changes" title="Link to this heading">#</a></h3>
+<p>The data of the <a class="reference internal" href="../../glossary.html#term-Greenbone-Community-Feed"><span class="xref std std-term">Greenbone Community Feed</span></a> is provided via several
+container images. When these images are started, they copy the data into the used
+docker volumes automatically. Afterwards, the data is picked up from the
+volumes by the running daemons .</p>
+<p>To download the latest feed data container images run</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Downloading the Greenbone Community Edition feed data containers</span><a class="headerlink" href="#id3" title="Link to this code">#</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span><span class="nv">$DOWNLOAD_DIR</span>/docker-compose.yml<span class="w"> </span>-p<span class="w"> </span>greenbone-community-edition<span class="w"> </span>pull<span class="w"> </span>notus-data<span class="w"> </span>vulnerability-tests<span class="w"> </span>scap-data<span class="w"> </span>dfn-cert-data<span class="w"> </span>cert-bund-data<span class="w"> </span>report-formats<span class="w"> </span>data-objects
+</pre></div>
+</div>
+</div>
+<p>To copy the data from the images to the volumes run</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Starting the Greenbone Community feed data containers</span><a class="headerlink" href="#id4" title="Link to this code">#</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span><span class="nv">$DOWNLOAD_DIR</span>/docker-compose.yml<span class="w"> </span>-p<span class="w"> </span>greenbone-community-edition<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>notus-data<span class="w"> </span>vulnerability-tests<span class="w"> </span>scap-data<span class="w"> </span>dfn-cert-data<span class="w"> </span>cert-bund-data<span class="w"> </span>report-formats<span class="w"> </span>data-objects
+</pre></div>
+</div>
+</div>
+</section>
+<section id="loading-the-feed-changes">
+<h3>Loading the Feed Changes<a class="headerlink" href="#loading-the-feed-changes" title="Link to this heading">#</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>When feed content has been downloaded, the new data must be loaded by the
+corresponding daemons. This may take several minutes up to hours, especially
+for the initial loading of the data. Without loaded data, scans will contain
+incomplete and erroneous results.</p>
+</div>
+<p>After the Greenbone Community Containers have been started, the running daemons
+will always pick up the feed content and load the data automatically.</p>
+<section id="vulnerability-tests-data">
+<h4>Vulnerability Tests Data<a class="headerlink" href="#vulnerability-tests-data" title="Link to this heading">#</a></h4>
+<p>If the log (of ospd-openvas) contains the following output, the OpenVAS
+Scanner starts to load the new VT data:</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">ospd-openvas VT loading log message</span><a class="headerlink" href="#id5" title="Link to this code">#</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Loading VTs. Scans will be [requested|queued] until VTs are loaded. This may
+take a few minutes, please wait...
+</pre></div>
+</div>
+</div>
+<p>The loading of the VT data is finished if the log message can be found:</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">ospd-openvas VTs loading finished log message</span><a class="headerlink" href="#id6" title="Link to this code">#</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Finished loading VTs. The VT cache has been updated from version X to Y.
+</pre></div>
+</div>
+</div>
+<p>After the scanner is aware of the VT data, the data will be requested by gvmd. This
+will result in the following log message:</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">gvmd VTs loading log message</span><a class="headerlink" href="#id7" title="Link to this code">#</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>OSP service has different VT status (version X) from database (version (Y), Z VTs). Starting update ...
+</pre></div>
+</div>
+</div>
+<p>When gvmd has finished loading all VTs, the following message appears:</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">gvmd VTs loading finished log message</span><a class="headerlink" href="#id8" title="Link to this code">#</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Updating VTs in database ... done (X VTs).
+</pre></div>
+</div>
+</div>
+</section>
+<section id="scap-data">
+<h4>SCAP Data<a class="headerlink" href="#scap-data" title="Link to this heading">#</a></h4>
+<p>gvmd starts loading the <a class="reference internal" href="../../glossary.html#term-SCAP"><span class="xref std std-term">SCAP</span></a> data containing <a class="reference internal" href="../../glossary.html#term-CPE"><span class="xref std std-term">CPE</span></a> and <a class="reference internal" href="../../glossary.html#term-CVE"><span class="xref std std-term">CVE</span></a>
+information when the following message can be found in the logs:</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">gvmd SCAP data loading log message</span><a class="headerlink" href="#id9" title="Link to this code">#</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>update_scap: Updating data from feed
+</pre></div>
+</div>
+</div>
+<p>The SCAP data is loaded and the synchronization is finished when the (gvmd) log
+contains the following message:</p>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">gvmd SCAP data loading finished log message</span><a class="headerlink" href="#id10" title="Link to this code">#</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>update_scap_end: Updating SCAP info succeeded
+</pre></div>
+</div>
+</div>
+</section>
+<section id="cert-data">
+<h4>CERT Data<a class="headerlink" href="#cert-data" title="Link to this heading">#</a></h4>
+<p>gvmd starts loading the CERT data containing DFN-CERT and CERT-Bund advisories
+when the following message can be found in the logs:</p>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">gvmd CERT data loading log message</span><a class="headerlink" href="#id11" title="Link to this code">#</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sync_cert: Updating data from feed
+</pre></div>
+</div>
+</div>
+<p>The CERT data is loaded and the synchronization is finished when the (gvmd) log
+contains the following message:</p>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">gvmd CERT data finished loading log message</span><a class="headerlink" href="#id12" title="Link to this code">#</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sync_cert: Updating CERT info succeeded.
+</pre></div>
+</div>
+</div>
+</section>
+<section id="gvmd-data">
+<h4>GVMD Data<a class="headerlink" href="#gvmd-data" title="Link to this heading">#</a></h4>
+<p>The log contains several messages when the gvmd data is loaded. For port lists,
+these messages are similar to:</p>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-text">gvmd port list loaded log message</span><a class="headerlink" href="#id13" title="Link to this code">#</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Port list All IANA assigned TCP (33d0cd82-57c6-11e1-8ed1-406186ea4fc5) has been created by admin
+</pre></div>
+</div>
+</div>
+<p>For report formats:</p>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-text">gvmd report format loaded log message</span><a class="headerlink" href="#id14" title="Link to this code">#</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Report format XML (a994b278-1f62-11e1-96ac-406186ea4fc5) has been created by admin
+</pre></div>
+</div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Scan Configs can only be loaded if the VT data is available in gvmd and a <em>Feed
+Import Owner</em> is set.</p>
+</div>
+<p>For scan configs:</p>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-text">gvmd scan config loaded log message</span><a class="headerlink" href="#id15" title="Link to this code">#</a></div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Scan config Full and fast (daba56c8-73ec-11df-a475-002264764cea) has been created by admin
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="accessing-the-web-interface-remotely">
+<h2>Accessing the Web Interface Remotely<a class="headerlink" href="#accessing-the-web-interface-remotely" title="Link to this heading">#</a></h2>
+<p>When using the docker compose file, the web server is configured to listen only
+on the local address of the host (127.0.0.1). To allow remote access on all
+interfaces of the host, the compose file must be modified to configure the web
+server <strong class="command">gsad</strong> to listen on all network interfaces.</p>
+<p>The following change of the docker compose file must be applied:</p>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-text">Allowing access on all host interfaces</span><a class="headerlink" href="#id16" title="Link to this code">#</a></div>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span>...
+<span class="w"> </span> gsa:
+<span class="w"> </span>   image: greenbone/gsa:stable
+<span class="w"> </span>   restart: on-failure
+<span class="w"> </span>   ports:
+<span class="gd">-      - 127.0.0.1:9392:80</span>
+<span class="gi">+      - 9392:80</span>
+<span class="w"> </span>   volumes:
+<span class="w"> </span>     - gvmd_socket_vol:/run/gvmd
+<span class="w"> </span>   depends_on:
+<span class="w"> </span>     - gvmd
+...
+</pre></div>
+</div>
+</div>
+</section>
+<section id="starting-from-scratch">
+<h2>Starting from Scratch<a class="headerlink" href="#starting-from-scratch" title="Link to this heading">#</a></h2>
+<p>To start from scratch, the containers must be stopped. Afterwards, the
+containers and volumes must be removed to delete all data. All this can be done
+by running:</p>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-text">Remove containers and volumes (all data)</span><a class="headerlink" href="#id17" title="Link to this code">#</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span><span class="nv">$DOWNLOAD_DIR</span>/docker-compose.yml<span class="w"> </span>-p<span class="w"> </span>greenbone-community-edition<span class="w"> </span>down<span class="w"> </span>-v
+</pre></div>
+</div>
+</div>
+</section>
+<section id="gaining-a-terminal-for-a-container">
+<h2>Gaining a Terminal for a Container<a class="headerlink" href="#gaining-a-terminal-for-a-container" title="Link to this heading">#</a></h2>
+<p>If you want to debug something in a container, install additional software, take
+a look at the file content, or change some configuration, it is possible to gain
+shell access to a container.</p>
+<p>To access a container with a bash shell as a root user, you can run:</p>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-text">Gain a Terminal for a Container</span><a class="headerlink" href="#id18" title="Link to this code">#</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span><span class="nv">$DOWNLOAD_DIR</span>/docker-compose.yml<span class="w"> </span>-p<span class="w"> </span>greenbone-community-edition<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>&lt;container-name&gt;<span class="w"> </span>/bin/bash
+</pre></div>
+</div>
+</div>
+<p>Afterwards, you can execute standard bash commands within the running container.</p>
+</section>
+<section id="using-gvm-tools-for-cli-access">
+<h2>Using gvm-tools for CLI access<a class="headerlink" href="#using-gvm-tools-for-cli-access" title="Link to this heading">#</a></h2>
+<p>To query data or control gvmd and ospd-openvas via CLI, <a class="reference external" href="https://github.com/greenbone/gvm-tools/">gvm-tools</a>
+can be used. gvm-tools is provided in the gvm-tools container. This container
+can be started with:</p>
+<div class="literal-block-wrapper docutils container" id="id19">
+<div class="code-block-caption"><span class="caption-text">Start container for gvm-tools CLI access</span><a class="headerlink" href="#id19" title="Link to this code">#</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span><span class="nv">$DOWNLOAD_DIR</span>/docker-compose.yml<span class="w"> </span>-p<span class="w"> </span>greenbone-community-edition<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>gvm-tools
+</pre></div>
+</div>
+</div>
+<p>Afterwards, a bash shell is provided and <code class="docutils literal notranslate"><span class="pre">gvm-cli</span></code>, <code class="docutils literal notranslate"><span class="pre">gvm-pyshell</span></code> or <code class="docutils literal notranslate"><span class="pre">gvm-script</span></code>
+can be run. For example:</p>
+<div class="literal-block-wrapper docutils container" id="id20">
+<div class="code-block-caption"><span class="caption-text">Query gvmd version via gvm-cli</span><a class="headerlink" href="#id20" title="Link to this code">#</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>gvm-cli<span class="w"> </span>--gmp-username<span class="w"> </span>admin<span class="w"> </span>socket<span class="w"> </span>--pretty<span class="w"> </span>--xml<span class="w"> </span><span class="s2">&quot;&lt;get_version/&gt;&quot;</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="exposing-gvmd-unix-socket-for-gmp-access">
+<h2>Exposing gvmd Unix socket for GMP Access<a class="headerlink" href="#exposing-gvmd-unix-socket-for-gmp-access" title="Link to this heading">#</a></h2>
+<p>To enable the use of the protocol <a class="reference internal" href="../../glossary.html#term-GMP"><span class="xref std std-term">GMP</span></a> provided by <a class="reference internal" href="../../glossary.html#term-gvmd"><span class="xref std std-term">gvmd</span></a> from the docker
+host, a <a class="reference external" href="https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes">bind mount</a>
+must be used for the <code class="docutils literal notranslate"><span class="pre">/run/gvmd</span></code> directory. To make the gvmd Unix socket
+available, a directory must be created first and the permissions must
+be adjusted.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>/tmp/gvm/gvmd
+chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">777</span><span class="w"> </span>/tmp/gvm
+</pre></div>
+</div>
+<p>In the next step, the docker compose file must be changed as follows:</p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span><span class="w"> </span> gvmd:
+<span class="w"> </span>   image: greenbone/gvmd:stable
+<span class="w"> </span>   restart: on-failure
+<span class="w"> </span>   volumes:
+<span class="w"> </span>      - gvmd_data_vol:/var/lib/gvm
+<span class="w"> </span>      - vt_data_vol:/var/lib/openvas
+<span class="w"> </span>      - psql_data_vol:/var/lib/postgresql
+<span class="gd">-      - gvmd_socket_vol:/run/gvmd</span>
+<span class="gi">+      - /tmp/gvm/gvmd:/run/gvmd</span>
+<span class="w"> </span>      - ospd_openvas_socket_vol:/run/ospd
+<span class="w"> </span>      - psql_socket_vol:/var/run/postgresql
+<span class="w"> </span>    depends_on:
+<span class="w"> </span>     - pg-gvm
+
+...
+
+<span class="w"> </span> gsa:
+<span class="w"> </span>   image: greenbone/gsa:stable
+<span class="w"> </span>   restart: on-failure
+<span class="w"> </span>    ports:
+<span class="w"> </span>      - 9392:80
+<span class="w"> </span>    volumes:
+<span class="gd">-      - gvmd_socket_vol:/run/gvmd</span>
+<span class="gi">+      - /tmp/gvm/gvmd:/run/gvmd</span>
+<span class="w"> </span>    depends_on:
+<span class="w"> </span>      - gvmd
+</pre></div>
+</div>
+<p>After restarting the containers with</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span><span class="nv">$DOWNLOAD_DIR</span>/docker-compose.yml<span class="w"> </span>-p<span class="w"> </span>greenbone-community-edition<span class="w"> </span>up<span class="w"> </span>-d
+</pre></div>
+</div>
+<p>the Unix socket should be available at <code class="docutils literal notranslate"><span class="pre">/tmp/gvm/gvmd/gvmd.sock</span></code>. For example,
+to use the socket with <a class="reference external" href="https://github.com/greenbone/gvm-tools">gvm-tools</a>, the
+following command can be executed:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gvm-cli<span class="w"> </span>socket<span class="w"> </span>--socketpath<span class="w"> </span>/tmp/gvm/gvmd/gvmd.sock<span class="w"> </span>--pretty<span class="w"> </span>--xml<span class="w"> </span><span class="s2">&quot;&lt;get_version/&gt;&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="setting-up-a-mail-transport-agent-inside-docker-container">
+<h2>Setting up a mail transport agent inside Docker container<a class="headerlink" href="#setting-up-a-mail-transport-agent-inside-docker-container" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="../../glossary.html#term-gvmd"><span class="xref std std-term">gvmd</span></a> uses the <code class="docutils literal notranslate"><span class="pre">msmtp</span></code> client as MTA. It can be configured with environment variables
+within compose file or command line. Available variables (for detailed explanation refer
+to <a class="reference external" href="https://marlam.de/msmtp/msmtp.html">msmtp documentation</a>, note that not all
+<code class="docutils literal notranslate"><span class="pre">mstmp</span></code> options implemented in <code class="docutils literal notranslate"><span class="pre">gvmd</span></code> container):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MTA_HOST</span></code>: The SMTP server to send the mail to. (<em>Mandatory parameter</em>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MTA_PORT</span></code>: The port that the SMTP server listens on. (<em>default = ‘25’</em>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MTA_TLS</span></code>: Enable or disable TLS (<em>on|off’</em>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MTA_STARTTLS</span></code>: TLS variant: start TLS from within the session (<em>‘on’, default</em>), or
+tunnel the session through TLS (<em>‘off’</em>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MTA_AUTH</span></code>: Enable or disable authentication and optionally choose a method to use
+(<em>‘on’|’off’|’method’</em>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MTA_USER</span></code>: Username for authentication.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MTA_PASSWORD</span></code>: Password for authentication.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MTA_FROM</span></code>: Set the envelope-from address.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MTA_LOGFILE</span></code>: Enable logging to the specified file.</p></li>
+</ul>
+<p>Examples:</p>
+<div class="literal-block-wrapper docutils container" id="id21">
+<div class="code-block-caption"><span class="caption-text">Use a local network relay without authorization</span><a class="headerlink" href="#id21" title="Link to this code">#</a></div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">...</span>
+<span class="w">  </span><span class="nt">gvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">greenbone/gvmd:stable</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MTA_HOST=postfix-server.example.org</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MTA_PORT=25</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MTA_TLS=off</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MTA_STARTTLS=off</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MTA_AUTH=off</span>
+<span class="nn">...</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id22">
+<div class="code-block-caption"><span class="caption-text">Use the Google Mail services with SSL and authorization</span><a class="headerlink" href="#id22" title="Link to this code">#</a></div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">...</span>
+<span class="w">  </span><span class="nt">gvmd</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">greenbone/gvmd:stable</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MTA_HOST=smtp.gmail.com</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MTA_PORT=587</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MTA_TLS=on</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MTA_STARTTLS=on</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MTA_AUTH=on</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MTA_USER=&lt;username&gt;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MTA_FROM=&lt;username&gt;@gmail.com</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MTA_PASSWORD=&lt;some_password&gt;</span>
+<span class="nn">...</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="performing-a-manual-feed-sync">
+<h2>Performing a Manual Feed Sync<a class="headerlink" href="#performing-a-manual-feed-sync" title="Link to this heading">#</a></h2>
+<p>It is possible to do a manual feed sync using <strong class="command">rsync</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please be aware that the manually synced data will be overridden if the data
+containers are (re-)started.</p>
+</div>
+<section id="syncing-vulnerability-tests">
+<h3>Syncing Vulnerability Tests<a class="headerlink" href="#syncing-vulnerability-tests" title="Link to this heading">#</a></h3>
+<p>VT data contains <code class="file docutils literal notranslate"><span class="pre">.nasl</span></code> and <code class="file docutils literal notranslate"><span class="pre">.notus</span></code> files for creating results
+during a vulnerability scan. The <code class="docutils literal notranslate"><span class="pre">.nasl</span></code> files are processed by the OpenVAS
+Scanner and the <code class="docutils literal notranslate"><span class="pre">.notus</span></code> files by the <a class="reference internal" href="../../glossary.html#term-notus-scanner"><span class="xref std std-term">Notus Scanner</span></a>.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p><code class="file docutils literal notranslate"><span class="pre">.notus</span></code> files and the <a class="reference internal" href="../../glossary.html#term-notus-scanner"><span class="xref std std-term">Notus Scanner</span></a> are only
+available for 22.4.</p>
+</div>
+<div class="literal-block-wrapper docutils container" id="id23">
+<div class="code-block-caption"><span class="caption-text">Syncing <a class="reference internal" href="../../glossary.html#term-VT"><span class="xref std std-term">VTs</span></a> processed by the scanner, this will take a while.</span><a class="headerlink" href="#id23" title="Link to this code">#</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span><span class="nv">$DOWNLOAD_DIR</span>/docker-compose.yml<span class="w"> </span>-p<span class="w"> </span>greenbone-community-edition<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>run<span class="w"> </span>--rm<span class="w"> </span>ospd-openvas<span class="w"> </span>greenbone-nvt-sync
+</pre></div>
+</div>
+</div>
+</section>
+<section id="syncing-scap-cert-and-gvmd-data">
+<h3>Syncing SCAP, CERT and GVMD Data<a class="headerlink" href="#syncing-scap-cert-and-gvmd-data" title="Link to this heading">#</a></h3>
+<p><a class="reference internal" href="../../glossary.html#term-SCAP"><span class="xref std std-term">SCAP</span></a> data contains <a class="reference internal" href="../../glossary.html#term-CPE"><span class="xref std std-term">CPE</span></a> and <a class="reference internal" href="../../glossary.html#term-CVE"><span class="xref std std-term">CVE</span></a> information.</p>
+<div class="literal-block-wrapper docutils container" id="id24">
+<div class="code-block-caption"><span class="caption-text">Syncing SCAP data processed by gvmd, this will take a while</span><a class="headerlink" href="#id24" title="Link to this code">#</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span><span class="nv">$DOWNLOAD_DIR</span>/docker-compose.yml<span class="w"> </span>-p<span class="w"> </span>greenbone-community-edition<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>run<span class="w"> </span>--rm<span class="w"> </span>gvmd<span class="w"> </span>greenbone-feed-sync<span class="w"> </span>--type<span class="w"> </span>SCAP
+</pre></div>
+</div>
+</div>
+<p>CERT data contains vulnerability information from the German <a class="reference external" href="https://www.dfn-cert.de/">DFN-CERT</a>
+and <a class="reference external" href="https://cert-bund.de/">CERT-Bund</a> agencies.</p>
+<div class="literal-block-wrapper docutils container" id="id25">
+<div class="code-block-caption"><span class="caption-text">Syncing CERT data processed by gvmd</span><a class="headerlink" href="#id25" title="Link to this code">#</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span><span class="nv">$DOWNLOAD_DIR</span>/docker-compose.yml<span class="w"> </span>-p<span class="w"> </span>greenbone-community-edition<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>run<span class="w"> </span>--rm<span class="w"> </span>gvmd<span class="w"> </span>greenbone-feed-sync<span class="w"> </span>--type<span class="w"> </span>CERT
+</pre></div>
+</div>
+</div>
+<p>gvmd data (or also called data-objects) are scan configurations, compliance policies, port lists
+and report formats.</p>
+<div class="literal-block-wrapper docutils container" id="id26">
+<div class="code-block-caption"><span class="caption-text">Syncing data objects processed by gvmd</span><a class="headerlink" href="#id26" title="Link to this code">#</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span><span class="nv">$DOWNLOAD_DIR</span>/docker-compose.yml<span class="w"> </span>-p<span class="w"> </span>greenbone-community-edition<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>run<span class="w"> </span>--rm<span class="w"> </span>gvmd<span class="w"> </span>greenbone-feed-sync<span class="w"> </span>--type<span class="w"> </span>GVMD_DATA
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="troubleshooting.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Troubleshooting</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Greenbone Community Containers 22.4</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2021–2023, Greenbone AG
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://github.com/greenbone/docs/" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Workflows</a><ul>
+<li><a class="reference internal" href="#updating-the-greenbone-community-containers">Updating the Greenbone Community Containers</a></li>
+<li><a class="reference internal" href="#performing-a-feed-synchronization">Performing a Feed Synchronization</a><ul>
+<li><a class="reference internal" href="#downloading-the-feed-changes">Downloading the Feed Changes</a></li>
+<li><a class="reference internal" href="#loading-the-feed-changes">Loading the Feed Changes</a><ul>
+<li><a class="reference internal" href="#vulnerability-tests-data">Vulnerability Tests Data</a></li>
+<li><a class="reference internal" href="#scap-data">SCAP Data</a></li>
+<li><a class="reference internal" href="#cert-data">CERT Data</a></li>
+<li><a class="reference internal" href="#gvmd-data">GVMD Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#accessing-the-web-interface-remotely">Accessing the Web Interface Remotely</a></li>
+<li><a class="reference internal" href="#starting-from-scratch">Starting from Scratch</a></li>
+<li><a class="reference internal" href="#gaining-a-terminal-for-a-container">Gaining a Terminal for a Container</a></li>
+<li><a class="reference internal" href="#using-gvm-tools-for-cli-access">Using gvm-tools for CLI access</a></li>
+<li><a class="reference internal" href="#exposing-gvmd-unix-socket-for-gmp-access">Exposing gvmd Unix socket for GMP Access</a></li>
+<li><a class="reference internal" href="#setting-up-a-mail-transport-agent-inside-docker-container">Setting up a mail transport agent inside Docker container</a></li>
+<li><a class="reference internal" href="#performing-a-manual-feed-sync">Performing a Manual Feed Sync</a><ul>
+<li><a class="reference internal" href="#syncing-vulnerability-tests">Syncing Vulnerability Tests</a></li>
+<li><a class="reference internal" href="#syncing-scap-cert-and-gvmd-data">Syncing SCAP, CERT and GVMD Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=6b89569b"></script>
+    </body>
+</html>
