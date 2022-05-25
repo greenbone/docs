@@ -11,7 +11,7 @@ jobs:
     strategy:
         matrix:
           python-version:
-            - 3.8
+            - 3.9
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
@@ -22,3 +22,16 @@ jobs:
         uses: greenbone/actions/poetry@v1
       - name: Build docs
         run: poetry run sphinx-build -W --keep-going -b html src _build
+      - name: Upload Documentation Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: greenbone-community-docs-from-pr
+          path: _build/
+
+  deploy-docs:
+    needs: build-docs
+    name: Build Documentation
+    uses: ./.github/workflows/deployment.yml
+    with:
+      doc_root: pr/${{ github.head_ref }}
+      artifact_name: greenbone-community-docs-from-pr

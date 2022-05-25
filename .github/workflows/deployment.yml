@@ -14,10 +14,17 @@ jobs:
   deploy-docs:
     name: Deploy Documentation to GitHub Pages
     runs-on: 'ubuntu-latest'
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
     steps:
       - uses: actions/checkout@v2
         with:
           ref: "gh-pages"
+      - name: Cleanup Document Root
+        run: |
+          rm -rf ${{ inputs.doc_root }}
+          mkdir -p ${{ inputs.doc_root }}
       - name: Download Documentation Artifact
         uses: actions/download-artifact@v3
         with:

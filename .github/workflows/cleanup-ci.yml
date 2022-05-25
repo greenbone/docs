@@ -1,0 +1,38 @@
+name: Build the Greenbone Documentation
+
+on:
+  pull_request:
+    branches: [ main ]
+    types: [ closed ]
+
+jobs:
+  build-docs:
+    name: Cleanup CI build
+    runs-on: 'ubuntu-latest'
+    env:
+      DOC_ROOT: pr/${ github.head_ref }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: "gh-pages"
+      - name: Test Document Root Exists
+        id: test_doc_root
+        run: |
+          if [ -d "$DOC_ROOT" ]; then
+            echo "::set-output name=HAS_DOC_ROOT::true"
+          else
+            echo "::set-output name=HAS_DOC_ROOT::false"
+          fi
+      - name: Cleanup Document Root
+        if: steps.test_doc_root.outputs.HAS_DOC_ROOT == 'true'
+        run: |
+          rm -rf "$DOC_ROOT"
+      - name: Update GitHub Pages
+        if: steps.test_doc_root.outputs.HAS_DOC_ROOT == 'true'
+        run: |
+          cd "$DOC_ROOT"
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git add .
+          git commit --amend -m "Updating Docs for commit ${GITHUB_SHA} (PR Cleanup)"
+          git push --force-with-lease
