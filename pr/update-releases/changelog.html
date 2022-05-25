@@ -1,0 +1,626 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<meta content="Greenbone Community Edition - Documentation" lang="en" name="description" xml:lang="en" />
+<meta content="Greenbone Community Edition - Dokumentation" lang="de" name="description" xml:lang="de" />
+<meta content="OpenVAS, Greenbone, Community, Greenbone Community Edition, GVM, Container, Docker, Documentation" name="keywords" />
+<meta content="en_US" property="og:locale" />
+<meta property="og:title" content="Changelog" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://greenbone.github.io/docs/latest/changelog.html" />
+<meta property="og:site_name" content="Greenbone Community Documentation" />
+<meta property="og:description" content="All notable changes to this documentation will be listed in this file. The format is based on Keep a Changelog, and this project adheres to Calendar Versioning. Latest: Update pg-gvm to 22.6.1, Imp..." />
+<meta property="og:image" content="https://greenbone.github.io/docs/latest/_images/greenbone-banner.png" />
+<meta property="og:image:alt" content="Greenbone Community Documentation" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="API" href="api.html" /><link rel="prev" title="Glossary" href="glossary.html" />
+
+    <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.1.2 and Furo 2023.07.26 -->
+        <title>Changelog - Greenbone Community Documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=c824535d" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=36a5483c" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=57401450" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #3f3f3f;
+  --color-code-foreground: #dcdccc;
+  --color-content-foreground: #4C4C4C;
+  --color-foreground-primary: 4C4C4C;
+  --color-foreground-secondary: #7F7F7F;
+  --color-code-background: #333333;
+  --color-code-foreground: #E5E5E5;
+  --color-admonition-title--note: #11AB51;
+  --admonition-font-size: 0.9rem;
+  --color-background-primary: #FFFFFF;
+  --color-background-secondary: #F3F3F3;
+  --color-sidebar-background: #F3F3F3;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-content-foreground: #F3F3F3;
+  --color-foreground-primary: F3F3F3;
+  --color-foreground-secondary: #E5E5E5;
+  --color-code-background: #333333;
+  --color-code-foreground: #E5E5E5;
+  --color-admonition-title--note: #11AB51;
+  --admonition-font-size: 0.9rem;
+  --color-background-primary: #171717;
+  --color-background-secondary: #4C4C4C;
+  --color-sidebar-background: #333333;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-content-foreground: #F3F3F3;
+  --color-foreground-primary: F3F3F3;
+  --color-foreground-secondary: #E5E5E5;
+  --color-code-background: #333333;
+  --color-code-foreground: #E5E5E5;
+  --color-admonition-title--note: #11AB51;
+  --admonition-font-size: 0.9rem;
+  --color-background-primary: #171717;
+  --color-background-secondary: #4C4C4C;
+  --color-sidebar-background: #333333;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Greenbone Community Documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/logo.svg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Greenbone Community Documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="background.html">Background</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="22.4/source-build/index.html">Building 22.4 from Source</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Building 22.4 from Source</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="22.4/source-build/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="22.4/container/index.html">Greenbone Community Containers 22.4</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Greenbone Community Containers 22.4</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="22.4/container/workflows.html">Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22.4/container/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/greenbone/docs/edit/main/src/changelog.md" title="Edit this page">
+    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
+      <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" />
+    </svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this heading">#</a></h1>
+<p>All notable changes to this documentation will be listed in this file.</p>
+<p>The format is based on <a class="reference external" href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,
+and this project adheres to <a class="reference external" href="https://calver.org">Calendar Versioning</a>.</p>
+<section id="latest">
+<h2>Latest<a class="headerlink" href="#latest" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Update pg-gvm to 22.6.1</p></li>
+<li><p>Improve description of GSA and its build process in the source build</p></li>
+<li><p>Use Debian 12 bookworm also for the community container docs</p></li>
+<li><p>Update ospd-openvas to 22.6.0</p></li>
+<li><p>Update notus-scanner to 22.6.0</p></li>
+<li><p>Update openvas-scanner to 22.7.4</p></li>
+<li><p>Update gvmd to 22.8.0</p></li>
+<li><p>Update gsad to 22.5.2</p></li>
+<li><p>Update GSA to 22.6.0</p></li>
+</ul>
+</section>
+<section id="id1">
+<h2>23.7.0 – 23-07-25<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Update gvmd to 22.6.0</p></li>
+<li><p>Update gsad to 22.5.1</p></li>
+<li><p>Update GSA to 22.5.3</p></li>
+<li><p>Update ospd-openvas to 22.5.3</p></li>
+<li><p>Update openvas-scanner to 22.7.3</p></li>
+<li><p>Update pg-gvm to 22.6.0</p></li>
+<li><p>Remove <em>Setting the Version</em> chapter</p></li>
+<li><p>Document how to configure a mail transport agent (MTA) for the community
+containers</p></li>
+<li><p>Add section about redis-socket error to troubleshooting chapter of the
+community containers</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>23.6.2 – 23-06-27<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Update to use Debian 12 (bookworm)</p></li>
+<li><p>Install GSA from pre-built distributable files</p></li>
+<li><p>Update openvas-smb to 22.5.3</p></li>
+<li><p>Update gvmd to 22.5.0</p></li>
+<li><p>Update pg-gvm to 22.5.1</p></li>
+<li><p>Update gsad to 22.5.0</p></li>
+<li><p>Removed adjusting permissions for greenbone-feed-sync script unnecessarily</p></li>
+<li><p>Enable services only after first feed sync</p></li>
+<li><p>Update source build instructions for Fedora 38</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>23.6.1 – 23-06-15<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Update gvm-libs to 22.6.3</p></li>
+<li><p>Update notus-scanner to 22.5.0</p></li>
+<li><p>Update openvas-scanner to 22.7.2</p></li>
+<li><p>Update ospd-openvas to 22.5.1</p></li>
+<li><p>Update FAQ about which release contains which version</p></li>
+<li><p>Don’t install old <code class="docutils literal notranslate"><span class="pre">greenbone-nvt-sync</span></code> script anymore</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>23.6.0 – 23-06-15<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fix tab title in <em>Setting up sudo for Scanning</em> section from Debian/CentOS to
+Debian/Ubuntu.</p></li>
+<li><p>Update notus-scanner to 22.4.5</p></li>
+<li><p>Change all documents to use markdown instead of rst</p></li>
+<li><p>Change current working directory before setting up postgres database</p></li>
+<li><p>Add a section about update help to FAQ</p></li>
+</ul>
+</section>
+<section id="id5">
+<h2>23.3.0 – 23-03-08<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Unify the directory layout of the documentation files</p></li>
+<li><p>Use distinct installation directories for each component</p></li>
+<li><p>Add missing python3-gnupg as dependency to ospd-openvas</p></li>
+<li><p>Don’t display copy button for GPG verification output</p></li>
+<li><p>Fix PostgreSQL setup and make it possible to copy and paste the corresponding
+commands again</p></li>
+<li><p>Use new <code class="docutils literal notranslate"><span class="pre">greenbone-feed-sync</span></code> script for the feed data download</p></li>
+<li><p>Use ospd-openvas 22.4.6, notus-scanner 22.4.4 and gvm-libs 22.4.4</p></li>
+<li><p>Remove 21.4 from the architecture docs</p></li>
+<li><p>Try to fix installation of <code class="docutils literal notranslate"><span class="pre">ospd-openvas</span></code>, <code class="docutils literal notranslate"><span class="pre">notus-scanner</span></code>, <code class="docutils literal notranslate"><span class="pre">gvm-tools</span></code> and
+<code class="docutils literal notranslate"><span class="pre">greenbone-feed-sync</span></code> again due to issues with distributions patching Python
+installation paths. See <a class="reference external" href="https://discuss.python.org/t/linux-distro-patches-to-sysconfig-are-changing-pip-install-prefix-outside-virtual-environments/18240">discuss.python.org</a>
+for more details.</p></li>
+<li><p>Switch <em>Choosing an Install Prefix</em> and <em>Setting the PATH</em> section in source
+build to allow using $INSTALL_PREFIX when setting the $PATH.</p></li>
+</ul>
+</section>
+<section id="id6">
+<h2>23.1.1 – 23-01-31<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">table_drive_lsc</span> <span class="pre">=</span> <span class="pre">yes</span></code> setting for openvas scanner to enable local
+security checks scanning via notus scanner</p></li>
+<li><p>Remove docs for 21.04 because it is end-of-life and wont get any updates
+anymore.</p></li>
+<li><p>Extend FAQ for no results after finished scan</p></li>
+<li><p>Update systemd service files to start the daemons in foreground to avoid
+issues with systemd tracking the started processes</p></li>
+<li><p>Use ospd-openvas 22.4.5</p></li>
+<li><p>Update ospd-openvas.service file to depend on the mosquitto and notus-scanner
+services</p></li>
+</ul>
+</section>
+<section id="id7">
+<h2>23.1.0 – 23-01-13<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fix installing ospd-openvas and notus-scanner on Debian 11</p></li>
+<li><p>Update components to 22.4.1 release</p></li>
+</ul>
+</section>
+<section id="id8">
+<h2>22.12.0 – 22-12-27<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fix setting executable permission for setup and install script after the
+download</p></li>
+<li><p>Check for docker being installed in setup and install script</p></li>
+<li><p>Download the setup and install script to the current working directory</p></li>
+<li><p>Add license header to docker startup script</p></li>
+<li><p>Fix variable name typo in docker startup script</p></li>
+<li><p>Fix the checks for required programs in the setup script</p></li>
+<li><p>Use ospd-openvas 22.4.2 for 22.4 source build</p></li>
+<li><p>Add HTML and Open Graph meta information</p></li>
+<li><p>Fix: Remove -rf statements within <code class="docutils literal notranslate"><span class="pre">$INSTALL_DIR</span></code> to prevent deletion of root.</p></li>
+<li><p>Update gsad systemd service file to start gsad in foreground to avoid issues
+with systemd tracking the started processes</p></li>
+<li><p>Add: docker init process to prevent nmap, grep zombie processes in the
+ospd-openvas container</p></li>
+<li><p>Add troubleshooting for ospd-openvas connection issue with containers</p></li>
+<li><p>Add troubleshooting pages for source builds</p></li>
+<li><p>Add hostname to ospd-openvas container, to avoid error
+Could not get a bpf, ethernet address used in non-ether expression</p></li>
+<li><p>Extend troubleshooting for source build</p></li>
+<li><p>Update docker compose requirement to 1.29.0</p></li>
+</ul>
+</section>
+<section id="id9">
+<h2>22.8.2 – 22-08-31<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Improve feed sync documentation for source build</p></li>
+<li><p>Use feed data containers for feed sync in Greenbone Community Containers docs</p></li>
+<li><p>Extract workflows and troubleshooting to own pages for Greenbone Community
+Container docs</p></li>
+<li><p>Require docker-compose 1.27.0 or later to avoid issues with the ospd-openvas
+startup</p></li>
+<li><p>Use notus-scanner 22.4.1 and ospd-openvas 22.4.1 for 22.4 source build</p></li>
+</ul>
+</section>
+<section id="id10">
+<h2>22.8.1 – 2022-08-29<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Add workflow for exposing the gvmd unix socket from the container</p></li>
+<li><p>Add an API page for links to our other community documentation</p></li>
+<li><p>Fix path of the notus-scanner product advisories directory for the 22.4
+container setup</p></li>
+<li><p>Add gvm-tools container and usage workflow documentation</p></li>
+</ul>
+</section>
+<section id="id11">
+<h2>22.8.0 – 2022-08-16<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fix Community Container setup and start script</p></li>
+<li><p>Fix installing yarn from third party debian package repository</p></li>
+<li><p>Improve and extend feed sync chapters for community containers</p></li>
+<li><p>Use openvas-smb 22.4.0 for both releases</p></li>
+<li><p>Add installation instructions for Fedora (35 and 26), CentOS 9 and
+Ubuntu 22.04</p></li>
+<li><p>Use new <a class="reference external" href="https://pradyunsg.me/furo/">sphinx theme</a> for a cleaner structure and
+new features like dark mode</p></li>
+</ul>
+</section>
+<section id="id12">
+<h2>22.7.0 – 2022-07-25<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Update docs for supporting 22.4 release</p></li>
+</ul>
+</section>
+<section id="id13">
+<h2>22.5.0 – 2022-05-30<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>New Greenbone Community Containers documentation</p></li>
+<li><p>Update index page, history, architecture, faq and glossary for adjusted terms
+and naming.</p></li>
+<li><p>Allow to copy &amp; paste commands via a button click</p></li>
+<li><p>Re-arrange page structure and therefore the URLs of the documents</p></li>
+</ul>
+</section>
+<section id="id14">
+<h2>22.3.3 – 2022-03-31<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fix setting cmake parameter of runtime directory for gvmd</p></li>
+<li><p>Fix starting the correct postgresql cluster</p></li>
+</ul>
+</section>
+<section id="id15">
+<h2>22.3.2 – 2022-03-30<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The build guide uses Debian Stable (Bullseye)</p></li>
+<li><p>Fix installing dependencies of gvmd and openvas-scanner for Debian Bullseye</p></li>
+<li><p>Remove obsolete cmake parameter when building gvm-libs to avoid a warning</p></li>
+</ul>
+</section>
+<section id="id16">
+<h2>22.3.1 – 2022-03-21<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fix runtime directory for gvmd in systemd service file</p></li>
+<li><p>Add runtime directory and mode for gsad in systemd service file</p></li>
+</ul>
+</section>
+<section id="id17">
+<h2>22.3.0 – 2022-03-07<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Fix source paths for gsad</p></li>
+<li><p>Fix build and installation of GSA</p></li>
+<li><p>Add hint about yarn package on Debian</p></li>
+<li><p>Fix PIDFile settings in systemd service files for gsad and gvmd</p></li>
+</ul>
+</section>
+<section id="id18">
+<h2>22.2.0 – 2022-02-24<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Drop GVM 20.8.</p></li>
+<li><p>Split of GSA and gsad</p></li>
+<li><p>Merge of ospd and ospd-openvas</p></li>
+</ul>
+</section>
+<section id="id19">
+<h2>21.10.1 – 2021-10-13<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Drop usage of gsa-node-modules. These tarballs are only useful for specific
+nodejs versions.</p></li>
+</ul>
+</section>
+<section id="id20">
+<h2>21.10.0 – 2021-10-12<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Update for GVM 21.4.3 and 20.8.4 releases</p></li>
+<li><p>Mark GVM 20.08 as end-of-life. User should switch to 21.04.</p></li>
+</ul>
+</section>
+<section id="id21">
+<h2>21.8.0 – 2021-08-05<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Update for GVM 21.4.2 and 20.8.3 releases</p></li>
+<li><p>Changed feed look file location to <code class="docutils literal notranslate"><span class="pre">/var/lib/gvm/feed-update.lock</span></code>. This file
+is used by <code class="docutils literal notranslate"><span class="pre">gvmd</span></code> and <code class="docutils literal notranslate"><span class="pre">greenbone-feed-sync</span></code></p></li>
+<li><p>Add option <code class="docutils literal notranslate"><span class="pre">-f</span></code> to all curl commands to fail if an URL is not available</p></li>
+<li><p>Change permission of <code class="docutils literal notranslate"><span class="pre">/run/gvm</span> <span class="pre">initially</span></code> because otherwise <code class="docutils literal notranslate"><span class="pre">gvmd</span></code> can’t create
+the admin user</p></li>
+</ul>
+</section>
+<section id="id22">
+<h2>21.7.0 – 2021-07-05<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Initial version</p></li>
+</ul>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="api.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">API</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="glossary.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Glossary</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2021–2023, Greenbone AG
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://github.com/greenbone/docs/" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Changelog</a><ul>
+<li><a class="reference internal" href="#latest">Latest</a></li>
+<li><a class="reference internal" href="#id1">23.7.0 – 23-07-25</a></li>
+<li><a class="reference internal" href="#id2">23.6.2 – 23-06-27</a></li>
+<li><a class="reference internal" href="#id3">23.6.1 – 23-06-15</a></li>
+<li><a class="reference internal" href="#id4">23.6.0 – 23-06-15</a></li>
+<li><a class="reference internal" href="#id5">23.3.0 – 23-03-08</a></li>
+<li><a class="reference internal" href="#id6">23.1.1 – 23-01-31</a></li>
+<li><a class="reference internal" href="#id7">23.1.0 – 23-01-13</a></li>
+<li><a class="reference internal" href="#id8">22.12.0 – 22-12-27</a></li>
+<li><a class="reference internal" href="#id9">22.8.2 – 22-08-31</a></li>
+<li><a class="reference internal" href="#id10">22.8.1 – 2022-08-29</a></li>
+<li><a class="reference internal" href="#id11">22.8.0 – 2022-08-16</a></li>
+<li><a class="reference internal" href="#id12">22.7.0 – 2022-07-25</a></li>
+<li><a class="reference internal" href="#id13">22.5.0 – 2022-05-30</a></li>
+<li><a class="reference internal" href="#id14">22.3.3 – 2022-03-31</a></li>
+<li><a class="reference internal" href="#id15">22.3.2 – 2022-03-30</a></li>
+<li><a class="reference internal" href="#id16">22.3.1 – 2022-03-21</a></li>
+<li><a class="reference internal" href="#id17">22.3.0 – 2022-03-07</a></li>
+<li><a class="reference internal" href="#id18">22.2.0 – 2022-02-24</a></li>
+<li><a class="reference internal" href="#id19">21.10.1 – 2021-10-13</a></li>
+<li><a class="reference internal" href="#id20">21.10.0 – 2021-10-12</a></li>
+<li><a class="reference internal" href="#id21">21.8.0 – 2021-08-05</a></li>
+<li><a class="reference internal" href="#id22">21.7.0 – 2021-07-05</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=6b89569b"></script>
+    </body>
+</html>
