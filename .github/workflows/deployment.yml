@@ -31,3 +31,6 @@ jobs:
           git add .
           git commit --amend -m "Updating Docs for commit ${GITHUB_SHA}"
           git push --force-with-lease
+      - name: Job Summary
+        run: |
+          echo '### Deployment successful! :rocket: https://greenbone.github.io/docs/${{ inputs.doc_root }}' >> $GITHUB_STEP_SUMMARY
