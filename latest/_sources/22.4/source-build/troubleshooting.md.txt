@@ -1,0 +1,123 @@
+## Troubleshooting
+
+This page contains hints for troubleshooting source build specific issues.
+
+```{warning}
+The commands in the following troubleshooting guidelines are only valid if you
+followed the source build documentation. If you installed the Greenbone
+Community Edition via a Linux Distribution (for example Kali Linux), the
+commands may be slightly different and need to be adjusted.
+```
+
+### Failed to find port_list ‘33d0cd82-57c6-11e1-8ed1-406186ea4fc5‘
+
+This error can occur when tying to use the Task Wizard to create a quick scan
+after the initial setup. It is cause by {command}`gvmd` not being able to load
+the port lists from the {term}`feed` into its database. To fix this issue, you
+need to check if {file}`/var/lib/gvm/data-objects/` contains the port list XML
+file:
+
+```{code-block} shell
+---
+caption: Checking if port list is already synced
+---
+find /var/lib/gvm/data-objects/ -name "*33d0cd82-57c6-11e1-8ed1-406186ea4fc5*.xml"
+```
+
+If the {command}`find` command does not return an XML file, the data objects
+have not been synced from the {term}`feed` (yet).
+
+```{code-block} shell
+---
+caption: Syncing data objects processed by gvmd
+---
+sudo -u gvm greenbone-feed-sync --type GVMD_DATA
+```
+
+Second, {command}`gvmd` should be forced to (re-)load the data objects including
+the port lists from the disk.
+
+```{code-block} shell
+---
+caption: Syncing data objects processed by gvmd
+---
+sudo -u gvm gvmd --rebuild-gvmd-data=all
+```
+
+When {command}`gvmd` has loaded the port list successfully the {file}`/var/log/gvm/gvmd.log`
+file shows the following output
+
+```{code-block} none
+:caption: gvmd port list loaded log message
+
+Port list All IANA assigned TCP (33d0cd82-57c6-11e1-8ed1-406186ea4fc5) has been created by admin
+```
+
+### Failed to find scan configuration
+
+This issue is similar to [Failed to find port_list](#failed-to-find-port_list-33d0cd82-57c6-11e1-8ed1-406186ea4fc5).
+It will be raised if {command}`gvmd` is not able to load the scan configs from
+the file system into its database. First of all you should check if the scan
+configs have been downloaded from the {term}`feed`.
+
+```{code-block} shell
+---
+caption: Checking if scan configs are already available
+---
+find /var/lib/gvm/data-objects/ -name "*daba56c8-73ec-11df-a475-002264764cea*.xml"
+```
+
+If the {command}`find` command does not return at least one XML file for your
+release, the data objects have not been downloaded from the {term}`feed` (yet).
+
+```{code-block} shell
+---
+caption: Syncing data objects processed by gvmd
+---
+sudo -u gvm greenbone-feed-sync --type gvmd-data
+```
+
+Because scan configs reference {term}`VTs<VT>`, loading scan configs also
+requires synced VTs from the {term}`feed`. You can check if the VTs are already
+loaded by looking at the {menuselection}`Secinfo > NVTs` page on the web interface.
+
+If there are no VTs visible on the web interface, they must be downloaded from the
+feed.
+
+```{code-block} shell
+---
+caption: Syncing VTs processed by the openvas scanner
+---
+sudo -u gvm greenbone-feed-sync --type nvt
+```
+
+Loading the VTs from the file system may take a while, from several minutes up
+to hours depending on your system performance and number of {term}`VTs<VT>`. You
+can follow the process of loading VTs by looking at the {file}`/var/log/gvm/ospd-openvas.log`
+and {file}`/var/log/gvm/gvmd.log` files.
+
+If there are still no scan configs under {menuselection}`Configuration > Scan Configs`
+on the web interface after some hours and the logs of gvmd and ospd-openvas do not show
+errors, the `Feed Import Owner` may not have been set.
+
+```{code-block} shell
+---
+caption: Setting the `Feed Import Owner`
+---
+gvmd --modify-setting 78eceaec-3385-11ea-b237-28d24461215b --value `gvmd --get-users --verbose | grep admin | awk '{print $2}'`
+```
+
+If all these steps do not resolve the issue, it is very likely a bigger problem,
+for example with the PostgreSQL database. Therefore, the
+{file}`/var/log/gvm/ospd-openvas.log` and {file}`/var/log/gvm/gvmd.log` files
+must be inspected for possible error and warning messages.
+
+### curl: (22) The requested URL returned error: 404
+
+While downloading some source file of the software components the URL can't be
+found and {command}`curl` returns a HTTP status code 404.
+
+Please ensure the version variable of the to be downloaded component and all
+[required environment variables](./index.md#setting-environment-variables) are
+set. If that doesn't work try to replace the variables in the curl command with
+the actual content.

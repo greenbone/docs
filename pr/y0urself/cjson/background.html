@@ -1,0 +1,616 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="Greenbone Community Edition – Documentation" lang="en" name="description" xml:lang="en" />
+<meta content="Greenbone Community Edition – Dokumentation" lang="de" name="description" xml:lang="de" />
+<meta content="OpenVAS, Greenbone, Community, Greenbone Community Edition, GVM, Container, Docker, Documentation" name="keywords" />
+<meta content="en_US" property="og:locale" />
+<meta property="og:title" content="Background" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://greenbone.github.io/docs/latest/background.html" />
+<meta property="og:site_name" content="Greenbone Community Documentation" />
+<meta property="og:description" content="Architecture: The Greenbone Community Edition consists of a framework with several services. It is developed as part of the commercial Greenbone Enterprise product line. The Greenbone Community Edi..." />
+<meta property="og:image" content="https://greenbone.github.io/docs/latest/_images/greenbone-banner.png" />
+<meta property="og:image:alt" content="Greenbone Community Documentation" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Building from Source" href="22.4/source-build/index.html" /><link rel="prev" title="Greenbone Community Edition – Documentation" href="index.html" />
+
+    <link rel="shortcut icon" href="_static/favicon.png"/><!-- Generated with Sphinx 7.4.7 and Furo 2024.08.06 -->
+        <title>Background - Greenbone Community Documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=c824535d" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=6a40824e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #3f3f3f;
+  --color-code-foreground: #dcdccc;
+  --color-content-foreground: #4D4D4D;
+  --color-foreground-primary: 4D4D4D;
+  --color-foreground-secondary: #808080;
+  --color-code-background: #333333;
+  --color-code-foreground: #E6E6E6;
+  --color-admonition-title--note: #11AB51;
+  --admonition-font-size: 0.9rem;
+  --color-background-primary: #FFFFFF;
+  --color-background-secondary: #F5F5F5;
+  --color-sidebar-background: #F5F5F5;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-content-foreground: #F5F5F5;
+  --color-foreground-primary: F5F5F5;
+  --color-foreground-secondary: #E6E6E6;
+  --color-code-background: #333333;
+  --color-code-foreground: #E6E6E6;
+  --color-admonition-title--note: #11AB51;
+  --admonition-font-size: 0.9rem;
+  --color-background-primary: #171717;
+  --color-background-secondary: #4D4D4D;
+  --color-sidebar-background: #333333;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-content-foreground: #F5F5F5;
+  --color-foreground-primary: F5F5F5;
+  --color-foreground-secondary: #E6E6E6;
+  --color-code-background: #333333;
+  --color-code-foreground: #E6E6E6;
+  --color-admonition-title--note: #11AB51;
+  --admonition-font-size: 0.9rem;
+  --color-background-primary: #171717;
+  --color-background-secondary: #4D4D4D;
+  --color-sidebar-background: #333333;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Greenbone Community Documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/logo.svg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Greenbone Community Documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Background</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="22.4/source-build/index.html">Building from Source</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Building from Source</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="22.4/source-build/workflows.html">Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22.4/source-build/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="22.4/container/index.html">Greenbone Community Containers</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of Greenbone Community Containers</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="22.4/container/workflows.html">Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="22.4/container/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="22.4/kali/index.html">Kali Linux Install Guide</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of Kali Linux Install Guide</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="22.4/kali/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions (FAQ)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="https://github.com/greenbone/docs/blob/main/src/background.md?plain=true" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div><div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/greenbone/docs/edit/main/src/background.md" title="Edit this page">
+    <svg><use href="#svg-pencil"></use></svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="background">
+<h1>Background<a class="headerlink" href="#background" title="Link to this heading">¶</a></h1>
+<section id="architecture">
+<h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">¶</a></h2>
+<p>The Greenbone Community Edition consists of a framework with several services.
+It is developed as part of the commercial <a class="reference external" href="https://www.greenbone.net/en/products/">Greenbone Enterprise</a> product line.</p>
+<p>The Greenbone Community Edition was originally built as a community project
+named <a class="reference external" href="https://www.openvas.org/">OpenVAS</a> and is primarily developed and forwarded by <a class="reference external" href="https://www.greenbone.net/en/">Greenbone</a>.</p>
+<p>The architecture for the Greenbone Community Edition is grouped into three major parts:</p>
+<ul class="simple">
+<li><p>Executable scanner applications that run vulnerability tests (VT) against
+target systems</p></li>
+<li><p>Greenbone Vulnerability Management Daemon (gvmd)</p></li>
+<li><p>Greenbone Security Assistant (GSA) with the Greenbone Security Assistant
+Daemon (gsad)</p></li>
+</ul>
+<p>The following figure shows an overview of the architecture for the 22.4 release.</p>
+<blockquote>
+<div><figure class="align-default" id="id1">
+<img alt="Greenbone Community Edition Architecture" src="_images/greenbone-community-22.4-architecture.png" />
+<figcaption>
+<p><span class="caption-text">Architecture in release 22.4</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+</div></blockquote>
+<p>The Greenbone Community Edition is released under open-source licenses. By using
+it, Linux distributions can create and provide the software components in the
+form of installation packages.</p>
+<section id="greenbone-vulnerability-management-daemon-gvmd">
+<h3>Greenbone Vulnerability Management Daemon (gvmd)<a class="headerlink" href="#greenbone-vulnerability-management-daemon-gvmd" title="Link to this heading">¶</a></h3>
+<p>The [Greenbone Vulnerability Management Daemon (gvmd)] – also called Greenbone Vulnerability
+Manager is the central service that consolidates plain vulnerability scanning into
+a full vulnerability management solution. gvmd controls the OpenVAS Scanner via Open
+Scanner Protocol (OSP).</p>
+<p>The service itself offers the XML-based, <a class="reference internal" href="glossary.html#term-GMP"><span class="xref std std-term">Greenbone Management Protocol (GMP)</span></a>.
+gvmd also controls an SQL database (PostgreSQL) where all configuration and scan result data is
+centrally stored. Furthermore, gvmd also handles user management including permissions
+control with groups and roles. And finally, the service has an internal runtime
+system for scheduled tasks and other events.</p>
+</section>
+<section id="greenbone-security-assistant-gsa">
+<h3>Greenbone Security Assistant (GSA)<a class="headerlink" href="#greenbone-security-assistant-gsa" title="Link to this heading">¶</a></h3>
+<p>The <a class="reference external" href="https://github.com/greenbone/gsa">Greenbone Security Assistant (GSA)</a> is the web interface that a
+user controls scans and accesses vulnerability information with. It is the main
+contact point for a user. It connects to gvmd via the web server <a class="reference external" href="https://github.com/greenbone/gsad">Greenbone
+Security Assistant Daemon (gsad)</a> to provide a full-featured web application for
+vulnerability management. The communication occurs using the
+<a class="reference internal" href="glossary.html#term-GMP"><span class="xref std std-term">Greenbone Management Protocol (GMP)</span></a> with which the user can also
+communicate directly by using different tools.</p>
+</section>
+<section id="openvas-scanner">
+<h3>OpenVAS Scanner<a class="headerlink" href="#openvas-scanner" title="Link to this heading">¶</a></h3>
+<p>The main scanner <a class="reference external" href="https://github.com/greenbone/openvas-scanner">OpenVAS Scanner</a> is a full-featured scan engine that executes
+<a class="reference internal" href="glossary.html#term-VT"><span class="xref std std-term">Vulnerability Tests (VTs)</span></a> against target systems. For this, it uses
+the daily updated and comprehensive feeds: the full-featured, extensive, commercial
+<a class="reference internal" href="glossary.html#term-Greenbone-Enterprise-Feed"><span class="xref std std-term">Greenbone Enterprise Feed</span></a> or the free
+available <a class="reference internal" href="glossary.html#term-Greenbone-Community-Feed"><span class="xref std std-term">Greenbone Community Feed</span></a>.</p>
+<p>The scanner consists of the components <a class="reference external" href="https://github.com/greenbone/ospd-openvas">ospd-openvas</a> and <a class="reference external" href="https://github.com/greenbone/openvas-scanner">openvas-scanner</a>.
+The OpenVAS Scanner is controlled via <a class="reference internal" href="glossary.html#term-OSP"><span class="xref std std-term">OSP</span></a>. The OSP Daemon for the
+OpenVAS Scanner (ospd-openvas) communicates with gvmd via OSP: VT data is
+collected, scans are started and stopped, and scan results are transferred to
+gvmd via ospd.</p>
+</section>
+<section id="notus-scanner">
+<h3>Notus Scanner<a class="headerlink" href="#notus-scanner" title="Link to this heading">¶</a></h3>
+<p>The <a class="reference external" href="https://github.com/greenbone/notus-scanner">Notus Scanner</a> scans during every regular scan, so no user interaction is
+necessary. It offers better performance due to less system resource
+consumption and thus, faster scanning.</p>
+<p>The Notus Scanner replaces the logic of potentially all NASL-based local
+security checks (LSCs). A comparison of installed software on a host against a
+list of known vulnerable software is done instead of running a VT script for
+each LSC.</p>
+<p>The regular OpenVAS Scanner loads each NASL LSC individually and executes it
+one by one for every host. A single known vulnerability is then compared with
+the installed software. This is repeated for all LSCs.</p>
+<p>With the Notus Scanner, the list of installed software is loaded in the same
+way, but is directly compared with all known vulnerable software for the
+operating system of the scanned host. This eliminates the need to run the
+LSCs because the information about the known vulnerable software is collected
+in one single list and not distributed in individual NASL scripts.</p>
+</section>
+<section id="additional-software">
+<h3>Additional Software<a class="headerlink" href="#additional-software" title="Link to this heading">¶</a></h3>
+<p>The <a class="reference external" href="https://github.com/greenbone/gvm-tools">Greenbone Vulnerability Management Tools (gvm-tools)</a> are a collection of
+tools that help with remote controlling Greenbone Community Edition installations
+or Greenbone Enterprise Appliances. The tools aid in accessing the communication
+protocols <a class="reference internal" href="glossary.html#term-GMP"><span class="xref std std-term">GMP (Greenbone Management Protocol)</span></a> and
+<a class="reference internal" href="glossary.html#term-OSP"><span class="xref std std-term">OSP (Open Scanner Protocol)</span></a>.</p>
+<p>This module is comprised of interactive and non-interactive clients.
+The programming language Python is supported directly for interactive scripting.
+But it is also possible to issue remote GMP/OSP commands without programming in
+Python.</p>
+</section>
+</section>
+<section id="greenbone-gvm-openvas-and-how-they-are-connected">
+<h2>Greenbone, GVM, OpenVAS and How They Are Connected<a class="headerlink" href="#greenbone-gvm-openvas-and-how-they-are-connected" title="Link to this heading">¶</a></h2>
+<p>When the OpenVAS project was launched, it only consisted of an engine for scanning
+vulnerabilities.</p>
+<p>Shortly after that, the company <a class="reference external" href="https://www.greenbone.net/en/">Greenbone</a> was founded to achieve
+professional support for vulnerability scanning. Greenbone started to lead the
+development of OpenVAS, added several software components and turned OpenVAS
+into a vulnerability management solution while keeping the values of free
+software. This vulnerability management solution was later named
+<a class="reference internal" href="glossary.html#term-GVM"><span class="xref std std-term">Greenbone Vulnerability Management (GVM)</span></a> to reflect the origins and
+brand changes. Therefore, after the release of the OpenVAS 9
+framework, the following releases got named GVM.</p>
+<p>With this in mind, OpenVAS could mean</p>
+<ul class="simple">
+<li><p>a vulnerability scanner (OpenVAS Scanner),</p></li>
+<li><p>a name for a software framework of several components (GVM),</p></li>
+<li><p>a software project led by the company <a class="reference external" href="https://www.greenbone.net/en/">Greenbone</a> (Greenbone Source Edition),</p></li>
+<li><p>a source code release of a vulnerability management solution (OpenVAS 9, GVM 20.08, …), or</p></li>
+<li><p>a community of users and developers (Greenbone Community)</p></li>
+</ul>
+<p>depending on the context.</p>
+<p>To have a unique name we decided to use the term
+<a class="reference internal" href="glossary.html#term-Greenbone-Community-Edition"><span class="xref std std-term">Greenbone Community Edition</span></a> as an umbrella for all Open Source/Free
+Software efforts of the company Greenbone in 2022.</p>
+</section>
+<section id="history-of-the-openvas-project">
+<h2>History of the OpenVAS project<a class="headerlink" href="#history-of-the-openvas-project" title="Link to this heading">¶</a></h2>
+<p>In 2005, the developers of the vulnerability scanner Nessus decided to
+discontinue the work under open-source licenses and switch to a proprietary
+business model.</p>
+<p>At this point, developers from Intevation and DN-Systems – the two companies
+which would later found the Greenbone AG – were already contributing
+developments to Nessus, focusing on client tools. The works were primarily
+supported by the German Federal Office for Information Security (BSI).</p>
+<p>In 2006, several forks of Nessus were created in response to the
+discontinuation of the open-source solution. Of these forks, only one has continued
+to show activity: OpenVAS, the Open Vulnerability Assessment System. OpenVAS was
+registered as a project at Software in the Public Interest, Inc. to hold and
+protect the domain “openvas.org”.</p>
+<p>The years 2006 and 2007 brought little activity other than cleanups of the status quo.
+But in late 2008, the Greenbone AG, based in Osnabrück,
+Germany was founded to drive OpenVAS forward. Essentially, Greenbone’s business
+plan was about 3 cornerstones:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Go beyond plain vulnerability scanning towards a comprehensive
+vulnerability management solution.</p></li>
+<li><p>Create a turn-key appliance product for enterprise customers.</p></li>
+<li><p>Continue the open-source concept of creating a transparent security
+technology.</p></li>
+</ol>
+</div></blockquote>
+<p>Also in 2008, two further companies became active: Secpod from India and
+Security Space from Canada. Both of them had a focus on contributing
+vulnerability tests, and teamed up with Greenbone to start producing
+a reliable and up-to-date feed of vulnerability tests. This started with removing
+any source code and vulnerability tests where the license was not clear or not
+compatible. Several thousands of vulnerability tests were eliminated to get a clean
+starting point. Shortly after, the feed content grew quickly and steadily.</p>
+<p>In 2009, Greenbone added the first additional modules to build a vulnerability
+management solution. The web interface and the central management service were
+developed from scratch, with generic protocols defined as their API. At the same
+time, the OpenVAS scanner was carefully improved and quickly lost compatibility
+with its ancestor. All open-source work was branded “OpenVAS”. The first
+“Greenbone Security Manager” appliance products entered the market in spring 2010.</p>
+<p>In the years 2010 to 2016, the commercial product was systematically improved
+and extended, and so were the open-source modules. The vulnerability
+management was extended to include daily updated security advisories, which were
+made available to the public with a GPL-compatible license by the German CERTs
+DFN-CERT and CERT-Bund, a division of the BSI.</p>
+<p>In March 2017, the OpenVAS framework reached version 9. Many new
+modules and numerous features were added during the release cycles. Several hundreds
+of thousands of lines of code were produced and there was almost no day without a
+couple of released code improvements by a growing development team.</p>
+<p>The year 2017 marked the beginning of a new era: first of all, Greenbone became
+visible as the driving force behind OpenVAS, by introducing several naming changes. This
+included several activities, the most essential one using the term
+<a class="reference internal" href="glossary.html#term-GVM"><span class="xref std std-term">Greenbone Vulnerability Management” (GVM)</span></a> instead of “OpenVAS framework”
+for the releases. Since then the OpenVAS Scanner is only one of many modules. This
+led to “GVM-10” as the successor of “OpenVAS-9”. There were no license changes,
+all modules remained free and open-source software.</p>
+<p>The second major change in 2017 involved the feed service. Apart from the
+branding confusion, several companies integrated the technology and feed, passing
+it off as their work or claiming to be an alternative to Greenbone’s product at
+a better price. Only a minority of them contributed to the project and properly
+complied with the GPL licenses. None of them cooperates with Greenbone commercially. To achieve better visibility, less misunderstanding,
+and better differentiation from other OpenVAS-based products, the public feed
+was renamed to <a class="reference internal" href="glossary.html#term-Greenbone-Community-Feed"><span class="xref std std-term">Greenbone Community Feed</span></a> and the feed development was internalized.
+Furthermore, the release scheme has been changed from a 14-day delay to a daily
+publication without delay, now excluding vulnerability tests for enterprise products.</p>
+<p>The third major change to the new era was the transition to a modern
+infrastructure, namely GitHub and a community forum. The whole transition was
+completed in 2018 and boosted both productivity and community activity.</p>
+<p>The OpenVAS Scanner released with GVM-10 received numerous performance optimization
+to meet the challenge of a growing number of vulnerability tests scanning
+target networks of increasing size and heterogeneity.</p>
+<p>GVM-11 introduced substantial architectural changes: the former service
+<a class="reference internal" href="glossary.html#term-openvassd"><span class="xref std std-term">openvassd</span></a> was turned into a command-line tool <a class="reference internal" href="glossary.html#term-openvas"><span class="xref std std-term">openvas</span></a>. It is
+controlled by the service layer <a class="reference internal" href="glossary.html#term-ospd-openvas"><span class="xref std std-term">ospd-openvas</span></a>.
+This concept essentially replaces the old stateful, permanent and proprietary
+OTP (OpenVAS Transfer Protocol) by the new stateless, request-response
+XML-based and generic <a class="reference internal" href="glossary.html#term-OSP"><span class="xref std std-term">OSP (Open Scanner Protocol)</span></a>.</p>
+<p>With <a class="reference external" href="https://forum.greenbone.net/t/gvm-20-08-end-of-life-initial-release-2020-08-12/6312">GVM 20.08</a>,
+the release versioning changed to <a class="reference external" href="https://calver.org/">Calendar Versioning</a>.
+Most important change in this release was to ship and sync the gvmd object data
+consisting of the report formats, port lists, policies and scan configs with the
+feed.</p>
+<p>Besides removing legacy features like GMP scanners, the <a class="reference external" href="https://forum.greenbone.net/t/gvm-21-04-end-of-life-initial-release-2021-04-16/8942">21.4 release</a>
+got support for CVSSv3.0/CVSSv3.1.</p>
+<p>The <a class="reference external" href="https://forum.greenbone.net/t/greenbone-community-edition-22-4-stable-initial-release-2022-07-25/12638">Greenbone Community Edition 22.4</a>
+release added the Notus Scanner and removed some legacy features like support
+for generic OSP scanners.</p>
+<p>During 2023 the decision was taken to allow more flexible development of the
+components and to release them independently of each other. To allow to express
+software compatibility most components switched to <a class="reference external" href="https://semver.org/">semantic versioning</a>.</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="22.4/source-build/index.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Building from Source</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Home</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2021–2024, Greenbone AG
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              <a class="muted-link " href="https://github.com/greenbone/docs/" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+            </a>
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Background</a><ul>
+<li><a class="reference internal" href="#architecture">Architecture</a><ul>
+<li><a class="reference internal" href="#greenbone-vulnerability-management-daemon-gvmd">Greenbone Vulnerability Management Daemon (gvmd)</a></li>
+<li><a class="reference internal" href="#greenbone-security-assistant-gsa">Greenbone Security Assistant (GSA)</a></li>
+<li><a class="reference internal" href="#openvas-scanner">OpenVAS Scanner</a></li>
+<li><a class="reference internal" href="#notus-scanner">Notus Scanner</a></li>
+<li><a class="reference internal" href="#additional-software">Additional Software</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#greenbone-gvm-openvas-and-how-they-are-connected">Greenbone, GVM, OpenVAS and How They Are Connected</a></li>
+<li><a class="reference internal" href="#history-of-the-openvas-project">History of the OpenVAS project</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=6b89569b"></script>
+    </body>
+</html>
