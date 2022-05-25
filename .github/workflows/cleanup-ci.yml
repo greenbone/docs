@@ -10,7 +10,7 @@ jobs:
     name: Cleanup CI build
     runs-on: 'ubuntu-latest'
     env:
-      DOC_ROOT: pr/${ github.head_ref }}
+      DOC_ROOT: pr/${{ github.head_ref }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -18,6 +18,7 @@ jobs:
       - name: Test Document Root Exists
         id: test_doc_root
         run: |
+          echo "Checking if $DOC_ROOT exists"
           if [ -d "$DOC_ROOT" ]; then
             echo "::set-output name=HAS_DOC_ROOT::true"
           else
