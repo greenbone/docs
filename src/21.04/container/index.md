@@ -314,7 +314,7 @@ docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-editio
     restart ospd-openvas
 ```
 
-### Port List, Scan Configs, Report Formats are up to date but not visible in UI
+### Port List, Scan Configurations, Report Formats are Up-to-Date but Not Visible on the Web Interface
 
 If port lists, scan configurations or report formats are missing on the web interface, you may run
 
