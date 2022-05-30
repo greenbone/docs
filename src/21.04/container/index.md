@@ -126,7 +126,7 @@ it can be downloaded with the following command directly:
 ---
 caption: Downloading docker-compose file
 ---
-cd $DOWNLOAD_DIR && curl -O https://greenbone.github.io/docs/_static/docker-compose.yml
+cd $DOWNLOAD_DIR && curl -O https://greenbone.github.io/docs/latest/_static/docker-compose.yml
 ```
 
 ### Description
