@@ -1,8 +1,8 @@
 Starting the Vulnerability Management
 =====================================
 
-After the services have started and all data has been loaded, the *Greenbone
-Security Manager* web interface – GSA – can be opened in the browser.
+After the services have started and all data has been loaded, the :term:`Greenbone
+Security Assistant web interface – GSA – <GSA>` can be opened in the browser.
 
 .. code-block::
   :caption: Opening Greenbone Security Assistant in the browser
