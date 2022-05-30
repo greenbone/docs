@@ -12,7 +12,7 @@ jobs:
     env:
       DOC_ROOT: pr/${{ github.head_ref }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           ref: "gh-pages"
       - name: Test Document Root Exists
