@@ -396,7 +396,7 @@ To access a container with a bash shell as a root user, you can run
 
 ```{code-block} shell
 ---
-caption: Remove containers and volumes (all data)
+caption: Gain a Terminal for a Container
 ---
 docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition exec <container-name> /bin/bash
 ```
