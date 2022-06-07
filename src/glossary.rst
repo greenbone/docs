@@ -71,8 +71,8 @@ Glossary
     the Greenbone Community Edition.
 
   Greenbone Community Containers
-    Container images that are pre-build on [GitHub](https://github.com/greenbone)
-    and available via [dockerhub](https://hub.docker.com/u/greenbone). These
+    Container images that are pre-build on `GitHub <https://github.com/greenbone>`_
+    and available via `dockerhub <https://hub.docker.com/u/greenbone>`_. These
     images can be used to run the newest versions of the :term:`Greenbone Community Edition`
     without having to care about the operating system, compiler and build
     tool chains.
