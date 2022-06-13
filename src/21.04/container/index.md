@@ -405,5 +405,16 @@ docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-editio
     restart gvmd
 ```
 
+### Errors while starting `pg-gvm` container
+
+While starting up the `pg-gvm` container, some errors are displayed. For example
+`createuser: error: creation of new role failed: ERROR:  role "gvmd" already exists`
+or `ERROR:  extension "uuid-ossp" already exists`.
+
+The code behind these errors tries to set up the database. If the database is
+already initialized, all tables, users, permissions and extensions exist,
+errors are raised. At the moment, it is not possible to silence these errors but
+they can be ignored safely.
+
 [docker]: https://docs.docker.com/
 [docker-compose]: https://docs.docker.com/compose/
