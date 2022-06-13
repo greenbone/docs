@@ -298,35 +298,7 @@ alt: Launching Greenbone Security Assistant for the first time
 Greenbone Security Assistant after logging in for the first time
 ```
 
-## Troubleshooting
-
-### VTs are Up-to-Date but Not Visible on the Web Interface
-
-It may be possible, especially for the initial synchronization, that the scanner
-does not notice new VT files have arrived. Therefore, it is best to restart the
-scanner.
-
-```{code-block} shell
----
-caption: Restart the scanner to ensure that new {term}`VTs<VT>` are loaded
----
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
-    restart ospd-openvas
-```
-
-### Port List, Scan Configurations, Report Formats are Up-to-Date but Not Visible on the Web Interface
-
-If port lists, scan configurations or report formats are missing on the web interface, you may run
-
-```{code-block} shell
----
-caption: Force reload of report formats, scan configs and port lists
----
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
-    exec -u gvmd gvmd gvmd --rebuild-gvmd-data=all
-```
-
-to force `gvmd` to reload the data from the file system.
+## Workflows
 
 ### Update the Greenbone Community Containers
 
@@ -346,31 +318,6 @@ docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-editio
 caption: Starting the Greenbone Community Containers
 ---
 docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition up -d
-```
-
-### Cannot Log in to the Web Interface: *Greenbone Vulnerability Manager service is not responding*
-
-If it is not possible to log in to the web interface and the following error
-message is shown
-
-```{image} gvmd-not-responding.png
----
-alt: gvmd not responding
-width: 200px
-align: center
----
-```
-
-and/or the logs contain a `Failed to connect to server at /run/gvmd/gvmd.sock: Connection refused`
-message, the {term}`gvmd` container must be restarted. It is very likely it
-had some issues accessing the PostgreSQL database.
-
-```{code-block} shell
----
-caption: Restart {term}`gvmd`
----
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
-    restart gvmd
 ```
 
 ### Starting from Scratch
@@ -402,6 +349,61 @@ docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-editio
 ```
 
 Afterwards, you can execute standard bash commands within the running container.
+
+## Troubleshooting
+
+### VTs are Up-to-Date but Not Visible on the Web Interface
+
+It may be possible, especially for the initial synchronization, that the scanner
+does not notice new VT files have arrived. Therefore, it is best to restart the
+scanner.
+
+```{code-block} shell
+---
+caption: Restart the scanner to ensure that new {term}`VTs<VT>` are loaded
+---
+docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+    restart ospd-openvas
+```
+
+### Port List, Scan Configurations, Report Formats are Up-to-Date but Not Visible on the Web Interface
+
+If port lists, scan configurations or report formats are missing on the web interface, you may run
+
+```{code-block} shell
+---
+caption: Force reload of report formats, scan configs and port lists
+---
+docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+    exec -u gvmd gvmd gvmd --rebuild-gvmd-data=all
+```
+
+to force `gvmd` to reload the data from the file system.
+
+### Cannot Log in to the Web Interface: *Greenbone Vulnerability Manager service is not responding*
+
+If it is not possible to log in to the web interface and the following error
+message is shown
+
+```{image} gvmd-not-responding.png
+---
+alt: gvmd not responding
+width: 200px
+align: center
+---
+```
+
+and/or the logs contain a `Failed to connect to server at /run/gvmd/gvmd.sock: Connection refused`
+message, the {term}`gvmd` container must be restarted. It is very likely it
+had some issues accessing the PostgreSQL database.
+
+```{code-block} shell
+---
+caption: Restart {term}`gvmd`
+---
+docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+    restart gvmd
+```
 
 [docker]: https://docs.docker.com/
 [docker-compose]: https://docs.docker.com/compose/
