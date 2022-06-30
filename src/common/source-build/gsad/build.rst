@@ -15,7 +15,7 @@
   make -j$(nproc)
 
 .. code-block::
-  :caption: Installing gsa
+  :caption: Installing gsad
 
   make DESTDIR=$INSTALL_DIR install
 
