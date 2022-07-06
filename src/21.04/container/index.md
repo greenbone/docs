@@ -298,6 +298,27 @@ alt: Launching Greenbone Security Assistant for the first time
 Greenbone Security Assistant after logging in for the first time
 ```
 
+## Setup and Start Script
+
+As a quick solution we provide all the commands above in a single script. This
+script can be downloaded with the following command directly
+
+```{code-block} shell
+---
+caption: Downloading setup and start script
+---
+cd $DOWNLOAD_DIR && curl -f -O https://greenbone.github.io/docs/latest/_static/setup-and-start-greenbone-community-edition.sh
+```
+
+To execute the script following command needs to be run
+
+```{code-block} shell
+---
+caption: Run setup and start script
+---
+$DOWNLOAD_DIR/setup-and-start-greenbone-community-edition.sh
+```
+
 ## Workflows
 
 ### Update the Greenbone Community Containers
