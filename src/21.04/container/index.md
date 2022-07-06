@@ -266,15 +266,15 @@ By default, a user *admin* with the password *admin* is created. This is insecur
 and it is highly recommended to set a new password.
 ```
 
-To create the administrator user with a password of your choice instead of the
+To update the administrator user with a password of your choice instead of the
 generated password, the following command can be used:
 
 ```{code-block} shell
 ---
-caption: Creating an administrator user with provided password
+caption: Updating password of administrator user
 ---
 docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
-    exec -u gvmd gvmd gvmd --create-user=admin --password=<password>
+    exec -u gvmd gvmd gvmd --user=admin --new-password=<password>
 ```
 ## Starting the Vulnerability Management
 
