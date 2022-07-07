@@ -48,6 +48,17 @@ output of a previous command.
 The command {command}`sudo` is used for executing commands that require privileged
 access on the system.
 
+### Install curl
+
+[curl](https://curl.se/) is required for downloading files from this guide.
+
+```{code-block} shell
+---
+caption: Install curl Debian package
+---
+sudo apt install curl
+```
+
 ### Installing Docker
 
 [docker] is required for running the services within containers. Docker can be
