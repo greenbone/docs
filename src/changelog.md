@@ -5,7 +5,8 @@ All notable changes to this documentation will be listed in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
-## Latest
+## 22.5.0 - 2022-05-30
+* New Greenbone Community Containers documentation
 * Update index page, history, architecture, faq and glossary for adjusted terms
   and naming.
 * Allow to copy & paste commands via a button click
