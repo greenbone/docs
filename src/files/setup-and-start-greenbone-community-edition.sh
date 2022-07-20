@@ -23,7 +23,7 @@ fi
 mkdir -p $DOWNLOAD_DIR && cd $DOWNLOAD_DIR
 
 echo "Downloading docker-compose file..."
-curl -f -O https://greenbone.github.io/docs/latest/_static/docker-compose.yml
+curl -f -O https://greenbone.github.io/docs/latest/files/docker-compose.yml
 
 echo "Pulling Greenbone Community Containers..."
 docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition pull
