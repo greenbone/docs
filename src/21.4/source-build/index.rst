@@ -1,5 +1,5 @@
 ==========================
-Building 21.04 from Source
+Building 21.4 from Source
 ==========================
 
 .. include:: /common/source-build/introduction.rst
@@ -37,7 +37,7 @@ gvm-libs
 
 .. include:: /common/source-build/gvm-libs/description.rst
 .. include:: /common/source-build/gvm-libs/version.rst
-.. include:: /common/source-build/gvm-libs/dependencies.rst
+.. include:: /21.4/source-build/gvm-libs/dependencies.rst
 .. include:: /common/source-build/gvm-libs/download.rst
 
 Afterwards, gvm-libs can be build and installed.
@@ -54,7 +54,7 @@ gvmd
 
   export GVMD_VERSION=21.4.5
 
-.. include:: /common/source-build/gvmd/dependencies.rst
+.. include:: /21.4/source-build/gvmd/dependencies.rst
 
 Details about the optional dependencies can be found at
 https://github.com/greenbone/gvmd/blob/gvmd-21.04/INSTALL.md#prerequisites-for-optional-features
@@ -130,7 +130,7 @@ Performing a System Setup for GVM
 .. include:: /common/source-build/redis.rst
 .. include:: /common/source-build/directory-permissions.rst
 .. include:: /common/source-build/sudo-scanning.rst
-.. include:: /common/source-build/postgres.rst
+.. include:: /21.4/source-build/postgres.rst
 .. include:: /common/source-build/admin-user.rst
 .. include:: /common/source-build/feed-import-owner.rst
 .. include:: /common/source-build/initial-feed-sync.rst

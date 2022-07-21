@@ -15,14 +15,14 @@ services:
       - gpg_data_vol:/mnt
 
   pg-gvm:
-    image: greenbone/pg-gvm:oldstable
+    image: greenbone/pg-gvm:stable
     restart: on-failure
     volumes:
       - psql_data_vol:/var/lib/postgresql
       - psql_socket_vol:/var/run/postgresql
 
   gvmd:
-    image: greenbone/gvmd:oldstable
+    image: greenbone/gvmd:stable
     restart: on-failure
     volumes:
       - gvmd_data_vol:/var/lib/gvm
@@ -35,7 +35,7 @@ services:
       - pg-gvm
 
   gsa:
-    image: greenbone/gsa:oldstable
+    image: greenbone/gsa:stable
     restart: on-failure
     ports:
       - 9392:80
@@ -45,7 +45,7 @@ services:
       - gvmd
 
   ospd-openvas:
-    image: greenbone/ospd-openvas:oldstable
+    image: greenbone/ospd-openvas:stable
     restart: on-failure
     cap_add:
       - NET_ADMIN # for capturing packages in promiscuous mode
