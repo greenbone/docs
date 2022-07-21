@@ -4,7 +4,9 @@
   mkdir -p $BUILD_DIR/pg-gvm && cd $BUILD_DIR/pg-gvm
 
   cmake $SOURCE_DIR/gvmd-$GVMD_VERSION \
-    -DCMAKE_BUILD_TYPE=Release sudo make install
+    -DCMAKE_BUILD_TYPE=Release
+  
+  make
 
 .. code-block::
   :caption: Installing pg-gvm
