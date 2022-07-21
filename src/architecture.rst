@@ -84,11 +84,11 @@ gvmd via ospd.
 Notus Scanner (only for 22.4)
 -----------------------------
       
-The Notus scanner scans after every regular scan, so no user interaction is 
+The `Notus Scanner`_ scans after every regular scan, so no user interaction is 
 necessary. It offers better performance due to less system resource 
 consumption and thus, faster scanning.
 
-The Notus scanner replaces the logic of potentially all NASL-based local 
+The Notus Scanner replaces the logic of potentially all NASL-based local 
 security checks (LSCs). A comparison of installed software on a host against a 
 list of known vulnerable software is done instead of running a VT script for 
 each LSC.
@@ -97,7 +97,7 @@ The regular OpenVAS Scanner loads each NASL LSC individually and executes it
 one by one for every host. A single known vulnerability is then compared with 
 the installed software. This is repeated for all LSCs.
 
-With the Notus scanner, the list of installed software is loaded in the same 
+With the Notus Scanner, the list of installed software is loaded in the same 
 way, but is directly compared with all known vulnerable software for the 
 operating system of the scanned host. This eliminates the need to run the 
 LSCs because the information about the known vulnerable software is collected 
@@ -123,6 +123,7 @@ Python.
 .. _ospd-openvas: https://github.com/greenbone/ospd-openvas
 .. _openvas-scanner: https://github.com/greenbone/openvas-scanner
 .. _OpenVAS Scanner: https://github.com/greenbone/openvas-scanner
+.. _Notus Scanner: https://github.com/greenbone/notus-scanner
 .. _Greenbone Vulnerability Manager (gvmd): https://github.com/greenbone/gvmd
 .. _Greenbone Security Assistant (GSA): https://github.com/greenbone/gsa
 .. _Greenbone Security Assistant Daemon (gsad): https://github.com/greenbone/gsad
