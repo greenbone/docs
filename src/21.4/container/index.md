@@ -1,4 +1,4 @@
-# Greenbone Community Containers
+# Greenbone Community Containers 21.4
 
 Running the Greenbone Community Edition from containers requires knowledge about:
 
@@ -302,7 +302,7 @@ xdg-open "http://127.0.0.1:9392" 2>/dev/null >/dev/null &
 The browser will show the login page of GSA and after using the credentials
 created before, it is possible to start with vulnerability scanning.
 
-```{figure} /images/GSA.png
+```{figure} /images/GSA-21.4.png
 ---
 alt: Launching Greenbone Security Assistant for the first time
 ---

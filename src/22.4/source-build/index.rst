@@ -148,4 +148,4 @@ Performing a System Setup for GVM
 .. include:: /common/source-build/initial-feed-sync.rst
 .. include:: /common/source-build/systemd.rst
 
-.. include:: /common/source-build/finish.rst
+.. include:: /22.4/source-build/finish.rst
