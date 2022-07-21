@@ -12,7 +12,7 @@ Building 21.4 from Source
 
 .. include:: /common/source-build/prerequisites.rst
 
-Setting the version
+Setting the Version
 -------------------
 
 To make the downloading easier, an environment variable for the desired release
@@ -99,7 +99,7 @@ openvas-scanner
 
 .. include:: /common/source-build/openvas-scanner/description.rst
 .. include:: /common/source-build/openvas-scanner/version.rst
-.. include:: /common/source-build/openvas-scanner/dependencies.rst
+.. include:: /21.4/source-build/openvas-scanner/dependencies.rst
 .. include:: /common/source-build/openvas-scanner/download.rst
 .. include:: /common/source-build/openvas-scanner/build.rst
 
@@ -113,7 +113,7 @@ ospd-openvas
 
   export OSPD_OPENVAS_VERSION=$GVM_VERSION
 
-.. include:: /common/source-build/ospd-openvas/dependencies.rst
+.. include:: /21.4/source-build/ospd-openvas/dependencies.rst
 .. include:: /common/source-build/ospd-openvas/download.rst
 .. include:: /common/source-build/ospd-openvas/build.rst
 
@@ -128,12 +128,12 @@ Performing a System Setup for GVM
 =================================
 
 .. include:: /common/source-build/redis.rst
-.. include:: /common/source-build/directory-permissions.rst
+.. include:: /21.4/source-build/directory-permissions.rst
 .. include:: /common/source-build/sudo-scanning.rst
 .. include:: /21.4/source-build/postgres.rst
 .. include:: /common/source-build/admin-user.rst
 .. include:: /common/source-build/feed-import-owner.rst
 .. include:: /common/source-build/initial-feed-sync.rst
-.. include:: /common/source-build/systemd.rst
+.. include:: /21.4/source-build/systemd.rst
 
 .. include:: /21.4/source-build/finish.rst
