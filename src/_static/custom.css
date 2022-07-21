@@ -110,3 +110,7 @@ div.toctree-wrapper.compound a.reference.internal {
 #indices-and-tables a.reference.internal {
 	border: 0px;
 }
+
+.sphinx-tabs-tab {
+	color:#3E4349;
+}
