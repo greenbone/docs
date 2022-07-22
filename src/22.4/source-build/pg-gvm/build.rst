@@ -3,13 +3,17 @@
 
   mkdir -p $BUILD_DIR/pg-gvm && cd $BUILD_DIR/pg-gvm
 
-  cmake $SOURCE_DIR/gvmd-$GVMD_VERSION \
+  cmake $SOURCE_DIR/pg-gvm-$PG_GVM_VERSION \
     -DCMAKE_BUILD_TYPE=Release
-  
-  make
+
+  make -j$(nproc)
 
 .. code-block::
   :caption: Installing pg-gvm
 
-  sudo make install
+  make DESTDIR=$INSTALL_DIR install
+
+  sudo cp -rv $INSTALL_DIR/* /
+
+  rm -rf $INSTALL_DIR/*
 
