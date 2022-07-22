@@ -13,7 +13,6 @@
     -DOPENVAS_DEFAULT_SOCKET=/run/ospd/ospd-openvas.sock \
     -DGVM_FEED_LOCK_PATH=/var/lib/gvm/feed-update.lock \
     -DSYSTEMD_SERVICE_DIR=/lib/systemd/system \
-    -DDEFAULT_CONFIG_DIR=/etc/default \
     -DLOGROTATE_DIR=/etc/logrotate.d
 
   make -j$(nproc)

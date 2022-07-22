@@ -57,7 +57,7 @@ gvmd
 .. include:: /22.4/source-build/gvmd/dependencies.rst
 
 Details about the optional dependencies can be found at
-https://github.com/greenbone/gvmd/blob/gvmd-21.04/INSTALL.md#prerequisites-for-optional-features
+https://github.com/greenbone/gvmd/blob/stable/INSTALL.md#prerequisites-for-optional-features
 
 .. include:: /common/source-build/gvmd/download.rst
 
