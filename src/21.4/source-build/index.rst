@@ -76,9 +76,9 @@ GSA
 
 .. include:: /common/source-build/gsa/description.rst
 .. include:: /common/source-build/gsa/version.rst
-.. include:: /common/source-build/gsa/dependencies.rst
+.. include:: /21.4/source-build/gsa/dependencies.rst
 .. include:: /common/source-build/gsa/download.rst
-.. include:: /common/source-build/gsa/build.rst
+.. include:: /21.4/source-build/gsa/build.rst
 
 gsad
 ----
