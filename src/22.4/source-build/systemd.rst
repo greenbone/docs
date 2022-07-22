@@ -32,7 +32,7 @@ Starting Services with *Systemd*
   EOF
 
   sudo cp $BUILD_DIR/ospd-openvas.service /etc/systemd/system/
-  
+
 .. code-block:: none
   :caption: Systemd service file for notus-scanner
 
@@ -50,11 +50,11 @@ Starting Services with *Systemd*
   RuntimeDirectory=notus-scanner
   RuntimeDirectoryMode=2775
   PIDFile=/run/notus-scanner/notus-scanner.pid
-  ExecStart=/usr/local/bin/notus-scanner --products-directory /var/lib/notus/products
+  ExecStart=/usr/local/bin/notus-scanner --products-directory /var/lib/notus/products --log-file /var/log/gvm/notus-scanner.log
   SuccessExitStatus=SIGKILL
   Restart=always
   RestartSec=60
-  
+
   [Install]
   WantedBy=multi-user.target
   EOF
