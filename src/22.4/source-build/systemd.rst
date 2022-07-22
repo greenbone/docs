@@ -152,6 +152,7 @@ Afterwards, the services need to be activated and started.
 .. code-block::
   :caption: Finally starting the services
 
+  sudo systemctl start notus-scanner
   sudo systemctl start ospd-openvas
   sudo systemctl start gvmd
   sudo systemctl start gsad
