@@ -50,7 +50,7 @@ Starting Services with *Systemd*
   RuntimeDirectory=notus-scanner
   RuntimeDirectoryMode=2775
   PIDFile=/run/notus-scanner/notus-scanner.pid
-  ExecStart=/usr/local/bin/notus-scanner --products-directory = /var/lib/notus/products
+  ExecStart=/usr/local/bin/notus-scanner --products-directory /var/lib/notus/products
   SuccessExitStatus=SIGKILL
   Restart=always
   RestartSec=60
