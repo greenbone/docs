@@ -156,6 +156,7 @@ Performing a System Setup for GVM
 .. include:: /common/source-build/redis.rst
 .. include:: /22.4/source-build/mqtt-broker.rst
 .. include:: /22.4/source-build/directory-permissions.rst
+.. include:: /22.4/source-build/gpg.rst
 .. include:: /common/source-build/sudo-scanning.rst
 .. include:: /22.4/source-build/postgres.rst
 .. include:: /common/source-build/admin-user.rst
