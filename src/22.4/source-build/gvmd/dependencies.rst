@@ -8,7 +8,9 @@
     postgresql-server-dev-13 \
     libical-dev \
     xsltproc \
-    rsync
+    rsync \
+    libbsd-dev \
+    libgpgme-dev
 
 
 .. code-block::

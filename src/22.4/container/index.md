@@ -1,4 +1,4 @@
-# Greenbone Community Containers
+# Greenbone Community Containers 22.4
 
 Running the Greenbone Community Edition from containers requires knowledge about:
 
@@ -137,7 +137,7 @@ it can be downloaded with the following command directly:
 ---
 caption: Downloading docker-compose file
 ---
-cd $DOWNLOAD_DIR && curl -f -O https://greenbone.github.io/docs/latest/_static/docker-compose.yml
+cd $DOWNLOAD_DIR && curl -f -L https://greenbone.github.io/docs/latest/_static/docker-compose-22.4.yml -o docker-compose.yml
 ```
 
 ### Description
@@ -302,7 +302,7 @@ xdg-open "http://127.0.0.1:9392" 2>/dev/null >/dev/null &
 The browser will show the login page of GSA and after using the credentials
 created before, it is possible to start with vulnerability scanning.
 
-```{figure} /images/GSA.png
+```{figure} /images/GSA-22.4.png
 ---
 alt: Launching Greenbone Security Assistant for the first time
 ---

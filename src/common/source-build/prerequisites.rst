@@ -153,45 +153,14 @@ keychain.
 .. code-block::
   :caption: Importing the Greenbone Community Signing key
 
-  curl -O https://www.greenbone.net/GBCommunitySigningKey.asc
-  gpg --import GBCommunitySigningKey.asc
+  curl -f -L https://www.greenbone.net/GBCommunitySigningKey.asc -o /tmp/GBCommunitySigningKey.asc
+  gpg --import /tmp/GBCommunitySigningKey.asc
 
 For understanding the validation output of the gpg tool, it is best to mark the
 Greenbone Community Signing key as fully trusted.
 
-.. code-block:: none
+.. code-block::
   :caption: Setting the trust level for the Greenbone Community Signing key
 
-  gpg --edit-key 9823FAA60ED1E580
-
-  pub  rsa4096/9823FAA60ED1E580
-     created: 2017-09-06  expires: never       usage: SC
-     trust: unknown       validity: unknown
-  [ unknown] (1). Greenbone Community Feed integrity key
-
-  gpg> trust
-
-  pub  rsa4096/9823FAA60ED1E580
-     created: 2017-09-06  expires: never       usage: SC
-     trust: unknown       validity: unknown
-  [ unknown] (1). Greenbone Community Feed integrity key
-
-  Please decide how far you trust this user to correctly verify other users' keys
-  (by looking at passports, checking fingerprints from different sources, etc.)
-
-    1 = I don't know or won't say
-    2 = I do NOT trust
-    3 = I trust marginally
-    4 = I trust fully
-    5 = I trust ultimately
-    m = back to the main menu
-
-  Your decision? 5
-  Do you really want to set this key to ultimate trust? (y/N) y
-
-  pub  rsa4096/9823FAA60ED1E580
-     created: 2017-09-06  expires: never       usage: SC
-     trust: ultimate      validity: ultimate
-  [ultimate] (1). Greenbone Community Feed integrity key
-
-  gpg> quit
+  echo "8AE4BE429B60A59B311C2E739823FAA60ED1E580:6:" > /tmp/ownertrust.txt
+  gpg --import-ownertrust < /tmp/ownertrust.txt

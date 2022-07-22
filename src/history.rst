@@ -117,5 +117,7 @@ Most important change in this release was to ship and sync the gvmd object data
 consisting of the report formats, port lists, policies and scan configs with the
 feed.
 
-Besides removing legacy features like GMP scanners, the 21.04 release got support
+Besides removing legacy features like GMP scanners, the 21.4 release got support
 for CVSSv3/CVSSv3.1.
+
+The 22.4 release added the Notus Scanner.
