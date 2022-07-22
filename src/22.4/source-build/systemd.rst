@@ -22,7 +22,7 @@ Starting Services with *Systemd*
   RuntimeDirectory=ospd
   RuntimeDirectoryMode=2775
   PIDFile=/run/ospd/ospd-openvas.pid
-  ExecStart=/usr/local/bin/ospd-openvas --unix-socket /run/ospd/ospd-openvas.sock --pid-file /run/ospd/ospd-openvas.pid --log-file /var/log/gvm/ospd-openvas.log --lock-file-dir /var/lib/openvas --socket-mode 0o770 --mqtt-broker-address = localhost --mqtt-broker-port = 1883 --notus-feed-dir = /var/lib/notus/advisories
+  ExecStart=/usr/local/bin/ospd-openvas --unix-socket /run/ospd/ospd-openvas.sock --pid-file /run/ospd/ospd-openvas.pid --log-file /var/log/gvm/ospd-openvas.log --lock-file-dir /var/lib/openvas --socket-mode 0o770 --mqtt-broker-address localhost --mqtt-broker-port 1883 --notus-feed-dir /var/lib/notus/advisories
   SuccessExitStatus=SIGKILL
   Restart=always
   RestartSec=60
