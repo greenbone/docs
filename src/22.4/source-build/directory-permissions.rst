@@ -9,14 +9,15 @@ and data like VTs.
 .. code-block::
   :caption: Adjusting directory permissions
 
+  sudo mkdir -p /var/lib/notus
+  sudo mkdir -p /run/gvmd
+
   sudo chown -R gvm:gvm /var/lib/gvm
   sudo chown -R gvm:gvm /var/lib/openvas
+  sudo chown -R gvm:gvm /var/lib/notus
   sudo chown -R gvm:gvm /var/log/gvm
   sudo chown -R gvm:gvm /run/gvmd
-  sudo chown -R gvm:gvm /run/gsad
-  sudo chown -R gvm:gvm /run/ospd
-  sudo chown -R gvm:gvm /run/lib/notus
-  
+
   sudo chmod -R g+srw /var/lib/gvm
   sudo chmod -R g+srw /var/lib/openvas
   sudo chmod -R g+srw /var/log/gvm
