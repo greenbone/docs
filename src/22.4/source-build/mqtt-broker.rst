@@ -1,15 +1,15 @@
 Setting up the Mosquitto MQTT Broker
 ------------------------------------
 
-The Mosquitto MQTT broker is used for communication between 
+The Mosquitto MQTT broker is used for communication between
 *ospd-openvas*, *openvas-scanner* and *notus-scanner*.
 
 .. code-block::
   :caption: Installing the Mosquitto broker
 
-  sudo apt install mosquitto
+  sudo apt install -y mosquitto
 
-After installing the Mosquitto broker package, the broker must be started 
+After installing the Mosquitto broker package, the broker must be started
 and the server uri must be added to the *openvas-scanner* configuration.
 
 .. code-block::
