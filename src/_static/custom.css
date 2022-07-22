@@ -69,13 +69,22 @@ div.sphinxsidebarwrapper img {
 }
 
 .highlight pre {
-  color: #cccccc;
-  background-color: #282c34;
+  color: #E5E5E5;
+  background-color: #333333;
   border-radius: 6px;
   font-family: Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;
-  font-size: 0.9em;
-  line-height: 1.4;
+  font-size: 0.8em;
+  line-height: 1.2;
   padding: 1.25rem 1.5rem;
+}
+
+.highlight .go {
+	color: #E5E5E5;
+	font-weight: normal;
+}
+
+.highlight .l {
+	color: #E5E5E5;
 }
 
 #contents.toc {

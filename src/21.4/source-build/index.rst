@@ -35,7 +35,7 @@ Building and Installing the Components
 gvm-libs
 --------
 
-.. include:: /common/source-build/gvm-libs/description.rst
+.. include:: /21.4/source-build/gvm-libs/description.rst
 .. include:: /common/source-build/gvm-libs/version.rst
 .. include:: /21.4/source-build/gvm-libs/dependencies.rst
 .. include:: /common/source-build/gvm-libs/download.rst
