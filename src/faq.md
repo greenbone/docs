@@ -51,21 +51,20 @@ Greenbone also doesn't recommend any distribution nor do we prefer one
 distribution over the other. Most of the time, we are not even aware which
 distribution ships which version of our software.
 
-## Which release contains which component – GOS version vs. GVM version?
+## Which release contains which component?
 
 It was often confusing to find out which software component of the
-{term}`Greenbone Community Edition` belongs to which GVM release.
-Additionally, the {term}`Greenbone OS <GOS>`
-used in the [Greenbone Enterprise TRIAL](https://www.greenbone.net/en/testnow/)
-had a different versioning scheme than GVM. We are aware of this and 
-with the 20.08 release, we changed our versioning scheme to
+{term}`Greenbone Community Edition` belongs to which release. Additionally, the
+{term}`Greenbone OS <GOS>` used in the [Greenbone Enterprise TRIAL](https://www.greenbone.net/en/testnow/)
+had a different versioning scheme than the Community Edition. We are aware of
+this and with the 20.08 release, we changed our versioning scheme to
 [Calendar Versioning](https://calver.org/). With this change, all software
 components (besides the extra software openvas-smb, gvm-tools and python-gvm),
-GVM and GOS are using the same major and minor version.
+our software is using the same major and minor version.
 
-| GVM | GOS | gvmd | GMP | GSA  | gvm-libs | Scanner | Status | Release |
+| Release | GOS | gvmd | GMP | GSA  | gvm-libs | Scanner | Status | Release Date |
 |:--------|-------:|---------|--------|--------:|-------------|------------|----------|------------|
-| [GVM 22.4](https://community.greenbone.net/t/greenbone-community-edition-22-4-stable-initial-release-2022-07-25/12638) | 22.4| 22.4 | 22.4 | 22.4 | 22.4 | 22.4| stable | 2022-07-25 |
+| [Greenbone Community Edition 22.4](https://community.greenbone.net/t/greenbone-community-edition-22-4-stable-initial-release-2022-07-25/12638) | 22.4| 22.4 | 22.4 | 22.4 | 22.4 | 22.4| stable | 2022-07-25 |
 | [GVM 21.4](https://community.greenbone.net/t/gvm-21-04-stable-initial-release-2021-04-16/8942) | 21.4| 21.4 | 21.4 | 21.4 | 21.4 | 21.4| oldstable | 2021-04-16 |
 | [GVM 20.08](https://community.greenbone.net/t/gvm-20-08-stable-initial-release-2020-08-12/6312) | [20.08](https://community.greenbone.net/t/greenbone-os-20-08-0-released/6535) | gvmd 20.8 | 20.8 | 20.8 | 20.8 | 20.8| end-of-life (since 2021-12-02) | 2020-08-12 |
 | [GVM 11](https://community.greenbone.net/t/gvm-11-stable-initial-release-2019-10-14/3674) | 6 |  9 | 9 | 9 | 11 | 7 | end-of-life (since 2020-12-31) | 2019-10-14 |
