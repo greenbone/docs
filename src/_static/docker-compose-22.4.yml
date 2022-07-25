@@ -55,7 +55,7 @@ services:
       "ospd-openvas",
       "-f",
       "--config", "/etc/gvm/ospd-openvas.conf",
-      "--mqtt-broker-address=mqtt-broker",
+      "--mqtt-broker-address", "mqtt-broker",
       "--notus-feed-dir", "/var/lib/notus/advisories",
       "-m", "666",
     ]
