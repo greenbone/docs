@@ -1,7 +1,7 @@
 Feed Validation
 ---------------
 
-For validating the feed content a GnuPG keychain with the *Greenbone Community
+For validating the feed content, a GnuPG keychain with the *Greenbone Community
 Feed integrity key* needs to be created.
 
 .. code-block::
