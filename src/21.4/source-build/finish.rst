@@ -13,7 +13,7 @@ The browser will show the login page of *GSA* and after using the credentials
 created in the `Setting Up an Admin User <#setting-up-an-admin-user>`_ chapter,
 it is possible to start with the vulnerability scanning.
 
-.. figure:: /images/GSA.png
+.. figure:: /images/GSA-21.4.png
   :alt: Launching Greenbone Security Assistant for the first time
 
   Greenbone Security Assistant after logging in for the first time

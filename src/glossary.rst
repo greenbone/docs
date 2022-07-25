@@ -120,3 +120,11 @@ Glossary
     Abbreviation for `Common Vulnerabilities and Exposures <https://www.cve.org/>`_.
     It provides unique, common identifiers for publicly known information-security
     vulnerabilities in publicly released software packages.
+
+  notus-scanner
+    A new scanner that got introduced in the 22.4 release to improve the so-called
+    local security checks. Local security checks are comparisons of
+    vulnerable and installed versions of a software. Before notus-scanner, all
+    checks have been implemented in nasl scripts and each nasl script ran in an
+    own openvas-scanner process. With notus-scanner, checks are run in one go per
+    host.

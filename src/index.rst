@@ -16,15 +16,18 @@ example Linux distributions like Kali, Alpine, etc.
 This documentation covers the following versions of the Greenbone Community
 Edition
 
-* 21.04
+* 22.4
+* 21.4
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 2
    :caption: Contents
 
    background
-   21.04/source-build/index
-   21.04/container/index
+   22.4/source-build/index
+   21.4/source-build/index
+   22.4/container/index
+   21.4/container/index
    faq
    glossary
    changelog

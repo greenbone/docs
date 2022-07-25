@@ -10,8 +10,8 @@
     libhiredis-dev \
     libxml2-dev \
     libpcap-dev \
-    libnet1-dev
-
+    libnet1-dev 
+    
 .. code-block::
   :caption: Optional dependencies for gvm-libs
 

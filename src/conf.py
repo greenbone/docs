@@ -32,6 +32,7 @@ extensions = [
     "sphinx.ext.napoleon",
     "myst_parser",
     "sphinx_copybutton",
+    "sphinx_tabs.tabs",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -81,3 +82,5 @@ html_sidebars = {
 myst_heading_anchors = 2
 
 pygments_style = "zenburn"
+
+suppress_warnings = ["myst.header"]

@@ -2,7 +2,7 @@ Building the Greenbone Community Edition stack from source requires knowledge
 about:
 
 * Using a terminal
-* Shell programming basic
+* Shell programming basics
 * Installing software via *apt*
 * Using a C compiler
 * Using *CMake* and *make*
