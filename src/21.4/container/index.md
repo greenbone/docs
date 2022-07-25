@@ -79,7 +79,7 @@ Greenbone Security Assistant after logging in for the first time
 ## Setup and Start Script
 
 As a quick solution we provide all the commands above in a single script. This
-script can be downloaded with the following command directly
+script can be downloaded with the following command directly:
 
 ```{code-block} shell
 ---
@@ -88,7 +88,7 @@ caption: Downloading setup and start script
 cd $DOWNLOAD_DIR && curl -f -O https://greenbone.github.io/docs/latest/_static/setup-and-start-greenbone-community-edition.sh
 ```
 
-To execute the script following command needs to be run
+To execute the script following command must be run:
 
 ```{code-block} shell
 ---
