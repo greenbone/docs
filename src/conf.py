@@ -82,3 +82,5 @@ html_sidebars = {
 myst_heading_anchors = 2
 
 pygments_style = "zenburn"
+
+suppress_warnings = ["myst.header"]

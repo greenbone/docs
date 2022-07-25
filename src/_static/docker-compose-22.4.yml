@@ -4,8 +4,6 @@ services:
   redis-server:
     image: greenbone/redis-server
     restart: on-failure
-    cap_drop:
-      - ALL
     volumes:
       - redis_socket_vol:/run/redis/
 
@@ -15,14 +13,14 @@ services:
       - gpg_data_vol:/mnt
 
   pg-gvm:
-    image: greenbone/pg-gvm:oldstable
+    image: greenbone/pg-gvm:stable
     restart: on-failure
     volumes:
       - psql_data_vol:/var/lib/postgresql
       - psql_socket_vol:/var/run/postgresql
 
   gvmd:
-    image: greenbone/gvmd:oldstable
+    image: greenbone/gvmd:stable
     restart: on-failure
     volumes:
       - gvmd_data_vol:/var/lib/gvm
@@ -35,7 +33,7 @@ services:
       - pg-gvm
 
   gsa:
-    image: greenbone/gsa:oldstable
+    image: greenbone/gsa:stable
     restart: on-failure
     ports:
       - 9392:80
@@ -45,7 +43,7 @@ services:
       - gvmd
 
   ospd-openvas:
-    image: greenbone/ospd-openvas:oldstable
+    image: greenbone/ospd-openvas:stable
     restart: on-failure
     cap_add:
       - NET_ADMIN # for capturing packages in promiscuous mode
@@ -53,13 +51,46 @@ services:
     security_opt:
       - seccomp=unconfined
       - apparmor=unconfined
+    command: [
+      "ospd-openvas",
+      "-f",
+      "--config", "/etc/gvm/ospd-openvas.conf",
+      "--mqtt-broker-address=mqtt-broker",
+      "--notus-feed-dir", "/var/lib/notus/advisories",
+      "-m", "666",
+    ]
     volumes:
       - gpg_data_vol:/etc/openvas/gnupg
       - vt_data_vol:/var/lib/openvas
+      - notus_data_vol:/var/lib/notus
       - ospd_openvas_socket_vol:/run/ospd
       - redis_socket_vol:/run/redis/
     depends_on:
       - redis-server
+      - gpg-data
+
+  mqtt-broker:
+    restart: on-failure
+    image: greenbone/mqtt-broker
+    ports:
+      - 1883:1883
+    networks:
+      default:
+        aliases:
+          - mqtt-broker
+          - broker
+
+  notus-scanner:
+    restart: on-failure
+    image: greenbone/notus-scanner:stable
+    volumes:
+      - notus_data_vol:/var/lib/notus
+      - gpg_data_vol:/etc/openvas/gnupg
+    environment:
+      NOTUS_SCANNER_MQTT_BROKER_ADDRESS: mqtt-broker
+      NOTUS_SCANNER_PRODUCTS_DIRECTORY: /var/lib/notus
+    depends_on:
+      - mqtt-broker
       - gpg-data
 
 volumes:
@@ -67,6 +98,7 @@ volumes:
   gvmd_data_vol:
   psql_data_vol:
   vt_data_vol:
+  notus_data_vol:
   psql_socket_vol:
   gvmd_socket_vol:
   ospd_openvas_socket_vol:

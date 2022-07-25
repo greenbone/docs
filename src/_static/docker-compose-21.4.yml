@@ -4,8 +4,6 @@ services:
   redis-server:
     image: greenbone/redis-server
     restart: on-failure
-    cap_drop:
-      - ALL
     volumes:
       - redis_socket_vol:/run/redis/
 
