@@ -22,7 +22,7 @@ sudo apt install curl
 ### Installing Docker
 
 [docker] is required for running the services within containers. Docker can be
-installed by running
+installed by running:
 
 ```{code-block} shell
 ---

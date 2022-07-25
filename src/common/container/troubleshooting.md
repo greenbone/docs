@@ -16,7 +16,7 @@ docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-editio
 
 ### Port List, Scan Configurations, Report Formats are Up-to-Date but Not Visible on the Web Interface
 
-If port lists, scan configurations or report formats are missing on the web interface, you may run
+If port lists, scan configurations, or report formats are missing on the web interface, you may run:
 
 ```{code-block} shell
 ---

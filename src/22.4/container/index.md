@@ -84,7 +84,7 @@ Greenbone Security Assistant after logging in for the first time
 ## Setup and Start Script
 
 As a quick solution we provide all the commands above in a single script. This
-script can be downloaded with the following command directly
+script can be downloaded with the following command directly:
 
 ```{code-block} shell
 ---
