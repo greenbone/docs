@@ -20,10 +20,14 @@ After installing the Redis server package, a specific configuration for the
   sudo chown redis:redis /etc/redis/redis-openvas.conf
   echo "db_address = /run/redis-openvas/redis.sock" | sudo tee -a /etc/openvas/openvas.conf
 
-  # start redis with openvas config
+.. code-block::
+  :caption: Start redis with openvas config
+
   sudo systemctl start redis-server@openvas.service
 
-  # ensure redis with openvas config is started on every system startup
+.. code-block::
+  :caption: Ensure redis with openvas config is started on every system startup
+
   sudo systemctl enable redis-server@openvas.service
 
 
