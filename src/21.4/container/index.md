@@ -94,7 +94,7 @@ To execute the script following command must be run:
 ---
 caption: Run setup and start script
 ---
-$DOWNLOAD_DIR/setup-and-start-greenbone-community-edition.sh
+$DOWNLOAD_DIR/setup-and-start-greenbone-community-edition.sh 21.4
 ```
 
 ```{include} /common/container/workflows.md
