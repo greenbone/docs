@@ -12,6 +12,11 @@ Windows-based systems.
   newest compatible version is used.
 
 .. code-block::
+  :caption: Setting the openvas-smb version to use
+
+  export OPENVAS_SMB_VERSION=21.4.0
+
+.. code-block::
   :caption: Required dependencies for openvas-smb
 
   sudo apt install -y \
@@ -22,11 +27,6 @@ Windows-based systems.
     libunistring-dev \
     heimdal-dev \
     perl-base
-
-.. code-block::
-  :caption: Setting the openvas-smb version to use
-
-  export OPENVAS_SMB_VERSION=21.4.0
 
 .. code-block::
   :caption: Downloading the openvas-smb sources
