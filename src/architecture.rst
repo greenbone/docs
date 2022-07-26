@@ -7,7 +7,7 @@ It is developed as part of the commercial `Greenbone Enterprise`_ product line .
 The Greenbone Community Edition was originally built as a community project
 named `OpenVAS`_ and is primarily developed and forwarded by Greenbone Networks.
 
-The architecture for the Greenbone Community Editio is grouped into three major parts:
+The architecture for the Greenbone Community Edition is grouped into three major parts:
 
 * Executable scan application that runs vulnerability tests (VT) against target
   systems

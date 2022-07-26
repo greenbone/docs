@@ -15,10 +15,10 @@ framework, the following releases got named GVM.
 
 With this in mind, Greenbone OpenVAS can be
 
-* a vulnerability scanner (OpenVAS Scanner)
-* a name for a software framework of several components (GVM)
-* a software project lead by Greenbone (Greenbone Community Edition)
-* a source code release of vulnerability management solution (OpenVAS 9, GVM 21.04)
+* a vulnerability scanner (OpenVAS Scanner),
+* a name for a software framework of several components (GVM),
+* a software project led by Greenbone (Greenbone Community Edition),
+* a source code release of a vulnerability management solution (OpenVAS 9, GVM 21.04), or
 * a community of users and developers (Greenbone Community)
 
 depending on the context.
@@ -27,7 +27,7 @@ History of the OpenVAS project
 ==============================
 
 In 2005, the developers of the vulnerability scanner Nessus decided to
-discontinue the work under Open Source licenses and switch to a proprietary
+discontinue the work under open-source licenses and switch to a proprietary
 business model.
 
 At this point, developers from Intevation and DN-Systems – the two companies
@@ -36,7 +36,7 @@ developments to Nessus, focusing on client tools. The works were primarily
 supported by the German Federal Office for Information Security (BSI).
 
 In 2006, several forks of Nessus were created in response to the
-discontinuation of the Open Source solution. Of these forks, only one has continued
+discontinuation of the open-source solution. Of these forks, only one has continued
 to show activity: OpenVAS, the Open Vulnerability Assessment System. OpenVAS was
 registered as a project at Software in the Public Interest, Inc. to hold and
 protect the domain "openvas.org".
@@ -49,7 +49,7 @@ plan was about 3 cornerstones:
     1. Go beyond plain vulnerability scanning towards a comprehensive
        vulnerability management solution.
     2. Create a turn-key appliance product for enterprise customers.
-    3. Continue the Open Source concept of creating a transparent security
+    3. Continue the open-source concept of creating a transparent security
        technology.
 
 Also in 2008, two further companies became active: Secpod from India and
