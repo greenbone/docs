@@ -4,7 +4,7 @@ Starting Services with *Systemd*
 `Systemd <https://systemd.io/>`_ is used to start the daemons *ospd-openvas*,
 *notus-scanner*, *gvmd* and *gsad*. Therefore, service files are required.
 
-.. code-block:: none
+.. code-block::
   :caption: Systemd service file for ospd-openvas
 
   cat << EOF > $BUILD_DIR/ospd-openvas.service
@@ -31,9 +31,12 @@ Starting Services with *Systemd*
   WantedBy=multi-user.target
   EOF
 
+.. code-block::
+  :caption: Install systemd service file for ospd-openvas
+
   sudo cp $BUILD_DIR/ospd-openvas.service /etc/systemd/system/
 
-.. code-block:: none
+.. code-block::
   :caption: Systemd service file for notus-scanner
 
   cat << EOF > $BUILD_DIR/notus-scanner.service
@@ -59,9 +62,12 @@ Starting Services with *Systemd*
   WantedBy=multi-user.target
   EOF
 
+.. code-block::
+  :caption: Install systemd service file for notus-scanner
+
   sudo cp $BUILD_DIR/notus-scanner.service /etc/systemd/system/
 
-.. code-block:: none
+.. code-block::
   :caption: Systemd service file for gvmd
 
   cat << EOF > $BUILD_DIR/gvmd.service
@@ -86,6 +92,9 @@ Starting Services with *Systemd*
   [Install]
   WantedBy=multi-user.target
   EOF
+
+.. code-block::
+  :caption: Install systemd service file for gvmd
 
   sudo cp $BUILD_DIR/gvmd.service /etc/systemd/system/
 
@@ -114,6 +123,9 @@ Starting Services with *Systemd*
   WantedBy=multi-user.target
   Alias=greenbone-security-assistant.service
   EOF
+
+.. code-block::
+  :caption: Install systemd service file for gsad
 
   sudo cp $BUILD_DIR/gsad.service /etc/systemd/system/
 
