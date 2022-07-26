@@ -13,7 +13,7 @@ if [ -z $RELEASE ]; then
 fi
 
 if [ $HAS_CURL -gt 0 ]; then
-    echo "curl ist not available. See https://greenbone.github.io/docs/latest/$RELEASE/container/#prerequisites."
+    echo "curl is not available. See https://greenbone.github.io/docs/latest/$RELEASE/container/#prerequisites."
     exit 1
 fi
 
@@ -21,7 +21,7 @@ TEST_DOCKER_COMPOSE=$(docker-compose --version)
 HAS_DOCKER_COMPOSE=$?
 
 if [ $HAS_DOCKER_COMPOSE -gt 0 ]; then
-    echo "docker-compose ist not available. See https://greenbone.github.io/docs/latest/$RELEASE/container/#prerequisites."
+    echo "docker-compose is not available. See https://greenbone.github.io/docs/latest/$RELEASE/container/#prerequisites."
     exit 1
 fi
 
@@ -60,8 +60,8 @@ docker-compose -f $DOWNLOAD_DIR/docker-compose-$RELEASE.yml -p greenbone-communi
 
 echo
 echo "The synced feed data will be loaded now. This process may take several minutes up to hours."
-echo "Before the data isn't loaded completey scans will show insufficent or erroneous results."
+echo "Before the data is not loaded completely, scans will show insufficient or erroneous results."
 echo
-echo "Press enter to open Greenbone Security Assistant web interface in Browser"
+echo "Press Enter to open the Greenbone Security Assistant web interface in the web browser"
 read
 xdg-open "http://127.0.0.1:9392" 2>/dev/null >/dev/null &
