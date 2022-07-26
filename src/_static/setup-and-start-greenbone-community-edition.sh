@@ -62,6 +62,6 @@ echo
 echo "The synced feed data will be loaded now. This process may take several minutes up to hours."
 echo "Before the data is not loaded completely, scans will show insufficient or erroneous results."
 echo
-echo "Press Enter to open the Greenbone Security Assistant web interface in the web browser"
+echo "Press Enter to open the Greenbone Security Assistant web interface in the web browser."
 read
 xdg-open "http://127.0.0.1:9392" 2>/dev/null >/dev/null &
