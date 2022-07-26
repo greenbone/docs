@@ -10,7 +10,7 @@ management (SCM) system. The latter is not recommended for production scenarios
 as the code is edited on a daily basis and issues and incomplete functionality
 may appear.
 
-The sources of the Greenbone Community Edition is adopted by third parties, for
+The sources of the Greenbone Community Edition are adopted by third parties, for
 example Linux distributions like Kali, Alpine, etc.
 
 This documentation covers the following versions of the Greenbone Community
