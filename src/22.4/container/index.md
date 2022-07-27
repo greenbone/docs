@@ -49,11 +49,30 @@ and their services in detail.
 | mqtt-broker | [Mosquitto MQTT Broker](https://mosquitto.org/) | An MQTT Broker used for communication between notus-scanner, openvas-scanner and ospd-openvas. |
 | notus-scanner | notus-scanner | A container running the {term}`notus-scanner` used for local security checks. |
 
+```{include} /common/container/performing-feed-sync.md
+```
+
+### Syncing Vulnerability Tests
+
+VT data contains {file}`.nasl` and {file}`.notus` files for creating results
+during a vulnerability scan. The `.nasl` files are processed by the OpenVAS
+scanner and the `.notus` files by the {term}`Notus scanner <notus-scanner>`.
+
+```{code-block} shell
+---
+caption: Syncing {term}`VTs<VT>` processed by the scanner, this will take a while
+---
+docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+    run --rm ospd-openvas greenbone-nvt-sync
+```
+
+```{include} /common/container/feed-sync.md
+```
 
 ```{include} /common/container/starting.md
 ```
 
-```{include} /common/container/feed-sync.md
+```{include} /common/container/feed-loading.md
 ```
 
 ```{include} /common/container/admin-user.md
