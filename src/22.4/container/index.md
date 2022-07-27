@@ -56,11 +56,11 @@ and their services in detail.
 
 VT data contains {file}`.nasl` and {file}`.notus` files for creating results
 during a vulnerability scan. The `.nasl` files are processed by the OpenVAS
-scanner and the `.notus` files by the {term}`Notus scanner <notus-scanner>`.
+Scanner and the `.notus` files by the {term}`Notus Scanner <notus-scanner>`.
 
 ```{code-block} shell
 ---
-caption: Syncing {term}`VTs<VT>` processed by the scanner, this will take a while
+caption: Syncing {term}`VTs<VT>` processed by the scanner, this will take a while.
 ---
 docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
     run --rm ospd-openvas greenbone-nvt-sync

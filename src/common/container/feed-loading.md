@@ -1,10 +1,10 @@
 ## Loading the Feed Changes
 
 ```{important}
-When feed content has been downloaded the new data needs to be loaded by the
-corresponding daemons. This may take several minutes up to hours especially
-for the initial loading of the data. Without loaded data scans will contain
-incomplete and errornous results.
+When feed content has been downloaded, the new data needs to be loaded by the
+corresponding daemons. This may take several minutes up to hours, especially
+for the initial loading of the data. Without loaded data, scans will contain
+incomplete and erroneous results.
 ```
 
 After starting the Greenbone Community Containers the running daemons will pick
@@ -12,8 +12,8 @@ up the feed content and load the data automatically.
 
 ### Vulnerability Tests Data
 
-If the log (of ospd-openvas) contains the following output the OpenVAS
-scanner starts to load the new VT data:
+If the log (of ospd-openvas) contains the following output, the OpenVAS
+Scanner starts to load the new VT data:
 
 ```{code-block} none
 ---
@@ -31,7 +31,7 @@ caption: ospd-openvas VTs loading finished log message
 Finished loading VTs. The VT cache has been updated from version X to Y.
 ```
 
-After the scanner is aware of the VT data it will be requested by gvmd. This
+After the scanner is aware of the VT data, it will be requested by gvmd. This
 will result in the following log message:
 
 ```{code-block} none
@@ -41,7 +41,7 @@ caption: gvmd VTs loading log message
 OSP service has different VT status (version X) from database (version (Y), Z VTs). Starting update ...
 ```
 
-When gvmd has finished loading all VTs the following message appears:
+When gvmd has finished loading all VTs, the following message appears:
 
 ```{code-block} none
 ---
@@ -74,7 +74,7 @@ update_scap_end: Updating SCAP info succeeded
 
 ### CERT Data
 
-gvmd starts loading the CERT data containing DFN-Cert and CERT-Bund advisories
+gvmd starts loading the CERT data containing DFN-CERT and CERT-Bund advisories
 when the following message can be found in the logs:
 
 ```{code-block} none
@@ -96,8 +96,8 @@ sync_cert: Updating CERT info succeeded.
 
 ### GVMD Data
 
-The log contains several messages when the gvmd data is loaded. For port lists
-these messages a similar to:
+The log contains several messages when the gvmd data is loaded. For port lists,
+these messages are similar to:
 
 ```{code-block} none
 ---

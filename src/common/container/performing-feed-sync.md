@@ -8,9 +8,9 @@ must be download and loaded initially before starting a vulnerability scan.
 A synchronization always consists of two parts:
 
 1. Downloading the changes via {command}`rsync`
-2. Loading the changes by a daemon into memory and a database
+2. The changes get loaded into memory and a database by a daemon
 
-Both steps may take a while, from several minutes up to hours. Especially for the
+Both steps may take a while, from several minutes up to hours, especially for the
 initial synchronization. Only if both steps are finished, the synchronized data
 is up-to-date and can be used.
 
