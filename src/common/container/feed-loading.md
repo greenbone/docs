@@ -7,7 +7,7 @@ for the initial loading of the data. Without loaded data, scans will contain
 incomplete and erroneous results.
 ```
 
-After starting the Greenbone Community Containers the running daemons will pick
+After starting the Greenbone Community Containers, the running daemons will pick
 up the feed content and load the data automatically.
 
 ### Vulnerability Tests Data
