@@ -46,10 +46,29 @@ and their services in detail.
 | gsa | gsad | A container running the {term}`gsad` web server for providing the web application {term}`GSA`. The web interface is available at localhost on port 9392. For communication with gvmd, a unix socket in a volume is used. |
 | ospd-openvas | ospd-openvas | A container providing the vulnerability scanner. The VT data from the feed is stored in the `vt_data_vol` volume. To verify the feed data, the GPG keyring from the `gpg_data_vol` is used. The connection to the redis server is established via a unix socket in a volume. |
 
-```{include} /common/container/starting.md
+```{include} /common/container/performing-feed-sync.md
+```
+
+### Syncing Vulnerability Tests
+
+VT data contains {file}`.nasl` files for creating results during a vulnerability
+scan. The `.nasl` files are processed by the OpenVAS scanner.
+
+```{code-block} shell
+---
+caption: Syncing {term}`VTs<VT>` processed by the scanner, this will take a while
+---
+docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+    run --rm ospd-openvas greenbone-nvt-sync
 ```
 
 ```{include} /common/container/feed-sync.md
+```
+
+```{include} /common/container/starting.md
+```
+
+```{include} /common/container/feed-loading.md
 ```
 
 ```{include} /common/container/admin-user.md
