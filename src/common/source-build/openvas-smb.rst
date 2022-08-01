@@ -14,7 +14,7 @@ Windows-based systems.
 .. code-block::
   :caption: Setting the openvas-smb version to use
 
-  export OPENVAS_SMB_VERSION=21.4.0
+  export OPENVAS_SMB_VERSION=22.4.0
 
 .. code-block::
   :caption: Required dependencies for openvas-smb
