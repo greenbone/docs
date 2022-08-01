@@ -9,6 +9,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Fix Community Container setup and start script
 * Fix installing yarn from third party debian package repository
 * Improve and extend feed sync chapters for community containers
+* Use openvas-smb 22.4.0 for both releases
 
 ## 22.7.0 – 2022-07-25
 * Update docs for supporting 22.4 release
