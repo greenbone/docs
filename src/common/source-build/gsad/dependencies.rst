@@ -13,8 +13,8 @@
    .. code-block::
      :caption: Required dependencies for gsad
 
-     firewall-cmd --add-port=9392/tcp
-     firewall-cmd --runtime-to-permanent
+     sudo firewall-cmd --add-port=9392/tcp
+     sudo firewall-cmd --runtime-to-permanent
 
      sudo dnf install -y \
        glib2-devel \

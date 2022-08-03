@@ -54,9 +54,6 @@
        libbsd-devel \
        gpgme-devel
 
-     sudo mkdir /usr/include/postgresql
-     sudo cp /usr/include/libpq-fe.h /usr/include/postgresql/libpq-fe.h
-
    .. code-block::
      :caption: Optional dependencies for gvmd
 

@@ -44,4 +44,4 @@
      :caption: Fedora optional dependencies for openvas-scanner
 
      sudo dnf install -y \
-       python3-impacket \
+       python3-impacket

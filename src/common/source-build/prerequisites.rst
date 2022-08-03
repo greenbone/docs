@@ -162,7 +162,7 @@ several tools and applications are required. To install this requirements via
         cmake \
         python3-pip \
         tar \
-        gcc-c++ \
+        gcc-c++
 
       sudo tee /etc/ld.so.conf.d/local.conf <<EOF
       /usr/local/lib

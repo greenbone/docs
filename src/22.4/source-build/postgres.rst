@@ -28,7 +28,7 @@ If necessary the PostgreSQL database server needs to be started manually
 
      sudo systemctl start postgresql@13-main
 
-  .. tab:: Debian
+  .. tab:: Fedora
    .. code-block::
      :caption: Starting the PostgreSQL database server
 
