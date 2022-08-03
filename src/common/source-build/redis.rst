@@ -27,6 +27,8 @@ the :term:`VT` information and scan results.
      z       /run/redis-openvas       0750 redis redis - -
      EOF
 
+     systemd-tmpfiles  --create
+
      sudo cat << EOF > /etc/systemd/system/redis-server@.service
      [Unit]
      Description=Redis persistent key-value database
