@@ -16,61 +16,63 @@ Windows-based systems.
 
   export OPENVAS_SMB_VERSION=22.4.0
 
-.. code-block::
-  :caption: Debian required dependencies for openvas-smb
+.. tabs::
+  .. tab:: Debian
+   .. code-block::
+     :caption: Required dependencies for openvas-smb
 
-  sudo apt install -y \
-    gcc-mingw-w64 \
-    libgnutls28-dev \
-    libglib2.0-dev \
-    libpopt-dev \
-    libunistring-dev \
-    heimdal-dev \
-    perl-base
+     sudo apt install -y \
+       gcc-mingw-w64 \
+       libgnutls28-dev \
+       libglib2.0-dev \
+       libpopt-dev \
+       libunistring-dev \
+       heimdal-dev \
+       perl-base
 
-.. code-block::
-  :caption: Fedora required dependencies for openvas-smb
+  .. tab:: Fedora
+   .. code-block::
+     :caption: Required dependencies for openvas-smb
 
-  sudo dnf install -y \
-    glib2-devel \
-    gnutls-devel \
-    popt-devel \
-    mingw64-gcc \
-    libunistring-devel \
-    heimdal-devel \
-    perl
+     sudo dnf install -y \
+       glib2-devel \
+       gnutls-devel \
+       popt-devel \
+       mingw64-gcc \
+       libunistring-devel \
+       heimdal-devel \
+       perl
 
-  sudo cat << EOF > /lib64/pkgconfig/heimdal-krb5.pc
-  prefix=/usr
-  exec_prefix=/usr
-  libdir=/usr/lib64/heimdal
-  includedir=/usr/include/heimdal
-  vendor=Heimdal
+     sudo cat << EOF > /lib64/pkgconfig/heimdal-krb5.pc
+     prefix=/usr
+     exec_prefix=${prefix}
+     libdir=/usr/lib64/heimdal
+     includedir=/usr/include/heimdal
+     vendor=Heimdal
 
-  Name: heimdal-krb5
-  Description: Heimdal implementation of the Kerberos network authentication.
-  Version: 7.7.0
-  Libs: -L${libdir} -lkrb5
-  Libs.private: -lhx509 -lcom_err -lhcrypto -lasn1 -lwind -lheimbase -lroken -lcrypt -pthread -lpthread -ldl  -lresolv -pthread -lpthread
-  Cflags: -I${includedir}
-  EOF
+     Name: heimdal-krb5
+     Description: Heimdal implementation of the Kerberos network authentication.
+     Version: 7.7.0
+     Libs: -L${libdir} -lkrb5
+     Libs.private: -lhx509 -lcom_err -lhcrypto -lasn1 -lwind -lheimbase -lroken -lcrypt -pthread -lpthread -ldl  -lresolv -pthread -lpthread
+     Cflags: -I${includedir}
+     EOF
 
-  sudo cat << EOF > /lib64/pkgconfig/heimdal-gssapi.pc
-  # $Id$
-  prefix=/usr
-  exec_prefix=${prefix}
-  libdir=/usr/lib64/heimdal
-  includedir=/usr/include/heimdal
+     sudo cat << EOF > /lib64/pkgconfig/heimdal-gssapi.pc
+     prefix=/usr
+     exec_prefix=${prefix}
+     libdir=/usr/lib64/heimdal
+     includedir=/usr/include/heimdal
 
-  Name: heimdal
-  Description: Heimdal is an implementation of Kerberos 5, freely available under a three clause BSD style license.
-  Version: 7.7.0
-  URL: http://www.pdc.kth.se/heimdal/
-  Requires.private: heimdal-krb5
-  Libs: -L${libdir} -lgssapi
-  Libs.private: -lheimntlm -lcrypt
-  Cflags: -I${includedir}
-  EOF
+     Name: heimdal
+     Description: Heimdal is an implementation of Kerberos 5, freely available under a three clause BSD style license.
+     Version: 7.7.0
+     URL: http://www.pdc.kth.se/heimdal/
+     Requires.private: heimdal-krb5
+     Libs: -L${libdir} -lgssapi
+     Libs.private: -lheimntlm -lcrypt
+     Cflags: -I${includedir}
+     EOF
 
 .. code-block::
   :caption: Downloading the openvas-smb sources
