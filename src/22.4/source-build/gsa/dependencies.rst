@@ -6,7 +6,7 @@
   is also named **yarnpkg** when installing from a Debian package.
 
 .. code-block::
-  :caption: Install nodejs 14
+  :caption: Debian install nodejs 14
 
   export NODE_VERSION=node_14.x
   export KEYRING=/usr/share/keyrings/nodesource.gpg
@@ -32,3 +32,10 @@
   sudo apt install -y yarn
 
 .. _yarn: https://classic.yarnpkg.com/
+
+.. code-block::
+  :caption: Fedora install nodejs 14
+
+  sudo dnf module enable nodejs:14 -y
+  sudo dnf install -y nodejs yarnpkg nodejs-typescript
+

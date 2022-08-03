@@ -1,5 +1,5 @@
 .. code-block::
-  :caption: Required dependencies for gvm-libs
+  :caption: Debian required dependencies for gvm-libs
 
   sudo apt install -y \
     libglib2.0-dev \
@@ -14,9 +14,32 @@
     libpaho-mqtt-dev
 
 .. code-block::
-  :caption: Optional dependencies for gvm-libs
+  :caption: Debian optional dependencies for gvm-libs
 
   sudo apt install -y \
     libldap2-dev \
     libradcli-dev
+
+.. code-block::
+  :caption: Fedora required dependencies for gvm-libs
+
+  sudo dnf install -y \
+    glib2-devel \
+    gpgme-devel \
+    gnutls-devel \
+    libgcrypt-devel \
+    libuuid-devel \
+    libssh-devel \
+    hiredis-devel \
+    libxml2-devel \
+    libpcap-devel \
+    libnet-devel \
+    paho-c-devel
+
+.. code-block::
+  :caption: Fedora optional dependencies for gvm-libs
+
+  sudo dnf install -y \
+    openldap-devel \
+    radcli-devel
 

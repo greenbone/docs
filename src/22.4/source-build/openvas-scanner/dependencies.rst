@@ -1,5 +1,5 @@
 .. code-block::
-  :caption: Required dependencies for openvas-scanner
+  :caption: Debian required dependencies for openvas-scanner
 
   sudo apt install -y \
     bison \
@@ -15,8 +15,30 @@
     libbsd-dev
 
 .. code-block::
-  :caption: Optional dependencies for openvas-scanner
+  :caption: Debian optional dependencies for openvas-scanner
 
   sudo apt install -y \
     python3-impacket \
     libsnmp-dev
+
+.. code-block::
+  :caption: Fedora required dependencies for openvas-scanner
+
+  sudo dnf install -y \
+    bison \
+    glib2-devel \
+    gnutls-devel \
+    libgcrypt-devel \
+    libpcap-devel \
+    gpgme-devel \
+    libksba-devel \
+    rsync \
+    nmap \
+    json-glib-devel \
+    libbsd-devel
+
+.. code-block::
+  :caption: Fedora optional dependencies for openvas-scanner
+
+  sudo dnf install -y \
+    python3-impacket \

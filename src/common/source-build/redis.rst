@@ -6,9 +6,44 @@ storage is used by the scanner (*openvas-scanner* and *ospd-openvas*) for handli
 the :term:`VT` information and scan results.
 
 .. code-block::
-  :caption: Installing the Redis server
+  :caption: Debian installing the Redis server
 
   sudo apt install -y redis-server
+
+.. code-block::
+  :caption: Fedora installing the Redis server
+
+  sudo dnf install -y redis
+  sudo dnf install -y policycoreutils-python-utils
+  sudo semanage fcontext -a -f a -t redis_var_run_t -r s0 '/var/run/redis-openvas(/.*)?'
+
+  sudo cat << EOF > /etc/tmpfiles.d/redis-openvas.conf
+  d       /var/lib/redis/openvas   0750 redis redis - -
+  z       /var/lib/redis/openvas   0750 redis redis - -
+  d       /run/redis-openvas       0750 redis redis - -
+  z       /run/redis-openvas       0750 redis redis - -
+  EOF
+
+  sudo cat << EOF > /etc/systemd/system/redis-server@.service
+  [Unit]
+  Description=Redis persistent key-value database
+  After=network.target
+  After=network-online.target
+  Wants=network-online.target
+
+  [Service]
+  WorkingDirectory=/var/lib/redis/%i
+  ExecStart=/usr/bin/redis-server /etc/redis/redis-%i.conf --daemonize no --supervised systemd
+  ExecStop=/usr/libexec/redis-shutdown
+  Type=notify
+  User=redis
+  Group=redis
+  RuntimeDirectory=%i
+  RuntimeDirectoryMode=0755
+
+  [Install]
+  WantedBy=multi-user.target
+  EOF
 
 After installing the Redis server package, a specific configuration for the
 *openvas-scanner* must be added.
