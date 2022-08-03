@@ -18,6 +18,6 @@ of the Greenbone Community Edition is required to follow this guide.
   and/or want to get familiar with the source code. It is not intended for
   production setups.
 
-  It assumes that **Debian Stable** is used as the Linux distribution. Most
-  likely, a Debian derivate like Ubuntu and Kali will also work with only minor
-  adjustments required.
+  It assumes that **Debian stable** `(bullseye) <https://www.debian.org/releases/stable>`_ is used as the
+  Linux distribution. Most likely, a Debian derivate like Ubuntu and Kali will also work with
+  only minor adjustments required.
