@@ -79,7 +79,7 @@ sudo apt install docker-compose
 ---
 caption: Install docker-compose Fedora package
 ---
-sudo dnf install docker-compose-plugin
+sudo dnf install docker-compose docker-compose-plugin
 ```
 ````
 `````
