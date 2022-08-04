@@ -6,17 +6,34 @@ used as a central storage for user and scan information. *gvmd* connects to
 a PostgreSQL database and queries the data. This database must be created
 and configured.
 
-.. code-block::
-  :caption: Installing the PostgreSQL server
+.. tabs::
+  .. tab:: Debian
+    .. code-block::
+      :caption: Installing the PostgreSQL server
 
-  sudo apt install -y postgresql
+      sudo apt install -y postgresql
+
+  .. tab:: Fedora
+    .. code-block::
+      :caption: Installing the PostgreSQL server
+
+      sudo dnf install -y postgresql-server postgresql-contrib
 
 If necessary the PostgreSQL database server needs to be started manually
 
-.. code-block::
-  :caption: Starting the PostgreSQL database server
+.. tabs::
+  .. tab:: Debian
+    .. code-block::
+      :caption: Starting the PostgreSQL database server
 
-  sudo systemctl start postgresql@13-main
+      sudo systemctl start postgresql@13-main
+
+  .. tab:: Fedora
+    .. code-block::
+      :caption: Starting the PostgreSQL database server
+
+      sudo postgresql-setup --initdb --unit postgresql
+      sudo systemctl start postgresql
 
 .. code-block::
   :caption: Setting up PostgreSQL user and database

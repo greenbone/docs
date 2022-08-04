@@ -12,24 +12,51 @@ access on the system.
 
 [curl](https://curl.se/) is required for downloading files from this guide.
 
+
+`````{tabs}
+````{tab} Debian
 ```{code-block} shell
 ---
 caption: Install curl Debian package
 ---
 sudo apt install curl
 ```
+````
+````{tab} Fedora
+```{code-block} shell
+---
+caption: Install curl Fedora package
+---
+sudo dnf install curl
+```
+````
+`````
 
 ### Installing Docker
 
 [docker] is required for running the services within containers. Docker can be
 installed by running:
 
+`````{tabs}
+````{tab} Debian
 ```{code-block} shell
 ---
 caption: Install docker Debian package
 ---
 sudo apt install docker.io
 ```
+````
+````{tab} Fedora
+```{code-block} shell
+---
+caption: Install docker Fedora package
+---
+sudo dnf -y install dnf-plugins-core
+sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf install -y docker-ce docker-ce-cli containerd.io
+```
+````
+`````
 
 ### Installing docker-compose
 
@@ -38,25 +65,49 @@ Greenbone Community Edition. The description of the service orchestration is
 done by using [compose files](https://docs.docker.com/compose/compose-file/).
 A compose file for the Greenbone Community Edition is provided later on.
 
+`````{tabs}
+````{tab} Debian
 ```{code-block} shell
 ---
 caption: Install docker-compose Debian package
 ---
 sudo apt install docker-compose
 ```
-
+````
+````{tab} Fedora
+```{code-block} shell
+---
+caption: Install docker-compose Fedora package
+---
+sudo dnf install docker-compose docker-compose-plugin
+```
+````
+`````
 ### Setup
 
 To allow the current user to run {command}`docker` and therefore start the
 containers, they must be added to the *docker* user group. To make the group change
 effective, either logout and login again or use {command}`su`.
 
+`````{tabs}
+````{tab} Debian
 ```{code-block} shell
 ---
 caption: Add current user to docker group
 ---
 sudo adduser $USER docker
 ```
+````
+````{tab} Fedora
+```{code-block} shell
+---
+caption: Add current user to docker group
+---
+sudo usermod -aG docker $USER
+```
+````
+`````
+
 
 ```{code-block} shell
 ---

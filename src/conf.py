@@ -83,6 +83,8 @@ html_theme_options = {
         "color-foreground-secondary": "#7F7F7F",
         "color-code-background": "#7F7F7F",
 		"color-code-foreground": "#E5E5E5",
+        "color-admonition-title--note": "#11AB51",
+        "admonition-font-size": "0.9rem",
     },
     "dark_css_variables": {
         "color-content-foreground": "#F3F3F3",

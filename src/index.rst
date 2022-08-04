@@ -21,7 +21,6 @@ Edition
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents
 
    background
    22.4/source-build/index
