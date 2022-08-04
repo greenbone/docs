@@ -16,11 +16,3 @@ It assumes that **Debian Stable** is used as the Linux distribution. Most
 likely, a Debian derivate like Ubuntu and Kali will also work with only minor
 adjustments required.
 ```
-
-```{contents}
----
-local:
-depth: 2
----
-```
-
