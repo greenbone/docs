@@ -89,6 +89,10 @@ html_theme_options = {
             "class": "",
         },
     ],
+    "light_css_variables": {
+        "color-admonition-title--note": "#11AB51",
+        "admonition-font-size": "0.9rem",
+    },
 }
 
 # https://myst-parser--467.org.readthedocs.build/en/467/syntax/optional.html#auto-generated-header-anchors
