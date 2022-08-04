@@ -1,6 +1,5 @@
 .. tabs::
   .. tab:: Debian
-
     .. code-block::
       :caption: Building gsa
 
@@ -11,6 +10,16 @@
       yarnpkg
       yarnpkg build
 
+  .. tab:: Fedora
+    .. code-block::
+      :caption: Building gsa
+
+      cd $SOURCE_DIR/gsa-$GSA_VERSION
+
+      rm -rf build
+
+      yarn
+      yarn build
 
 .. code-block::
   :caption: Installing gsa
