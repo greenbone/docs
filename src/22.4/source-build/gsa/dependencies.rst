@@ -1,7 +1,7 @@
 .. note::
 
   GSA is a JavaScript based web application. For maintaining the JavaScript
-  dependencies `yarn`_ is used.
+  dependencies, `yarn`_ is used.
 
 .. tabs::
   .. tab:: Debian
