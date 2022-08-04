@@ -19,7 +19,7 @@ div.body h5,
 div.body h6 {
     font-family: Helvetica, Verdana;
  }
- 
+
 a {
     color: #3E4349;
     text-decoration: none;
@@ -122,4 +122,8 @@ div.toctree-wrapper.compound a.reference.internal {
 
 .sphinx-tabs-tab {
 	color:#3E4349;
+}
+
+.sidebar-logo {
+  max-width: 70%;
 }
