@@ -77,6 +77,20 @@ html_theme_options = {
     "source_repository": repo_url,
     "source_branch": "main",
     "source_directory": "src/",
+    "light_css_variables": {
+        "color-content-foreground": "#4C4C4C",
+        "color-foreground-primary": "4C4C4C",
+        "color-foreground-secondary": "#7F7F7F",
+        "color-code-background": "#7F7F7F",
+		"color-code-foreground": "#E5E5E5",
+    },
+    "dark_css_variables": {
+        "color-content-foreground": "#F3F3F3",
+        "color-foreground-secondary": "#4C4C4C",
+        "color-foreground-primary": "F3F3F3",
+        "color-code-background": "#7F7F7F",
+		"color-code-foreground": "#E5E5E5",
+    },
     "footer_icons": [
         {
             "name": "GitHub",
