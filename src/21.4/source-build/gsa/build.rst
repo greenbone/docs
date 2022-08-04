@@ -1,12 +1,15 @@
-.. code-block::
-  :caption: Building gsa
+.. tabs::
+  .. tab:: Debian
 
-  cd $SOURCE_DIR/gsa-$GSA_VERSION
+    .. code-block::
+      :caption: Building gsa
 
-  rm -rf build
+      cd $SOURCE_DIR/gsa-$GSA_VERSION
 
-  yarnpkg
-  yarnpkg build
+      rm -rf build
+
+      yarnpkg
+      yarnpkg build
 
 
 .. code-block::
