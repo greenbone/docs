@@ -15,10 +15,18 @@ Creating a User and a Group
 The services provided by the GVM framework should run as a dedicated user and
 group. Therefore a `gvm` user and a group with the same name will be created.
 
-.. code-block::
-  :caption: Creating a gvm system user and group
+.. tabs::
+  .. tab:: Debian
+   .. code-block::
+      :caption: Creating a gvm system user and group
 
-  sudo useradd -r -M -U -G sudo -s /usr/sbin/nologin gvm
+      sudo useradd -r -M -U -G sudo -s /usr/sbin/nologin gvm
+
+  .. tab:: Fedora
+   .. code-block::
+      :caption: Creating a gvm system user and group
+
+      sudo useradd -r -M -U -G wheel -s /usr/sbin/nologin gvm
 
 Adjusting the Current User
 --------------------------
@@ -129,18 +137,63 @@ For downloading, configuring, building and installing the :term:`GVM` components
 several tools and applications are required. To install this requirements via
 *apt*, the following command can be used:
 
-.. code-block::
-  :caption: Installing common build dependencies
+.. tabs::
+  .. tab:: Debian
+   .. code-block::
+      :caption: Installing common build dependencies
 
-  sudo apt update
-  sudo apt install --no-install-recommends --assume-yes \
-    build-essential \
-    curl \
-    cmake \
-    pkg-config \
-    python3 \
-    python3-pip \
-    gnupg
+      sudo apt update
+      sudo apt install --no-install-recommends --assume-yes \
+        build-essential \
+        curl \
+        cmake \
+        pkg-config \
+        python3 \
+        python3-pip \
+        gnupg
+
+  .. tab:: Fedora
+   .. code-block::
+      :caption: Installing common build dependencies
+
+      sudo dnf upgrade -y
+      sudo dnf groupinstall 'Development Tools' -y
+      sudo dnf install -y \
+        cmake \
+        python3-pip \
+        tar \
+        gcc-c++
+
+      sudo tee /etc/ld.so.conf.d/local.conf <<EOF
+      /usr/local/lib
+      /usr/local/lib64
+      EOF
+
+      sudo ldconfig
+
+      sudo dnf remove net-snmp net-snmp-devel
+      sudo dnf install -y \
+        systemd \
+        gcc \
+        openssl-devel \
+        bzip2-devel \
+        elfutils-devel \
+        libselinux-devel \
+        elfutils-libelf-devel \
+        rpm-devel \
+        perl-devel \
+        procps \
+        python3-devel \
+        python3-setuptools \
+        chrpath \
+        mariadb-connector-c-devel
+
+      curl -O https://netcologne.dl.sourceforge.net/project/net-snmp/net-snmp/5.9.1/net-snmp-5.9.1.tar.gz
+      tar xzf net-snmp-5.9.1.tar.gz
+      cd net-snmp-5.9.1
+      ./configure
+      make -j$(nproc)
+      sudo make install
 
 Importing the Greenbone Signing Key
 -----------------------------------

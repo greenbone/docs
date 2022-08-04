@@ -1,27 +1,67 @@
-.. code-block::
-  :caption: Building gvmd
+.. tabs::
+  .. tab:: Debian
+   .. code-block::
+     :caption: Building gvmd
 
-  mkdir -p $BUILD_DIR/gvmd && cd $BUILD_DIR/gvmd
+     mkdir -p $BUILD_DIR/gvmd && cd $BUILD_DIR/gvmd
 
-  cmake $SOURCE_DIR/gvmd-$GVMD_VERSION \
-    -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DLOCALSTATEDIR=/var \
-    -DSYSCONFDIR=/etc \
-    -DGVM_DATA_DIR=/var \
-    -DGVMD_RUN_DIR=/run/gvmd \
-    -DOPENVAS_DEFAULT_SOCKET=/run/ospd/ospd-openvas.sock \
-    -DGVM_FEED_LOCK_PATH=/var/lib/gvm/feed-update.lock \
-    -DSYSTEMD_SERVICE_DIR=/lib/systemd/system \
-    -DLOGROTATE_DIR=/etc/logrotate.d
+     cmake $SOURCE_DIR/gvmd-$GVMD_VERSION \
+       -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
+       -DCMAKE_BUILD_TYPE=Release \
+       -DLOCALSTATEDIR=/var \
+       -DSYSCONFDIR=/etc \
+       -DGVM_DATA_DIR=/var \
+       -DGVMD_RUN_DIR=/run/gvmd \
+       -DOPENVAS_DEFAULT_SOCKET=/run/ospd/ospd-openvas.sock \
+       -DGVM_FEED_LOCK_PATH=/var/lib/gvm/feed-update.lock \
+       -DSYSTEMD_SERVICE_DIR=/lib/systemd/system \
+       -DLOGROTATE_DIR=/etc/logrotate.d
 
-  make -j$(nproc)
+     make -j$(nproc)
 
-.. code-block::
-  :caption: Installing gvmd
+  .. tab:: Fedora
+   .. code-block::
+     :caption: Building gvmd
 
-  make DESTDIR=$INSTALL_DIR install
+     mkdir -p $BUILD_DIR/gvmd && cd $BUILD_DIR/gvmd
 
-  sudo cp -rv $INSTALL_DIR/* /
+     sudo mkdir /usr/include/postgresql
+     sudo cp /usr/include/libpq-fe.h /usr/include/postgresql/libpq-fe.h
 
-  rm -rf $INSTALL_DIR/*
+     cmake $SOURCE_DIR/gvmd-$GVMD_VERSION \
+       -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
+       -DCMAKE_BUILD_TYPE=Release \
+       -DLOCALSTATEDIR=/var \
+       -DSYSCONFDIR=/etc \
+       -DGVM_DATA_DIR=/var \
+       -DGVMD_RUN_DIR=/run/gvmd \
+       -DOPENVAS_DEFAULT_SOCKET=/run/ospd/ospd-openvas.sock \
+       -DGVM_FEED_LOCK_PATH=/var/lib/gvm/feed-update.lock \
+       -DSYSTEMD_SERVICE_DIR=/lib/systemd/system \
+       -DLOGROTATE_DIR=/etc/logrotate.d
+
+     make -j$(nproc)
+
+.. tabs::
+  .. tab:: Debian
+   .. code-block::
+     :caption: Installing gvmd
+
+     make DESTDIR=$INSTALL_DIR install
+
+     sudo cp -rv $INSTALL_DIR/* /
+
+     rm -rf $INSTALL_DIR/*
+
+  .. tab:: Fedora
+   .. code-block::
+     :caption: Installing gvmd
+
+     make DESTDIR=$INSTALL_DIR install
+
+     sudo cp -rv $INSTALL_DIR/* /
+
+     rm -rf $INSTALL_DIR/*
+
+     sudo rm /usr/include/postgresql/libpq-fe.h && sudo rmdir /usr/include/postgresql
+
