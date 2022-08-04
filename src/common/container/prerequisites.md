@@ -17,7 +17,7 @@ access on the system.
 ````{tab} Debian
 ```{code-block} shell
 ---
-caption: Install docker Debian package
+caption: Install curl Debian package
 ---
 sudo apt install curl
 ```
@@ -25,7 +25,7 @@ sudo apt install curl
 ````{tab} Fedora
 ```{code-block} shell
 ---
-caption: Install docker Fedora package
+caption: Install curl Fedora package
 ---
 sudo dnf install curl
 ```
