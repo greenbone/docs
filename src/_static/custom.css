@@ -110,27 +110,11 @@ a.sidebar-brand, .toctree-l1 > a.reference, .toc-tree a.reference {
 }
 
 .admonition.note, .admonition.warning {
-<<<<<<< HEAD
-	border: 1px solid #11AB51;
-	background-color:var(--color-background-primary);
-	font-size:1em;
-}
-
-.admonition.note > .admonition-title, .admonition.warning > .admonition-title {
-	color:#11AB51;
-	font-size:1.1em;
-	background-color:var(--color-background-primary);
-}
-
-.admonition.note > .admonition-title::before, .admonition.warning > .admonition-title::before {
-	background-color:#11AB51;
-=======
 	background-color:var(--color-background-primary);
 }
 
 .admonition.note > .admonition-title, .admonition.warning > .admonition-title {
 	background-color:var(--color-background-primary);
->>>>>>> cb3fd5ef88c814a79e8aab484d7c207e6dd511af
 }
 
 div.body p.caption {
