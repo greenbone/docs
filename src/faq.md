@@ -1,12 +1,5 @@
 # Frequently Asked Questions (FAQ)
 
-```{contents}
----
-local: true
-depth: 2
----
-```
-
 ## Greenbone, GVM and OpenVAS – How are they connected?
 
 For a comprehensive background see {doc}`History of OpenVAS <history>`.

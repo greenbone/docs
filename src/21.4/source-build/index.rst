@@ -4,10 +4,6 @@ Building 21.4 from Source
 
 .. include:: /common/source-build/introduction.rst
 
-.. contents::
-  :local:
-  :depth: 2
-
 .. highlight:: shell-session
 
 .. include:: /common/source-build/prerequisites.rst

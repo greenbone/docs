@@ -20,11 +20,3 @@ Currently the docs support the following distributions
 Most likely, a Debian derivate like Ubuntu, Mint and Kali will also work with
 only minor adjustments required.
 ```
-
-```{contents}
----
-local:
-depth: 2
----
-```
-
