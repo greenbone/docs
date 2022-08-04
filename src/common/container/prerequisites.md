@@ -89,12 +89,25 @@ To allow the current user to run {command}`docker` and therefore start the
 containers, they must be added to the *docker* user group. To make the group change
 effective, either logout and login again or use {command}`su`.
 
+`````{tabs}
+````{tab} Debian
 ```{code-block} shell
 ---
 caption: Add current user to docker group
 ---
 sudo adduser $USER docker
 ```
+````
+````{tab} Fedora
+```{code-block} shell
+---
+caption: Add current user to docker group
+---
+sudo usermod -aG docker $USER
+```
+````
+`````
+
 
 ```{code-block} shell
 ---
