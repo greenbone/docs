@@ -32,6 +32,5 @@
         python3-lxml \
         python3-defusedxml \
         python3-paramiko \
-        python3-redis \
-        python3-paho-mqtt
+        python3-redis
 

@@ -35,8 +35,7 @@
         hiredis-devel \
         libxml2-devel \
         libpcap-devel \
-        libnet-devel \
-        paho-c-devel
+        libnet-devel
 
     .. code-block::
       :caption: Optional dependencies for gvm-libs
