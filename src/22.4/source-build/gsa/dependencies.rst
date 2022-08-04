@@ -1,9 +1,7 @@
 .. note::
 
   GSA is a JavaScript based web application. For maintaining the JavaScript
-  dependencies `yarn`_ is used. In Debian based distributions the package for
-  installing yarn is called **yarnpkg**. Also be aware the command to start yarn
-  is also named **yarnpkg** when installing from a Debian package.
+  dependencies `yarn`_ is used.
 
 .. tabs::
   .. tab:: Debian
