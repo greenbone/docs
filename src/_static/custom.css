@@ -39,11 +39,23 @@ a:hover {
 	border-bottom: 1px solid var(--color-content-foreground);
 }
 
-a.muted-link , .right-details a.muted-link {
+.related-pages a .page-info .title, .bottom-of-page a {
+	color: var(--color-foreground-secondary);
+    text-decoration: none;
+	border-bottom: 1px dotted var(--color-foreground-secondary);
+}
+
+.related-pages a:hover .page-info .title, .bottom-of-page a:hover {
+    text-decoration: none;
+	color: #11AB51;
+	border-bottom: 1px solid var(--color-foreground-secondary);
+}
+
+a.muted-link  {
 	border-bottom:0;
 }
 
-a.muted-link:hover, .right-details a.muted-link:hover {
+a.muted-link:hover {
 	border-bottom:0;
 	color:#11AB51;
 }
@@ -63,18 +75,6 @@ a.sidebar-brand, .toctree-l1 > a.reference, .toc-tree a.reference {
 
 .related-pages a:hover {
 	border-bottom:0;
-}
-
-.related-pages a .page-info .title, .bottom-of-page a {
-	color: var(--color-foreground-secondary);
-    text-decoration: none;
-	border-bottom: 1px dotted var(--color-foreground-secondary);
-}
-
-.related-pages a:hover .page-info .title, .bottom-of-page a:hover {
-    text-decoration: none;
-	color: #11AB51;
-	border-bottom: 1px solid var(--color-foreground-secondary);
 }
 
 .toctree-wrapper .caption-text, .sidebar-tree .caption-text {
@@ -176,7 +176,13 @@ div.sphinxsidebarwrapper img {
 	color:#11AB51;
 }
 
-svg.icon.icon-tabler.icon-tabler-copy:hover, svg.icon-tabler-shadow:hover, svg.theme-icon-when-dark:hover, svg.theme-icon-when-light:hover {
+
+div.edit-this-page > a.muted-link, svg.icon.icon-tabler.icon-tabler-copy, svg.icon-tabler-shadow, svg.theme-icon-when-dark, svg.theme-icon-when-light {
+	color:var(--color-content-foreground);
+}
+
+
+div.edit-this-page > a.muted-link:hover, svg.icon.icon-tabler.icon-tabler-copy:hover, svg.icon-tabler-shadow:hover, svg.theme-icon-when-dark:hover, svg.theme-icon-when-light:hover {
 	color:#11AB51;
 }
 
