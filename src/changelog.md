@@ -11,6 +11,8 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Improve and extend feed sync chapters for community containers
 * Use openvas-smb 22.4.0 for both releases
 * Add installation instructions for Fedora
+* Use new [sphinx theme](https://pradyunsg.me/furo/) for a cleaner structure and
+  new features like dark mode
 
 ## 22.7.0 – 2022-07-25
 * Update docs for supporting 22.4 release
