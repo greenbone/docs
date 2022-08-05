@@ -199,10 +199,18 @@ div.edit-this-page > a.muted-link:hover, svg.icon.icon-tabler.icon-tabler-copy:h
 	color:var(--color-code-foreground);
 }
 
+.highlight button.copybtn {
+	background-color:transparent;
+}
+
+.highlight button.copybtn:hover {
+	background-color:transparent;
+}
+
 
 svg.icon.icon-tabler.icon-tabler-copy {
 	color: var(--color-code-foreground);
-	background-color: var(--color-code-background);
+
 }
 
 .highlight .go {
