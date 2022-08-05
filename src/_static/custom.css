@@ -109,12 +109,17 @@ a.sidebar-brand, .toctree-l1 > a.reference, .toc-tree a.reference {
 	font-size:1.2em;
 }
 
-.admonition.note, .admonition.warning {
-	background-color:var(--color-background-primary);
+div.admonition {
+	background-color:var(--color-background-secondary);
+    padding: 20px 20px;
+    border-radius: 4px;
 }
 
-.admonition.note > .admonition-title, .admonition.warning > .admonition-title {
-	background-color:var(--color-background-primary);
+.admonition.note > .admonition-title, .admonition.warning > .admonition-title, .admonition.tip > .admonition-title {
+	background-color:var(--color-background-secondary);
+    font-family: Helvetica, Verdana;
+    font-weight: bold;
+    font-size:1em;
 }
 
 div.body p.caption {
@@ -165,14 +170,15 @@ div.sphinxsidebarwrapper img {
 }
 
 .code-block-caption {
-	font-size:1em;
+	font-size:0.7em;
 }
 
-.code-block-caption a.headerlink {
+
+.code-block-caption a {
 	color:var(--color-code-foreground);
 }
 
-.code-block-caption a.headerlink:hover {
+.code-block-caption a:hover {
 	color:#11AB51;
 }
 
@@ -187,28 +193,17 @@ div.edit-this-page > a.muted-link:hover, svg.icon.icon-tabler.icon-tabler-copy:h
 }
 
 .highlight .go {
-	color: #E5E5E5;
+	color: var(--color-code-foreground);
 	font-weight: normal;
 }
 
 .highlight .l {
-	color: #E5E5E5;
+	color: var(--color-code-foreground);
 }
 
 #contents.toc {
     background-color: #ffffff;
     border: none;
-}
-
-
-div.admonition {
-    padding: 20px 20px;
-    border-radius: 4px;
-}
-
-div.admonition p.admonition-title {
-    font-family: Helvetica, Verdana;
-    font-weight: bold;
 }
 
 div.topic {

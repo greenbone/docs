@@ -88,10 +88,12 @@ html_theme_options = {
     },
     "dark_css_variables": {
         "color-content-foreground": "#F3F3F3",
-        "color-foreground-secondary": "#4C4C4C",
         "color-foreground-primary": "F3F3F3",
+        "color-foreground-secondary": "#4C4C4C",
         "color-code-background": "#7F7F7F",
 		"color-code-foreground": "#E5E5E5",
+        "color-admonition-title--note": "#11AB51",
+        "admonition-font-size": "0.9rem",
     },
     "footer_icons": [
         {
