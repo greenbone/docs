@@ -17,6 +17,12 @@ The Mosquitto MQTT broker is used for communication between
 
      sudo dnf install -y mosquitto
 
+  .. tab:: CentOS
+   .. code-block::
+     :caption: Installing the Mosquitto broker
+
+     sudo dnf install -y mosquitto
+
 After installing the Mosquitto broker package, the broker must be started
 and the server uri must be added to the *openvas-scanner* configuration.
 

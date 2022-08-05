@@ -45,3 +45,21 @@
 
      sudo dnf install -y \
        python3-impacket
+
+  .. tab:: CentOS
+   .. code-block::
+     :caption: Required dependencies for openvas-scanner
+
+     sudo dnf install -y \
+       bison \
+       glib2-devel \
+       gnutls-devel \
+       libgcrypt-devel \
+       libpcap-devel \
+       gpgme-devel \
+       libksba-devel \
+       rsync \
+       nmap \
+       json-glib-devel \
+       libbsd-devel
+

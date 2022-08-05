@@ -19,6 +19,12 @@ and configured.
 
       sudo dnf install -y postgresql-server postgresql-contrib
 
+  .. tab:: CentOS
+    .. code-block::
+      :caption: Installing the PostgreSQL server
+
+      sudo dnf install -y postgresql-server postgresql-contrib
+
 If necessary the PostgreSQL database server needs to be started manually
 
 .. tabs::
@@ -29,6 +35,13 @@ If necessary the PostgreSQL database server needs to be started manually
       sudo systemctl start postgresql@13-main
 
   .. tab:: Fedora
+    .. code-block::
+      :caption: Starting the PostgreSQL database server
+
+      sudo postgresql-setup --initdb --unit postgresql
+      sudo systemctl start postgresql
+
+  .. tab:: CentOS
     .. code-block::
       :caption: Starting the PostgreSQL database server
 

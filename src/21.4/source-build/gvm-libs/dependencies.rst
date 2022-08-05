@@ -43,3 +43,28 @@
       sudo dnf install -y \
         openldap-devel \
         radcli-devel
+
+  .. tab:: CentOS
+   .. code-block::
+     :caption: Required dependencies for gvm-libs
+
+     sudo dnf install -y \
+       glib2-devel \
+       gpgme-devel \
+       gnutls-devel \
+       libgcrypt-devel \
+       libuuid-devel \
+       libssh-devel \
+       hiredis-devel \
+       libxml2-devel \
+       libpcap-devel \
+       libnet-devel \
+       uuid-devel
+
+   .. code-block::
+     :caption: Optional dependencies for gvm-libs
+
+     sudo dnf install -y \
+       openldap-devel \
+       radcli-devel
+

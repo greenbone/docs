@@ -18,3 +18,13 @@
        postgresql-server-devel \
        libical-devel
 
+  .. tab:: CentOS
+   .. code-block::
+     :caption: Required dependencies for pg-gvm
+
+     sudo dnf install -y \
+       glib2-devel \
+       gnutls-devel \
+       postgresql-server-devel \
+       libical-devel
+

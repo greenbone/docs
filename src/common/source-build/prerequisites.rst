@@ -28,6 +28,12 @@ group. Therefore a `gvm` user and a group with the same name will be created.
 
       sudo useradd -r -M -U -G wheel -s /usr/sbin/nologin gvm
 
+  .. tab:: CentOS
+   .. code-block::
+      :caption: Creating a gvm system user and group
+
+      sudo useradd -r -M -U -G wheel -s /usr/sbin/nologin gvm
+
 Adjusting the Current User
 --------------------------
 
@@ -192,6 +198,59 @@ several tools and applications are required. To install this requirements via
       tar xzf net-snmp-5.9.1.tar.gz
       cd net-snmp-5.9.1
       ./configure
+      make -j$(nproc)
+      sudo make install
+
+  .. tab:: CentOS
+   .. code-block::
+      :caption: Installing common build dependencies
+
+      sudo dnf config-manager --set-enabled crb
+      sudo dnf install -y epel-release epel-next-release
+      sudo dnf upgrade -y
+      sudo dnf groupinstall 'Development Tools' -y
+      sudo dnf install -y \
+        cmake \
+        python3-pip \
+        tar \
+        gcc-c++
+
+      sudo tee /etc/ld.so.conf.d/local.conf <<EOF
+      /usr/local/lib
+      /usr/local/lib64
+      EOF
+
+      sudo ldconfig
+
+      sudo dnf remove net-snmp net-snmp-devel
+      sudo dnf install -y \
+        systemd \
+        gcc \
+        openssl-devel \
+        bzip2-devel \
+        elfutils-devel \
+        libselinux-devel \
+        elfutils-libelf-devel \
+        rpm-devel \
+        perl-devel \
+        procps \
+        python3-devel \
+        python3-setuptools \
+        chrpath \
+        mariadb-connector-c-devel
+
+      curl -O https://netcologne.dl.sourceforge.net/project/net-snmp/net-snmp/5.9.1/net-snmp-5.9.1.tar.gz
+      tar xzf net-snmp-5.9.1.tar.gz
+      cd net-snmp-5.9.1
+      ./configure
+      make -j$(nproc)
+      sudo make install
+
+      curl -o paho.mqtt.c.tar.gz https://codeload.github.com/eclipse/paho.mqtt.c/tar.gz/refs/tags/v1.3.10
+      tar xzf ../paho.mqtt.c.tar.gz
+      cd paho.mqtt.c-1.3.10
+      mkdir build && cd build
+      cmake ..
       make -j$(nproc)
       sudo make install
 
