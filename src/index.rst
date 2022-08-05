@@ -16,8 +16,10 @@ example Linux distributions like Kali, Alpine, etc.
 This documentation covers the stable (22.4) and the oldstable (21.4) version of the Greenbone Community
 Edition.
 
+.. image:: _static/greenbone-banner.png
+
 .. toctree::
-   :maxdepth: 2
+   :hidden:
 
    background
    22.4/source-build/index
@@ -27,11 +29,3 @@ Edition.
    faq
    glossary
    changelog
-
-
-
-Indices and Tables
-==================
-
-* :ref:`genindex`
-* :ref:`search`
