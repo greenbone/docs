@@ -13,11 +13,8 @@ may appear.
 The sources of the Greenbone Community Edition are adopted by third parties, for
 example Linux distributions like Kali, Alpine, etc.
 
-This documentation covers the following versions of the Greenbone Community
-Edition
-
-* 22.4
-* 21.4
+This documentation covers the stable (22.4) and the oldstable (21.4) version of the Greenbone Community
+Edition.
 
 .. toctree::
    :maxdepth: 2
