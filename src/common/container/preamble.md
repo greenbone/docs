@@ -12,11 +12,6 @@ This guide is intended for users who want to test the newest features
 and/or want to get familiar with the Greenbone Community Edition. It is not
 intended for production setups.
 
-<<<<<<< HEAD
-It assumes that **Debian Stable** is used as the Linux distribution. Most
-likely, a Debian derivate like Ubuntu and Kali will also work with only minor
-adjustments required.
-=======
 Currently the docs support the following distributions
 
 * **Debian stable** [(bullseye)](https://www.debian.org/releases/stable)
@@ -24,5 +19,4 @@ Currently the docs support the following distributions
 
 Most likely, a Debian derivate like Ubuntu, Mint and Kali will also work with
 only minor adjustments required.
->>>>>>> cb3fd5ef88c814a79e8aab484d7c207e6dd511af
 ```
