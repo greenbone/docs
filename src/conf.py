@@ -81,19 +81,27 @@ html_theme_options = {
         "color-content-foreground": "#4C4C4C",
         "color-foreground-primary": "4C4C4C",
         "color-foreground-secondary": "#7F7F7F",
-        "color-code-background": "#7F7F7F",
+        "color-code-background": "#333333",
 		"color-code-foreground": "#E5E5E5",
         "color-admonition-title--note": "#11AB51",
         "admonition-font-size": "0.9rem",
+        "color-background-primary": "#FFFFFF",
+        "color-background-secondary": "#F3F3F3",
+		"color-sidebar-background": "#F3F3F3",
+
     },
     "dark_css_variables": {
         "color-content-foreground": "#F3F3F3",
         "color-foreground-primary": "F3F3F3",
-        "color-foreground-secondary": "#4C4C4C",
-        "color-code-background": "#7F7F7F",
+        "color-foreground-secondary": "#E5E5E5",
+        "color-code-background": "#333333",
 		"color-code-foreground": "#E5E5E5",
         "color-admonition-title--note": "#11AB51",
         "admonition-font-size": "0.9rem",
+        "color-background-primary": "#171717",
+        "color-background-secondary": "#4C4C4C",
+		"color-sidebar-background": "#333333",
+
     },
     "footer_icons": [
         {

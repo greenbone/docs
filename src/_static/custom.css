@@ -171,11 +171,13 @@ div.sphinxsidebarwrapper img {
 
 .code-block-caption {
 	font-size:0.7em;
+	background-color: var(--color-background-secondary);
+	color: var(--color-foreground-primary);
 }
 
 
 .code-block-caption a {
-	color:var(--color-code-foreground);
+	color:var(--color-foreground-primary);
 }
 
 .code-block-caption a:hover {
@@ -183,13 +185,24 @@ div.sphinxsidebarwrapper img {
 }
 
 
-div.edit-this-page > a.muted-link, svg.icon.icon-tabler.icon-tabler-copy, svg.icon-tabler-shadow, svg.theme-icon-when-dark, svg.theme-icon-when-light {
+div.edit-this-page > a.muted-link, svg.icon-tabler-shadow, svg.theme-icon-when-dark, svg.theme-icon-when-light {
 	color:var(--color-content-foreground);
 }
 
 
 div.edit-this-page > a.muted-link:hover, svg.icon.icon-tabler.icon-tabler-copy:hover, svg.icon-tabler-shadow:hover, svg.theme-icon-when-dark:hover, svg.theme-icon-when-light:hover {
 	color:#11AB51;
+}
+
+.highlight {
+	background-color: var(--color-code-background);
+	color:var(--color-code-foreground);
+}
+
+
+svg.icon.icon-tabler.icon-tabler-copy {
+	color: var(--color-code-foreground);
+	background-color: var(--color-code-background);
 }
 
 .highlight .go {
@@ -204,6 +217,10 @@ div.edit-this-page > a.muted-link:hover, svg.icon.icon-tabler.icon-tabler-copy:h
 #contents.toc {
     background-color: #ffffff;
     border: none;
+}
+
+.back-to-top {
+	background-color:var(--color-background-secondary);
 }
 
 div.topic {
