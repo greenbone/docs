@@ -115,7 +115,7 @@ div.admonition {
     border-radius: 4px;
 }
 
-.admonition.note > .admonition-title, .admonition.warning > .admonition-title, .admonition.tip > .admonition-title {
+.admonition.note > .admonition-title, .admonition.warning > .admonition-title, .admonition.tip > .admonition-title, .admonition.important > .admonition-title, .admonition.hint > .admonition-title {
 	background-color:var(--color-background-secondary);
     font-family: Helvetica, Verdana;
     font-weight: bold;
