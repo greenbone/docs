@@ -30,6 +30,14 @@ caption: Install curl Fedora package
 sudo dnf install curl
 ```
 ````
+````{tab} CentOS
+```{code-block} shell
+---
+caption: Install curl Fedora package
+---
+sudo dnf install curl
+```
+````
 `````
 
 ### Installing Docker
@@ -53,6 +61,16 @@ caption: Install docker Fedora package
 ---
 sudo dnf -y install dnf-plugins-core
 sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf install -y docker-ce docker-ce-cli containerd.io
+```
+````
+````{tab} CentOS
+```{code-block} shell
+---
+caption: Install docker Fedora package
+---
+sudo dnf -y install dnf-plugins-core
+sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 sudo dnf install -y docker-ce docker-ce-cli containerd.io
 ```
 ````
@@ -82,6 +100,14 @@ caption: Install docker-compose Fedora package
 sudo dnf install docker-compose docker-compose-plugin
 ```
 ````
+````{tab} CentOs
+```{code-block} shell
+---
+caption: Install docker-compose Fedora package
+---
+sudo dnf install docker-compose docker-compose-plugin
+```
+````
 `````
 ### Setup
 
@@ -99,6 +125,14 @@ sudo adduser $USER docker
 ```
 ````
 ````{tab} Fedora
+```{code-block} shell
+---
+caption: Add current user to docker group
+---
+sudo usermod -aG docker $USER
+```
+````
+````{tab} CentOS
 ```{code-block} shell
 ---
 caption: Add current user to docker group
