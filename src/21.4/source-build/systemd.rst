@@ -4,93 +4,32 @@ Starting Services with *Systemd*
 `Systemd <https://systemd.io/>`_ is used to start the daemons *ospd-openvas*,
 *gvmd* and *gsad*. Therefore, service files are required.
 
-.. warning::
+.. code-block:: none
+  :caption: Systemd service file for ospd-openvas
 
-   *ospd-openvas* on CentOS ospd-openvas needs to run as root at the moment!
+  cat << EOF > $BUILD_DIR/ospd-openvas.service
+  [Unit]
+  Description=OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)
+  Documentation=man:ospd-openvas(8) man:openvas(8)
+  After=network.target networking.service redis-server@openvas.service
+  Wants=redis-server@openvas.service
+  ConditionKernelCommandLine=!recovery
 
-.. tabs::
-  .. tab:: Debian
-    .. code-block:: none
-      :caption: Systemd service file for ospd-openvas
+  [Service]
+  Type=forking
+  User=gvm
+  Group=gvm
+  RuntimeDirectory=ospd
+  RuntimeDirectoryMode=2775
+  PIDFile=/run/ospd/ospd-openvas.pid
+  ExecStart=/usr/local/bin/ospd-openvas --unix-socket /run/ospd/ospd-openvas.sock --pid-file /run/ospd/ospd-openvas.pid --log-file /var/log/gvm/ospd-openvas.log --lock-file-dir /var/lib/openvas --socket-mode 0o770
+  SuccessExitStatus=SIGKILL
+  Restart=always
+  RestartSec=60
 
-      cat << EOF > $BUILD_DIR/ospd-openvas.service
-      [Unit]
-      Description=OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)
-      Documentation=man:ospd-openvas(8) man:openvas(8)
-      After=network.target networking.service redis-server@openvas.service
-      Wants=redis-server@openvas.service
-      ConditionKernelCommandLine=!recovery
-
-      [Service]
-      Type=forking
-      User=gvm
-      Group=gvm
-      RuntimeDirectory=ospd
-      RuntimeDirectoryMode=2775
-      PIDFile=/run/ospd/ospd-openvas.pid
-      ExecStart=/usr/local/bin/ospd-openvas --unix-socket /run/ospd/ospd-openvas.sock --pid-file /run/ospd/ospd-openvas.pid --log-file /var/log/gvm/ospd-openvas.log --lock-file-dir /var/lib/openvas --socket-mode 0o770
-      SuccessExitStatus=SIGKILL
-      Restart=always
-      RestartSec=60
-
-      [Install]
-      WantedBy=multi-user.target
-      EOF
-
-  .. tab:: Fedora
-    .. code-block:: none
-      :caption: Systemd service file for ospd-openvas
-
-      cat << EOF > $BUILD_DIR/ospd-openvas.service
-      [Unit]
-      Description=OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)
-      Documentation=man:ospd-openvas(8) man:openvas(8)
-      After=network.target networking.service redis-server@openvas.service
-      Wants=redis-server@openvas.service
-      ConditionKernelCommandLine=!recovery
-
-      [Service]
-      Type=forking
-      User=gvm
-      Group=gvm
-      RuntimeDirectory=ospd
-      RuntimeDirectoryMode=2775
-      PIDFile=/run/ospd/ospd-openvas.pid
-      ExecStart=/usr/local/bin/ospd-openvas --unix-socket /run/ospd/ospd-openvas.sock --pid-file /run/ospd/ospd-openvas.pid --log-file /var/log/gvm/ospd-openvas.log --lock-file-dir /var/lib/openvas --socket-mode 0o770
-      SuccessExitStatus=SIGKILL
-      Restart=always
-      RestartSec=60
-
-      [Install]
-      WantedBy=multi-user.target
-      EOF
-
-  .. tab:: CentOS
-    .. code-block:: none
-      :caption: Systemd service file for ospd-openvas
-
-      cat << EOF > $BUILD_DIR/ospd-openvas.service
-      [Unit]
-      Description=OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)
-      Documentation=man:ospd-openvas(8) man:openvas(8)
-      After=network.target networking.service redis-server@openvas.service
-      Wants=redis-server@openvas.service
-      ConditionKernelCommandLine=!recovery
-
-      [Service]
-      Type=forking
-      Group=gvm
-      RuntimeDirectory=ospd
-      RuntimeDirectoryMode=2775
-      PIDFile=/run/ospd/ospd-openvas.pid
-      ExecStart=/usr/local/bin/ospd-openvas --unix-socket /run/ospd/ospd-openvas.sock --pid-file /run/ospd/ospd-openvas.pid --log-file /var/log/gvm/ospd-openvas.log --lock-file-dir /var/lib/openvas --socket-mode 0o770
-      SuccessExitStatus=SIGKILL
-      Restart=always
-      RestartSec=60
-
-      [Install]
-      WantedBy=multi-user.target
-      EOF
+  [Install]
+  WantedBy=multi-user.target
+  EOF
 
 .. code-block::
   :caption: Install systemd service file for ospd-openvas
