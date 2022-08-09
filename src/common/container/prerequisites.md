@@ -14,7 +14,7 @@ access on the system.
 
 
 `````{tabs}
-````{tab} Debian
+````{tab} Debian/Ubuntu
 ```{code-block} shell
 ---
 caption: Install curl Debian package
@@ -22,18 +22,10 @@ caption: Install curl Debian package
 sudo apt install curl
 ```
 ````
-````{tab} Fedora
+````{tab} Fedora/CentOS
 ```{code-block} shell
 ---
-caption: Install curl Fedora package
----
-sudo dnf install curl
-```
-````
-````{tab} CentOS
-```{code-block} shell
----
-caption: Install curl Fedora package
+caption: Install curl Fedora/CentOS package
 ---
 sudo dnf install curl
 ```
@@ -46,10 +38,10 @@ sudo dnf install curl
 installed by running:
 
 `````{tabs}
-````{tab} Debian
+````{tab} Debian/Ubuntu
 ```{code-block} shell
 ---
-caption: Install docker Debian package
+caption: Install docker Debian/Ubuntu package
 ---
 sudo apt install docker.io
 ```
@@ -84,26 +76,18 @@ done by using [compose files](https://docs.docker.com/compose/compose-file/).
 A compose file for the Greenbone Community Edition is provided later on.
 
 `````{tabs}
-````{tab} Debian
+````{tab} Debian/Ubuntu
 ```{code-block} shell
 ---
-caption: Install docker-compose Debian package
+caption: Install docker-compose Debian/Ubuntu package
 ---
 sudo apt install docker-compose
 ```
 ````
-````{tab} Fedora
+````{tab} Fedora/CentOS
 ```{code-block} shell
 ---
-caption: Install docker-compose Fedora package
----
-sudo dnf install docker-compose docker-compose-plugin
-```
-````
-````{tab} CentOs
-```{code-block} shell
----
-caption: Install docker-compose Fedora package
+caption: Install docker-compose Fedora/CentOS package
 ---
 sudo dnf install docker-compose docker-compose-plugin
 ```
@@ -116,7 +100,7 @@ containers, they must be added to the *docker* user group. To make the group cha
 effective, either logout and login again or use {command}`su`.
 
 `````{tabs}
-````{tab} Debian
+````{tab} Debian/Ubuntu
 ```{code-block} shell
 ---
 caption: Add current user to docker group
@@ -124,15 +108,7 @@ caption: Add current user to docker group
 sudo adduser $USER docker
 ```
 ````
-````{tab} Fedora
-```{code-block} shell
----
-caption: Add current user to docker group
----
-sudo usermod -aG docker $USER
-```
-````
-````{tab} CentOS
+````{tab} Fedora/CentOS
 ```{code-block} shell
 ---
 caption: Add current user to docker group
