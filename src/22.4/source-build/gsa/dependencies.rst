@@ -4,7 +4,7 @@
   dependencies, `yarn`_ is used.
 
 .. tabs::
-  .. tab:: Debian
+  .. tab:: Debian/Ubuntu
    .. code-block::
      :caption: Install nodejs 14
 
@@ -31,8 +31,6 @@
      sudo apt update
      sudo apt install -y yarn
 
-   .. _yarn: https://classic.yarnpkg.com/
-
   .. tab:: Fedora
    .. code-block::
      :caption: Install nodejs 14
@@ -46,4 +44,6 @@
 
      curl -sL https://rpm.nodesource.com/setup_14.x | sudo bash -
      sudo dnf install -y nodejs yarnpkg
+
+.. _yarn: https://classic.yarnpkg.com/
 

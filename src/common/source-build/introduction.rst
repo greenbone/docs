@@ -3,7 +3,7 @@ about:
 
 * Using a terminal
 * Shell programming basics
-* Installing software via *apt*
+* Installing software via *apt* or *dnf*
 * Using a C compiler
 * Using *CMake* and *make*
 * The `Linux File System Hierarchy <https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard>`_
@@ -21,8 +21,9 @@ of the Greenbone Community Edition is required to follow this guide.
   Currently the docs support the following distributions
 
   * **Debian stable** `(bullseye) <https://www.debian.org/releases/stable>`_
+  * **Ubuntu 22.04 LTS**
   * **Fedora 35 and 36**
   * **CentOS 9 Stream**
 
-  Most likely, a Debian derivate like Ubuntu, Mint and Kali will also work with
+  Most likely, other Debian derivatives like Mint and Kali will also work with
   only minor adjustments required.

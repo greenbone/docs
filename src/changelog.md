@@ -10,7 +10,8 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Fix installing yarn from third party debian package repository
 * Improve and extend feed sync chapters for community containers
 * Use openvas-smb 22.4.0 for both releases
-* Add installation instructions for Fedora
+* Add installation instructions for Fedora (35 and 26), CentOS 9 and
+  Ubuntu 22.04
 * Use new [sphinx theme](https://pradyunsg.me/furo/) for a cleaner structure and
   new features like dark mode
 

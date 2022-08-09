@@ -19,7 +19,7 @@
 
      make -j$(nproc)
 
-  .. tab:: Fedora
+  .. tab:: Ubuntu
    .. code-block::
      :caption: Building gvmd
 
@@ -35,14 +35,12 @@
        -DOPENVAS_DEFAULT_SOCKET=/run/ospd/ospd-openvas.sock \
        -DGVM_FEED_LOCK_PATH=/var/lib/gvm/feed-update.lock \
        -DSYSTEMD_SERVICE_DIR=/lib/systemd/system \
-       -DLOGROTATE_DIR=/etc/logrotate.d
-
-     sudo mkdir /usr/include/postgresql
-     sudo cp /usr/include/libpq-fe.h /usr/include/postgresql/libpq-fe.h
+       -DLOGROTATE_DIR=/etc/logrotate.d \
+       -DPostgreSQL_TYPE_INCLUDE_DIR=/usr/include/postgresql
 
      make -j$(nproc)
 
-  .. tab:: CentOS
+  .. tab:: Fedora/CentOS
    .. code-block::
      :caption: Building gvmd
 
@@ -66,7 +64,7 @@
      make -j$(nproc)
 
 .. tabs::
-  .. tab:: Debian
+  .. tab:: Debian/Ubuntu
    .. code-block::
      :caption: Installing gvmd
 
@@ -76,19 +74,7 @@
 
      rm -rf $INSTALL_DIR/*
 
-  .. tab:: Fedora
-   .. code-block::
-     :caption: Installing gvmd
-
-     make DESTDIR=$INSTALL_DIR install
-
-     sudo cp -rv $INSTALL_DIR/* /
-
-     rm -rf $INSTALL_DIR/*
-
-     sudo rm /usr/include/postgresql/libpq-fe.h && sudo rmdir /usr/include/postgresql
-
-  .. tab:: CentOS
+  .. tab:: Fedora/CentOS
    .. code-block::
      :caption: Installing gvmd
 

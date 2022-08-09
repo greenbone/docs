@@ -7,19 +7,13 @@ a PostgreSQL database and queries the data. This database must be created
 and configured.
 
 .. tabs::
-  .. tab:: Debian
+  .. tab:: Debian/Ubuntu
     .. code-block::
       :caption: Installing the PostgreSQL server
 
       sudo apt install -y postgresql
 
-  .. tab:: Fedora
-    .. code-block::
-      :caption: Installing the PostgreSQL server
-
-      sudo dnf install -y postgresql-server postgresql-contrib
-
-  .. tab:: CentOS
+  .. tab:: Fedora/CentOS
     .. code-block::
       :caption: Installing the PostgreSQL server
 
@@ -34,14 +28,13 @@ If necessary the PostgreSQL database server needs to be started manually
 
       sudo systemctl start postgresql@13-main
 
-  .. tab:: Fedora
+  .. tab:: Ubuntu
     .. code-block::
       :caption: Starting the PostgreSQL database server
 
-      sudo postgresql-setup --initdb --unit postgresql
-      sudo systemctl start postgresql
+      sudo systemctl start postgresql@14-main
 
-  .. tab:: CentOS
+  .. tab:: Fedora/CentOS
     .. code-block::
       :caption: Starting the PostgreSQL database server
 

@@ -4,7 +4,7 @@
   dependencies, `yarn`_ is used.
 
 .. tabs::
-  .. tab:: Debian
+  .. tab:: Debian/Ubuntu
 
     .. note::
 

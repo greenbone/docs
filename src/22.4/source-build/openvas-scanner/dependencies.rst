@@ -1,5 +1,5 @@
 .. tabs::
-  .. tab:: Debian
+  .. tab:: Debian/Ubuntu
    .. code-block::
      :caption: Required dependencies for openvas-scanner
 

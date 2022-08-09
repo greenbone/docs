@@ -15,7 +15,7 @@ configuration will be added to allow the users of the *gvm* group to run the
   `<https://csal.medium.com/pentesters-tricks-local-privilege-escalation-in-openvas-fe933d7f161f>`_.
 
 .. tabs::
-  .. tab:: Debian
+  .. tab:: Debian/CentOS
     .. code-block:: none
 
       sudo visudo
