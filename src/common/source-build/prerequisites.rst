@@ -16,25 +16,13 @@ The services provided by the GVM framework should run as a dedicated user and
 group. Therefore a `gvm` user and a group with the same name will be created.
 
 .. tabs::
-  .. tab:: Debian
+  .. tab:: Debian/Ubuntu
    .. code-block::
       :caption: Creating a gvm system user and group
 
       sudo useradd -r -M -U -G sudo -s /usr/sbin/nologin gvm
 
-  .. tab:: Ubuntu
-   .. code-block::
-      :caption: Creating a gvm system user and group
-
-      sudo useradd -r -M -U -G sudo -s /usr/sbin/nologin gvm
-
-  .. tab:: Fedora
-   .. code-block::
-      :caption: Creating a gvm system user and group
-
-      sudo useradd -r -M -U -G wheel -s /usr/sbin/nologin gvm
-
-  .. tab:: CentOS
+  .. tab:: Fedora/CentOS
    .. code-block::
       :caption: Creating a gvm system user and group
 
@@ -150,21 +138,7 @@ several tools and applications are required. To install this requirements via
 *apt*, the following command can be used:
 
 .. tabs::
-  .. tab:: Debian
-   .. code-block::
-      :caption: Installing common build dependencies
-
-      sudo apt update
-      sudo apt install --no-install-recommends --assume-yes \
-        build-essential \
-        curl \
-        cmake \
-        pkg-config \
-        python3 \
-        python3-pip \
-        gnupg
-
-  .. tab:: Ubuntu
+  .. tab:: Debian/Ubuntu
    .. code-block::
       :caption: Installing common build dependencies
 

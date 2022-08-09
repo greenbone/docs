@@ -22,20 +22,7 @@ Windows-based systems.
   export OPENVAS_SMB_VERSION=22.4.0
 
 .. tabs::
-  .. tab:: Debian
-   .. code-block::
-     :caption: Required dependencies for openvas-smb
-
-     sudo apt install -y \
-       gcc-mingw-w64 \
-       libgnutls28-dev \
-       libglib2.0-dev \
-       libpopt-dev \
-       libunistring-dev \
-       heimdal-dev \
-       perl-base
-
-  .. tab:: Ubuntu
+  .. tab:: Debian/Ubuntu
    .. code-block::
      :caption: Required dependencies for openvas-smb
 

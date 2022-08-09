@@ -15,17 +15,7 @@ configuration will be added to allow the users of the *gvm* group to run the
   `<https://csal.medium.com/pentesters-tricks-local-privilege-escalation-in-openvas-fe933d7f161f>`_.
 
 .. tabs::
-  .. tab:: Debian
-    .. code-block:: none
-
-      sudo visudo
-
-      ...
-
-      # allow users of the gvm group run openvas
-      %gvm ALL = NOPASSWD: /usr/local/sbin/openvas
-
-  .. tab:: Ubuntu
+  .. tab:: Debian/CentOS
     .. code-block:: none
 
       sudo visudo

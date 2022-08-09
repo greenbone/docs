@@ -5,25 +5,13 @@ The Mosquitto MQTT broker is used for communication between
 *ospd-openvas*, *openvas-scanner* and *notus-scanner*.
 
 .. tabs::
-  .. tab:: Debian
+  .. tab:: Debian/Ubuntu
    .. code-block::
      :caption: Installing the Mosquitto broker
 
      sudo apt install -y mosquitto
 
-  .. tab:: Ubuntu
-   .. code-block::
-     :caption: Installing the Mosquitto broker
-
-     sudo apt install -y mosquitto
-
-  .. tab:: Fedora
-   .. code-block::
-     :caption: Installing the Mosquitto broker
-
-     sudo dnf install -y mosquitto
-
-  .. tab:: CentOS
+  .. tab:: Fedora/CentOS
    .. code-block::
      :caption: Installing the Mosquitto broker
 

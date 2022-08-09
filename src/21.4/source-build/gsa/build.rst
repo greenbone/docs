@@ -10,7 +10,7 @@
       yarnpkg
       yarnpkg build
 
-  .. tab:: Fedora
+  .. tab:: Ubuntu
     .. code-block::
       :caption: Building gsa
 
@@ -21,7 +21,7 @@
       yarn
       yarn build
 
-  .. tab:: CentOS
+  .. tab:: Fedora/CentOS
     .. code-block::
       :caption: Building gsa
 
