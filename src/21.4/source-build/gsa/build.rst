@@ -1,5 +1,5 @@
 .. tabs::
-  .. tab:: Debian
+  .. tab:: Debian/Ubuntu
     .. code-block::
       :caption: Building gsa
 
@@ -9,17 +9,6 @@
 
       yarnpkg
       yarnpkg build
-
-  .. tab:: Ubuntu
-    .. code-block::
-      :caption: Building gsa
-
-      cd $SOURCE_DIR/gsa-$GSA_VERSION
-
-      rm -rf build
-
-      yarn
-      yarn build
 
   .. tab:: Fedora/CentOS
     .. code-block::
