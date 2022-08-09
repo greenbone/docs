@@ -247,7 +247,7 @@ several tools and applications are required. To install this requirements via
       sudo make install
 
       curl -o paho.mqtt.c.tar.gz https://codeload.github.com/eclipse/paho.mqtt.c/tar.gz/refs/tags/v1.3.10
-      tar xzf ../paho.mqtt.c.tar.gz
+      tar xzf paho.mqtt.c.tar.gz
       cd paho.mqtt.c-1.3.10
       mkdir build && cd build
       cmake ..
