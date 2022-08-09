@@ -83,3 +83,38 @@
        gnutls-utils \
        perl-XML-Twig
 
+  .. tab:: CentOS
+   .. code-block::
+     :caption: Required dependencies for gvmd
+
+     sudo dnf install -y \
+       glib2-devel \
+       gnutls-devel \
+       postgresql-server-devel \
+       libical-devel \
+       libxslt \
+       rsync \
+       libbsd-devel \
+       gpgme-devel
+
+   .. code-block::
+     :caption: Optional dependencies for gvmd
+
+     sudo dnf install -y --setopt=install_weak_deps=False \
+       texlive* \
+       gnupg2-smime \
+       openssh-clients \
+       xmlstarlet \
+       zip \
+       rpm \
+       fakeroot \
+       dpkg \
+       gnupg \
+       wget \
+       sshpass \
+       socat \
+       samba-client \
+       python3-lxml \
+       gnutls-utils \
+       perl-XML-Twig
+

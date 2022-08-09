@@ -31,6 +31,9 @@ Starting Services with *Systemd*
   WantedBy=multi-user.target
   EOF
 
+.. code-block::
+  :caption: Install systemd service file for ospd-openvas
+
   sudo cp $BUILD_DIR/ospd-openvas.service /etc/systemd/system/
 
 .. code-block:: none
@@ -59,6 +62,9 @@ Starting Services with *Systemd*
   WantedBy=multi-user.target
   EOF
 
+.. code-block::
+  :caption: Install systemd service file for gvmd
+
   sudo cp $BUILD_DIR/gvmd.service /etc/systemd/system/
 
 .. code-block:: none
@@ -86,6 +92,9 @@ Starting Services with *Systemd*
   WantedBy=multi-user.target
   Alias=greenbone-security-assistant.service
   EOF
+
+.. code-block::
+  :caption: Install systemd service file for gsad
 
   sudo cp $BUILD_DIR/gsad.service /etc/systemd/system/
 

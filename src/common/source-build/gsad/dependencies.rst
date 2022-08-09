@@ -22,3 +22,16 @@
        libmicrohttpd-devel \
        libxml2-devel
 
+  .. tab:: CentOS
+   .. code-block::
+     :caption: Required dependencies for gsad
+
+     sudo firewall-cmd --add-port=9392/tcp
+     sudo firewall-cmd --runtime-to-permanent
+
+     sudo dnf install -y \
+       glib2-devel \
+       gnutls-devel \
+       libmicrohttpd-devel \
+       libxml2-devel
+

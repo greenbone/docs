@@ -11,6 +11,11 @@ Windows-based systems.
   *openvas-smb* is released independently of the GVM framework. Therefore, the
   newest compatible version is used.
 
+.. warning::
+
+   *openvas-smb* doesn't work on CentOS at the moment!
+   It is not a hard requirement.
+
 .. code-block::
   :caption: Setting the openvas-smb version to use
 

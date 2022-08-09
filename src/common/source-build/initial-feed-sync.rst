@@ -27,3 +27,4 @@ needs to be download initially before starting the services.
   sudo -u gvm greenbone-feed-sync --type SCAP
   sudo -u gvm greenbone-feed-sync --type CERT
   sudo -u gvm greenbone-feed-sync --type GVMD_DATA
+
