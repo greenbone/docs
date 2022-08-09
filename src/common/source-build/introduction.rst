@@ -3,7 +3,7 @@ about:
 
 * Using a terminal
 * Shell programming basics
-* Installing software via *apt*
+* Installing software via *apt* or *dnf*
 * Using a C compiler
 * Using *CMake* and *make*
 * The `Linux File System Hierarchy <https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard>`_
