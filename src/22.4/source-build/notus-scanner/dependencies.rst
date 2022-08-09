@@ -33,6 +33,5 @@
        python3-pip \
        python3-setuptools \
        python3-wheel \
-       python3-psutil \
-       python3-gnupg
+       python3-psutil
 
