@@ -13,6 +13,12 @@ and configured.
 
      sudo apt install -y postgresql
 
+  .. tab:: Ubuntu
+   .. code-block::
+     :caption: Installing the PostgreSQL server
+
+     sudo apt install -y postgresql
+
   .. tab:: Fedora
    .. code-block::
      :caption: Installing the PostgreSQL server
@@ -33,6 +39,12 @@ If necessary the PostgreSQL database server needs to be started manually
      :caption: Starting the PostgreSQL database server
 
      sudo systemctl start postgresql@13-main
+
+  .. tab:: Ubuntu
+   .. code-block::
+     :caption: Starting the PostgreSQL database server
+
+     sudo systemctl start postgresql@14-main
 
   .. tab:: Fedora
    .. code-block::

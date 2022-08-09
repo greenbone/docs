@@ -11,6 +11,19 @@
        python3-psutil \
        python3-gnupg
 
+  .. tab:: Ubuntu
+   .. code-block::
+     :caption: Required dependencies for notus-scanner
+
+     INSTALL_PREFIX=/usr
+     sudo apt install -y \
+       python3 \
+       python3-pip \
+       python3-setuptools \
+       python3-paho-mqtt \
+       python3-psutil \
+       python3-gnupg
+
   .. tab:: Fedora
    .. code-block::
      :caption: Required dependencies for notus-scanner

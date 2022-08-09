@@ -35,6 +35,19 @@ Windows-based systems.
        heimdal-dev \
        perl-base
 
+  .. tab:: Ubuntu
+   .. code-block::
+     :caption: Required dependencies for openvas-smb
+
+     sudo apt install -y \
+       gcc-mingw-w64 \
+       libgnutls28-dev \
+       libglib2.0-dev \
+       libpopt-dev \
+       libunistring-dev \
+       heimdal-dev \
+       perl-base
+
   .. tab:: Fedora
    .. code-block::
      :caption: Required dependencies for openvas-smb

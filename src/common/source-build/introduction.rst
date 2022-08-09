@@ -21,6 +21,7 @@ of the Greenbone Community Edition is required to follow this guide.
   Currently the docs support the following distributions
 
   * **Debian stable** `(bullseye) <https://www.debian.org/releases/stable>`_
+  * **Ubuntu 22.04 LTS**
   * **Fedora 35 and 36**
   * **CentOS 9 Stream**
 

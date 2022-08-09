@@ -11,6 +11,12 @@ The Mosquitto MQTT broker is used for communication between
 
      sudo apt install -y mosquitto
 
+  .. tab:: Ubuntu
+   .. code-block::
+     :caption: Installing the Mosquitto broker
+
+     sudo apt install -y mosquitto
+
   .. tab:: Fedora
    .. code-block::
      :caption: Installing the Mosquitto broker

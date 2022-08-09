@@ -22,6 +22,12 @@ group. Therefore a `gvm` user and a group with the same name will be created.
 
       sudo useradd -r -M -U -G sudo -s /usr/sbin/nologin gvm
 
+  .. tab:: Ubuntu
+   .. code-block::
+      :caption: Creating a gvm system user and group
+
+      sudo useradd -r -M -U -G sudo -s /usr/sbin/nologin gvm
+
   .. tab:: Fedora
    .. code-block::
       :caption: Creating a gvm system user and group
@@ -145,6 +151,20 @@ several tools and applications are required. To install this requirements via
 
 .. tabs::
   .. tab:: Debian
+   .. code-block::
+      :caption: Installing common build dependencies
+
+      sudo apt update
+      sudo apt install --no-install-recommends --assume-yes \
+        build-essential \
+        curl \
+        cmake \
+        pkg-config \
+        python3 \
+        python3-pip \
+        gnupg
+
+  .. tab:: Ubuntu
    .. code-block::
       :caption: Installing common build dependencies
 

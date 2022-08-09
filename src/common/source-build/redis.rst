@@ -12,6 +12,12 @@ the :term:`VT` information and scan results.
 
      sudo apt install -y redis-server
 
+  .. tab:: Ubuntu
+   .. code-block::
+     :caption: Installing the Redis server
+
+     sudo apt install -y redis-server
+
   .. tab:: Fedora
    .. code-block::
      :caption: Installing the Redis server

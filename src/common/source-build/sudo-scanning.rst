@@ -25,6 +25,16 @@ configuration will be added to allow the users of the *gvm* group to run the
       # allow users of the gvm group run openvas
       %gvm ALL = NOPASSWD: /usr/local/sbin/openvas
 
+  .. tab:: Ubuntu
+    .. code-block:: none
+
+      sudo visudo
+
+      ...
+
+      # allow users of the gvm group run openvas
+      %gvm ALL = NOPASSWD: /usr/local/sbin/openvas
+
   .. tab:: Fedora
     .. code-block:: none
 
