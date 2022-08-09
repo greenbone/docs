@@ -134,8 +134,8 @@ Installing Common Build Dependencies
 ------------------------------------
 
 For downloading, configuring, building and installing the :term:`GVM` components,
-several tools and applications are required. To install this requirements via
-*apt* or *dnf*, the following command can be used:
+several tools and applications are required. To install this requirements the
+following commands can be used:
 
 .. tabs::
   .. tab:: Debian/Ubuntu

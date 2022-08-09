@@ -19,6 +19,6 @@ Currently the docs support the following distributions
 * **Fedora 35 and 36**
 * **CentOS 9 Stream**
 
-Most likely, a Debian derivate like Ubuntu, Mint and Kali will also work with
+Most likely, other Debian derivatives like Mint and Kali will also work with
 only minor adjustments required.
 ```
