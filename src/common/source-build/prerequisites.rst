@@ -207,7 +207,9 @@ following commands can be used:
         cmake \
         python3-pip \
         tar \
-        gcc-c++
+        gcc-c++ \
+        doxygen \
+        xmltoman
 
       sudo tee /etc/ld.so.conf.d/local.conf <<EOF
       /usr/local/lib
