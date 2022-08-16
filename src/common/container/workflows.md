@@ -100,7 +100,7 @@ After restarting the containers with
 docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition up -d
 ```
 
-the unix socket should be available at `/tmp/gvm/gvmd/gvmd.sock`. For example
+The unix socket should be available at `/tmp/gvm/gvmd/gvmd.sock`. For example
 to use the socket with [gvm-tools](https://github.com/greenbone/gvm-tools) the
 following command can be executed:
 
