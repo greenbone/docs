@@ -8,8 +8,8 @@ Windows-based systems.
 
 .. note::
 
-  *openvas-smb* is released independently of the GVM framework. Therefore, the
-  newest compatible version is used.
+  *openvas-smb* is released independently of the Greenbone Community Edition.
+  Therefore, the newest compatible version is used.
 
 .. warning::
 

@@ -1,5 +1,4 @@
-Building the Greenbone Community Edition stack from source requires knowledge
-about:
+Building the Greenbone Community Edition from source requires knowledge about:
 
 * Using a terminal
 * Shell programming basics
