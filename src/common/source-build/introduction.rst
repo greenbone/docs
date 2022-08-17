@@ -12,21 +12,6 @@ about:
 Additionally, a basic knowledge about the :doc:`architecture </architecture>`
 of the Greenbone Community Edition is required to follow this guide.
 
-Hardware requirements
----------------------
-
-Minimal:
-
-* CPU Cores: 2
-* Random-Access Memory: 4GB
-* Hard Disk: 20GB free
-
-Recommended:
-
-* CPU Cores: 4
-* Random-Access Memory: 8GB
-* Hard Disk: 60GB free
-
 .. note::
 
   This guide is intended for developers who want to try out the newest features

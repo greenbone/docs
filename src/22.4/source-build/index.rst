@@ -6,6 +6,8 @@ Building 22.4 from Source
 
 .. highlight:: shell-session
 
+.. include:: /common/source-build/hardware.rst
+
 .. include:: /common/source-build/prerequisites.rst
 
 Setting the Version

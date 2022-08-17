@@ -7,21 +7,6 @@ Running the Greenbone Community Edition from containers requires knowledge about
 Additionally, a basic knowledge about the {doc}`architecture </architecture>`
 of the Greenbone Community Edition is required to understand the setup.
 
-Hardware requirements
----------------------
-
-Minimal:
-
-* CPU Cores: 2
-* Random-Access Memory: 4GB
-* Hard Disk: 20GB free
-
-Recommended:
-
-* CPU Cores: 4
-* Random-Access Memory: 8GB
-* Hard Disk: 60GB free
-
 ```{note}
 This guide is intended for users who want to test the newest features
 and/or want to get familiar with the Greenbone Community Edition. It is not
