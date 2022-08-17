@@ -5,6 +5,10 @@ All notable changes to this documentation will be listed in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
+## Latest
+* Add workflow for exposing the gvmd unix socket from the container
+* Add an API page for links to our other community documentation
+
 ## 22.8.0 - 2022-08-16
 * Fix Community Container setup and start script
 * Fix installing yarn from third party debian package repository
