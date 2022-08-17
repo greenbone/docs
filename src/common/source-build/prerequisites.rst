@@ -12,7 +12,7 @@ access on the system.
 Creating a User and a Group
 ---------------------------
 
-The services provided by the GVM framework should run as a dedicated user and
+The services provided by the Greenbone Community Edition should run as a dedicated user and
 group. Therefore a `gvm` user and a group with the same name will be created.
 
 .. tabs::
@@ -60,7 +60,7 @@ Choosing an Install Prefix
 
 Before building the software stack, a (root) directory must be chosen where
 the built software will finally be installed. For example, when building packages,
-the distribution developers set this path to `/usr`.
+the distribution developers set this path to :file:`/usr`.
 
 By default, it is :file:`/usr/local` which is also used in this guide. This
 directory will be stored in an environment variable :envvar:`INSTALL_PREFIX`
@@ -133,9 +133,9 @@ This guide will use the tarballs to build the software.
 Installing Common Build Dependencies
 ------------------------------------
 
-For downloading, configuring, building and installing the :term:`GVM` components,
-several tools and applications are required. To install this requirements the
-following commands can be used:
+For downloading, configuring, building and installing the Greenbone Community
+Edition components, several tools and applications are required. To install this
+requirements the following commands can be used:
 
 .. tabs::
   .. tab:: Debian/Ubuntu

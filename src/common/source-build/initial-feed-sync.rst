@@ -19,7 +19,9 @@ needs to be download initially before starting the services.
 .. note::
 
   The CERT feed synchronization depends on the data provided by the SCAP
-  feed and should be called after synchronizing the latter.
+  feed and should be called after synchronizing the latter. The GVMD_DATA
+  contains scan configs which depend on the VTs. Only if the VTs are synced and
+  loaded scan configs are available and scans can be started.
 
 .. code-block::
   :caption: Syncing the data processed by gvmd

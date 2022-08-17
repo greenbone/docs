@@ -1,6 +1,6 @@
 The Greenbone Vulnerability Management Tools, or *gvm-tools* in short, are a
-collection of tools that help with controlling the Greenbone Vulnerability
-Management stack remotely.
+collection of tools that help with controlling Greenbone Community Edition
+installations or Greenbone Enterprise Appliances remotely.
 
 Essentially, the tools aid accessing the communication protocols
 :term:`Greenbone Management Protocol (GMP)<GMP>` and
@@ -10,5 +10,5 @@ Essentially, the tools aid accessing the communication protocols
 
 .. note::
 
-  *gvm-tools* is released independently of the GVM framework. Therefore, the
-  newest version is used.
+  *gvm-tools* is released independently of the Greenbone Community Edition.
+  Therefore, the newest version is used.

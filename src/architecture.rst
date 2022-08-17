@@ -2,19 +2,19 @@ Architecture
 ============
 
 The Greenbone Community Edition consists of a framework with several services.
-It is developed as part of the commercial `Greenbone Enterprise`_ product line .
+It is developed as part of the commercial `Greenbone Enterprise`_ product line.
 
 The Greenbone Community Edition was originally built as a community project
-named `OpenVAS`_ and is primarily developed and forwarded by Greenbone Networks.
+named `OpenVAS`_ and is primarily developed and forwarded by `Greenbone`_.
 
 The architecture for the Greenbone Community Edition is grouped into three major parts:
 
-* Executable scan application that runs vulnerability tests (VT) against target
-  systems
+* Executable scanner applications that run vulnerability tests (VT) against
+  target systems
 * Greenbone Vulnerability Manager Daemon (gvmd)
 * Greenbone Security Assistant (GSA) with the Greenbone Security Assistant
   Daemon (gsad)
-  
+
 .. tabs::
 
    .. tab:: 22.4
@@ -27,7 +27,7 @@ The architecture for the Greenbone Community Edition is grouped into three major
         Architecture in release 22.4
 
    .. tab:: 21.4
-    
+
       The following figure shows an overview of the architecture for the 21.4 release.
 
       .. figure:: images/greenbone-community-21.4-architecture.png
@@ -70,8 +70,8 @@ OpenVAS Scanner
 ---------------
 
 The main scanner `OpenVAS Scanner`_ is a full-featured scan engine that executes
-vulnerability tests (VTs) against target systems. For this, it uses the daily
-updated and comprehensive feeds: the full-featured, extensive, commercial
+:term:`Vulnerability Tests (VTs) <VT>` against target systems. For this, it uses
+the daily updated and comprehensive feeds: the full-featured, extensive, commercial
 :term:`Greenbone Enterprise Feed <Greenbone Enterprise Feed>` or the free
 available :term:`Greenbone Community Feed <Greenbone Community Feed>`.
 
@@ -80,37 +80,36 @@ The OpenVAS Scanner is controlled via :term:`OSP`. The OSP Daemon for the
 OpenVAS Scanner (ospd-openvas) communicates with gvmd via OSP: VT data is
 collected, scans are started and stopped, and scan results are transferred to
 gvmd via ospd.
-      
+
 Notus Scanner (only for 22.4)
 -----------------------------
-      
-The `Notus Scanner`_ scans after every regular scan, so no user interaction is 
-necessary. It offers better performance due to less system resource 
+
+The `Notus Scanner`_ scans after every regular scan, so no user interaction is
+necessary. It offers better performance due to less system resource
 consumption and thus, faster scanning.
 
-The Notus Scanner replaces the logic of potentially all NASL-based local 
-security checks (LSCs). A comparison of installed software on a host against a 
-list of known vulnerable software is done instead of running a VT script for 
+The Notus Scanner replaces the logic of potentially all NASL-based local
+security checks (LSCs). A comparison of installed software on a host against a
+list of known vulnerable software is done instead of running a VT script for
 each LSC.
 
-The regular OpenVAS Scanner loads each NASL LSC individually and executes it 
-one by one for every host. A single known vulnerability is then compared with 
+The regular OpenVAS Scanner loads each NASL LSC individually and executes it
+one by one for every host. A single known vulnerability is then compared with
 the installed software. This is repeated for all LSCs.
 
-With the Notus Scanner, the list of installed software is loaded in the same 
-way, but is directly compared with all known vulnerable software for the 
-operating system of the scanned host. This eliminates the need to run the 
-LSCs because the information about the known vulnerable software is collected 
+With the Notus Scanner, the list of installed software is loaded in the same
+way, but is directly compared with all known vulnerable software for the
+operating system of the scanned host. This eliminates the need to run the
+LSCs because the information about the known vulnerable software is collected
 in one single list and not distributed in individual NASL scripts.
 
 Additional Software
 -------------------
 
 The `Greenbone Vulnerability Management Tools (gvm-tools)`_ are a collection of
-tools that help with remote controlling a Greenbone Enterprise Appliance.
-and its underlying Greenbone Vulnerability Manager Daemon (gvmd). The tools aid
-in accessing the communication protocols
-:term:`GMP (Greenbone Management Protocol)<GMP>` and
+tools that help with remote controlling Greenbone Community Edition installations
+or Greenbone Enterprise Appliances. The tools aid in accessing the communication
+protocols :term:`GMP (Greenbone Management Protocol)<GMP>` and
 :term:`OSP (Open Scanner Protocol)<OSP>`.
 
 This module is comprised of interactive and non-interactive clients.
@@ -118,7 +117,8 @@ The programming language Python is supported directly for interactive scripting.
 But it is also possible to issue remote GMP/OSP commands without programming in
 Python.
 
-.. _OpenVAS: https://openvas.org/
+.. _Greenbone: https://www.greenbone.net/en/
+.. _OpenVAS: https://www.openvas.org/
 .. _Greenbone Enterprise: https://www.greenbone.net/en/products/
 .. _ospd-openvas: https://github.com/greenbone/ospd-openvas
 .. _openvas-scanner: https://github.com/greenbone/openvas-scanner

@@ -40,11 +40,12 @@ Glossary
   GOS
     Greenbone Operating System, the operating system of the
     :term:`Greenbone Enterprise` Appliance. It provides the commercial version
-    of the :term:`GVM framework <GVM>` with enterprise support and features.
+    of the :term:`Greenbone Community Edition` with enterprise support and
+    features.
 
   GSM
-    Greenbone Security Manager is the former name of our commercial product line
-    :term:`Greenbone Enterprise` as hardware or virtual appliances.
+    Greenbone Security Manager (GSM) is the former name of our commercial
+    product line :term:`Greenbone Enterprise` as hardware or virtual appliances.
 
   GMP
     The Greenbone Management Protocol (GMP) is an XML-based communication
@@ -58,17 +59,18 @@ Glossary
 
   GVM
     The :term:`Greenbone Community Edition` consists of several services. This
-    software framework has been released as Greenbone Vulnerability Management (GVM).
-    It is developed as part of the commercial :term:`Greenbone Enterprise`
-    product line. Sometimes referred to as the OpenVAS framework.
+    software framework has been named Greenbone Vulnerability Management (GVM)
+    in the past.
 
   Greenbone Community Edition
     The Greenbone Community Edition covers the actual releases of the Greenbone
-    application stack for vulnerability scanning and vulnerability management
-    :term:`GVM` provided as open-source software to the community.
-    The Greenbone Community Edition is adopted by external third parties, e.g., if the
-    :term:`GVM` stack is provided by a Linux distribution, it is build from
-    the Greenbone Community Edition.
+    application framework for vulnerability scanning and vulnerability
+    management provided as open-source software to the community. The Greenbone
+    Community Edition is adopted by external third parties, e.g., if the
+    software framework is provided by a Linux distribution, it is build from the
+    Greenbone Community Edition. It is developed as part of the commercial
+    :term:`Greenbone Enterprise` product line. Sometimes referred to as the
+    OpenVAS framework.
 
   Greenbone Community Containers
     Container images that are pre-build on `GitHub <https://github.com/greenbone>`_

@@ -122,8 +122,8 @@ gvm-tools
 .. include:: /common/source-build/gvm-tools/dependencies.rst
 .. include:: /common/source-build/gvm-tools/install.rst
 
-Performing a System Setup for GVM
-=================================
+Performing a System Setup
+=========================
 
 .. include:: /common/source-build/redis.rst
 .. include:: /21.4/source-build/directory-permissions.rst

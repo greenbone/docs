@@ -4,7 +4,7 @@ Greenbone, GVM, OpenVAS and How They Are Connected
 When the OpenVAS project was launched, it only consisted of an engine for scanning
 vulnerabilities.
 
-Shortly after that, Greenbone Networks was founded to achieve
+Shortly after that, the company Greenbone was founded to achieve
 professional support for vulnerability scanning. Greenbone started to lead the
 development of OpenVAS, added several software components and turned OpenVAS
 into a vulnerability management solution while keeping the values of free
@@ -54,7 +54,7 @@ plan was about 3 cornerstones:
 
 Also in 2008, two further companies became active: Secpod from India and
 Security Space from Canada. Both of them had a focus on contributing
-vulnerability tests, and teamed up with Greenbone Networks to start producing
+vulnerability tests, and teamed up with Greenbone to start producing
 a reliable and up-to-date feed of vulnerability tests. This started with removing
 any source code and vulnerability tests where the license was not clear or not
 compatible. Several thousands of vulnerability tests were eliminated to get a clean
@@ -78,7 +78,7 @@ modules and numerous features were added during the release cycles. Several hund
 of thousands of lines of code were produced and there was almost no day without a
 couple of released code improvements by a growing development team.
 
-The year 2017 marked the beginning of a new era: first of all, Greenbone Networks became
+The year 2017 marked the beginning of a new era: first of all, Greenbone became
 visible as the driving force behind OpenVAS, by introducing several naming changes. This
 included several activities, the most essential one using the term
 :term:`Greenbone Vulnerability Management" (GVM)<GVM>` instead of "OpenVAS framework"
@@ -88,12 +88,11 @@ all modules remained free and open-source software.
 
 The second major change in 2017 involved the feed service. Apart from the
 branding confusion, several companies integrated the technology and feed, passing
-it off as their work or claiming to be an alternative to Greenbone's
-product at a better price. Only a minority of them properly complied with the
-GPL licenses. None of them cooperates with Greenbone Networks commercially. To achieve
-better visibility, less misunderstanding, and better differentiation from
-other OpenVAS-based products, the public feed was renamed to
-:term:`Greenbone Community Feed` and the feed development was internalized.
+it off as their work or claiming to be an alternative to Greenbone's product at
+a better price. Only a minority of them contributed to the project and properly
+complied with the GPL licenses. None of them cooperates with Greenbone commercially. To achieve better visibility, less misunderstanding,
+and better differentiation from other OpenVAS-based products, the public feed
+was renamed to :term:`Greenbone Community Feed` and the feed development was internalized.
 Furthermore, the release scheme has been changed from a 14-day delay to a daily
 publication without delay, now excluding vulnerability tests for enterprise products.
 
