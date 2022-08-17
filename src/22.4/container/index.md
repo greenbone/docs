@@ -6,6 +6,9 @@
 ```{include} /common/container/introduction.md
 ```
 
+```{include} /common/container/hardware.md
+```
+
 ```{include} /common/container/prerequisites.md
 ```
 
