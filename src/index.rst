@@ -29,3 +29,4 @@ Edition.
    faq
    glossary
    changelog
+   api
