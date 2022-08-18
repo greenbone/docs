@@ -8,6 +8,8 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 ## Latest
 * Add workflow for exposing the gvmd unix socket from the container
 * Add an API page for links to our other community documentation
+* Fix path of the notus-scanner product advisories directory for the 22.4
+  container setup
 
 ## 22.8.0 - 2022-08-16
 * Fix Community Container setup and start script
