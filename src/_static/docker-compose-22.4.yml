@@ -88,7 +88,7 @@ services:
       - gpg_data_vol:/etc/openvas/gnupg
     environment:
       NOTUS_SCANNER_MQTT_BROKER_ADDRESS: mqtt-broker
-      NOTUS_SCANNER_PRODUCTS_DIRECTORY: /var/lib/notus
+      NOTUS_SCANNER_PRODUCTS_DIRECTORY: /var/lib/notus/products
     depends_on:
       - mqtt-broker
       - gpg-data
