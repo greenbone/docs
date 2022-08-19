@@ -89,9 +89,19 @@ services:
     environment:
       NOTUS_SCANNER_MQTT_BROKER_ADDRESS: mqtt-broker
       NOTUS_SCANNER_PRODUCTS_DIRECTORY: /var/lib/notus/products
+      NOTUS_SCANNER_LOG_LEVEL: debug
     depends_on:
       - mqtt-broker
       - gpg-data
+
+  gvm-tools:
+    image: greenbone/gvm-tools
+    volumes:
+      - gvmd_socket_vol:/run/gvmd
+      - ospd_openvas_socket_vol:/run/ospd
+    depends_on:
+      - gvmd
+      - ospd-openvas
 
 volumes:
   gpg_data_vol:
