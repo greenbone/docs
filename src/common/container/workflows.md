@@ -52,7 +52,7 @@ Afterwards, you can execute standard bash commands within the running container.
 
 ### Use gvm-tools for CLI access
 
-To query data or control gvmd and ospd-openvas via CLI [gvm-tools](https://github.com/greenbone/gvm-tools/)
+To query data or control gvmd and ospd-openvas via CLI, [gvm-tools](https://github.com/greenbone/gvm-tools/)
 can be used. gvm-tools is provided in the gvm-tools container. This container
 can be started with:
 
@@ -63,8 +63,8 @@ caption: Start container for gvm-tools CLI access
 docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition run --rm gvm-tools
 ```
 
-Afterwards a bash shell is provided and `gvm-cli`, `gvm-pyshell` or `gvm-script`
-can be run. For example
+Afterwards, a bash shell is provided and `gvm-cli`, `gvm-pyshell` or `gvm-script`
+can be run. For example:
 
 ```{code-block} shell
 ---
