@@ -50,12 +50,12 @@ docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-editio
 
 Afterwards, you can execute standard bash commands within the running container.
 
-### Expose gvmd Unix Socket for GMP access
+### Expose gvmd Unix socket for GMP access
 
-To allow using the {term}`GMP` protocol provided by {term}`gvmd` from the docker
-host a [bind mount](https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes)
-must be used for the `/run/gvmd` location. To make the gvmd unix socket
-available, first of all a directory must be created and the permissions need to
+To enable the use of the protocol {term}`GMP` provided by {term}`gvmd` from the docker
+host, a [bind mount](https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes)
+must be used for the `/run/gvmd` directory. To make the gvmd Unix socket
+available, a directory must be created first and the permissions must
 be adjusted.
 
 ```sh
@@ -63,7 +63,7 @@ mkdir -p /tmp/gvm/gvmd
 chmod -R 777 /tmp/gvm
 ```
 
-Next the docker compose file needs to be changed as follows:
+In the next step, the docker compose file must be changed as follows:
 
 ```diff
   gvmd:
@@ -100,8 +100,8 @@ After restarting the containers with
 docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition up -d
 ```
 
-The unix socket should be available at `/tmp/gvm/gvmd/gvmd.sock`. For example
-to use the socket with [gvm-tools](https://github.com/greenbone/gvm-tools) the
+the Unix socket should be available at `/tmp/gvm/gvmd/gvmd.sock`. For example,
+to use the socket with [gvm-tools](https://github.com/greenbone/gvm-tools), the
 following command can be executed:
 
 ```bash
