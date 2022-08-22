@@ -60,6 +60,15 @@ services:
       - redis-server
       - gpg-data
 
+  gvm-tools:
+    image: greenbone/gvm-tools
+    volumes:
+      - gvmd_socket_vol:/run/gvmd
+      - ospd_openvas_socket_vol:/run/ospd
+    depends_on:
+      - gvmd
+      - ospd-openvas
+
 volumes:
   gpg_data_vol:
   gvmd_data_vol:
