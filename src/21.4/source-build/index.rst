@@ -131,7 +131,12 @@ Performing a System Setup
 .. include:: /21.4/source-build/postgres.rst
 .. include:: /common/source-build/admin-user.rst
 .. include:: /common/source-build/feed-import-owner.rst
-.. include:: /common/source-build/initial-feed-sync.rst
 .. include:: /21.4/source-build/systemd.rst
+
+.. include:: /common/source-build/feed-sync.rst
+.. include:: /21.4/source-build/feed-sync-vts.rst
+.. include:: /common/source-build/feed-sync-other.rst
+.. include:: /21.4/source-build/start-services.rst
+.. include:: /common/source-build/feed-loading.rst
 
 .. include:: /21.4/source-build/finish.rst
