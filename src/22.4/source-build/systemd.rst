@@ -1,5 +1,5 @@
 Setting up Services for *Systemd*
-----------------------------
+---------------------------------
 
 `Systemd <https://systemd.io/>`_ is used to start the daemons *ospd-openvas*,
 *notus-scanner*, *gvmd* and *gsad*. Therefore, service files are required.
