@@ -88,17 +88,17 @@ Glossary
     the :term:`Greenbone Enterprise Feed`.
 
   Greenbone Community Feed
-    The Greenbone Community Feed is the freely available feed for vulnerability
-    information licensed as open-source. It contains basic scan configurations,
-    report formats, port lists and the most important vulnerability tests. The
-    provided data is updated on a daily basis with no warranty or promises for
-    fixes or completeness.
+    The `Greenbone Community Feed <https://www.greenbone.net/en/feed-comparison/>`_
+    is the freely available feed for vulnerability information licensed as open-source.
+    It contains basic scan configurations, report formats, port lists and the
+    most important vulnerability tests. The provided data is updated on a daily
+    basis with no warranty or promises for fixes or completeness.
 
   Greenbone Enterprise Feed
-    The Greenbone Enterprise Feed is the commercial feed provided by
-    Greenbone Networks containing additional enterprise features like
-    vulnerability tests for enterprise products, policy and compliance checks,
-    extensive reports formats and special scan configurations.
+    The `Greenbone Enterprise Feed <https://www.greenbone.net/en/feed-comparison/>`_
+    is the commercial feed provided by Greenbone Networks containing additional
+    enterprise features like vulnerability tests for enterprise products, policy
+    and compliance checks, extensive reports formats and special scan configurations.
     The feed comes with a service-level agreement ensuring support, quality
     assurance and availability.
 
