@@ -18,7 +18,7 @@ The loading of the VT data is finished if the following log message can be found
 
   Finished loading VTs. The VT cache has been updated from version X to Y.
 
-After the scanner is aware of the VT data, it will be requested by gvmd. This
+After the scanner is aware of the VT data, the data will be requested by gvmd. This
 will result in the following log message in :file:`/var/log/gvm/gvmd.log`:
 
 .. code-block:: none
