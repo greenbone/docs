@@ -1,5 +1,3 @@
-version: '3.7'
-
 services:
   vulnerability-tests:
     image: greenbone/vulnerability-tests
@@ -74,12 +72,18 @@ services:
       - ospd_openvas_socket_vol:/run/ospd
       - psql_socket_vol:/var/run/postgresql
     depends_on:
-      - pg-gvm
-      - scap-data
-      - cert-bund-data
-      - dfn-cert-data
-      - data-objects
-      - report-formats
+      pg-gvm:
+        condition: service_started
+      scap-data:
+        condition: service_completed_successfully
+      cert-bund-data:
+        condition: service_completed_successfully
+      dfn-cert-data:
+        condition: service_completed_successfully
+      data-objects:
+        condition: service_completed_successfully
+      report-formats:
+        condition: service_completed_successfully
 
   gsa:
     image: greenbone/gsa:stable
@@ -120,9 +124,12 @@ services:
       - ospd_openvas_socket_vol:/run/ospd
       - redis_socket_vol:/run/redis/
     depends_on:
-      - redis-server
-      - gpg-data
-      - vulnerability-tests
+      redis-server:
+        condition: service_started
+      gpg-data:
+        condition: service_completed_successfully
+      vulnerability-tests:
+        condition: service_completed_successfully
 
   mqtt-broker:
     restart: on-failure
