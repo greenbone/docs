@@ -1,6 +1,6 @@
 # Workflows
 
-## Update the Greenbone Community Containers
+## Updating the Greenbone Community Containers
 
 To update the Greenbone Community Containers to the latest version, it is required
 to pull the images and restart the containers which have new images. This can
@@ -30,7 +30,7 @@ data container images.
 A feed synchronization always consists of two parts:
 
 1. Downloading the changes via pulling new container images
-2. The changes get loaded into memory and a database by a daemon
+2. Loading the changes into memory and a database by a daemon
 
 Both steps may take a while, from several minutes up to hours, especially for the
 initial synchronization. Only if both steps are finished, the synchronized data
@@ -42,15 +42,15 @@ done automatically when the daemons are running.
 ### Downloading the Feed Changes
 
 The data of the {term}`Greenbone Community Feed` is provided via several
-container images. When these images are started they copy the data into the used
-docker volumes automatically. Afterwards the data is picked up by the running
-daemons from the volumes.
+container images. When these images are started, they copy the data into the used
+docker volumes automatically. Afterwards, the data is picked up from the
+volumes by the running daemons .
 
 To download the latest feed data container images run
 
 ```{code-block} shell
 ---
-caption: Downloading the Greenbone Community Edition Feed Data Containers
+caption: Downloading the Greenbone Community Edition feed data containers
 ---
 docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition pull notus-data vulnerability-tests scap-data dfn-cert-data cert-bund-data report-formats data-objects
 ```
@@ -59,7 +59,7 @@ To copy the data from the images to the volumes run
 
 ```{code-block} shell
 ---
-caption: Starting the Greenbone Community Feed Data Containers
+caption: Starting the Greenbone Community feed data containers
 ---
 docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition up -d notus-data vulnerability-tests scap-data dfn-cert-data cert-bund-data report-formats data-objects
 ```
@@ -67,7 +67,7 @@ docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-editio
 ### Loading the Feed Changes
 
 ```{important}
-When feed content has been downloaded, the new data needs to be loaded by the
+When feed content has been downloaded, the new data must be loaded by the
 corresponding daemons. This may take several minutes up to hours, especially
 for the initial loading of the data. Without loaded data, scans will contain
 incomplete and erroneous results.
@@ -97,7 +97,7 @@ caption: ospd-openvas VTs loading finished log message
 Finished loading VTs. The VT cache has been updated from version X to Y.
 ```
 
-After the scanner is aware of the VT data, it will be requested by gvmd. This
+After the scanner is aware of the VT data, the data will be requested by gvmd. This
 will result in the following log message:
 
 ```{code-block} none
@@ -208,7 +208,7 @@ caption: Remove containers and volumes (all data)
 docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition down -v
 ```
 
-##  Gain a Terminal for a Container
+##  Gaining a Terminal for a Container
 
 If you want to debug something in a container, install additional software, take
 a look at the file content, or change some configuration, it is possible to gain
@@ -225,7 +225,7 @@ docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-editio
 
 Afterwards, you can execute standard bash commands within the running container.
 
-## Use gvm-tools for CLI access
+## Using gvm-tools for CLI access
 
 To query data or control gvmd and ospd-openvas via CLI, [gvm-tools](https://github.com/greenbone/gvm-tools/)
 can be used. gvm-tools is provided in the gvm-tools container. This container
@@ -248,7 +248,7 @@ caption: Query gvmd version via gvm-cli
 gvm-cli --gmp-username admin socket --pretty --xml "<get_version/>"
 ```
 
-## Expose gvmd Unix socket for GMP access
+## Exposing gvmd Unix socket for GMP Access
 
 To enable the use of the protocol {term}`GMP` provided by {term}`gvmd` from the docker
 host, a [bind mount](https://docs.docker.com/compose/compose-file/compose-file-v3/#volumes)

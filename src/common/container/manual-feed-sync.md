@@ -1,9 +1,9 @@
-## Manual Feed Sync
+## Performing a Manual Feed Sync
 
 It is possible to do a manual feed sync using {command}`rsync`.
 
 ```{warning}
-Please be aware that the manual synced data will be overridden if the data
+Please be aware that the manually synced data will be overridden if the data
 containers are (re-)started.
 ```
 
