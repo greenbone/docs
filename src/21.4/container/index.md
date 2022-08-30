@@ -52,7 +52,7 @@ and their services in detail.
 | vulnerability-tests | | A container that copies vulnerability tests (VTs) into the `vt_data_vol` volume on startup. Shows the license and exists afterwards. |
 | scap-data | | A container that copies CVE and CPE data into the `scap_data_vol` volume on startup. Shows the license and exists afterwards. |
 | cert-bund-data | | A container that copies CERT-Bund data into the `cert_data_vol` volume on startup. Shows the license and exists afterwards. |
-| dfn-cert-data | | A container that copies DFN-Cert data into the `cert_data_vol` volume on startup. Shows the license and exists afterwards. |
+| dfn-cert-data | | A container that copies DFN-CERT data into the `cert_data_vol` volume on startup. Shows the license and exists afterwards. |
 | data-objects | | A container that copies scan configs, compliance policies and port lists into the `data_objects_vol` volume on startup. Shows the license and exists afterwards. |
 | report-formats | | A container that copies report formats into the `data_objects_vol` volume on startup. Shows the license and exists afterwards. |
 
