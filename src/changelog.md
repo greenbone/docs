@@ -10,6 +10,8 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Use feed data containers for feed sync in Greenbone Community Containers docs
 * Extract workflows and troubleshooting to own pages for Greenbone Community
   Container docs
+* Require docker-compose 1.27.0 or later to avoid issues with the ospd-openvas
+  startup
 
 ## 22.8.1 - 2022-08-29
 * Add workflow for exposing the gvmd unix socket from the container
