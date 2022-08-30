@@ -116,7 +116,7 @@ html_theme_options = {
 }
 
 # https://myst-parser--467.org.readthedocs.build/en/467/syntax/optional.html#auto-generated-header-anchors
-myst_heading_anchors = 2
+myst_heading_anchors = 3
 
 pygments_style = "zenburn"
 
