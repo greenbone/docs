@@ -60,30 +60,7 @@ and their services in detail.
 | data-objects | | A container that copies scan configs, compliance policies and port lists into the `data_objects_vol` volume on startup. Shows the license and exists afterwards. |
 | report-formats | | A container that copies report formats into the `data_objects_vol` volume on startup. Shows the license and exists afterwards. |
 
-```{include} /common/container/performing-feed-sync.md
-```
-
-### Syncing Vulnerability Tests
-
-VT data contains {file}`.nasl` and {file}`.notus` files for creating results
-during a vulnerability scan. The `.nasl` files are processed by the OpenVAS
-Scanner and the `.notus` files by the {term}`Notus Scanner <notus-scanner>`.
-
-```{code-block} shell
----
-caption: Syncing {term}`VTs<VT>` processed by the scanner, this will take a while.
----
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
-    run --rm ospd-openvas greenbone-nvt-sync
-```
-
-```{include} /common/container/feed-sync.md
-```
-
 ```{include} /common/container/starting.md
-```
-
-```{include} /common/container/feed-loading.md
 ```
 
 ```{include} /common/container/admin-user.md
@@ -91,8 +68,8 @@ docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-editio
 
 ## Starting the Vulnerability Management
 
-After the services have started and all data has been loaded, the {term}`Greenbone
-Security Assistant web interface – GSA –<GSA>` can be opened in the browser.
+After the services have started and [all feed data has been loaded](./workflows.md#loading-the-feed-changes),
+the {term}`Greenbone Security Assistant web interface – GSA –<GSA>` can be opened in the browser.
 
 ```{code-block} shell
 ---
@@ -132,35 +109,11 @@ caption: Run setup and start script
 $DOWNLOAD_DIR/setup-and-start-greenbone-community-edition.sh 22.4
 ```
 
-```{include} /common/container/workflows.md
-```
+```{toctree}
+:hidden:
 
-```{include} /common/container/troubleshooting.md
-```
-
-### Cannot Log in to the Web Interface: *Greenbone Vulnerability Manager service is not responding*
-
-If it is not possible to log in to the web interface and the following error
-message is shown
-
-```{image} gvmd-not-responding.png
----
-alt: gvmd not responding
-width: 200px
-align: center
----
-```
-
-and/or the logs contain a `Failed to connect to server at /run/gvmd/gvmd.sock: Connection refused`
-message, the {term}`gvmd` container must be restarted. It is very likely it
-had some issues accessing the PostgreSQL database.
-
-```{code-block} shell
----
-caption: Restart {term}`gvmd`
----
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
-    restart gvmd
+workflows
+troubleshooting
 ```
 
 [docker]: https://docs.docker.com/
