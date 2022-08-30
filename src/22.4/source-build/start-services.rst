@@ -3,7 +3,7 @@ Starting the Greenbone Community Edition Services
 
 .. important::
 
-  When the feed content has been downloaded, the new data needs to be loaded by
+  When the feed content has been downloaded, the new data must be loaded by
   the corresponding daemons. This may take several minutes up to hours, especially
   for the initial loading of the data. Without loaded data, scans will contain
   incomplete and erroneous results.

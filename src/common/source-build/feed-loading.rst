@@ -9,9 +9,9 @@ data:
   :caption: ospd-openvas VT loading log message
 
   Loading VTs. Scans will be [requested|queued] until VTs are loaded. This may
-  take a few minutes, please wait...
+  take a few minutes, please wait ...
 
-The loading of the VT data is finished if the log message can be found:
+The loading of the VT data is finished if the following log message can be found:
 
 .. code-block:: none
   :caption: ospd-openvas VTs loading finished log message

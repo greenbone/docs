@@ -1,4 +1,4 @@
-Setup Services for *Systemd*
+Setting up Services for *Systemd*
 ----------------------------
 
 `Systemd <https://systemd.io/>`_ is used to start the daemons *ospd-openvas*,

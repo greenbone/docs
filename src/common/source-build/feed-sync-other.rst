@@ -8,7 +8,7 @@ Downloading SCAP, CERT and GVMD Data
   The CERT feed synchronization depends on the data provided by the SCAP
   feed and should be called after synchronizing the latter. The GVMD_DATA
   contains scan configs which depend on the VTs. Only if the VTs are synced and
-  loaded scan configs are available and scans can be started.
+  loaded scan configs are available, scans can be started.
 
 .. code-block::
   :caption: Syncing SCAP data processed by gvmd, this will take a while
@@ -16,14 +16,14 @@ Downloading SCAP, CERT and GVMD Data
   sudo -u gvm greenbone-feed-sync --type SCAP
 
 CERT data contains vulnerability information from the German `DFN-CERT <https://www.dfn-cert.de/>`_
-and `CERT-Bund <https://cert-bund.de/>`_ agencies.
+and `CERT-Bund <https://www.bsi.bund.de/EN/Themen/Unternehmen-und-Organisationen/Cyber-Sicherheitslage/Reaktion/CERT-Bund/cert-bund_node.html>`_ agencies.
 
 .. code-block::
   :caption: Syncing CERT data processed by gvmd
 
   sudo -u gvm greenbone-feed-sync --type CERT
 
-gvmd data (or also called data-objects) are scan configurations, compliance policies, port lists
+gvmd data (or also called "data objects") are scan configurations, compliance policies, port lists
 and report formats.
 
 .. code-block::

@@ -13,7 +13,7 @@ daemons will pick up the feed content and load the data automatically.
 
 .. warning::
 
-  Please be aware, even if the :command:`systemctl start` commands are returning
+  Please be aware that even if the :command:`systemctl start` commands are returning
   immediately, the **first startup** of the services may take several minutes
   or even hours!
 
