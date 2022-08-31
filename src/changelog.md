@@ -9,6 +9,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Fix setting executable permission for setup and install script after the
   download
 * Check for docker being installed in setup and install script
+* Download the setup and install script to the current working directory
 
 ## 22.8.2 – 22-08-31
 * Improve feed sync documentation for source build

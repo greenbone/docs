@@ -96,9 +96,9 @@ script can be downloaded with the following command directly:
 
 ```{code-block} shell
 ---
-caption: Downloading setup and start script
+caption: Downloading setup and start script to the current working dir
 ---
-cd $DOWNLOAD_DIR && curl -f -O https://greenbone.github.io/docs/latest/_static/setup-and-start-greenbone-community-edition.sh && chmod u+x setup-and-start-greenbone-community-edition.sh
+curl -f -O https://greenbone.github.io/docs/latest/_static/setup-and-start-greenbone-community-edition.sh && chmod u+x setup-and-start-greenbone-community-edition.sh
 ```
 
 To execute the script following command must be run:
@@ -107,7 +107,7 @@ To execute the script following command must be run:
 ---
 caption: Run setup and start script
 ---
-$DOWNLOAD_DIR/setup-and-start-greenbone-community-edition.sh 21.4
+./setup-and-start-greenbone-community-edition.sh 21.4
 ```
 
 ```{toctree}
