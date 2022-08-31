@@ -121,7 +121,7 @@ ospd-openvas
 .. code-block::
   :caption: Setting the ospd and ospd-openvas versions to use
 
-  export OSPD_OPENVAS_VERSION=$GVM_VERSION
+  export OSPD_OPENVAS_VERSION=22.4.1
 
 .. include:: /22.4/source-build/ospd-openvas/dependencies.rst
 .. include:: /common/source-build/ospd-openvas/download.rst
@@ -135,7 +135,7 @@ notus-scanner
 .. code-block::
   :caption: Setting the notus version to use
 
-  export NOTUS_VERSION=$GVM_VERSION
+  export NOTUS_VERSION=22.4.1
 
 .. include:: /22.4/source-build/notus-scanner/dependencies.rst
 .. include:: /22.4/source-build/notus-scanner/download.rst

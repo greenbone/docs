@@ -12,6 +12,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
   Container docs
 * Require docker-compose 1.27.0 or later to avoid issues with the ospd-openvas
   startup
+* Use notus-scanner 22.4.1 and ospd-openvas 22.4.1 for 22.4 source build
 
 ## 22.8.1 - 2022-08-29
 * Add workflow for exposing the gvmd unix socket from the container
