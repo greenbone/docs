@@ -101,31 +101,11 @@ To allow the current user to run {command}`docker` and therefore start the
 containers, they must be added to the *docker* user group. To make the group change
 effective, either logout and login again or use {command}`su`.
 
-`````{tabs}
-````{tab} Debian/Ubuntu
 ```{code-block} shell
 ---
-caption: Add current user to docker group
+caption: Add current user to docker group and  apply group changes for the current shell environment
 ---
-sudo adduser $USER docker
-```
-````
-````{tab} Fedora/CentOS
-```{code-block} shell
----
-caption: Add current user to docker group
----
-sudo usermod -aG docker $USER
-```
-````
-`````
-
-
-```{code-block} shell
----
-caption: Apply group changes for the current shell environment
----
-su $USER
+sudo usermod -aG docker $USER && su $USER
 ```
 
 For downloading the Greenbone Community Edition docker compose file, a
