@@ -5,6 +5,11 @@ All notable changes to this documentation will be listed in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
+## Latest
+* Fix setting executable permission for setup and install script after the
+  download
+* Check for docker being installed in setup and install script
+
 ## 22.8.2 – 22-08-31
 * Improve feed sync documentation for source build
 * Use feed data containers for feed sync in Greenbone Community Containers docs
