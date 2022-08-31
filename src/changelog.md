@@ -5,7 +5,7 @@ All notable changes to this documentation will be listed in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
-## Latest
+## 22.8.2 – 22-08-31
 * Improve feed sync documentation for source build
 * Use feed data containers for feed sync in Greenbone Community Containers docs
 * Extract workflows and troubleshooting to own pages for Greenbone Community
@@ -14,14 +14,14 @@ and this project adheres to [Calendar Versioning](https://calver.org).
   startup
 * Use notus-scanner 22.4.1 and ospd-openvas 22.4.1 for 22.4 source build
 
-## 22.8.1 - 2022-08-29
+## 22.8.1 – 2022-08-29
 * Add workflow for exposing the gvmd unix socket from the container
 * Add an API page for links to our other community documentation
 * Fix path of the notus-scanner product advisories directory for the 22.4
   container setup
 * Add gvm-tools container and usage workflow documentation
 
-## 22.8.0 - 2022-08-16
+## 22.8.0 – 2022-08-16
 * Fix Community Container setup and start script
 * Fix installing yarn from third party debian package repository
 * Improve and extend feed sync chapters for community containers
