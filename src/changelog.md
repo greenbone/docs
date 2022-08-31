@@ -13,6 +13,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Add license header to docker startup script
 * Fix variable name typo in docker startup script
 * Fix the checks for required programs in the setup script
+* Use ospd-openvas 22.4.2 for 22.4 source build
 
 ## 22.8.2 – 22-08-31
 * Improve feed sync documentation for source build
