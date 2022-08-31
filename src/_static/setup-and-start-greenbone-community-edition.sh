@@ -17,6 +17,14 @@ if [ $HAS_CURL -gt 0 ]; then
     exit 1
 fi
 
+TEST_DOCKER=$(docker --version)
+HAS_DOCKER=$?
+
+if [ $HAS_DOCKER_COMPOSE -gt 0 ]; then
+    echo "docker is not available. See https://greenbone.github.io/docs/latest/$RELEASE/container/#prerequisites."
+    exit 1
+fi
+
 TEST_DOCKER_COMPOSE=$(docker-compose --version)
 HAS_DOCKER_COMPOSE=$?
 
