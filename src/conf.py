@@ -82,26 +82,24 @@ html_theme_options = {
         "color-foreground-primary": "4C4C4C",
         "color-foreground-secondary": "#7F7F7F",
         "color-code-background": "#333333",
-		"color-code-foreground": "#E5E5E5",
+        "color-code-foreground": "#E5E5E5",
         "color-admonition-title--note": "#11AB51",
         "admonition-font-size": "0.9rem",
         "color-background-primary": "#FFFFFF",
         "color-background-secondary": "#F3F3F3",
-		"color-sidebar-background": "#F3F3F3",
-
+        "color-sidebar-background": "#F3F3F3",
     },
     "dark_css_variables": {
         "color-content-foreground": "#F3F3F3",
         "color-foreground-primary": "F3F3F3",
         "color-foreground-secondary": "#E5E5E5",
         "color-code-background": "#333333",
-		"color-code-foreground": "#E5E5E5",
+        "color-code-foreground": "#E5E5E5",
         "color-admonition-title--note": "#11AB51",
         "admonition-font-size": "0.9rem",
         "color-background-primary": "#171717",
         "color-background-secondary": "#4C4C4C",
-		"color-sidebar-background": "#333333",
-
+        "color-sidebar-background": "#333333",
     },
     "footer_icons": [
         {
@@ -118,7 +116,7 @@ html_theme_options = {
 }
 
 # https://myst-parser--467.org.readthedocs.build/en/467/syntax/optional.html#auto-generated-header-anchors
-myst_heading_anchors = 2
+myst_heading_anchors = 3
 
 pygments_style = "zenburn"
 

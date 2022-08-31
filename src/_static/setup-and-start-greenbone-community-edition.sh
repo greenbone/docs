@@ -36,20 +36,6 @@ echo "Pulling Greenbone Community Containers $RELEASE"
 docker-compose -f $DOWNLOAD_DIR/docker-compose-$RELEASE.yml -p greenbone-community-edition pull
 echo
 
-echo "Syncing the Greenbone Community Feed... (this takes a while)"
-docker-compose -f $DOWNLOAD_DIR/docker-compose-$RELEASE.yml -p greenbone-community-edition \
-    run --rm ospd-openvas greenbone-nvt-sync
-
-docker-compose -f $DOWNLOAD_DIR/docker-compose-$RELEASE.yml -p greenbone-community-edition \
-    run --rm gvmd greenbone-feed-sync --type SCAP
-
-docker-compose -f $DOWNLOAD_DIR/docker-compose-$RELEASE.yml -p greenbone-community-edition \
-    run --rm gvmd greenbone-feed-sync --type CERT
-
-docker-compose -f $DOWNLOAD_DIR/docker-compose-$RELEASE.yml -p greenbone-community-edition \
-    run --rm gvmd greenbone-feed-sync --type GVMD_DATA
-echo
-
 echo "Starting Greenbone Community Containers $RELEASE"
 docker-compose -f $DOWNLOAD_DIR/docker-compose-$RELEASE.yml -p greenbone-community-edition up -d
 echo
@@ -59,8 +45,9 @@ docker-compose -f $DOWNLOAD_DIR/docker-compose-$RELEASE.yml -p greenbone-communi
     exec -u gvmd gvmd gvmd --user=admin --new-password=$password
 
 echo
-echo "The synced feed data will be loaded now. This process may take several minutes up to hours."
+echo "The feed data will be loaded now. This process may take several minutes up to hours."
 echo "Before the data is not loaded completely, scans will show insufficient or erroneous results."
+echo "See https://greenbone.github.io/docs/latest/$RELEASE/container/workflows.html#loading-the-feed-changes for more details."
 echo
 echo "Press Enter to open the Greenbone Security Assistant web interface in the web browser."
 read

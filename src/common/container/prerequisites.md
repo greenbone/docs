@@ -70,9 +70,9 @@ sudo dnf install -y docker-ce docker-ce-cli containerd.io
 
 ### Installing docker-compose
 
-[docker-compose] is required for starting and connecting the services of the
-Greenbone Community Edition. The description of the service orchestration is
-done by using [compose files](https://docs.docker.com/compose/compose-file/).
+[docker-compose] version 1.27.0 or newer is required for starting and connecting
+the services of the Greenbone Community Edition. The description of the service
+orchestration is done by using [compose files](https://docs.docker.com/compose/compose-file/).
 A compose file for the Greenbone Community Edition is provided later on.
 
 `````{tabs}
@@ -81,7 +81,8 @@ A compose file for the Greenbone Community Edition is provided later on.
 ---
 caption: Install docker-compose Debian/Ubuntu package
 ---
-sudo apt install docker-compose
+sudo apt install python3 python3-pip
+python3 -m pip install --user docker-compose
 ```
 ````
 ````{tab} Fedora/CentOS
@@ -89,7 +90,8 @@ sudo apt install docker-compose
 ---
 caption: Install docker-compose Fedora/CentOS package
 ---
-sudo dnf install docker-compose docker-compose-plugin
+sudo dnf install python3-pip
+python3 -m pip install --user docker-compose
 ```
 ````
 `````

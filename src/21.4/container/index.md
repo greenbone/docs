@@ -43,44 +43,29 @@ and their services in detail.
 | Container | Service | Description |
 |-----------|---------|-------------|
 | redis-server | [Redis Server](https://redis.io/) | A redis server with an adjusted config. Used to store VT data and scan results by the scanner. |
-| gpg-data | | A container that copies a GPG keyring with Greenbone's public signing keys into the `gpg_data_vol` volume on startup. It exits afterwards. |
 | pg-gvm | [postgresql](https://www.postgresql.org/) | A PostgreSQL database cluster setup for use with {term}`gvmd`. The actual data is stored in the `psql_data_vol` volume. |
 | gvmd | gvmd | A container for {term}`gvmd` that uses unix sockets in volumes to communicate with the PostgreSQL database and ospd-openvas scanner. The downloaded feed data is stored in the `gvmd_data_vol` volume. To verify the feed data, the GPG keyring from the `gpg_data_vol` is used. |
 | gsa | gsad | A container running the {term}`gsad` web server for providing the web application {term}`GSA`. The web interface is available at localhost on port 9392. For communication with gvmd, a unix socket in a volume is used. |
 | ospd-openvas | ospd-openvas | A container providing the vulnerability scanner. The VT data from the feed is stored in the `vt_data_vol` volume. To verify the feed data, the GPG keyring from the `gpg_data_vol` is used. The connection to the redis server is established via a unix socket in a volume. |
 | gvm-tools | | A container providing the [gvm-tools](https://github.com/greenbone/gvm-tools/) CLI to query and control gvmd and ospd-openvas. |
-
-```{include} /common/container/performing-feed-sync.md
-```
-
-### Syncing Vulnerability Tests
-
-VT data contains {file}`.nasl` files for creating results during a vulnerability
-scan. The `.nasl` files are processed by the OpenVAS Scanner.
-
-```{code-block} shell
----
-caption: Syncing {term}`VTs<VT>` processed by the scanner, this will take a while.
----
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
-    run --rm ospd-openvas greenbone-nvt-sync
-```
-
-```{include} /common/container/feed-sync.md
-```
+| gpg-data | | A container that copies a GPG keyring with Greenbone's public signing keys into the `gpg_data_vol` volume on startup. It exits afterwards. |
+| vulnerability-tests | | A container that copies vulnerability tests (VTs) into the `vt_data_vol` volume on startup. Shows the license and exists afterwards. |
+| scap-data | | A container that copies CVE and CPE data into the `scap_data_vol` volume on startup. Shows the license and exists afterwards. |
+| cert-bund-data | | A container that copies CERT-Bund data into the `cert_data_vol` volume on startup. Shows the license and exists afterwards. |
+| dfn-cert-data | | A container that copies DFN-CERT data into the `cert_data_vol` volume on startup. Shows the license and exists afterwards. |
+| data-objects | | A container that copies scan configs, compliance policies and port lists into the `data_objects_vol` volume on startup. Shows the license and exists afterwards. |
+| report-formats | | A container that copies report formats into the `data_objects_vol` volume on startup. Shows the license and exists afterwards. |
 
 ```{include} /common/container/starting.md
 ```
 
-```{include} /common/container/feed-loading.md
-```
-
 ```{include} /common/container/admin-user.md
 ```
+
 ## Starting the Vulnerability Management
 
-After the services have started and all data has been loaded, the {term}`Greenbone
-Security Assistant web interface – GSA –<GSA>` can be opened in the browser.
+After the services have started and [all data has been loaded](./workflows.md#loading-the-feed-changes),
+the {term}`Greenbone Security Assistant web interface – GSA –<GSA>` can be opened in the browser.
 
 ```{code-block} shell
 ---
@@ -120,35 +105,11 @@ caption: Run setup and start script
 $DOWNLOAD_DIR/setup-and-start-greenbone-community-edition.sh 21.4
 ```
 
-```{include} /common/container/workflows.md
-```
+```{toctree}
+:hidden:
 
-```{include} /common/container/troubleshooting.md
-```
-
-### Cannot Log in to the Web Interface: *Greenbone Vulnerability Manager service is not responding*
-
-If it is not possible to log in to the web interface and the following error
-message is shown
-
-```{image} gvmd-not-responding.png
----
-alt: gvmd not responding
-width: 200px
-align: center
----
-```
-
-and/or the logs contain a `Failed to connect to server at /run/gvmd/gvmd.sock: Connection refused`
-message, the {term}`gvmd` container must be restarted. It is very likely it
-had some issues accessing the PostgreSQL database.
-
-```{code-block} shell
----
-caption: Restart {term}`gvmd`
----
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
-    restart gvmd
+workflows
+troubleshooting
 ```
 
 [docker]: https://docs.docker.com/
