@@ -60,11 +60,11 @@ a.muted-link:hover {
 	color:#11AB51;
 }
 
-a.sidebar-brand, .toctree-l1 > a.reference, .toc-tree a.reference {
+a.sidebar-brand, .toctree-l1 > a.reference, .toctree-l2 > a.reference, toc-tree a.reference {
 	border-bottom: 0;
 }
 
-.toctree-l1 > a.reference:hover, .toc-tree a.reference:hover {
+.toctree-l1 > a.reference:hover, .toctree-l2 > a.reference:hover, .toc-tree a.reference:hover {
 	border-bottom: 0;
 	color: #11AB51;
 }
@@ -90,6 +90,7 @@ a.sidebar-brand, .toctree-l1 > a.reference, .toc-tree a.reference {
 .sidebar-search {
 	color:var(--color-content-foreground);
 }
+
 
 .sidebar-tree .toctree-l1 > .reference {
 	color: var(--color-content-foreground);
@@ -185,12 +186,12 @@ div.sphinxsidebarwrapper img {
 }
 
 
-div.edit-this-page > a.muted-link, svg.icon-tabler-shadow, svg.theme-icon-when-dark, svg.theme-icon-when-light {
+div.edit-this-page > a.muted-link, svg.icon-tabler-shadow, svg.theme-icon-when-dark, svg.theme-icon-when-light, .toctree-checkbox ~ label .icon svg {
 	color:var(--color-content-foreground);
 }
 
 
-div.edit-this-page > a.muted-link:hover, svg.icon.icon-tabler.icon-tabler-copy:hover, svg.icon-tabler-shadow:hover, svg.theme-icon-when-dark:hover, svg.theme-icon-when-light:hover {
+div.edit-this-page > a.muted-link:hover, svg.icon.icon-tabler.icon-tabler-copy:hover, svg.icon-tabler-shadow:hover, svg.theme-icon-when-dark:hover, svg.theme-icon-when-light:hover, .toctree-checkbox ~ label .icon svg:hover {
 	color:#11AB51;
 }
 
@@ -206,7 +207,6 @@ div.edit-this-page > a.muted-link:hover, svg.icon.icon-tabler.icon-tabler-copy:h
 .highlight button.copybtn:hover {
 	background-color:transparent;
 }
-
 
 svg.icon.icon-tabler.icon-tabler-copy {
 	color: var(--color-code-foreground);
