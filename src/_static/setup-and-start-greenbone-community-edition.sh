@@ -36,7 +36,7 @@ fi
 TEST_DOCKER=$(docker --version)
 HAS_DOCKER=$?
 
-if [ $HAS_DOCKER_COMPOSE -gt 0 ]; then
+if [ $HAS_DOCKER -gt 0 ]; then
     echo "docker is not available. See https://greenbone.github.io/docs/latest/$RELEASE/container/#prerequisites."
     exit 1
 fi
