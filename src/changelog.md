@@ -12,6 +12,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Download the setup and install script to the current working directory
 * Add license header to docker startup script
 * Fix variable name typo in docker startup script
+* Fix the checks for required programs in the setup script
 
 ## 22.8.2 – 22-08-31
 * Improve feed sync documentation for source build

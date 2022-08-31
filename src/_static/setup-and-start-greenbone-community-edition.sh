@@ -20,34 +20,22 @@ set -e
 
 DOWNLOAD_DIR=$HOME/greenbone-community-container
 
-TEST_CURL=$(curl --version)
-HAS_CURL=$?
+installed() {
+    # $1 should be the command to look for
+    if ! [ -x "$(command -v $1)" ]; then
+        echo "$1 is not available. See https://greenbone.github.io/docs/latest/$RELEASE/container/#prerequisites."
+        exit 1
+    fi
+}
 
 RELEASE="$1"
 if [ -z $RELEASE ]; then
     RELEASE="22.4"
 fi
 
-if [ $HAS_CURL -gt 0 ]; then
-    echo "curl is not available. See https://greenbone.github.io/docs/latest/$RELEASE/container/#prerequisites."
-    exit 1
-fi
-
-TEST_DOCKER=$(docker --version)
-HAS_DOCKER=$?
-
-if [ $HAS_DOCKER -gt 0 ]; then
-    echo "docker is not available. See https://greenbone.github.io/docs/latest/$RELEASE/container/#prerequisites."
-    exit 1
-fi
-
-TEST_DOCKER_COMPOSE=$(docker-compose --version)
-HAS_DOCKER_COMPOSE=$?
-
-if [ $HAS_DOCKER_COMPOSE -gt 0 ]; then
-    echo "docker-compose is not available. See https://greenbone.github.io/docs/latest/$RELEASE/container/#prerequisites."
-    exit 1
-fi
+installed curl
+installed docker
+installed docker-compose
 
 echo "Using Greenbone Community Containers $RELEASE"
 
