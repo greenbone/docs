@@ -103,16 +103,9 @@ effective, either logout and login again or use {command}`su`.
 
 ```{code-block} shell
 ---
-caption: Add current user to docker group
+caption: Add current user to docker group and  apply group changes for the current shell environment
 ---
-sudo usermod -aG docker $USER
-```
-
-```{code-block} shell
----
-caption: Apply group changes for the current shell environment
----
-su $USER
+sudo usermod -aG docker $USER && su $USER
 ```
 
 For downloading the Greenbone Community Edition docker compose file, a
