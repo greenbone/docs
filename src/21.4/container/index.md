@@ -87,7 +87,7 @@ Greenbone Security Assistant after logging in for the first time
 ## Setup and Start Script
 
 ```{note}
-Please don't forget to follow the instructions from the [Prerequisites](#prerequisites)
+Please remember to follow the instructions described in the [Prerequisites](#prerequisites)
 first.
 ```
 
