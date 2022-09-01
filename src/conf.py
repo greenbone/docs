@@ -33,6 +33,7 @@ extensions = [
     "myst_parser",
     "sphinx_copybutton",
     "sphinx_tabs.tabs",
+    "sphinxext.opengraph",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -128,3 +129,11 @@ myst_heading_anchors = 3
 pygments_style = "zenburn"
 
 suppress_warnings = ["myst.header"]
+
+# settings for sphinxext-opengraph
+# it automagically adds Open Graph meta tags to your site’s generated HTML.
+# The Open Graph protocol is used by social media websites to determine how to
+# present a page when a link is posted, and by search engines as a criterion
+# toward ranking.  https://github.com/wpilibsuite/sphinxext-opengraph
+ogp_site_url = "http://greenbone.github.io/docs/latest/"
+ogp_image = "https://greenbone.github.io/docs/latest/_images/greenbone-banner.png"

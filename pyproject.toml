@@ -10,6 +10,7 @@ Sphinx = "^5.1.1"
 myst-parser = "^0.18.0"
 sphinx-copybutton = "^0.5.0"
 sphinx-tabs = "^3.4.1"
+sphinxext-opengraph = "^0.6.3"
 
 [tool.poetry.dev-dependencies]
 furo = "^2022.6.21"
