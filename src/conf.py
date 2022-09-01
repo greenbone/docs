@@ -115,6 +115,13 @@ html_theme_options = {
     ],
 }
 
+myst_html_meta = {
+    "description lang=en": "Greenbone Community Edition - Documentation",
+    "description lang=de": "Greenbone Community Edition - Dokumentation",
+    "keywords": "OpenVAS, Greenbone, Community, Greenbone Community Edition, GVM, Container, Docker, Documentation",
+    "property=og:locale": "en_US",
+}
+
 # https://myst-parser--467.org.readthedocs.build/en/467/syntax/optional.html#auto-generated-header-anchors
 myst_heading_anchors = 3
 
