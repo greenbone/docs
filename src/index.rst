@@ -1,3 +1,9 @@
+.. meta::
+   :description lang=en: Greenbone Community Edition - Documentation
+   :description lang=de: Greenbone Community Edition - Dokumentation
+   :keywords: OpenVAS, Greenbone, Community, Greenbone Community Edition, GVM, Container, Docker, Documentation
+   :property=og:locale: en_US
+
 Greenbone Community Edition – Documentation
 ===========================================
 
