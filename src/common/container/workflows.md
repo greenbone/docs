@@ -268,14 +268,17 @@ In the next step, the docker compose file must be changed as follows:
     image: greenbone/gvmd:stable
     restart: on-failure
     volumes:
-       - gvmd_data_vol:/var/lib/gvm
-       - vt_data_vol:/var/lib/openvas
-       - psql_data_vol:/var/lib/postgresql
--      - gvmd_socket_vol:/run/gvmd
-+      - /tmp/gvm/gvmd:/run/gvmd
-       - ospd_openvas_socket_vol:/run/ospd
-       - psql_socket_vol:/var/run/postgresql
-     depends_on:
+      - gvmd_data_vol:/var/lib/gvm
+      - scap_data_vol:/var/lib/gvm/scap-data/
+      - cert_data_vol:/var/lib/gvm/cert-data
+      - data_objects_vol:/var/lib/gvm/data-objects/gvmd
+      - vt_data_vol:/var/lib/openvas
+      - psql_data_vol:/var/lib/postgresql
+-     - gvmd_socket_vol:/run/gvmd
++     - /tmp/gvm/gvmd:/run/gvmd
+      - ospd_openvas_socket_vol:/run/ospd
+      - psql_socket_vol:/var/run/postgresql
+    depends_on:
       - pg-gvm
 
 ...
@@ -283,13 +286,25 @@ In the next step, the docker compose file must be changed as follows:
   gsa:
     image: greenbone/gsa:stable
     restart: on-failure
-     ports:
-       - 9392:80
-     volumes:
--      - gvmd_socket_vol:/run/gvmd
-+      - /tmp/gvm/gvmd:/run/gvmd
-     depends_on:
-       - gvmd
+    ports:
+      - 9392:80
+    volumes:
+-     - gvmd_socket_vol:/run/gvmd
++     - /tmp/gvm/gvmd:/run/gvmd
+    depends_on:
+      - gvmd
+
+...
+
+  gvm-tools:
+    image: greenbone/gvm-tools
+    volumes:
+-     - gvmd_socket_vol:/run/gvmd
++     - /tmp/gvm/gvmd:/run/gvmd
+      - ospd_openvas_socket_vol:/run/ospd
+    depends_on:
+      - gvmd
+      - ospd-openvas
 ```
 
 After restarting the containers with
