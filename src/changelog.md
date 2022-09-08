@@ -15,6 +15,8 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Fix the checks for required programs in the setup script
 * Use ospd-openvas 22.4.2 for 22.4 source build
 * Add HTML and Open Graph meta information
+* Fix documentation for exposed gvmd socket
+* Add downloadable exposed gvmd socket compose files
 
 ## 22.8.2 – 22-08-31
 * Improve feed sync documentation for source build
