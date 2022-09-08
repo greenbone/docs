@@ -307,6 +307,23 @@ In the next step, the docker compose file must be changed as follows:
       - ospd-openvas
 ```
 
+```{note}
+Alternatively you can also download the docker-compose file with the exposed gvmd socket.
+
+`````{tabs}
+````{tab} 21.04
+```bash
+cd $DOWNLOAD_DIR && curl -f -L https://greenbone.github.io/docs/latest/_static/docker-compose-21.4-exposed-socket.yml -o docker-compose.yml
+```
+````
+````{tab} 22.04
+```bash
+cd $DOWNLOAD_DIR && curl -f -L https://greenbone.github.io/docs/latest/_static/docker-compose-22.4-exposed-socket.yml -o docker-compose.yml
+```
+````
+`````
+```
+
 After restarting the containers with
 
 ```bash
