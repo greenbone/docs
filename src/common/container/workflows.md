@@ -307,7 +307,7 @@ In the next step, the docker compose file must be changed as follows:
       - ospd-openvas
 ```
 
-```{note}
+``````{note}
 Alternatively you can also download the docker-compose file with the exposed gvmd socket.
 
 `````{tabs}
@@ -322,7 +322,7 @@ cd $DOWNLOAD_DIR && curl -f -L https://greenbone.github.io/docs/latest/_static/d
 ```
 ````
 `````
-```
+``````
 
 After restarting the containers with
 
