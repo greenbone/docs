@@ -18,5 +18,4 @@
 
   sudo cp -rv $INSTALL_DIR/* /
 
-  rm -rfi $INSTALL_DIR/*
-
+  
