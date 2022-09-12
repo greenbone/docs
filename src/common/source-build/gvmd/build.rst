@@ -72,7 +72,7 @@
 
      sudo cp -rv $INSTALL_DIR/* /
 
-     rm -rf $INSTALL_DIR/*
+     rm -rfi $INSTALL_DIR/*
 
   .. tab:: Fedora/CentOS
    .. code-block::
@@ -82,7 +82,7 @@
 
      sudo cp -rv $INSTALL_DIR/* /
 
-     rm -rf $INSTALL_DIR/*
+     rm -rfi $INSTALL_DIR/*
 
      sudo rm /usr/include/postgresql/libpq-fe.h && sudo rmdir /usr/include/postgresql
 

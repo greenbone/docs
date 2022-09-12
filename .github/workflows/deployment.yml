@@ -23,7 +23,7 @@ jobs:
           ref: "gh-pages"
       - name: Cleanup Document Root
         run: |
-          rm -rf ${{ inputs.doc_root }}
+          rm -rfi ${{ inputs.doc_root }}
           mkdir -p ${{ inputs.doc_root }}
       - name: Download Documentation Artifact
         uses: actions/download-artifact@v3
