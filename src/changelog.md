@@ -16,6 +16,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Use ospd-openvas 22.4.2 for 22.4 source build
 * Add HTML and Open Graph meta information
 * Fix: Add -i to the rm -rf statements, to not accidently delete unwanted files
+* Fix: Remove -rf statements within `$INSTAL_DIR` to prevent deletion of root.
 
 ## 22.8.2 – 22-08-31
 * Improve feed sync documentation for source build

@@ -51,7 +51,6 @@ make DESTDIR=$INSTALL_DIR install
 
 $SUDO cp -rv $INSTALL_DIR/* /
 
-rm -rfi $INSTALL_DIR/*
 
 # gvmd
 
@@ -109,7 +108,6 @@ make DESTDIR=$INSTALL_DIR install
 
 $SUDO cp -rv $INSTALL_DIR/* /
 
-rm -rfi $INSTALL_DIR/*
 
 # gsa
 
@@ -123,7 +121,7 @@ tar -C $SOURCE_DIR -xvzf $SOURCE_DIR/gsa-$GSA_VERSION.tar.gz
 
 cd $SOURCE_DIR/gsa-$GSA_VERSION
 
-rm -rfi build
+rm -rf build
 
 yarnpkg
 yarnpkg build
@@ -160,7 +158,6 @@ make DESTDIR=$INSTALL_DIR install
 
 $SUDO cp -rv $INSTALL_DIR/* /
 
-rm -rfi $INSTALL_DIR/*
 
 # openvas-smb
 
@@ -189,7 +186,6 @@ make DESTDIR=$INSTALL_DIR install
 
 $SUDO cp -rv $INSTALL_DIR/* /
 
-rm -rfi $INSTALL_DIR/*
 
 # openvas-scanner
 
@@ -226,7 +222,6 @@ make DESTDIR=$INSTALL_DIR install
 
 $SUDO cp -rv $INSTALL_DIR/* /
 
-rm -rfi $INSTALL_DIR/*
 
 # ospd-openvas
 
@@ -253,4 +248,3 @@ python3 -m pip install . --prefix=$INSTALL_PREFIX --root=$INSTALL_DIR --no-warn-
 
 $SUDO cp -rv $INSTALL_DIR/* /
 
-rm -rfi $INSTALL_DIR/*
