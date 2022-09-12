@@ -121,7 +121,7 @@ tar -C $SOURCE_DIR -xvzf $SOURCE_DIR/gsa-$GSA_VERSION.tar.gz
 
 cd $SOURCE_DIR/gsa-$GSA_VERSION
 
-rm -rfi build
+rm -rf build
 
 yarnpkg
 yarnpkg build
