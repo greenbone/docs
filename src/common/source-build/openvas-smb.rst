@@ -107,4 +107,4 @@ If the signature is valid, the tarball can be extracted.
 
   sudo cp -rv $INSTALL_DIR/* /
 
-  rm -rf $INSTALL_DIR/*
+  rm -rfi $INSTALL_DIR/*

@@ -21,5 +21,5 @@
 
   sudo cp -rv $INSTALL_DIR/* /
 
-  rm -rf $INSTALL_DIR/*
+  rm -rfi $INSTALL_DIR/*
 

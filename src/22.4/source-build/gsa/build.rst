@@ -3,7 +3,7 @@
 
   cd $SOURCE_DIR/gsa-$GSA_VERSION
 
-  rm -rf build
+  rm -rfi build
 
   yarn
   yarn build
