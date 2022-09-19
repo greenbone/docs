@@ -109,13 +109,13 @@ Setting up Services for *Systemd*
   Wants=gvmd.service
 
   [Service]
-  Type=forking
+  Type=exec
   User=gvm
   Group=gvm
   RuntimeDirectory=gsad
   RuntimeDirectoryMode=2775
   PIDFile=/run/gsad/gsad.pid
-  ExecStart=/usr/local/sbin/gsad --listen=127.0.0.1 --port=9392 --http-only
+  ExecStart=/usr/local/sbin/gsad --foreground --listen=127.0.0.1 --port=9392 --http-only
   Restart=always
   TimeoutStopSec=10
 
