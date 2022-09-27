@@ -20,6 +20,8 @@ and this project adheres to [Calendar Versioning](https://calver.org).
   with systemd tracking the started processes
 * Add: docker init process to prevent nmap, grep zombie processes in the
   ospd-openvas container
+* Add troubleshooting for ospd-openvas connection issue with containers
+* Add troubleshooting pages for source builds
 
 ## 22.8.2 – 22-08-31
 * Improve feed sync documentation for source build
