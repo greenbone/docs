@@ -38,3 +38,28 @@ The code behind these errors tries to set up the database. If the database is
 already initialized, all tables, users, permissions and extensions exist,
 errors are raised. At the moment, it is not possible to silence these errors but
 they can be ignored safely.
+
+### `osp_scanner_feed_version: failed to connect to /run/ospd/ospd-openvas.sock`
+
+If the `gvmd` log contains this error `gvmd` is not able to connect to the
+`ospd-openvas` scanner. Most likely `ospd-openvas` isn't running. Try to restart
+the corresponding container with:
+
+
+```{code-block} shell
+---
+caption: Restart the ospd-openvas scanner
+---
+docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+    restart ospd-openvas
+```
+
+If you still get errors you need to take a look at the `ospd-openvas` logs.
+
+```{code-block} shell
+---
+caption: Show log message of the ospd-openvas scanner
+---
+docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+    log -f ospd-openvas
+```

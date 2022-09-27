@@ -7,13 +7,13 @@ For a comprehensive background see {doc}`History of OpenVAS <history>`.
 ## Where can I ask questions and get support?
 
 Support is only provided for the Greenbone Enterprise product line.
-Besides that, the Greenbone Community can be reached at the [https://community.greenbone.net][community forum]
+Besides that, the Greenbone Community can be reached at the [community forum]
 to ask question. In this forum, several Greenbone developers try to help on a
 voluntary basis.
 
 ## Can you help with my issue on Kali, Cent OS, XYZ distribution?
 
-[https://community.greenbone.net/t/openvas-showing-503-error/5465/4](https://community.greenbone.net/t/openvas-showing-503-error/5465/4)
+[https://forum.greenbone.net/t/openvas-showing-503-error/5465/4](https://forum.greenbone.net/t/openvas-showing-503-error/5465/4)
 
 Greenbone doesn't provide any packages for any Linux distribution besides the
 commercial Greenbone OS. If you have installed the Greenbone Community Edition
@@ -57,12 +57,12 @@ our software is using the same major and minor version.
 
 | Release | GOS | gvmd | GMP | GSA  | gvm-libs | Scanner | Status | Release Date |
 |:--------|-------:|---------|--------|--------:|-------------|------------|----------|------------|
-| [Greenbone Community Edition 22.4](https://community.greenbone.net/t/greenbone-community-edition-22-4-stable-initial-release-2022-07-25/12638) | 22.04| 22.4 | 22.4 | 22.4 | 22.4 | 22.4| stable | 2022-07-25 |
-| [GVM 21.4](https://community.greenbone.net/t/gvm-21-04-stable-initial-release-2021-04-16/8942) | 21.04| 21.4 | 21.4 | 21.4 | 21.4 | 21.4| oldstable | 2021-04-16 |
-| [GVM 20.08](https://community.greenbone.net/t/gvm-20-08-stable-initial-release-2020-08-12/6312) | [20.08](https://community.greenbone.net/t/greenbone-os-20-08-0-released/6535) | 20.8 | 20.8 | 20.8 | 20.8 | 20.8| end-of-life (since 2021-12-02) | 2020-08-12 |
-| [GVM 11](https://community.greenbone.net/t/gvm-11-stable-initial-release-2019-10-14/3674) | 6 |  9 | 9 | 9 | 11 | 7 | end-of-life (since 2020-12-31) | 2019-10-14 |
-| [GVM 10](https://community.greenbone.net/t/gvm-10-old-stable-initial-release-2019-04-05/208) | 5 | 8 | 8 |8 | 10 | 6 | end-of-life (since 2020-12-31) | 2019-04-05 |
-| [OpenVAS  9](https://community.greenbone.net/t/gvm-9-end-of-life-initial-release-2017-03-07/211) | 4 | openvas-manager 7 | OMP 7 | 7 | openvas-libraries 9 | 5.1 | end-of-life | 2017-03-07 |
+| [Greenbone Community Edition 22.4](https://forum.greenbone.net/t/greenbone-community-edition-22-4-stable-initial-release-2022-07-25/12638) | 22.04| 22.4 | 22.4 | 22.4 | 22.4 | 22.4| stable | 2022-07-25 |
+| [GVM 21.4](https://forum.greenbone.net/t/gvm-21-04-stable-initial-release-2021-04-16/8942) | 21.04| 21.4 | 21.4 | 21.4 | 21.4 | 21.4| oldstable | 2021-04-16 |
+| [GVM 20.08](https://forum.greenbone.net/t/gvm-20-08-stable-initial-release-2020-08-12/6312) | [20.08](https://forum.greenbone.net/t/greenbone-os-20-08-0-released/6535) | 20.8 | 20.8 | 20.8 | 20.8 | 20.8| end-of-life (since 2021-12-02) | 2020-08-12 |
+| [GVM 11](https://forum.greenbone.net/t/gvm-11-stable-initial-release-2019-10-14/3674) | 6 |  9 | 9 | 9 | 11 | 7 | end-of-life (since 2020-12-31) | 2019-10-14 |
+| [GVM 10](https://forum.greenbone.net/t/gvm-10-old-stable-initial-release-2019-04-05/208) | 5 | 8 | 8 |8 | 10 | 6 | end-of-life (since 2020-12-31) | 2019-04-05 |
+| [OpenVAS  9](https://forum.greenbone.net/t/gvm-9-end-of-life-initial-release-2017-03-07/211) | 4 | openvas-manager 7 | OMP 7 | 7 | openvas-libraries 9 | 5.1 | end-of-life | 2017-03-07 |
 
 ## My self-compiled version isn't working as expected. Can you help me?
 
@@ -104,4 +104,4 @@ are free software and can be found at [GitHub](https://github.com/greenbone/).
 For an overview of the components and their connections, please take a look at
 the {doc}`Architecture <architecture>`.
 
-[community forum]: https://community.greenbone.net
+[community forum]: https://forum.greenbone.net
