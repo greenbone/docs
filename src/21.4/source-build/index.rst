@@ -140,3 +140,8 @@ Performing a System Setup
 .. include:: /common/source-build/feed-loading.rst
 
 .. include:: /21.4/source-build/finish.rst
+
+.. toctree::
+  :hidden:
+
+  troubleshooting
