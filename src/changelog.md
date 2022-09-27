@@ -18,6 +18,8 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Fix: Remove -rf statements within `$INSTAL_DIR` to prevent deletion of root.
 * Update gsad systemd service file to start gsad in foreground to avoid issues
   with systemd tracking the started processes
+* Add: docker init process to prevent nmap, grep zombie processes in the
+  ospd-openvas container
 
 ## 22.8.2 – 22-08-31
 * Improve feed sync documentation for source build
