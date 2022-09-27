@@ -41,10 +41,9 @@ they can be ignored safely.
 
 ### `osp_scanner_feed_version: failed to connect to /run/ospd/ospd-openvas.sock`
 
-If the `gvmd` log contains this error `gvmd` is not able to connect to the
-`ospd-openvas` scanner. Most likely `ospd-openvas` isn't running. Try to restart
-the corresponding container with:
-
+If the `gvmd` log contains this error, `gvmd` is not able to connect to the
+`ospd-openvas` scanner. Most likely `ospd-openvas` is not running. Try to
+restart the corresponding container with:
 
 ```{code-block} shell
 ---
@@ -54,7 +53,7 @@ docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-editio
     restart ospd-openvas
 ```
 
-If you still get errors you need to take a look at the `ospd-openvas` logs.
+If you still get errors, you need to take a look at the `ospd-openvas` logs.
 
 ```{code-block} shell
 ---

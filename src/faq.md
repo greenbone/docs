@@ -40,7 +40,7 @@ distributions available. Setups, configurations, build systems, packaging tools,
 available software, best practices, ... diverge to much to offer *official*
 packages, scripts or anything else from Greenbone. We offer this Greenbone Community Edition
 documentation and the [community forum] for discussing setup problems. Therefore,
-Greenbone also doesn't recommend any distribution nor do we prefer one
+Greenbone also does not recommend any distribution nor do we prefer one
 distribution over the other. Most of the time, we are not even aware which
 distribution ships which version of our software.
 
