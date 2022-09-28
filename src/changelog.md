@@ -15,7 +15,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Fix the checks for required programs in the setup script
 * Use ospd-openvas 22.4.2 for 22.4 source build
 * Add HTML and Open Graph meta information
-* Fix: Remove -rf statements within `$INSTAL_DIR` to prevent deletion of root.
+* Fix: Remove -rf statements within `$INSTALL_DIR` to prevent deletion of root.
 * Update gsad systemd service file to start gsad in foreground to avoid issues
   with systemd tracking the started processes
 * Add: docker init process to prevent nmap, grep zombie processes in the
