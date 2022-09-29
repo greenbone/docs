@@ -82,7 +82,7 @@ If we are able to reproduce your issue it will be much easier to fix.
 
 Short answer: **no**. You must **never** mix versions of our components from
 different releases. Often people try to use version e.g. the scanner from the
-master branch in combination with a release version of the other components like
+main branch in combination with a release version of the other components like
 gvmd to check if their failing scan works with a newer version. While it may
 work for some components in most circumstances it is very likely to break for
 gvmd, ospd, ospd-openvas and openvas-scanner. These components interact with
