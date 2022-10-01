@@ -94,6 +94,7 @@ services:
     image: greenbone/ospd-openvas:oldstable
     restart: on-failure
     init: true
+    hostname: ospd-openvas.local
     cap_add:
       - NET_ADMIN # for capturing packages in promiscuous mode
       - NET_RAW # for raw sockets e.g. used for the boreas alive detection
