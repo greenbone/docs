@@ -13,7 +13,7 @@ sphinx-tabs = "^3.4.1"
 sphinxext-opengraph = "^0.6.3"
 
 [tool.poetry.dev-dependencies]
-furo = "^2022.9.15"
+furo = "^2022.9.29"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
