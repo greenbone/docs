@@ -6,7 +6,7 @@ authors = ["Greenbone Networks <info@greenbone.net>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-Sphinx = "^5.2.3"
+Sphinx = "^5.3.0"
 myst-parser = "^0.18.1"
 sphinx-copybutton = "^0.5.0"
 sphinx-tabs = "^3.4.1"
