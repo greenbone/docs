@@ -21,8 +21,10 @@ With this in mind, Greenbone OpenVAS could mean
 * a source code release of a vulnerability management solution (OpenVAS 9, GVM 20.08), or
 * a community of users and developers (Greenbone Community)
 
-depending on the context. Therefore we decided to use the term
-:term:`Greenbone Community Edition` as an umbrella for all  Open Source/Free
+depending on the context.
+
+To have a unique name we decided to use the term
+:term:`Greenbone Community Edition` as an umbrella for all Open Source/Free
 Software efforts of the company Greenbone in 2022.
 
 History of the OpenVAS project
