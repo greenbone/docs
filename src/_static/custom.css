@@ -26,6 +26,11 @@ div.body h6 {
 .sphinx-tabs-tab {
 	color:var(--color-content-foreground);
 	font-family: Helvetica, Verdana;
+	cursor: pointer;
+}
+
+.sphinx-tabs-tab[aria-selected="false"] {
+	background-color: rgba(0, 0, 0, 0.05);
 }
 
 a {
