@@ -19,7 +19,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install poetry and dependencies
-        uses: greenbone/actions/poetry@v1
+        uses: greenbone/actions/poetry@v2
       - name: Build docs
         run: poetry run sphinx-build -W --keep-going -b html src _build
       - name: Upload Documentation Artifact
