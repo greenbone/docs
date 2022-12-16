@@ -70,7 +70,7 @@ sudo dnf install -y docker-ce docker-ce-cli containerd.io
 
 ### Installing docker-compose
 
-[docker-compose] version 1.27.0 or newer is required for starting and connecting
+[docker-compose] version 1.29.0 or newer is required for starting and connecting
 the services of the Greenbone Community Edition. The description of the service
 orchestration is done by using [compose files](https://docs.docker.com/compose/compose-file/).
 A compose file for the Greenbone Community Edition is provided later on.
