@@ -130,3 +130,10 @@ Glossary
     checks have been implemented in nasl scripts and each nasl script ran in an
     own openvas-scanner process. With notus-scanner, checks are run in one go per
     host.
+
+  Feed
+    The feed is a set of different files continuously delivered via
+    :command:`rsync` and updated on a daily basis. It contains :term:`CPE`,
+    :term:`CVE`, :term:`VT`, CERT, Port List, Report Format and Scan Config
+    information. The feed is available in a :term:`Commercial<Greenbone Enterprise Feed>`
+    and :term:`Community<Greenbone Community Feed>` edition.
