@@ -24,6 +24,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Add troubleshooting pages for source builds
 * Add hostname to ospd-openvas container, to avoid error
   Could not get a bpf, ethernet address used in non-ether expression
+* Extend troubleshooting for source build
 
 ## 22.8.2 – 22-08-31
 * Improve feed sync documentation for source build
