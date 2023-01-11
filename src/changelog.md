@@ -7,6 +7,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 
 ## Latest
 * Fix installing ospd-openvas and notus-scanner on Debian 11
+* Update components to 22.4.1 release
 
 ## 22.12.0 – 22-12-27
 * Fix setting executable permission for setup and install script after the

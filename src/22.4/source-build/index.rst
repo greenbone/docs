@@ -20,7 +20,7 @@ a new release.
 .. code-block::
   :caption: Setting a GVM version as environment variable
 
-  export GVM_VERSION=22.4.0
+  export GVM_VERSION=22.4.1
 
 
 Building and Installing the Components
@@ -34,7 +34,11 @@ gvm-libs
 --------
 
 .. include:: /22.4/source-build/gvm-libs/description.rst
-.. include:: /common/source-build/gvm-libs/version.rst
+.. code-block::
+  :caption: Setting the gvm-libs version to use
+
+  export GVM_LIBS_VERSION=22.4.2
+
 .. include:: /22.4/source-build/gvm-libs/dependencies.rst
 .. include:: /common/source-build/gvm-libs/download.rst
 
@@ -65,7 +69,11 @@ pg-gvm
 ------
 
 .. include:: /22.4/source-build/pg-gvm/description.rst
-.. include:: /22.4/source-build/pg-gvm/version.rst
+.. code-block::
+  :caption: Setting the pg-gvm version to use
+
+  export PG_GVM_VERSION=22.4.0
+
 .. include:: /22.4/source-build/pg-gvm/dependencies.rst
 .. include:: /22.4/source-build/pg-gvm/download.rst
 
@@ -121,7 +129,7 @@ ospd-openvas
 .. code-block::
   :caption: Setting the ospd and ospd-openvas versions to use
 
-  export OSPD_OPENVAS_VERSION=22.4.2
+  export OSPD_OPENVAS_VERSION=22.4.3
 
 .. include:: /22.4/source-build/ospd-openvas/dependencies.rst
 .. include:: /common/source-build/ospd-openvas/download.rst
@@ -135,7 +143,7 @@ notus-scanner
 .. code-block::
   :caption: Setting the notus version to use
 
-  export NOTUS_VERSION=22.4.1
+  export NOTUS_VERSION=22.4.2
 
 .. include:: /22.4/source-build/notus-scanner/dependencies.rst
 .. include:: /22.4/source-build/notus-scanner/download.rst
