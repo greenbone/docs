@@ -54,7 +54,7 @@ gvmd
 .. code-block::
   :caption: Setting the gvmd version to use
 
-  export GVMD_VERSION=$GVM_VERSION
+  export GVMD_VERSION=22.4.2
 
 .. include:: /22.4/source-build/gvmd/dependencies.rst
 
