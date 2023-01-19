@@ -25,4 +25,4 @@ and the server uri must be added to the *openvas-scanner* configuration.
 
   sudo systemctl start mosquitto.service
   sudo systemctl enable mosquitto.service
-  echo "mqtt_server_uri = localhost:1883" | sudo tee -a /etc/openvas/openvas.conf
+  echo "mqtt_server_uri = localhost:1883\ntable_driven_lsc = yes" | sudo tee -a /etc/openvas/openvas.conf
