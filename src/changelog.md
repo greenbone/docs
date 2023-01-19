@@ -5,6 +5,10 @@ All notable changes to this documentation will be listed in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
+## Latest
+* Set `table_drive_lsc = yes` setting for openvas scanner to enable local
+  security checks scanning via notus scanner
+
 ## 23.1.0 - 23-01-13
 * Fix installing ospd-openvas and notus-scanner on Debian 11
 * Update components to 22.4.1 release
