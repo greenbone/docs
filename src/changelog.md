@@ -8,6 +8,8 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 ## Latest
 * Set `table_drive_lsc = yes` setting for openvas scanner to enable local
   security checks scanning via notus scanner
+* Remove docs for 21.04 because it is end-of-life and wont get any updates
+  anymore.
 
 ## 23.1.0 - 23-01-13
 * Fix installing ospd-openvas and notus-scanner on Debian 11

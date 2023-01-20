@@ -19,7 +19,7 @@ issues and incomplete functionality may appear.
 The sources of the Greenbone Community Edition are adopted by third parties, for
 example Linux distributions like Kali, Alpine, etc.
 
-This documentation covers the stable (22.4) and the oldstable (21.4) version of the Greenbone Community
+This documentation covers the stable (22.4) version of the Greenbone Community
 Edition.
 
 .. image:: _static/greenbone-banner.png
@@ -29,9 +29,7 @@ Edition.
 
    background
    22.4/source-build/index
-   21.4/source-build/index
    22.4/container/index
-   21.4/container/index
    faq
    glossary
    changelog
