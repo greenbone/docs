@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = "Greenbone Community Documentation"
-copyright = "2021–2022, Greenbone Networks"
+copyright = "2021–2023, Greenbone Networks"
 author = "Greenbone Networks"
 
 
