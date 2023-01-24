@@ -13,6 +13,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Extend FAQ for no results after finished scan
 * Update gvmd systemd service file to start gvmd in foreground to avoid issues
   with systemd tracking the started processes
+* Use ospd-openvas 22.4.4
 
 ## 23.1.0 - 23-01-13
 * Fix installing ospd-openvas and notus-scanner on Debian 11
