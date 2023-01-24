@@ -79,13 +79,13 @@ Setting up Services for *Systemd*
   ConditionKernelCommandLine=!recovery
 
   [Service]
-  Type=forking
+  Type=exec
   User=gvm
   Group=gvm
   PIDFile=/run/gvmd/gvmd.pid
   RuntimeDirectory=gvmd
   RuntimeDirectoryMode=2775
-  ExecStart=/usr/local/sbin/gvmd --osp-vt-update=/run/ospd/ospd-openvas.sock --listen-group=gvm
+  ExecStart=/usr/local/sbin/gvmd --foreground --osp-vt-update=/run/ospd/ospd-openvas.sock --listen-group=gvm
   Restart=always
   TimeoutStopSec=10
 
