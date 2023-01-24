@@ -10,6 +10,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
   security checks scanning via notus scanner
 * Remove docs for 21.04 because it is end-of-life and wont get any updates
   anymore.
+* Extend FAQ for no results after finished scan
 * Update gvmd systemd service file to start gvmd in foreground to avoid issues
   with systemd tracking the started processes
 
