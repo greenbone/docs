@@ -123,8 +123,8 @@ Some common issues if scans doesn't return any results are:
 2. You're using a custom scan configuration which doesn't include the following
    two VTs from the **Port scanners** family.
 
-   - [Nmap (NASL wrapper) - OID: 1.3.6.1.4.1.25623.1.0.14259](https://secinfo.greenbone.net/omp?cmd=get_info&info_type=nvt&info_id=1.3.6.1.4.1.25623.1.0.14259&token=guest)
-   - [Ping Host - OID: 1.3.6.1.4.1.25623.1.0.100315](https://secinfo.greenbone.net/omp?cmd=get_info&info_type=nvt&info_id=1.3.6.1.4.1.25623.1.0.100315&token=guest)
+   - [Nmap (NASL wrapper) - OID: 1.3.6.1.4.1.25623.1.0.14259](https://secinfo.greenbone.net/nvt/1.3.6.1.4.1.25623.1.0.14259)
+   - [Ping Host - OID: 1.3.6.1.4.1.25623.1.0.100315](https://secinfo.greenbone.net/nvt/1.3.6.1.4.1.25623.1.0.100315)
 
     Further reading [here](https://community.greenbone.net/t/hint-self-created-scan-configs-copy-of-empty-scan-config-showing-no-results/331)
 
