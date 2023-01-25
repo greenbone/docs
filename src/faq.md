@@ -116,18 +116,18 @@ Some common issues if scans doesn't return any results are:
    **Alive Test** setting of your target definition and try some of the other
    available methods. Further reading:
 
-    [Greenbone Enterprise Appliance documentation - Hosts not found](https://docs.greenbone.net/GSM-Manual/gos-22.04/en/scanning.html#hosts-not-found)
-    [Greenbone Enterprise Appliance documentation - Creating a target](https://docs.greenbone.net/GSM-Manual/gos-22.04/en/scanning.html#creating-a-target)
+   - [Greenbone Enterprise Appliance documentation - Hosts not found](https://docs.greenbone.net/GSM-Manual/gos-22.04/en/scanning.html#hosts-not-found)
+   - [Greenbone Enterprise Appliance documentation - Creating a target](https://docs.greenbone.net/GSM-Manual/gos-22.04/en/scanning.html#creating-a-target)
 
 2. You're using a custom scan configuration which doesn't include the following
    two VTs from the **Port scanners** family.
 
-    [Nmap (NASL wrapper) - OID: 1.3.6.1.4.1.25623.1.0.14259](https://secinfo.greenbone.net/omp?cmd=get_info&info_type=nvt&info_id=1.3.6.1.4.1.25623.1.0.14259&token=guest)
-    [Ping Host - OID: 1.3.6.1.4.1.25623.1.0.100315](https://secinfo.greenbone.net/omp?cmd=get_info&info_type=nvt&info_id=1.3.6.1.4.1.25623.1.0.100315&token=guest)
+   - [Nmap (NASL wrapper) - OID: 1.3.6.1.4.1.25623.1.0.14259](https://secinfo.greenbone.net/omp?cmd=get_info&info_type=nvt&info_id=1.3.6.1.4.1.25623.1.0.14259&token=guest)
+   - [Ping Host - OID: 1.3.6.1.4.1.25623.1.0.100315](https://secinfo.greenbone.net/omp?cmd=get_info&info_type=nvt&info_id=1.3.6.1.4.1.25623.1.0.100315&token=guest)
 
     Further reading [here](https://community.greenbone.net/t/hint-self-created-scan-configs-copy-of-empty-scan-config-showing-no-results/331)
 
-3. You're using a [Port List](https://docs.greenbone.net/GSM-Manual/gos-4/en/performance.html#selecting-a-port-list-for-a-scan)
+3. You're using a [Port List](https://docs.greenbone.net/GSM-Manual/gos-22.04/en/performance.html#selecting-a-port-list-for-a-task)
    which isn't optimal for your environment:
 
     e.g. a ``All TCP and All UDP`` port list might be responsible for your
