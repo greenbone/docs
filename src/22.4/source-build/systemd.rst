@@ -12,7 +12,7 @@ Setting up Services for *Systemd*
   Description=OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)
   Documentation=man:ospd-openvas(8) man:openvas(8)
   After=network.target networking.service redis-server@openvas.service mosquitto.service
-  Wants=redis-server@openvas.service mosquitto.service
+  Wants=redis-server@openvas.service mosquitto.service notus-scanner.service
   ConditionKernelCommandLine=!recovery
 
   [Service]
