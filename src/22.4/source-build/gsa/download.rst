@@ -15,7 +15,7 @@ dependencies. These dependencies have to be downloaded automatically by *yarn*
 
 The output of both commands should be similar to:
 
-.. include:: /common/source-build/verify.rst
+.. include:: /22.4/source-build/verify.rst
 
 If the signatures are valid, the two tarballs can be extracted.
 
