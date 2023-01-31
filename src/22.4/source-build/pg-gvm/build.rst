@@ -36,8 +36,10 @@
 .. code-block::
   :caption: Installing pg-gvm
 
-  make DESTDIR=$INSTALL_DIR install
+  mkdir -p $INSTALL_DIR/pg-gvm
 
-  sudo cp -rv $INSTALL_DIR/* /
+  make DESTDIR=$INSTALL_DIR/pg-gvm install
 
-  
+  sudo cp -rv $INSTALL_DIR/pg-gvm/* /
+
+

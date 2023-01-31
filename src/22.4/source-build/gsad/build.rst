@@ -17,8 +17,10 @@
 .. code-block::
   :caption: Installing gsad
 
-  make DESTDIR=$INSTALL_DIR install
+  mkdir -p $INSTALL_DIR/gsad
 
-  sudo cp -rv $INSTALL_DIR/* /
+  make DESTDIR=$INSTALL_DIR/gsad install
 
-  
+  sudo cp -rv $INSTALL_DIR/gsad/* /
+
+

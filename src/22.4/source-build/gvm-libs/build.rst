@@ -14,8 +14,10 @@
 .. code-block::
   :caption: Installing gvm-libs
 
-  make DESTDIR=$INSTALL_DIR install
+  mkdir -p $INSTALL_DIR/gvm-libs
 
-  sudo cp -rv $INSTALL_DIR/* /
+  make DESTDIR=$INSTALL_DIR/gvm-libs install
 
-  
+  sudo cp -rv $INSTALL_DIR/gvm-libs/* /
+
+

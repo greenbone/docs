@@ -68,19 +68,23 @@
    .. code-block::
      :caption: Installing gvmd
 
-     make DESTDIR=$INSTALL_DIR install
+     mkdir -p $INSTALL_DIR/gvmd
 
-     sudo cp -rv $INSTALL_DIR/* /
+     make DESTDIR=$INSTALL_DIR/gvmd install
 
-     
+     sudo cp -rv $INSTALL_DIR/gvmd/* /
+
+
   .. tab:: Fedora/CentOS
    .. code-block::
      :caption: Installing gvmd
 
-     make DESTDIR=$INSTALL_DIR install
+     mkdir -p $INSTALL_DIR/gvmd
 
-     sudo cp -rv $INSTALL_DIR/* /
+     make DESTDIR=$INSTALL_DIR/gvmd install
 
-     
+     sudo cp -rv $INSTALL_DIR/gvmd/* /
+
+
      sudo rm /usr/include/postgresql/libpq-fe.h && sudo rmdir /usr/include/postgresql
 
