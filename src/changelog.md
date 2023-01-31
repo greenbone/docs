@@ -11,8 +11,8 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Remove docs for 21.04 because it is end-of-life and wont get any updates
   anymore.
 * Extend FAQ for no results after finished scan
-* Update gvmd systemd service file to start gvmd in foreground to avoid issues
-  with systemd tracking the started processes
+* Update systemd service files to start the daemons in foreground to avoid
+  issues with systemd tracking the started processes
 * Use ospd-openvas 22.4.4
 * Update ospd-openvas.service file to depend on the mosquitto and notus-scanner
   services
