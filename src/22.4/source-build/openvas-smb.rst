@@ -81,7 +81,7 @@ Windows-based systems.
 
 The output of the last command should be similar to:
 
-.. include:: /common/source-build/verify.rst
+.. include:: /22.4/source-build/verify.rst
 
 If the signature is valid, the tarball can be extracted.
 
@@ -107,4 +107,3 @@ If the signature is valid, the tarball can be extracted.
 
   sudo cp -rv $INSTALL_DIR/* /
 
-  
