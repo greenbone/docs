@@ -13,4 +13,4 @@
   :caption: Installing gsa
 
   sudo mkdir -p $INSTALL_PREFIX/share/gvm/gsad/web/
-  sudo cp -r build/* $INSTALL_PREFIX/share/gvm/gsad/web/
+  sudo cp -rv build/* $INSTALL_PREFIX/share/gvm/gsad/web/
