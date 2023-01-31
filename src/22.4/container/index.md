@@ -1,15 +1,15 @@
 # Greenbone Community Containers 22.4
 
-```{include} /common/container/preamble.md
+```{include} /22.4/container/preamble.md
 ```
 
-```{include} /common/container/introduction.md
+```{include} /22.4/container/introduction.md
 ```
 
-```{include} /common/container/hardware.md
+```{include} /22.4/container/hardware.md
 ```
 
-```{include} /common/container/prerequisites.md
+```{include} /22.4/container/prerequisites.md
 ```
 
 ## Docker Compose File
@@ -60,10 +60,10 @@ and their services in detail.
 | data-objects | | A container that copies scan configs, compliance policies and port lists into the `data_objects_vol` volume on startup. Shows the license and exists afterwards. |
 | report-formats | | A container that copies report formats into the `data_objects_vol` volume on startup. Shows the license and exists afterwards. |
 
-```{include} /common/container/starting.md
+```{include} /22.4/container/starting.md
 ```
 
-```{include} /common/container/admin-user.md
+```{include} /22.4/container/admin-user.md
 ```
 
 ## Starting the Vulnerability Management
