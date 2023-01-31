@@ -15,6 +15,7 @@
        python3-defusedxml \
        python3-paramiko \
        python3-redis \
+       python3-gnupg \
        python3-paho-mqtt
 
   .. tab:: Ubuntu
@@ -34,6 +35,7 @@
        python3-defusedxml \
        python3-paramiko \
        python3-redis \
+       python3-gnupg \
        python3-paho-mqtt
 
   .. tab:: Fedora
@@ -53,6 +55,7 @@
        python3-defusedxml \
        python3-paramiko \
        python3-redis \
+       python3-gnupg \
        python3-paho-mqtt
 
   .. tab:: CentOS
@@ -71,5 +74,6 @@
        python3-defusedxml \
        python3-paramiko \
        python3-redis \
+       python3-gnupg \
        python3-wheel
 
