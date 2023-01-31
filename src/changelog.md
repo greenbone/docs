@@ -13,7 +13,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Extend FAQ for no results after finished scan
 * Update systemd service files to start the daemons in foreground to avoid
   issues with systemd tracking the started processes
-* Use ospd-openvas 22.4.4
+* Use ospd-openvas 22.4.5
 * Update ospd-openvas.service file to depend on the mosquitto and notus-scanner
   services
 

@@ -129,7 +129,7 @@ ospd-openvas
 .. code-block::
   :caption: Setting the ospd and ospd-openvas versions to use
 
-  export OSPD_OPENVAS_VERSION=22.4.4
+  export OSPD_OPENVAS_VERSION=22.4.5
 
 .. include:: /22.4/source-build/ospd-openvas/dependencies.rst
 .. include:: /common/source-build/ospd-openvas/download.rst
