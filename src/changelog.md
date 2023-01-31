@@ -7,6 +7,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 
 ## Latest
 * Unify the directory layout of the documentation files
+* Use distinct installation directories for each component
 
 ## 23.1.1 - 23-01-31
 * Set `table_drive_lsc = yes` setting for openvas scanner to enable local

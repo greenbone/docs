@@ -16,8 +16,9 @@
 .. code-block::
   :caption: Installing openvas-scanner
 
-  make DESTDIR=$INSTALL_DIR install
+  mkdir -p $INSTALL_DIR/openvas-scanner
 
-  sudo cp -rv $INSTALL_DIR/* /
+  make DESTDIR=$INSTALL_DIR/openvas-scanner install
 
-  
+  sudo cp -rv $INSTALL_DIR/openvas-scanner/* /
+

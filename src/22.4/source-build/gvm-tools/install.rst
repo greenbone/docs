@@ -12,7 +12,9 @@ commands can be used:
 .. code-block::
   :caption: Installing gvm-tools system-wide
 
-  python3 -m pip install --root=$INSTALL_DIR --no-warn-script-location gvm-tools
+  mkdir -p $INSTALL_DIR/gvm-tools
 
-  sudo cp -rv $INSTALL_DIR/* /
+  python3 -m pip install --root=$INSTALL_DIR/gvm-tools --no-warn-script-location gvm-tools
+
+  sudo cp -rv $INSTALL_DIR/gvm-tools/* /
 

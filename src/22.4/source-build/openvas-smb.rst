@@ -103,7 +103,9 @@ If the signature is valid, the tarball can be extracted.
 .. code-block::
   :caption: Installing openvas-smb
 
-  make DESTDIR=$INSTALL_DIR install
+  mkdir -p $INSTALL_DIR/openvas-smb
 
-  sudo cp -rv $INSTALL_DIR/* /
+  make DESTDIR=$INSTALL_DIR/openvas-smb install
+
+  sudo cp -rv $INSTALL_DIR/openvas-smb/* /
 
