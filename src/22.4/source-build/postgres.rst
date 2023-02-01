@@ -41,21 +41,23 @@ If necessary the PostgreSQL database server needs to be started manually
      sudo postgresql-setup --initdb --unit postgresql
      sudo systemctl start postgresql
 
+For setting up the PostgreSQL database it is required to become the postgres
+user.
+
 .. code-block::
-  :caption: Setting up PostgreSQL user and database
+  :caption: Changing to the postgres user
 
   sudo -u postgres bash
+
+.. code-block::
+  :caption: Setting up PostgreSQL user and database for the Greenbone Community Edition
+
   createuser -DRS gvm
   createdb -O gvm gvmd
-  exit
 
 .. code-block::
   :caption: Setting up database permissions and extensions
 
-  sudo -u postgres bash
-  psql gvmd
-  create role dba with superuser noinherit;
-  grant dba to gvm;
+  psql gvmd -c "create role dba with superuser noinherit; grant dba to gvm;"
 
-  exit
   exit
