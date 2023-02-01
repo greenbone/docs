@@ -11,6 +11,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Add missing python3-gnupg as dependency to ospd-openvas
 * Try to circumvent the Python module installation issues by using virtual
   environments
+* Don't display copy button for GPG verification output
 
 ## 23.1.1 - 23-01-31
 * Set `table_drive_lsc = yes` setting for openvas scanner to enable local
