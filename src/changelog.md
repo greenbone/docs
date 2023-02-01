@@ -12,6 +12,8 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Try to circumvent the Python module installation issues by using virtual
   environments
 * Don't display copy button for GPG verification output
+* Fix PostgreSQL setup and make it possible to copy and paste the corresponding
+  commands again
 
 ## 23.1.1 - 23-01-31
 * Set `table_drive_lsc = yes` setting for openvas scanner to enable local
