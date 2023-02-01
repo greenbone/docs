@@ -14,7 +14,10 @@ commands can be used:
 
   mkdir -p $INSTALL_DIR/gvm-tools
 
-  python3 -m pip install --root=$INSTALL_DIR/gvm-tools --no-warn-script-location gvm-tools
+  python3 -m venv $BUILD_DIR/gvm-tools-build-env --system-site-packages && \
+    source $BUILD_DIR/gvm-tools-build-env/bin/activate && \
+    python3 -m pip install --prefix $INSTALL_PREFIX --root=$INSTALL_DIR/gvm-tools --no-warn-script-location gvm-tools && \
+    deactivate
 
   sudo cp -rv $INSTALL_DIR/gvm-tools/* /
 
