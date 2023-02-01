@@ -137,3 +137,6 @@ suppress_warnings = ["myst.header"]
 # toward ranking.  https://github.com/wpilibsuite/sphinxext-opengraph
 ogp_site_url = "http://greenbone.github.io/docs/latest/"
 ogp_image = "https://greenbone.github.io/docs/latest/_images/greenbone-banner.png"
+
+
+copybutton_selector = "div:not(.no-copybutton) > div.highlight > pre"
