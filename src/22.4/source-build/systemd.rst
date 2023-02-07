@@ -34,7 +34,7 @@ Setting up Services for *Systemd*
 .. code-block::
   :caption: Install systemd service file for ospd-openvas
 
-  sudo cp $BUILD_DIR/ospd-openvas.service /etc/systemd/system/
+  sudo cp -v $BUILD_DIR/ospd-openvas.service /etc/systemd/system/
 
 .. code-block::
   :caption: Systemd service file for notus-scanner
@@ -65,7 +65,7 @@ Setting up Services for *Systemd*
 .. code-block::
   :caption: Install systemd service file for notus-scanner
 
-  sudo cp $BUILD_DIR/notus-scanner.service /etc/systemd/system/
+  sudo cp -v $BUILD_DIR/notus-scanner.service /etc/systemd/system/
 
 .. code-block::
   :caption: Systemd service file for gvmd
@@ -96,7 +96,7 @@ Setting up Services for *Systemd*
 .. code-block::
   :caption: Install systemd service file for gvmd
 
-  sudo cp $BUILD_DIR/gvmd.service /etc/systemd/system/
+  sudo cp -v $BUILD_DIR/gvmd.service /etc/systemd/system/
 
 .. code-block:: none
   :caption: Systemd service file for gsad
@@ -127,7 +127,7 @@ Setting up Services for *Systemd*
 .. code-block::
   :caption: Install systemd service file for gsad
 
-  sudo cp $BUILD_DIR/gsad.service /etc/systemd/system/
+  sudo cp -v $BUILD_DIR/gsad.service /etc/systemd/system/
 
 Afterwards, the services need to be activated and started.
 

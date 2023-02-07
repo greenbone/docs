@@ -1,7 +1,7 @@
 Vulnerability Tests Data
 ------------------------
 
-If the log file of ospd-openvas (:file:`/var/log/gvm/ospd-opnevas.log`)
+If the log file of ospd-openvas (:file:`/var/log/gvm/ospd-openvas.log`)
 contains the following output, the OpenVAS Scanner starts to load the new VT
 data:
 

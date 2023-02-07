@@ -32,14 +32,12 @@ to always run as the *gvm* user and under the *gvm* group.
   sudo chown gvm:gvm /usr/local/sbin/gvmd
   sudo chmod 6750 /usr/local/sbin/gvmd
 
-Additionally the feed sync script permissions should be adjusted to only allow
-*gvm* user to execute them. Otherwise the permissions of the synced files will
-be broken.
+Additionally the feed sync script permissions should be adjusted to allow
+*gvm* user to execute them. The feed sync should always be run as the *gvm* user
+otherwise the permissions of the synced files may be broken.
 
 .. code-block::
   :caption: Adjusting feed sync script permissions
 
-  sudo chown gvm:gvm /usr/local/bin/greenbone-nvt-sync
-  sudo chmod 740 /usr/local/sbin/greenbone-feed-sync
-  sudo chown gvm:gvm /usr/local/sbin/greenbone-*-sync
-  sudo chmod 740 /usr/local/sbin/greenbone-*-sync
+  sudo chown gvm:gvm /usr/local/bin/greenbone-feed-sync
+  sudo chmod 740 /usr/local/bin/greenbone-feed-sync
