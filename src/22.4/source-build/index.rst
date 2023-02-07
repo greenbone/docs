@@ -149,6 +149,13 @@ notus-scanner
 .. include:: /22.4/source-build/notus-scanner/download.rst
 .. include:: /22.4/source-build/notus-scanner/build.rst
 
+greenbone-feed-sync
+-------------------
+
+.. include:: /22.4/source-build/greenbone-feed-sync/description.rst
+.. include:: /22.4/source-build/greenbone-feed-sync/dependencies.rst
+.. include:: /22.4/source-build/greenbone-feed-sync/install.rst
+
 gvm-tools
 ---------
 
@@ -170,8 +177,6 @@ Performing a System Setup
 .. include:: /22.4/source-build/systemd.rst
 
 .. include:: /22.4/source-build/feed-sync.rst
-.. include:: /22.4/source-build/feed-sync-vts.rst
-.. include:: /22.4/source-build/feed-sync-other.rst
 .. include:: /22.4/source-build/start-services.rst
 .. include:: /22.4/source-build/feed-loading.rst
 

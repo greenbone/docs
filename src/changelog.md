@@ -14,6 +14,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Don't display copy button for GPG verification output
 * Fix PostgreSQL setup and make it possible to copy and paste the corresponding
   commands again
+* Use new `greenbone-feed-sync` script for the feed data download
 
 ## 23.1.1 - 23-01-31
 * Set `table_drive_lsc = yes` setting for openvas scanner to enable local
