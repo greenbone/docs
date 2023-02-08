@@ -37,7 +37,7 @@ gvm-libs
 .. code-block::
   :caption: Setting the gvm-libs version to use
 
-  export GVM_LIBS_VERSION=22.4.2
+  export GVM_LIBS_VERSION=22.4.3
 
 .. include:: /22.4/source-build/gvm-libs/dependencies.rst
 .. include:: /22.4/source-build/gvm-libs/download.rst
@@ -129,7 +129,7 @@ ospd-openvas
 .. code-block::
   :caption: Setting the ospd and ospd-openvas versions to use
 
-  export OSPD_OPENVAS_VERSION=22.4.5
+  export OSPD_OPENVAS_VERSION=22.4.6
 
 .. include:: /22.4/source-build/ospd-openvas/dependencies.rst
 .. include:: /22.4/source-build/ospd-openvas/download.rst
@@ -143,7 +143,7 @@ notus-scanner
 .. code-block::
   :caption: Setting the notus version to use
 
-  export NOTUS_VERSION=22.4.2
+  export NOTUS_VERSION=22.4.3
 
 .. include:: /22.4/source-build/notus-scanner/dependencies.rst
 .. include:: /22.4/source-build/notus-scanner/download.rst
