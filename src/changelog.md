@@ -15,7 +15,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Fix PostgreSQL setup and make it possible to copy and paste the corresponding
   commands again
 * Use new `greenbone-feed-sync` script for the feed data download
-* Use ospd-openvas 22.4.6, notus-scanner 22.4.3 and gvm-libs 22.4.3
+* Use ospd-openvas 22.4.6, notus-scanner 22.4.4 and gvm-libs 22.4.4
 
 ## 23.1.1 - 23-01-31
 * Set `table_drive_lsc = yes` setting for openvas scanner to enable local
