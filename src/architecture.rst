@@ -15,26 +15,13 @@ The architecture for the Greenbone Community Edition is grouped into three major
 * Greenbone Security Assistant (GSA) with the Greenbone Security Assistant
   Daemon (gsad)
 
-.. tabs::
 
-   .. tab:: 22.4
+The following figure shows an overview of the architecture for the 22.4 release.
 
-      The following figure shows an overview of the architecture for the 22.4 release.
+  .. figure:: images/greenbone-community-22.4-architecture.png
+    :alt: Greenbone Community Edition Architecture
 
-      .. figure:: images/greenbone-community-22.4-architecture.png
-        :alt: Greenbone Community Edition Architecture
-
-        Architecture in release 22.4
-
-   .. tab:: 21.4
-
-      The following figure shows an overview of the architecture for the 21.4 release.
-
-      .. figure:: images/greenbone-community-21.4-architecture.png
-        :alt: Greenbone Community Edition Architecture
-
-        Architecture in release 21.4
-
+    Architecture in release 22.4
 
 
 The Greenbone Community Edition is released under open-source licenses. By using
@@ -81,8 +68,8 @@ OpenVAS Scanner (ospd-openvas) communicates with gvmd via OSP: VT data is
 collected, scans are started and stopped, and scan results are transferred to
 gvmd via ospd.
 
-Notus Scanner (only for 22.4)
------------------------------
+Notus Scanner
+-------------
 
 The `Notus Scanner`_ scans after every regular scan, so no user interaction is
 necessary. It offers better performance due to less system resource

@@ -16,6 +16,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
   commands again
 * Use new `greenbone-feed-sync` script for the feed data download
 * Use ospd-openvas 22.4.6, notus-scanner 22.4.4 and gvm-libs 22.4.4
+* Remove 21.4 from the architecture docs
 
 ## 23.1.1 - 23-01-31
 * Set `table_drive_lsc = yes` setting for openvas scanner to enable local
