@@ -9,15 +9,24 @@ standard Python installation tool *pip*.
 To install it system-wide without running *pip* as root user, the following
 commands can be used:
 
-.. code-block::
-  :caption: Installing gvm-tools system-wide
+.. tabs::
+  .. tab:: Debian/Fedora/CentOS
+    .. code-block::
+      :caption: Installing gvm-tools system-wide
 
-  mkdir -p $INSTALL_DIR/gvm-tools
+      mkdir -p $INSTALL_DIR/gvm-tools
 
-  python3 -m venv $BUILD_DIR/gvm-tools-build-env --system-site-packages && \
-    source $BUILD_DIR/gvm-tools-build-env/bin/activate && \
-    python3 -m pip install --prefix $INSTALL_PREFIX --root=$INSTALL_DIR/gvm-tools --no-warn-script-location gvm-tools && \
-    deactivate
+      python3 -m pip install --prefix=$INSTALL_PREFIX --root=$INSTALL_DIR/gvm-tools --no-warn-script-location gvm-tools
 
-  sudo cp -rv $INSTALL_DIR/gvm-tools/* /
+      sudo cp -rv $INSTALL_DIR/gvm-tools/* /
 
+.. tabs::
+  .. tab:: Ubuntu
+    .. code-block::
+      :caption: Installing gvm-tools system-wide
+
+      mkdir -p $INSTALL_DIR/gvm-tools
+
+      python3 -m pip install --root=$INSTALL_DIR/gvm-tools --no-warn-script-location gvm-tools
+
+      sudo cp -rv $INSTALL_DIR/gvm-tools/* /

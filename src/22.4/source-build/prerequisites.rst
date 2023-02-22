@@ -272,17 +272,3 @@ Greenbone Community Signing key as fully trusted.
 
   echo "8AE4BE429B60A59B311C2E739823FAA60ED1E580:6:" > /tmp/ownertrust.txt
   gpg --import-ownertrust < /tmp/ownertrust.txt
-
-
-Setup Python
-------------
-
-To allow loading the to be installed Python packages the installation path must
-be made available for your system wide installed Python version.
-
-.. code-block::
-  :caption: Add installation directory to Python's module path
-
-  export PYTHON_VERSION=$(python3 -c "import sys; print(f'{sys.version_info[0]}.{sys.version_info[1]}');")
-
-  echo "$INSTALL_PREFIX/lib/python$PYTHON_VERSION/site-packages" | sudo tee /usr/lib/python3/dist-packages/greenbone.pth
