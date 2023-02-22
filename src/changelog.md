@@ -9,14 +9,16 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Unify the directory layout of the documentation files
 * Use distinct installation directories for each component
 * Add missing python3-gnupg as dependency to ospd-openvas
-* Try to circumvent the Python module installation issues by using virtual
-  environments
 * Don't display copy button for GPG verification output
 * Fix PostgreSQL setup and make it possible to copy and paste the corresponding
   commands again
 * Use new `greenbone-feed-sync` script for the feed data download
 * Use ospd-openvas 22.4.6, notus-scanner 22.4.4 and gvm-libs 22.4.4
 * Remove 21.4 from the architecture docs
+* Try to fix installation of `ospd-openvas`, `notus-scanner`, `gvm-tools` and
+  `greenbone-feed-sync` again due to issues with distributions patching Python
+  installation paths. See [discuss.python.org](https://discuss.python.org/t/linux-distro-patches-to-sysconfig-are-changing-pip-install-prefix-outside-virtual-environments/18240)
+  for more details.
 
 ## 23.1.1 - 23-01-31
 * Set `table_drive_lsc = yes` setting for openvas scanner to enable local
