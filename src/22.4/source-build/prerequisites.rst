@@ -42,19 +42,6 @@ To make the group change effective either logout and login again or use
 
   su $USER
 
-Setting the PATH
-----------------
-
-On Debian systems the locations :file:`/sbin`, :file:`/usr/sbin` and
-:file:`/usr/local/sbin` are not in the :envvar:`PATH` of normal users. To run
-*gvmd* which is located in :file:`/usr/local/sbin` the :envvar:`PATH`
-environment variable should be adjusted.
-
-.. code-block::
-  :caption: Adjusting PATH for running gvmd
-
-  export PATH=$PATH:/usr/local/sbin
-
 Choosing an Install Prefix
 --------------------------
 
@@ -70,6 +57,19 @@ to be able to reference it later.
   :caption: Setting an install prefix environment variable
 
   export INSTALL_PREFIX=/usr/local
+
+Setting the PATH
+----------------
+
+On Debian systems the locations :file:`/sbin`, :file:`/usr/sbin` and
+:file:`/usr/local/sbin` are not in the :envvar:`PATH` of normal users. To run
+*gvmd* which is located in :file:`/usr/local/sbin` the :envvar:`PATH`
+environment variable should be adjusted.
+
+.. code-block::
+  :caption: Adjusting PATH for running gvmd
+
+  export PATH=$PATH:$INSTALL_PREFIX/sbin
 
 Creating a Source, Build and Install Directory
 ----------------------------------------------
