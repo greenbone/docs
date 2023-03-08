@@ -19,6 +19,8 @@ and this project adheres to [Calendar Versioning](https://calver.org).
   `greenbone-feed-sync` again due to issues with distributions patching Python
   installation paths. See [discuss.python.org](https://discuss.python.org/t/linux-distro-patches-to-sysconfig-are-changing-pip-install-prefix-outside-virtual-environments/18240)
   for more details.
+* Switch *Choosing an Install Prefix* and *Setting the PATH* section in source
+  build to allow using $INSTALL_PREFIX when setting the $PATH.
 
 ## 23.1.1 - 23-01-31
 * Set `table_drive_lsc = yes` setting for openvas scanner to enable local
