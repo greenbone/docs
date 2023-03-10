@@ -5,6 +5,10 @@ All notable changes to this documentation will be listed in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
+## Latest
+* Fix tab title in *Setting up sudo for Scanning* section from Debian/CentOS to
+  Debian/Ubuntu.
+
 ## 23.3.0
 * Unify the directory layout of the documentation files
 * Use distinct installation directories for each component
