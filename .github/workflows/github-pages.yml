@@ -3,20 +3,22 @@ name: "Build and deploy the Greenbone Documentation"
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build-docs:
     name: Build Documentation
-    runs-on: 'ubuntu-latest'
+    runs-on: "ubuntu-latest"
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.9"
       - name: Install poetry and dependencies
         uses: greenbone/actions/poetry@v2
+        with:
+          poetry-version: "1.4.0"
       - name: Build docs
         run: poetry run sphinx-build -b html src _build
       - name: Upload Documentation Artifact

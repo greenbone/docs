@@ -2,24 +2,22 @@ name: Build the Greenbone Documentation
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build-docs:
     name: Build Documentation
-    runs-on: 'ubuntu-latest'
-    strategy:
-        matrix:
-          python-version:
-            - 3.9
+    runs-on: "ubuntu-latest"
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "3.9"
       - name: Install poetry and dependencies
         uses: greenbone/actions/poetry@v2
+        with:
+          poetry-version: "1.4.0"
       - name: Build docs
         run: poetry run sphinx-build -W --keep-going -b html src _build
       - name: Upload Documentation Artifact
