@@ -96,7 +96,7 @@ Glossary
 
   Greenbone Enterprise Feed
     The `Greenbone Enterprise Feed <https://www.greenbone.net/en/feed-comparison/>`_
-    is the commercial feed provided by Greenbone Networks containing additional
+    is the commercial feed provided by Greenbone containing additional
     enterprise features like vulnerability tests for enterprise products, policy
     and compliance checks, extensive reports formats and special scan configurations.
     The feed comes with a service-level agreement ensuring support, quality

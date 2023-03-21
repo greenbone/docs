@@ -35,7 +35,7 @@ discontinue the work under open-source licenses and switch to a proprietary
 business model.
 
 At this point, developers from Intevation and DN-Systems – the two companies
-which would later found Greenbone Networks – were already contributing
+which would later found the Greenbone AG – were already contributing
 developments to Nessus, focusing on client tools. The works were primarily
 supported by the German Federal Office for Information Security (BSI).
 
@@ -46,7 +46,7 @@ registered as a project at Software in the Public Interest, Inc. to hold and
 protect the domain "openvas.org".
 
 The years 2006 and 2007 brought little activity other than cleanups of the status quo.
-But in late 2008, the company Greenbone Networks GmbH, based in Osnabrück,
+But in late 2008, the Greenbone AG, based in Osnabrück,
 Germany was founded to drive OpenVAS forward. Essentially, Greenbone's business
 plan was about 3 cornerstones:
 
