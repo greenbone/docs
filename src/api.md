@@ -14,7 +14,7 @@ Remote control your Greenbone Community Edition or Greenbone Enterprise Applianc
 
 ## pontos
 
-Common utilities and tools maintained by Greenbone Networks
+Common utilities and tools maintained by Greenbone
 
 [https://greenbone.github.io/pontos/](https://greenbone.github.io/pontos/)
 
