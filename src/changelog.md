@@ -8,6 +8,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 ## Latest
 * Fix tab title in *Setting up sudo for Scanning* section from Debian/CentOS to
   Debian/Ubuntu.
+* Update notus-scanner to 22.4.5
 
 ## 23.3.0
 * Unify the directory layout of the documentation files
