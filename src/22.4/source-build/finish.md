@@ -10,7 +10,7 @@ xdg-open "http://127.0.0.1:9392" 2>/dev/null >/dev/null &
 ```
 
 The browser will show the login page of *GSA* and after using the credentials
-created in the [Setting Up an Admin User](#setting-up-an-admin-user) chapter,
+created in the *Setting Up an Admin User* chapter,
 it is possible to start with the vulnerability scanning.
 
 ```{figure} /images/GSA-22.4.png
