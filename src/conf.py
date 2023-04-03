@@ -126,6 +126,8 @@ myst_html_meta = {
 # https://myst-parser--467.org.readthedocs.build/en/467/syntax/optional.html#auto-generated-header-anchors
 myst_heading_anchors = 3
 
+myst_enable_extensions = ["colon_fence", "deflist"]
+
 pygments_style = "zenburn"
 
 suppress_warnings = ["myst.header"]
