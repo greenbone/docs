@@ -143,7 +143,7 @@ notus-scanner
 .. code-block::
   :caption: Setting the notus version to use
 
-  export NOTUS_VERSION=22.4.4
+  export NOTUS_VERSION=22.4.5
 
 .. include:: /22.4/source-build/notus-scanner/dependencies.rst
 .. include:: /22.4/source-build/notus-scanner/download.rst
