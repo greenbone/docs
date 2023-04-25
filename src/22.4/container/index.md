@@ -52,13 +52,13 @@ and their services in detail.
 | notus-scanner | notus-scanner | A container running the {term}`notus-scanner` used for local security checks. To verify the feed data, the GPG keyring from the `gpg_data_vol` is used. The feed data for notus-scanner itself is stored in the `notus_data_vol`. |
 | gvm-tools | | A container providing the [gvm-tools](https://github.com/greenbone/gvm-tools/) CLI to query and control gvmd and ospd-openvas. |
 | gpg-data | | A container that copies a GPG keyring with Greenbone's public signing keys into the `gpg_data_vol` volume on startup. It exits afterwards. |
-| vulnerability-tests | | A container that copies vulnerability tests (VTs) into the `vt_data_vol` volume on startup. Shows the license and exists afterwards. |
-| notus-data | | A container that copies vulnerability information for notus-scanner into the `notus_data_vol` volume on startup. Shows the license and exists afterwards. |
-| scap-data | | A container that copies CVE and CPE data into the `scap_data_vol` volume on startup. Shows the license and exists afterwards. |
-| cert-bund-data | | A container that copies CERT-Bund data into the `cert_data_vol` volume on startup. Shows the license and exists afterwards. |
-| dfn-cert-data | | A container that copies DFN-CERT data into the `cert_data_vol` volume on startup. Shows the license and exists afterwards. |
-| data-objects | | A container that copies scan configs, compliance policies and port lists into the `data_objects_vol` volume on startup. Shows the license and exists afterwards. |
-| report-formats | | A container that copies report formats into the `data_objects_vol` volume on startup. Shows the license and exists afterwards. |
+| vulnerability-tests | | A container that copies vulnerability tests (VTs) into the `vt_data_vol` volume on startup. Shows the license and exits afterwards. |
+| notus-data | | A container that copies vulnerability information for notus-scanner into the `notus_data_vol` volume on startup. Shows the license and exits afterwards. |
+| scap-data | | A container that copies CVE and CPE data into the `scap_data_vol` volume on startup. Shows the license and exits afterwards. |
+| cert-bund-data | | A container that copies CERT-Bund data into the `cert_data_vol` volume on startup. Shows the license and exits afterwards. |
+| dfn-cert-data | | A container that copies DFN-CERT data into the `cert_data_vol` volume on startup. Shows the license and exits afterwards. |
+| data-objects | | A container that copies scan configs, compliance policies and port lists into the `data_objects_vol` volume on startup. Shows the license and exits afterwards. |
+| report-formats | | A container that copies report formats into the `data_objects_vol` volume on startup. Shows the license and exits afterwards. |
 
 ```{include} /22.4/container/starting.md
 ```
