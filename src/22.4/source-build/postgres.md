@@ -56,6 +56,7 @@ sudo -u postgres bash
 ```{code-block}
 :caption: Setting up PostgreSQL user and database for the Greenbone Community Edition
 
+cd
 createuser -DRS gvm
 createdb -O gvm gvmd
 ```
