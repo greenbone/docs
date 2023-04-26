@@ -10,6 +10,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
   Debian/Ubuntu.
 * Update notus-scanner to 22.4.5
 * Change all documents to use markdown instead of rst
+* Change current working directory before setting up postgres database
 
 ## 23.3.0
 * Unify the directory layout of the documentation files
