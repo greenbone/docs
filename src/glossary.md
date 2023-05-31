@@ -119,7 +119,7 @@ Greenbone Enterprise Feed
 VT
 
   Vulnerability Tests (VTs), also known as Network Vulnerability Tests
-  (NVTs), are scripts written in the NASL programming language to detect
+  (NVTs), are scripts written in the {term}`NASL` programming language to detect
   vulnerabilities at remote hosts.
 
 SCAP
@@ -146,9 +146,9 @@ notus-scanner
   A new scanner that got introduced in the 22.4 release to improve the so-called
   local security checks. Local security checks are comparisons of
   vulnerable and installed versions of a software. Before notus-scanner, all
-  checks have been implemented in nasl scripts and each nasl script ran in an
-  own openvas-scanner process. With notus-scanner, checks are run in one go per
-  host.
+  checks have been implemented in {term}`NASL` scripts and each {term}`NASL`
+  script ran in an own openvas-scanner process. With notus-scanner, checks are
+  run in one go per host.
 
 Feed
 
@@ -157,4 +157,13 @@ Feed
   {term}`CVE`, {term}`VT`, CERT, Port List, Report Format and Scan Config
   information. The feed is available in a {term}`Commercial<Greenbone Enterprise Feed>`
   and {term}`Community<Greenbone Community Feed>` edition.
+
+NASL
+
+  The NASL Attack Scripting Language (NASL) is a language which is part of the
+  OpenVAS Project and interpreted by the NASL interpreter. It is a simple
+  language with focus on detecting vulnerabilities on network devices. Therefore
+  it provides many built-in functions to attack hosts to discover
+  vulnerabilities. A NASL script can be either run directly with the NASL
+  interpreter `openvas-nasl` or within a scan with {term}`openvas`.
 ```
