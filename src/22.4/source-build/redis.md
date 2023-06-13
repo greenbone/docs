@@ -20,16 +20,16 @@ the {term}`VT` information and scan results.
      sudo dnf install -y policycoreutils-python-utils
      sudo semanage fcontext -a -f a -t redis_var_run_t -r s0 '/var/run/redis-openvas(/.*)?'
 
-     sudo cat << EOF > /etc/tmpfiles.d/redis-openvas.conf
+     sudo sh -c 'cat << EOF > /etc/tmpfiles.d/redis-openvas.conf
      d       /var/lib/redis/openvas   0750 redis redis - -
      z       /var/lib/redis/openvas   0750 redis redis - -
      d       /run/redis-openvas       0750 redis redis - -
      z       /run/redis-openvas       0750 redis redis - -
-     EOF
+     EOF'
 
-     systemd-tmpfiles  --create
+     sudo systemd-tmpfiles  --create
 
-     sudo cat << EOF > /etc/systemd/system/redis-server@.service
+     sudo sh -c 'cat << EOF > /etc/systemd/system/redis-server@.service
      [Unit]
      Description=Redis persistent key-value database
      After=network.target
@@ -48,7 +48,7 @@ the {term}`VT` information and scan results.
 
      [Install]
      WantedBy=multi-user.target
-     EOF
+     EOF'
 ```
 
 After installing the Redis server package, a specific configuration for the
