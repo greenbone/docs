@@ -12,7 +12,7 @@
    .. code-block::
      :caption: Required dependencies for greenbone-feed-sync
 
-     dnf install -y \
+     sudo dnf install -y \
        python3 \
        python3-pip
 ```
