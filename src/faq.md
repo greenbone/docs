@@ -13,8 +13,6 @@ voluntary basis.
 
 ## Can you help with my issue on Kali, Cent OS, XYZ distribution?
 
-[https://forum.greenbone.net/t/openvas-showing-503-error/5465/4](https://forum.greenbone.net/t/openvas-showing-503-error/5465/4)
-
 Greenbone doesn't provide any packages for any Linux distribution besides the
 commercial Greenbone OS. If you have installed the Greenbone Community Edition
 from your distribution like Kali Linux, an external package repository
@@ -28,9 +26,6 @@ completely broken. If you have issues with the software, please contact the
 provider of the packages first and create a ticket at their issue tracker. How
 to contact the provider depends and varies.
 
-We are **not** able to offer any help on updating packages from **any** external
-source like Kali, Cent OS, or Docker Image because we are not aware of their
-specific needs and changes!
 
 ## Please help me with the installation of OpenVAS and also advise me on the recommended OS platform.
 
@@ -43,6 +38,15 @@ documentation and the [community forum] for discussing setup problems. Therefore
 Greenbone also does not recommend any distribution nor do we prefer one
 distribution over the other. Most of the time, we are not even aware which
 distribution ships which version of our software.
+
+## Can you help me updating my OpenVAS installation?
+
+This is also very similar to [Can you help with my issue on Kali, Cent OS, XYZ distribution](#can-you-help-with-my-issue-on-kali-cent-os-xyz-distribution).
+
+We are **not** able to offer any help on updating installations done via any
+**external** source like Kali packages, Cent OS packages, some other guide or
+some random docker images because we are not aware of their specific needs and
+changes! Please contact the author(s) of your installation method.
 
 ## Which release contains which component?
 
