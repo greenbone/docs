@@ -28,6 +28,8 @@ jobs:
   deploy-docs:
     needs: build-docs
     name: Build Documentation
+    permissions:
+      contents: write
     uses: ./.github/workflows/deployment.yml
     with:
       doc_root: latest
