@@ -1,4 +1,4 @@
-name: Deploy the Greenbone Documentation"
+name: Deploy the Greenbone Documentation
 
 on:
   workflow_call:
