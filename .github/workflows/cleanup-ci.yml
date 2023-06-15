@@ -16,19 +16,27 @@ jobs:
         with:
           ref: "gh-pages"
       - name: Test Document Root Exists
-        id: test_doc_root
+        id: doc-root
         run: |
           echo "Checking if $DOC_ROOT exists"
           if [ -d "$DOC_ROOT" ]; then
-            echo "::set-output name=HAS_DOC_ROOT::true"
+            echo "has-doc-root=true" >> $GITHUB_OUTPUT
           else
-            echo "::set-output name=HAS_DOC_ROOT::false"
+            echo "has-doc-root=false" >> $GITHUB_OUTPUT
           fi
       - name:  Cleanup Document Root and Update GitHub Pages
-        if: steps.test_doc_root.outputs.HAS_DOC_ROOT == 'true'
+        if: steps.doc-root.outputs.has-doc-root == 'true'
         run: |
           git config --global user.name "${GITHUB_ACTOR}"
           git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
           git rm -r "$DOC_ROOT"
           git commit --amend -m "Updating Docs for commit ${GITHUB_SHA} (PR Cleanup)"
           git push --force-with-lease
+      - name: Upload pages artifact
+        if: steps.doc-root.outputs.has-doc-root == 'true'
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: .
+      - name: Deploy to GitHub Pages
+        if: steps.doc-root.outputs.has-doc-root == 'true'
+        uses: actions/deploy-pages@v2
