@@ -12,6 +12,9 @@ on:
         required: true
         type: string
 
+permissions:
+  contents: write
+
 jobs:
   deploy-docs:
     name: Deploy Documentation to GitHub Pages
@@ -19,8 +22,6 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
       cancel-in-progress: true
-    permissions:
-      contents: write
     steps:
       - uses: greenbone/actions/checkout@v2
         id: checkout
