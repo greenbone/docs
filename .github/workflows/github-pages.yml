@@ -14,11 +14,9 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.9"
+          python-version: "3.11"
       - name: Install poetry and dependencies
         uses: greenbone/actions/poetry@v2
-        with:
-          poetry-version: "1.4.0"
       - name: Build docs
         run: poetry run sphinx-build -b html src _build
       - name: Upload Documentation Artifact
