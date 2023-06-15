@@ -20,10 +20,10 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
       cancel-in-progress: true
     permissions:
-      contents: read
-      pages: write
+      contents: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: greenbone/actions/checkout@v2
+        id: checkout
         with:
           ref: "gh-pages"
       - name: Cleanup Document Root
@@ -41,7 +41,7 @@ jobs:
           git config --global user.name "${GITHUB_ACTOR}"
           git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
           git add .
-          git commit --amend -m "Updating Docs for commit ${GITHUB_SHA}"
+          git commit --amend -m "Updating Docs for commit ${{ steps.checkout.outputs.sha }}"
           git push --force-with-lease
       - name: Job Summary
         run: |
