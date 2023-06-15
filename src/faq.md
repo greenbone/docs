@@ -53,20 +53,18 @@ changes! Please contact the author(s) of your installation method.
 It was often confusing to find out which software component of the
 {term}`Greenbone Community Edition` belongs to which release. Additionally, the
 {term}`Greenbone OS <GOS>` used in the [Greenbone Enterprise TRIAL](https://www.greenbone.net/en/testnow/)
-had a different versioning scheme than the Community Edition. We are aware of
-this and with the 20.08 release, we changed our versioning scheme to
-[Calendar Versioning](https://calver.org/). With this change, all software
-components (besides the extra software openvas-smb, gvm-tools and python-gvm),
-our software is using the same major and minor version.
+had a different versioning scheme than the Community Edition. The following
+table contains an overview which component in which version belongs to a
+release.
 
-| Release | GOS | gvmd | GMP | GSA  | gvm-libs | Scanner | Status | Release Date |
-|:--------|-------:|---------|--------|--------:|-------------|------------|----------|------------|
-| [Greenbone Community Edition 22.4](https://forum.greenbone.net/t/greenbone-community-edition-22-4-stable-initial-release-2022-07-25/12638) | 22.04| 22.4 | 22.4 | 22.4 | 22.4 | 22.4| stable | 2022-07-25 |
-| [GVM 21.4](https://forum.greenbone.net/t/gvm-21-04-stable-initial-release-2021-04-16/8942) | 21.04| 21.4 | 21.4 | 21.4 | 21.4 | 21.4| oldstable | 2021-04-16 |
-| [GVM 20.08](https://forum.greenbone.net/t/gvm-20-08-stable-initial-release-2020-08-12/6312) | [20.08](https://forum.greenbone.net/t/greenbone-os-20-08-0-released/6535) | 20.8 | 20.8 | 20.8 | 20.8 | 20.8| end-of-life (since 2021-12-02) | 2020-08-12 |
-| [GVM 11](https://forum.greenbone.net/t/gvm-11-stable-initial-release-2019-10-14/3674) | 6 |  9 | 9 | 9 | 11 | 7 | end-of-life (since 2020-12-31) | 2019-10-14 |
-| [GVM 10](https://forum.greenbone.net/t/gvm-10-old-stable-initial-release-2019-04-05/208) | 5 | 8 | 8 |8 | 10 | 6 | end-of-life (since 2020-12-31) | 2019-04-05 |
-| [OpenVAS  9](https://forum.greenbone.net/t/gvm-9-end-of-life-initial-release-2017-03-07/211) | 4 | openvas-manager 7 | OMP 7 | 7 | openvas-libraries 9 | 5.1 | end-of-life | 2017-03-07 |
+| Release | GOS | gvmd | GMP | GSA  | gvm-libs | OpenVAS Scanner | Notus Scanner | Status | Release Date |
+|:--------|----:|------|-----|-----:|----------|-----------------|:-------------:|:------:|--------------|
+| [Greenbone Community Edition 22.4](https://forum.greenbone.net/t/greenbone-community-edition-22-4-stable-initial-release-2022-07-25/12638) | 22.04.y | 22.x.y | 22.4 | 22.x.y | 22.x.y | 22.x.y | 22.x.y | stable | 2022-07-25 |
+| [GVM 21.4](https://forum.greenbone.net/t/gvm-21-04-stable-initial-release-2021-04-16/8942) | 21.04.y | 21.4.y | 21.4 | 21.4.y | 21.4.y | 21.4.y | - | oldstable | 2021-04-16 |
+| [GVM 20.08](https://forum.greenbone.net/t/gvm-20-08-stable-initial-release-2020-08-12/6312) | [20.08](https://forum.greenbone.net/t/greenbone-os-20-08-0-released/6535) | 20.8.y | 20.8 | 20.8.y | 20.8.y | 20.8.y | - | end-of-life (since 2021-12-02) | 2020-08-12 |
+| [GVM 11](https://forum.greenbone.net/t/gvm-11-stable-initial-release-2019-10-14/3674) | 6.0.y | 9.0.y | 9.0 | 9.0.y | 11.0.y | 7.0.y | - |end-of-life (since 2020-12-31) | 2019-10-14 |
+| [GVM 10](https://forum.greenbone.net/t/gvm-10-old-stable-initial-release-2019-04-05/208) | 5.0.y | 8.0.y | 8.0 | 8.0.y | 10.0.y | 6.0.y | - | end-of-life (since 2020-12-31) | 2019-04-05 |
+| [OpenVAS  9](https://forum.greenbone.net/t/gvm-9-end-of-life-initial-release-2017-03-07/211) | 4.x.y | openvas-manager 7.0.y | OMP 7 | 7.0.y | openvas-libraries 9.0.y | 5.1.y | - | end-of-life | 2017-03-07 |
 
 ## My self-compiled version isn't working as expected. Can you help me?
 

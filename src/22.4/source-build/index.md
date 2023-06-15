@@ -38,7 +38,7 @@ The components should be build and installed in the listed order.
 ```{code-block}
 :caption: Setting the gvm-libs version to use
 
-export GVM_LIBS_VERSION=22.4.4
+export GVM_LIBS_VERSION=22.6.3
 ```
 
 ```{include} /22.4/source-build/gvm-libs/dependencies.md
@@ -148,7 +148,10 @@ The Greenbone Security Assistant (GSA) sources consist of two parts:
 ```{include} /22.4/source-build/openvas-scanner/description.md
 ```
 
-```{include} /22.4/source-build/openvas-scanner/version.md
+```{code-block}
+:caption: Setting the openvas-scanner version to use
+
+export OPENVAS_SCANNER_VERSION=22.7.2
 ```
 
 ```{include} /22.4/source-build/openvas-scanner/dependencies.md
@@ -168,7 +171,7 @@ The Greenbone Security Assistant (GSA) sources consist of two parts:
 ```{code-block}
 :caption: Setting the ospd and ospd-openvas versions to use
 
-export OSPD_OPENVAS_VERSION=22.4.6
+export OSPD_OPENVAS_VERSION=22.5.1
 ```
 
 ```{include} /22.4/source-build/ospd-openvas/dependencies.md
@@ -188,7 +191,7 @@ export OSPD_OPENVAS_VERSION=22.4.6
 ```{code-block}
 :caption: Setting the notus version to use
 
-export NOTUS_VERSION=22.4.5
+export NOTUS_VERSION=22.5.0
 ```
 
 ```{include} /22.4/source-build/notus-scanner/dependencies.md

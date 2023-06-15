@@ -19,7 +19,7 @@ It is not a hard requirement.
 ```{code-block}
 :caption: Setting the openvas-smb version to use
 
-export OPENVAS_SMB_VERSION=22.4.0
+export OPENVAS_SMB_VERSION=22.5.2
 ```
 
 ```{eval-rst}
@@ -75,7 +75,7 @@ export OPENVAS_SMB_VERSION=22.4.0
 :caption: Downloading the openvas-smb sources
 
 curl -f -L https://github.com/greenbone/openvas-smb/archive/refs/tags/v$OPENVAS_SMB_VERSION.tar.gz -o $SOURCE_DIR/openvas-smb-$OPENVAS_SMB_VERSION.tar.gz
-curl -f -L https://github.com/greenbone/openvas-smb/releases/download/v$OPENVAS_SMB_VERSION/openvas-smb-$OPENVAS_SMB_VERSION.tar.gz.asc -o $SOURCE_DIR/openvas-smb-$OPENVAS_SMB_VERSION.tar.gz.asc
+curl -f -L https://github.com/greenbone/openvas-smb/releases/download/v$OPENVAS_SMB_VERSION/openvas-smb-v$OPENVAS_SMB_VERSION.tar.gz.asc -o $SOURCE_DIR/openvas-smb-$OPENVAS_SMB_VERSION.tar.gz.asc
 ```
 
 ```{code-block}
