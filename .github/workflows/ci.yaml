@@ -28,6 +28,10 @@ jobs:
     needs: build-docs
     name: Build Documentation
     uses: ./.github/workflows/deployment.yml
+    permissions:
+      contents: write
+      id-token: write
+      pages: write
     with:
       doc_root: pr/${{ github.head_ref }}
       artifact_name: greenbone-community-docs-from-pr

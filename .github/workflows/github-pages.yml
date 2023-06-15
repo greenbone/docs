@@ -30,6 +30,8 @@ jobs:
     name: Build Documentation
     permissions:
       contents: write
+      id-token: write
+      pages: write
     uses: ./.github/workflows/deployment.yml
     with:
       doc_root: latest
