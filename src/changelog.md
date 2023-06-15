@@ -5,7 +5,7 @@ All notable changes to this documentation will be listed in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
-## Latest
+## 23.6.1 – 23-06-15
 * Update gvm-libs to 22.6.3
 * Update notus-scanner to 22.5.0
 * Update openvas-scanner to 22.7.2
