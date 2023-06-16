@@ -8,7 +8,7 @@
        libglib2.0-dev \
        libgnutls28-dev \
        libpq-dev \
-       postgresql-server-dev-13 \
+       postgresql-server-dev-15 \
        libical-dev \
        xsltproc \
        rsync \

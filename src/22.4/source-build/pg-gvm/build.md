@@ -7,7 +7,8 @@
       mkdir -p $BUILD_DIR/pg-gvm && cd $BUILD_DIR/pg-gvm
 
       cmake $SOURCE_DIR/pg-gvm-$PG_GVM_VERSION \
-        -DCMAKE_BUILD_TYPE=Release
+        -DCMAKE_BUILD_TYPE=Release \
+        -DPostgreSQL_ADDITIONAL_VERSIONS=15
 
       make -j$(nproc)
 
