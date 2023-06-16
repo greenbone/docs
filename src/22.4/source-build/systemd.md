@@ -143,12 +143,3 @@ Afterwards, the services need to be activated and started.
 
 sudo systemctl daemon-reload
 ```
-
-```{code-block}
-:caption: Ensuring services are run at every system startup
-
-sudo systemctl enable notus-scanner
-sudo systemctl enable ospd-openvas
-sudo systemctl enable gvmd
-sudo systemctl enable gsad
-```

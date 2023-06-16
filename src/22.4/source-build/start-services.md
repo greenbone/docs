@@ -26,6 +26,15 @@ sudo systemctl start gsad
 ```
 
 ```{code-block}
+:caption: Ensuring services are run at every system startup
+
+sudo systemctl enable notus-scanner
+sudo systemctl enable ospd-openvas
+sudo systemctl enable gvmd
+sudo systemctl enable gsad
+```
+
+```{code-block}
 :caption: Checking the status of the services
 
 sudo systemctl status notus-scanner

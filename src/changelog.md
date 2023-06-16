@@ -5,6 +5,14 @@ All notable changes to this documentation will be listed in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
+## Latest
+* Install GSA from pre-built distributable files
+* Update openvas-smb to 22.5.3
+* Update gvmd to 22.5.0
+* Removed adjusting permissions for greenbone-feed-sync script unnecessarily
+* Enable services only after first feed sync
+* Update to use Debian 12 (bookworm)
+
 ## 23.6.1 – 23-06-15
 * Update gvm-libs to 22.6.3
 * Update notus-scanner to 22.5.0

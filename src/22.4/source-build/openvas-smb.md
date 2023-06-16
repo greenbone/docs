@@ -6,11 +6,6 @@ execute processes remotely on that system.
 It is an optional dependency of *openvas-scanner* but is required for scanning
 Windows-based systems.
 
-```{note}
-*openvas-smb* is released independently of the Greenbone Community Edition.
-Therefore, the newest compatible version is used.
-```
-
 ```{warning}
 *openvas-smb* doesn't work on CentOS at the moment!
 It is not a hard requirement.
@@ -19,7 +14,7 @@ It is not a hard requirement.
 ```{code-block}
 :caption: Setting the openvas-smb version to use
 
-export OPENVAS_SMB_VERSION=22.5.2
+export OPENVAS_SMB_VERSION=22.5.3
 ```
 
 ```{eval-rst}

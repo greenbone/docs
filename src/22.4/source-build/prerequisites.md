@@ -270,8 +270,7 @@ Greenbone Community Signing key as fully trusted.
 ```{code-block}
 :caption: Setting the trust level for the Greenbone Community Signing key
 
-echo "8AE4BE429B60A59B311C2E739823FAA60ED1E580:6:" > /tmp/ownertrust.txt
-gpg --import-ownertrust < /tmp/ownertrust.txt
+echo "8AE4BE429B60A59B311C2E739823FAA60ED1E580:6:" | gpg --import-ownertrust
 ```
 
 [tarballs]: https://en.wikipedia.org/wiki/Tar_(computing)
