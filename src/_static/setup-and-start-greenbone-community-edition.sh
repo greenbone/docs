@@ -28,10 +28,7 @@ installed() {
     fi
 }
 
-RELEASE="$1"
-if [ -z $RELEASE ]; then
-    RELEASE="22.4"
-fi
+RELEASE="22.4"
 
 installed curl
 installed docker
