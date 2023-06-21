@@ -45,25 +45,8 @@ export OPENVAS_SMB_VERSION=22.5.3
        heimdal-devel \
        perl
 
-     sudo cat << EOF > /lib64/pkgconfig/heimdal-krb5.pc
-     Name: heimdal-krb5
-     Description: Heimdal implementation of the Kerberos network authentication.
-     Version: 7.7.0
-     Libs: -L/usr/lib64/heimdal -lkrb5
-     Libs.private: -lhx509 -lcom_err -lhcrypto -lasn1 -lwind -lheimbase -lroken -lcrypt -pthread -lpthread -ldl  -lresolv -pthread -lpthread
-     Cflags: -I/usr/include/heimdal
-     EOF
-
-     sudo cat << EOF > /lib64/pkgconfig/heimdal-gssapi.pc
-     Name: heimdal
-     Description: Heimdal is an implementation of Kerberos 5, freely available under a three clause BSD style license.
-     Version: 7.7.0
-     URL: http://www.pdc.kth.se/heimdal/
-     Requires.private: heimdal-krb5
-     Libs: -L/usr/lib64/heimdal -lgssapi
-     Libs.private: -lheimntlm -lcrypt
-     Cflags: -I/usr/include/heimdal
-     EOF
+       cp /usr/lib64/heimdal/lib/pkgconfig/heimdal-gssapi.pc /lib64/pkgconfig/heimdal-gssapi.pc
+       cp /usr/lib64/heimdal/lib/pkgconfig/heimdal-krb5.pc /lib64/pkgconfig/heimdal-krb5.pc
 ```
 
 ```{code-block}
