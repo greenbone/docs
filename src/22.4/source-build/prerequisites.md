@@ -191,6 +191,7 @@ requirements the following commands can be used:
       tar xzf net-snmp-5.9.1.tar.gz
       cd net-snmp-5.9.1
       ./configure
+      make sedscript
       make -j$(nproc)
       sudo make install
 
