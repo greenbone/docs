@@ -115,7 +115,7 @@
        rpm \
        fakeroot \
        dpkg \
-       nsis \
+       mingw64-nsis \
        gnupg \
        wget \
        sshpass \
