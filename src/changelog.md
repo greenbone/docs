@@ -14,6 +14,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Update gsad to 22.5.0
 * Removed adjusting permissions for greenbone-feed-sync script unnecessarily
 * Enable services only after first feed sync
+* Update source build instructions for Fedora 38
 
 ## 23.6.1 – 23-06-15
 * Update gvm-libs to 22.6.3
