@@ -60,7 +60,7 @@ Afterwards, gvm-libs can be build and installed.
 ```{code-block}
 :caption: Setting the gvmd version to use
 
-export GVMD_VERSION=22.5.0
+export GVMD_VERSION=22.5.1
 ```
 
 ```{include} /22.4/source-build/gvmd/dependencies.md

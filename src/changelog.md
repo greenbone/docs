@@ -5,6 +5,9 @@ All notable changes to this documentation will be listed in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
+## Latest
+* Update gvmd to 22.5.1
+
 ## 23.6.2 – 23-06-27
 * Update to use Debian 12 (bookworm)
 * Install GSA from pre-built distributable files
