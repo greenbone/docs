@@ -12,18 +12,6 @@
 ```{include} /22.4/source-build/prerequisites.md
 ```
 
-### Setting the Version
-
-To make the downloading easier, an environment variable for the desired release
-version will be set. Using a variable allows adjusting the version easily after
-a new release.
-
-```{code-block}
-:caption: Setting a GVM version as environment variable
-
-export GVM_VERSION=22.4.1
-```
-
 ## Building and Installing the Components
 
 ```{note}

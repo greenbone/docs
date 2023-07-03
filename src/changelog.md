@@ -9,6 +9,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Update gvmd to 22.5.1
 * Update gsad to 22.5.1
 * Update GSA to 22.5.0
+* Remove *Setting the Version* chapter
 
 ## 23.6.2 – 23-06-27
 * Update to use Debian 12 (bookworm)
