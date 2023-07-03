@@ -112,7 +112,7 @@ The Greenbone Security Assistant (GSA) sources consist of two parts:
 ```{code-block}
 :caption: Setting the GSA version to use
 
-export GSA_VERSION=$GVM_VERSION
+export GSA_VERSION=22.5.0
 ```
 
 ```{include} /22.4/source-build/gsa/download.md
@@ -129,7 +129,7 @@ export GSA_VERSION=$GVM_VERSION
 ```{code-block}
 :caption: Setting the GSAd version to use
 
-export GSAD_VERSION=22.5.0
+export GSAD_VERSION=22.5.1
 ```
 
 ```{include} /22.4/source-build/gsad/dependencies.md
