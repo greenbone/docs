@@ -157,29 +157,29 @@ For further debugging / logging the mentioned **Nmap (NASL wrapper)** and
 ## I still fail to see/understand the concept of `greenbone-feed-sync --type` vs `greenbone-nvt-sync`/`greenbone-certdata-sync`/`greenbone-scapdata-sync` vs `gvm-feed-update`
 
 **gvm-feed-update** is **NOT** maintained by Greenbone and is therefore not used
-anywhere in our docs or in provided code by Greenbone. It's maintained by the
+anywhere in our docs or in code provided by Greenbone. It's maintained by the
 Kali/Debian packagers and just calls the standard `greenbone-*-sync` scripts.
 
 **greenbone-certdata-sync** is just the same as [`greenbone-feed-sync --type CERT`](https://github.com/greenbone/gvmd/blob/main/tools/greenbone-certdata-sync.in).
-It is/was only provided for backwards compatibility and doesn't get installed
-anymore (by default) since [`gvmd` 22.5.0](https://github.com/greenbone/gvmd/compare/v22.4.2...v22.5.0).
+It is/was only provided for backwards compatibility and does not get installed
+(by default) anymore since [`gvmd` 22.5.0](https://github.com/greenbone/gvmd/compare/v22.4.2...v22.5.0).
 
 **greenbone-scapdata-sync** is just the same as [`greenbone-feed-sync --type SCAP`](https://github.com/greenbone/gvmd/blob/main/tools/greenbone-scapdata-sync.in).
- It is/was only provided for backwards compatibility and doesn't get installed
- anymore (by default) since [`gvmd` 22.5.0](https://github.com/greenbone/gvmd/compare/v22.4.2...v22.5.0).
+ It is/was only provided for backwards compatibility and does not get installed
+ (by default) anymore since [`gvmd` 22.5.0](https://github.com/greenbone/gvmd/compare/v22.4.2...v22.5.0).
 
 **greenbone-nvt-sync** is the *old* sync script written in bash to download the
-vulnerability tests data (nasl and notus files). It is deprecated since
+vulnerability tests data (:file:`.nasl` and :file:`.notus` files). It is deprecated since
 [`openvas-scanner` 22.6.0](https://github.com/greenbone/openvas-scanner/releases/tag/v22.6.0).
 
 **/usr/sbin/greenbone-feed-sync** is the *old* sync script written in bash to
-download the CERT, SCAP and GVMD data. It doesn't get installed anymore
-(by default) since [`gvmd` 22.5.0](https://github.com/greenbone/gvmd/compare/v22.4.2...v22.5.0).
+download the CERT, SCAP and GVMD data. It does not get installed
+(by default) anymore since [`gvmd` 22.5.0](https://github.com/greenbone/gvmd/compare/v22.4.2...v22.5.0).
 
 There is a new **greenbone-feed-sync** script written in Python to replace all
-of the above scripts. See the announcement at [https://forum.greenbone.net/t/new-greenbone-feed-sync-script/13925](https://forum.greenbone.net/t/new-greenbone-feed-sync-script/13925).
-This script is used in the build from source guide already but hasn't been
-picked up by the distributions yet. Hopefully it will arrive at the
-distributions in the next months. It supports even the `gvm-feed-update` use
-case because by default when not passing any arguments `--type all` is run which
+of the above scripts, see the announcement at [https://forum.greenbone.net/t/new-greenbone-feed-sync-script/13925](https://forum.greenbone.net/t/new-greenbone-feed-sync-script/13925).
+This script is used in the build-from-source guide already but has not been
+picked up by the distributions yet. Hopefully, it will arrive at the
+distributions in the next months. It even supports the `gvm-feed-update` use
+case because by default, if no arguments are passed, `--type all` is run which
 downloads all feed data types.
