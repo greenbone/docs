@@ -157,7 +157,7 @@ For further debugging / logging the mentioned **Nmap (NASL wrapper)** and
 ## I still fail to see/understand the concept of `greenbone-feed-sync --type` vs `greenbone-nvt-sync`/`greenbone-certdata-sync`/`greenbone-scapdata-sync` vs `gvm-feed-update`
 
 **gvm-feed-update** is **NOT** maintained by Greenbone and is therefore not used
-anywhere in our docs or in code provided by Greenbone. It's maintained by the
+anywhere in our docs or in code provided by Greenbone. It is maintained by the
 Kali/Debian packagers and just calls the standard `greenbone-*-sync` scripts.
 
 **greenbone-certdata-sync** is just the same as [`greenbone-feed-sync --type CERT`](https://github.com/greenbone/gvmd/blob/main/tools/greenbone-certdata-sync.in).
