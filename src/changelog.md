@@ -6,9 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
 ## Latest
-* Update gvmd to 22.5.2
+* Update gvmd to 22.5.4
 * Update gsad to 22.5.1
 * Update GSA to 22.5.0
+* Update ospd-openvas to 22.5.3
 * Remove *Setting the Version* chapter
 
 ## 23.6.2 – 23-06-27
