@@ -1,7 +1,7 @@
 
 # Greenbone Feed Sync Update Guide
 
-This documentation provides instructions on updating the feed sync for your specific Greenbone version and installation method. Please note that there is currently a migration from the `/usr/sbin/greenbone-feed-sync` old bash script to a new Python-based script with the same name: `greenbone-feed-sync`. Also, please note that Kali Linux distribution comes with its own additional bash command script `gvm-feed-update`, yet we do recommend using the native Greenbone feed-sync commands.
+This documentation provides instructions on updating the feed sync for your specific Greenbone version and installation method. Please note that there is currently a migration from the `/usr/local/sbin/greenbone-feed-sync` bash script to a new Python-based script with the same name: `greenbone-feed-sync`. Also, please note that Kali Linux distribution comes with its own additional bash command script `gvm-feed-update`, yet we do recommend using the native Greenbone feed-sync commands.
 
 If you are unable to achieve feed syncronization after reading this guide, or require further assistance with the feed sync update process, please consult the [Greenbone community forums](https://forum.greenbone.net/) or contact our support team for guidance.
 
@@ -17,7 +17,7 @@ $ which <feed-command>
 
 ### Deprecated Sync Scripts Removal
 **[???]Should I include this** If you have any of the deprecated sync scripts (`greenbone-certdata-sync`, `greenbone-scapdata-sync`, `greenbone-nvt-sync`, `/usr/local/sbin/greenbone-feed-sync` or `/usr/sbin/greenbone-feed-sync`) installed, it is recommended to remove them. This step ensures a clean transition to the new sync script.
-    
+
 ## Introduction Of The New Python Feed Sync Script
 A new Python-based `greenbone-feed-sync` command now replaces the deprecated feed sync scripts mentioned above. This new script can be run with can be run with **Greenbone version 22.4 and later**, however, older versions are not supported. This new feed sync method will now be installed by default as of **Greenbone Community Edition version 22.5.0**.  
 
@@ -43,14 +43,14 @@ $ python3 -m pip install greenbone-feed-sync
 ## Instructions For Updating the Greenbone Feeds
 
 ### Determine Which Command Is In Use
-Before you can udpate the Greenbone feed sync, you should check which version of the commands are active when you execute the `greenbone-feed-sync` command.  To do that, use the `which` command to determine the path of the command that is executed. 
+Before you can udpate the Greenbone feed sync, you should check which version of the commands are active when you execute the `greenbone-feed-sync` command.  To do that, use the `which` command to determine the path of the command that is executed.
 
 For example:
 ```
 $ which greenbone-feed-sync
 /usr/local/bin/greenbone-feed-sync
-``` 
-Once you determine the path of the executed command you can identify whether it is the new Python-based feed sync command or the legacy bash version.  To do that, use the `head` command to print the first line of the script.  This will indicate the interpreter used at execution run-time. 
+```
+Once you determine the path of the executed command you can identify whether it is the new Python-based feed sync command or the legacy bash version.  To do that, use the `head` command to print the first line of the script.  This will indicate the interpreter used at execution run-time.
 
 For example:
 ```
@@ -72,7 +72,7 @@ $ sudo greenbone-feed-sync
 ```
 To update only one feed at a time, the new Python-based command can be used similar to the previous `/usr/sbin/greenbone-feed-sync` bash script command by specifying a  feed type, however, note that the new feed types use lowercase and more options are available.
 ```
-# Include the feed type as an argument to update only a specific feed type 
+# Include the feed type as an argument to update only a specific feed type
 $ greenbone-feed-sync --type <feed-type>
 ```
 The available feed types are:
@@ -82,7 +82,7 @@ The available feed types are:
 * `gvmd-data`: Synchronizes GVM data feed  which includes [???]
 * `scap`: Synchronizes SCAP data feed
 * `cert`: Synchronizes CERT data feed
-* `notus`: [???] 
+* `notus`: [???]
 * `nasl`: [???]
 * `report-format` or `report-formats`: Fetches any newly available scan report formats
 * `scan-config` or `scan-configs`: Fetches any newly available scan configurations
@@ -124,7 +124,9 @@ Please note that the `gvm-feed-update` command mentioned above is not maintained
 After the sync operation completes, you can verify the successful update of the feed data. To confirm the updated feed status visit the `/feedstatus` page which can be found under the **Administration** item in the top menu bar of Greenbone's web-interface. If a feed has successfully updated you will see **Current** beside the particular feed.
 
 ## Automating Feed Sync Updates
-The sugested method for  automating the Greenbone feed sync is to create a crontab file to schedule the schedule the `greenbone-feed-sync` commands.  If using the new Python-based command, the crontab should be run under the root user context, however, if using the legacy feed sync bash script, the crontab should be created specifcally for the `gvm` or `_gvm` user.
+The Greenbone feeds are not automatically synced in the case of a Greenbone Community source code installation, for the Greenbone Community Docker containers, or the Greenbone native Kali Linux installation. The sugested method for  automating the Greenbone feed sync is to create a crontab file to schedule the schedule the appropriate commands.  
+
+If using the new Python-based command, the crontab should be run under the root user context, however, if using the legacy feed sync bash script, the crontab should be created specifcally for the `gvm` or `_gvm` user.
 
 1. [MORE]
 
@@ -167,13 +169,13 @@ community  Greenbone community feed, see https://community.greenbone.net/
 ```
 If you are unable to connect to the Greenbone feeds using the `rsync` command, we suggest you troubleshoot your network connection to identify any potential firewalls, content proxies, or network configurations.  To do this you can try some of the following methods:
 
-### Use nping 
+### Use nping
 
 The `nping` command is part of the `nmap` tool. It can be used to directly traceroute a TCP connection to a specific port while `traceroute` and `tcptraceroute` cannot be configured to test a specific port. This will help identify port-based firewall rules as well as host/IP-based firewall rules. Note: `nping --tcp` command requires `sudo` or root permissions.
 ```
 $ sudo nping --tcp --traceroute -c 13 -p 873 feed.community.greenbone.net
 ```
-### Use traceroute/tracert 
+### Use traceroute/tracert
 If you cannot install `nmap` on your host, you can try `traceroute` on Linux/Unix based systems or `tracert` for Windows which are both typically installed by default.
 ```
 # For Linux/Unix systems
