@@ -1,4 +1,4 @@
-
+![Greenbone Logo](https://www.greenbone.net/wp-content/uploads/gb_new-logo_horizontal_rgb_small.png)
 # Greenbone Feed Sync Update Guide
 
 This documentation provides instructions on updating the feed sync for your specific Greenbone version and installation method. Please note that there is currently a migration from the `/usr/local/sbin/greenbone-feed-sync` bash script to a new Python-based script with the same name: `greenbone-feed-sync`. Also, please note that Kali Linux distribution comes with its own additional bash command script `gvm-feed-update`, yet we do recommend using the native Greenbone feed-sync commands.
