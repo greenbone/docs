@@ -306,5 +306,59 @@ following command can be executed:
 gvm-cli socket --socketpath /tmp/gvm/gvmd/gvmd.sock --pretty --xml "<get_version/>"
 ```
 
+## Setting up a mail transport agent inside Docker container
+
+{term}`gvmd` uses the `msmtp` client as MTA. It can be configured with environment variables
+within compose file or command line. Available variables (for detailed explanation refer
+to [msmtp documentation](https://marlam.de/msmtp/msmtp.html), note that not all
+`mstmp` options implemented in `gvmd` container):
+  - `MTA_HOST`: The SMTP server to send the mail to. (_Mandatory parameter_).
+  - `MTA_PORT`: The port that the SMTP server listens on. (_default = '25'_).
+  - `MTA_TLS`: Enable or disable TLS (_on|off'_).
+  - `MTA_STARTTLS`: TLS variant: start TLS from within the session (_‘on’, default_), or
+tunnel the session through TLS (_‘off’_).
+  - `MTA_AUTH`: Enable or disable authentication and optionally choose a method to use
+(_'on'|'off'|'method'_).
+  - `MTA_USER`: Username for authentication.
+  - `MTA_PASSWORD`: Password for authentication.
+  - `MTA_FROM`: Set the envelope-from address.
+  - `MTA_LOGFILE`: Enable logging to the specified file.
+
+Examples:
+
+```{code-block} yaml
+---
+caption: Use a local network relay without authorization
+---
+...
+  gvmd:
+    image: greenbone/gvmd:stable
+    environment:
+      - MTA_HOST=postfix-server.example.org
+      - MTA_PORT=25
+      - MTA_TLS=off
+      - MTA_STARTTLS=off
+      - MTA_AUTH=off
+...
+```
+```{code-block} yaml
+---
+caption: Use the Google Mail services with SSL and authorization
+---
+...
+  gvmd:
+    image: greenbone/gvmd:stable
+    environment:
+      - MTA_HOST=smtp.gmail.com
+      - MTA_PORT=587
+      - MTA_TLS=on
+      - MTA_STARTTLS=on
+      - MTA_AUTH=on
+      - MTA_USER=<username>
+      - MTA_FROM=<username>@gmail.com
+      - MTA_PASSWORD=<some_password>
+...
+```
+
 ```{include} /22.4/container/manual-feed-sync.md
 ```
