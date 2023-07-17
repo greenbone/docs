@@ -16,7 +16,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install poetry and dependencies
-        uses: greenbone/actions/poetry@v2
+        uses: greenbone/actions/poetry@v3
       - name: Build docs
         run: poetry run sphinx-build -b html src _build
       - name: Upload Documentation Artifact
