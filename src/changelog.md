@@ -6,11 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
 ## Latest
-* Update gvmd to 22.5.4
+* Update gvmd to 22.6.0
 * Update gsad to 22.5.1
-* Update GSA to 22.5.0
+* Update GSA to 22.5.1
 * Update ospd-openvas to 22.5.3
+* Update openvas-scanner to 22.7.3
 * Remove *Setting the Version* chapter
+* Document how to configure a mail transport agent (MTA) for the community
+  containers
 
 ## 23.6.2 – 23-06-27
 * Update to use Debian 12 (bookworm)

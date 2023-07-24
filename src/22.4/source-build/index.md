@@ -48,7 +48,7 @@ Afterwards, gvm-libs can be build and installed.
 ```{code-block}
 :caption: Setting the gvmd version to use
 
-export GVMD_VERSION=22.5.4
+export GVMD_VERSION=22.6.0
 ```
 
 ```{include} /22.4/source-build/gvmd/dependencies.md
@@ -100,7 +100,7 @@ The Greenbone Security Assistant (GSA) sources consist of two parts:
 ```{code-block}
 :caption: Setting the GSA version to use
 
-export GSA_VERSION=22.5.0
+export GSA_VERSION=22.5.1
 ```
 
 ```{include} /22.4/source-build/gsa/download.md
@@ -142,7 +142,7 @@ export GSAD_VERSION=22.5.1
 ```{code-block}
 :caption: Setting the openvas-scanner version to use
 
-export OPENVAS_SCANNER_VERSION=22.7.2
+export OPENVAS_SCANNER_VERSION=22.7.3
 ```
 
 ```{include} /22.4/source-build/openvas-scanner/dependencies.md
