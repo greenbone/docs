@@ -5,7 +5,7 @@ All notable changes to this documentation will be listed in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
-## Latest
+## 23.7.0 – 23-07-25
 * Update gvmd to 22.6.0
 * Update gsad to 22.5.1
 * Update GSA to 22.5.3
