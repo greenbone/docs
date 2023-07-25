@@ -14,6 +14,8 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Remove *Setting the Version* chapter
 * Document how to configure a mail transport agent (MTA) for the community
   containers
+* Add section about redis-socket error to troubleshooting chapter of the
+  community containers
 
 ## 23.6.2 – 23-06-27
 * Update to use Debian 12 (bookworm)

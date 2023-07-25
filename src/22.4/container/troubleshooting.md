@@ -87,3 +87,22 @@ caption: Restart {term}`gvmd`
 docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
     restart gvmd
 ```
+
+### Redis Server keeps restarting `rm: cannot remove ‘/run/redis/redis.sock’: Permission denied`
+
+Under some circumstances the [Unix Domain Socket](https://en.wikipedia.org/wiki/Unix_domain_socket)
+of the redis server has got wrong permissions. To fix this issue it is required
+to shutdown the `redis-server` and `ospd-openvas` containers and remove the
+`redis_socket_vol` [docker volume](https://docs.docker.com/storage/volumes/).
+The volume can be removed safely because it gets re-created on the next startup.
+
+```{code-block} shell
+---
+caption: Re-create redis server socket volume
+---
+docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+    rm -s -f redis-server ospd-openvas
+docker volume rm greenbone-community-edition_redis_socket_vol
+docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+    up -d
+```
