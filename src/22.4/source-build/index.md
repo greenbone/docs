@@ -71,7 +71,7 @@ Details about the optional dependencies can be found at
 ```{code-block}
 :caption: Setting the pg-gvm version to use
 
-export PG_GVM_VERSION=22.5.1
+export PG_GVM_VERSION=22.6.0
 ```
 
 ```{include} /22.4/source-build/pg-gvm/dependencies.md
@@ -100,7 +100,7 @@ The Greenbone Security Assistant (GSA) sources consist of two parts:
 ```{code-block}
 :caption: Setting the GSA version to use
 
-export GSA_VERSION=22.5.2
+export GSA_VERSION=22.5.3
 ```
 
 ```{include} /22.4/source-build/gsa/download.md

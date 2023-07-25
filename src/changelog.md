@@ -8,9 +8,10 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 ## Latest
 * Update gvmd to 22.6.0
 * Update gsad to 22.5.1
-* Update GSA to 22.5.2
+* Update GSA to 22.5.3
 * Update ospd-openvas to 22.5.3
 * Update openvas-scanner to 22.7.3
+* Update pg-gvm to 22.6.0
 * Remove *Setting the Version* chapter
 * Document how to configure a mail transport agent (MTA) for the community
   containers
