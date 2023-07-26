@@ -71,7 +71,7 @@ Details about the optional dependencies can be found at
 ```{code-block}
 :caption: Setting the pg-gvm version to use
 
-export PG_GVM_VERSION=22.6.0
+export PG_GVM_VERSION=22.6.1
 ```
 
 ```{include} /22.4/source-build/pg-gvm/dependencies.md
