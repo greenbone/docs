@@ -1,22 +1,20 @@
 [tool.poetry]
 name = "greenbone-docs"
-version = "0.1.0"
+version = "1.0.0"
 description = "Documentation for the Community around the Greenbone Source Edition"
 authors = ["Greenbone Networks <info@greenbone.net>"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-Sphinx = "^7.0.1"
-myst-parser = "^2.0.0"
-sphinx-copybutton = "^0.5.2"
-sphinx-tabs = "^3.4.1"
-sphinxext-opengraph = "^0.8.2"
-
-[tool.poetry.dev-dependencies]
-furo = "^2023.5.20"
+python = "^3.9"
+Sphinx = ">=7.0.1"
+myst-parser = ">=2.0.0"
+sphinx-copybutton = ">=0.5.2"
+sphinx-tabs = ">=3.4.1"
+sphinxext-opengraph = ">=0.8.2"
+furo = ">=2023.5.20"
 
 [tool.poetry.group.dev.dependencies]
-sphinx-autobuild = "^2021.3.14"
+sphinx-autobuild = ">=2021.3.14"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
