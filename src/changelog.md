@@ -8,6 +8,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 ## Latest
 * Update pg-gvm to 22.6.1
 * Improve description of GSA and its build process in the source build
+* Use Debian 12 bookworm also for the community container docs
 
 ## 23.7.0 – 23-07-25
 * Update gvmd to 22.6.0

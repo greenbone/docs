@@ -81,8 +81,7 @@ A compose file for the Greenbone Community Edition is provided later on.
 ---
 caption: Install docker-compose Debian/Ubuntu package
 ---
-sudo apt install python3 python3-pip
-python3 -m pip install --user docker-compose
+sudo apt install docker-compose
 ```
 ````
 ````{tab} Fedora/CentOS
