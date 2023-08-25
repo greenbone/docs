@@ -75,25 +75,16 @@ the services of the Greenbone Community Edition. The description of the service
 orchestration is done by using [compose files](https://docs.docker.com/compose/compose-file/).
 A compose file for the Greenbone Community Edition is provided later on.
 
-`````{tabs}
-````{tab} Debian/Ubuntu
+
 ```{code-block} shell
 ---
-caption: Install docker-compose Debian/Ubuntu package
+caption: Install docker-compose
 ---
-sudo apt install docker-compose
+curl -SL https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 -o docker-compose
+chmod +x docker-compose
+sudo mv docker-compose /usr/local/bin
 ```
-````
-````{tab} Fedora/CentOS
-```{code-block} shell
----
-caption: Install docker-compose Fedora/CentOS package
----
-sudo dnf install python3-pip
-python3 -m pip install --user docker-compose
-```
-````
-`````
+
 ### Setup
 
 To allow the current user to run {command}`docker` and therefore start the
