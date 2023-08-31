@@ -48,7 +48,7 @@ Afterwards, gvm-libs can be build and installed.
 ```{code-block}
 :caption: Setting the gvmd version to use
 
-export GVMD_VERSION=22.6.0
+export GVMD_VERSION=22.8.0
 ```
 
 ```{include} /22.4/source-build/gvmd/dependencies.md
@@ -100,7 +100,7 @@ The Greenbone Security Assistant (GSA) sources consist of two parts:
 ```{code-block}
 :caption: Setting the GSA version to use
 
-export GSA_VERSION=22.5.3
+export GSA_VERSION=22.6.0
 ```
 
 ```{include} /22.4/source-build/gsa/download.md
@@ -117,7 +117,7 @@ export GSA_VERSION=22.5.3
 ```{code-block}
 :caption: Setting the GSAd version to use
 
-export GSAD_VERSION=22.5.1
+export GSAD_VERSION=22.5.2
 ```
 
 ```{include} /22.4/source-build/gsad/dependencies.md
@@ -142,7 +142,7 @@ export GSAD_VERSION=22.5.1
 ```{code-block}
 :caption: Setting the openvas-scanner version to use
 
-export OPENVAS_SCANNER_VERSION=22.7.3
+export OPENVAS_SCANNER_VERSION=22.7.4
 ```
 
 ```{include} /22.4/source-build/openvas-scanner/dependencies.md
@@ -162,7 +162,7 @@ export OPENVAS_SCANNER_VERSION=22.7.3
 ```{code-block}
 :caption: Setting the ospd and ospd-openvas versions to use
 
-export OSPD_OPENVAS_VERSION=22.5.3
+export OSPD_OPENVAS_VERSION=22.6.0
 ```
 
 ```{include} /22.4/source-build/ospd-openvas/dependencies.md
@@ -182,7 +182,7 @@ export OSPD_OPENVAS_VERSION=22.5.3
 ```{code-block}
 :caption: Setting the notus version to use
 
-export NOTUS_VERSION=22.5.0
+export NOTUS_VERSION=22.6.0
 ```
 
 ```{include} /22.4/source-build/notus-scanner/dependencies.md
