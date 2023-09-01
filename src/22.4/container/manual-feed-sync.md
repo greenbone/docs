@@ -22,7 +22,7 @@ available for 22.4.
 ---
 caption: Syncing {term}`VTs<VT>` processed by the scanner, this will take a while.
 ---
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
     run --rm ospd-openvas greenbone-nvt-sync
 ```
 
@@ -34,7 +34,7 @@ docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-editio
 ---
 caption: Syncing SCAP data processed by gvmd, this will take a while
 ---
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
     run --rm gvmd greenbone-feed-sync --type SCAP
 ```
 
@@ -45,7 +45,7 @@ and [CERT-Bund](https://cert-bund.de/) agencies.
 ---
 caption: Syncing CERT data processed by gvmd
 ---
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
     run --rm gvmd greenbone-feed-sync --type CERT
 ```
 
@@ -56,6 +56,6 @@ and report formats.
 ---
 caption: Syncing data objects processed by gvmd
 ---
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
     run --rm gvmd greenbone-feed-sync --type GVMD_DATA
 ```

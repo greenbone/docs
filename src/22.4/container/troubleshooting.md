@@ -10,7 +10,7 @@ scanner.
 ---
 caption: Restart the scanner to ensure that new {term}`VTs<VT>` are loaded
 ---
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
     restart ospd-openvas
 ```
 
@@ -22,7 +22,7 @@ If port lists, scan configurations, or report formats are missing on the web int
 ---
 caption: Force reload of report formats, scan configs and port lists
 ---
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
     exec -u gvmd gvmd gvmd --rebuild-gvmd-data=all
 ```
 
@@ -49,7 +49,7 @@ restart the corresponding container with:
 ---
 caption: Restart the ospd-openvas scanner
 ---
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
     restart ospd-openvas
 ```
 
@@ -59,7 +59,7 @@ If you still get errors, you need to take a look at the `ospd-openvas` logs.
 ---
 caption: Show log message of the ospd-openvas scanner
 ---
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
     log -f ospd-openvas
 ```
 
@@ -84,7 +84,7 @@ had some issues accessing the PostgreSQL database.
 ---
 caption: Restart {term}`gvmd`
 ---
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
     restart gvmd
 ```
 
@@ -100,9 +100,9 @@ The volume can be removed safely because it gets re-created on the next startup.
 ---
 caption: Re-create redis server socket volume
 ---
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
     rm -s -f redis-server ospd-openvas
 docker volume rm greenbone-community-edition_redis_socket_vol
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
     up -d
 ```

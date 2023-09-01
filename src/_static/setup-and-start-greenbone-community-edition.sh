@@ -42,15 +42,15 @@ echo "Downloading docker-compose file..."
 curl -f -O https://greenbone.github.io/docs/latest/_static/docker-compose-$RELEASE.yml
 
 echo "Pulling Greenbone Community Containers $RELEASE"
-docker-compose -f $DOWNLOAD_DIR/docker-compose-$RELEASE.yml -p greenbone-community-edition pull
+docker compose -f $DOWNLOAD_DIR/docker-compose-$RELEASE.yml -p greenbone-community-edition pull
 echo
 
 echo "Starting Greenbone Community Containers $RELEASE"
-docker-compose -f $DOWNLOAD_DIR/docker-compose-$RELEASE.yml -p greenbone-community-edition up -d
+docker compose -f $DOWNLOAD_DIR/docker-compose-$RELEASE.yml -p greenbone-community-edition up -d
 echo
 
 read -s -p "Password for admin user: " password
-docker-compose -f $DOWNLOAD_DIR/docker-compose-$RELEASE.yml -p greenbone-community-edition \
+docker compose -f $DOWNLOAD_DIR/docker-compose-$RELEASE.yml -p greenbone-community-edition \
     exec -u gvmd gvmd gvmd --user=admin --new-password=$password
 
 echo
