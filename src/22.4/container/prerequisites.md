@@ -38,10 +38,10 @@ sudo dnf install ca-certificates curl gnupg
 installed by running (taken from the Docker Engine [install guide](https://docs.docker.com/engine/install/)):
 
 `````{tabs}
-````{tab} Debian/Ubuntu
+````{tab} Debian
 ```{code-block} shell
 ---
-caption: Uninstall conflicting Debian/Ubuntu packages
+caption: Uninstall conflicting Debian packages
 ---
 for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt remove $pkg; done
 ```
@@ -60,7 +60,34 @@ sudo apt update
 ```
 ```{code-block} shell
 ---
-caption: Install Docker Debian/Ubuntu packages
+caption: Install Docker Debian packages
+---
+sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+```
+````
+````{tab} Ubuntu
+```{code-block} shell
+---
+caption: Uninstall conflicting Ubuntu packages
+---
+for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt remove $pkg; done
+```
+```{code-block} shell
+---
+caption: Set up the Docker repository
+---
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+```
+```{code-block} shell
+---
+caption: Install Docker Ubuntu packages
 ---
 sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 ```
