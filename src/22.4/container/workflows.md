@@ -10,14 +10,14 @@ be done with:
 ---
 caption: Downloading the Greenbone Community Containers
 ---
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition pull
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition pull
 ```
 
 ```{code-block} shell
 ---
 caption: Starting the Greenbone Community Containers
 ---
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition up -d
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition up -d
 ```
 
 ## Performing a Feed Synchronization
@@ -36,7 +36,7 @@ Both steps may take a while, from several minutes up to hours, especially for th
 initial synchronization. Only if both steps are finished, the synchronized data
 is up-to-date and can be used.
 
-The first step is done via the {command}`docker-compose pull`. The second step is
+The first step is done via the {command}`docker compose pull`. The second step is
 done automatically when the daemons are running.
 
 ### Downloading the Feed Changes
@@ -52,7 +52,7 @@ To download the latest feed data container images run
 ---
 caption: Downloading the Greenbone Community Edition feed data containers
 ---
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition pull notus-data vulnerability-tests scap-data dfn-cert-data cert-bund-data report-formats data-objects
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition pull notus-data vulnerability-tests scap-data dfn-cert-data cert-bund-data report-formats data-objects
 ```
 
 To copy the data from the images to the volumes run
@@ -61,7 +61,7 @@ To copy the data from the images to the volumes run
 ---
 caption: Starting the Greenbone Community feed data containers
 ---
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition up -d notus-data vulnerability-tests scap-data dfn-cert-data cert-bund-data report-formats data-objects
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition up -d notus-data vulnerability-tests scap-data dfn-cert-data cert-bund-data report-formats data-objects
 ```
 
 ### Loading the Feed Changes
@@ -205,7 +205,7 @@ by running:
 ---
 caption: Remove containers and volumes (all data)
 ---
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition down -v
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition down -v
 ```
 
 ##  Gaining a Terminal for a Container
@@ -220,7 +220,7 @@ To access a container with a bash shell as a root user, you can run:
 ---
 caption: Gain a Terminal for a Container
 ---
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition exec <container-name> /bin/bash
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition exec <container-name> /bin/bash
 ```
 
 Afterwards, you can execute standard bash commands within the running container.
@@ -235,7 +235,7 @@ can be started with:
 ---
 caption: Start container for gvm-tools CLI access
 ---
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition run --rm gvm-tools
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition run --rm gvm-tools
 ```
 
 Afterwards, a bash shell is provided and `gvm-cli`, `gvm-pyshell` or `gvm-script`
@@ -295,7 +295,7 @@ In the next step, the docker compose file must be changed as follows:
 After restarting the containers with
 
 ```bash
-docker-compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition up -d
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition up -d
 ```
 
 the Unix socket should be available at `/tmp/gvm/gvmd/gvmd.sock`. For example,
