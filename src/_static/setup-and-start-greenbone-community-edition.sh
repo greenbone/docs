@@ -32,7 +32,6 @@ RELEASE="22.4"
 
 installed curl
 installed docker
-installed docker-compose
 
 echo "Using Greenbone Community Containers $RELEASE"
 
