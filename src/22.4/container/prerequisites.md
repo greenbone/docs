@@ -90,41 +90,27 @@ sudo systemctl start docker
 ````{tab} CentOS
 ```{code-block} shell
 ---
-caption: Install docker Fedora package
+caption: Uninstall conflicting CentOS packages
+---
+sudo dnf remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux docker-engine
+```
+```{code-block} shell
+---
+caption: Install Docker CentOS package
 ---
 sudo dnf -y install dnf-plugins-core
 sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-sudo dnf install -y docker-ce docker-ce-cli containerd.io
+sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+```
+```{code-block} shell
+---
+caption: Start Docker
+---
+sudo systemctl start docker
 ```
 ````
 `````
 
-### Installing docker-compose
-
-[docker-compose] version 1.29.0 or newer is required for starting and connecting
-the services of the Greenbone Community Edition. The description of the service
-orchestration is done by using [compose files](https://docs.docker.com/compose/compose-file/).
-A compose file for the Greenbone Community Edition is provided later on.
-
-`````{tabs}
-````{tab} Debian/Ubuntu
-```{code-block} shell
----
-caption: Install docker-compose Debian/Ubuntu package
----
-sudo apt install docker-compose
-```
-````
-````{tab} Fedora/CentOS
-```{code-block} shell
----
-caption: Install docker-compose Fedora/CentOS package
----
-sudo dnf install python3-pip
-python3 -m pip install --user docker-compose
-```
-````
-`````
 ### Setup
 
 To allow the current user to run {command}`docker` and therefore start the
