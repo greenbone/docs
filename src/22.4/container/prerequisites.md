@@ -68,11 +68,23 @@ sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 ````{tab} Fedora
 ```{code-block} shell
 ---
+caption: Uninstall conflicting Fedora packages
+---
+sudo dnf remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux docker-engine
+```
+```{code-block} shell
+---
 caption: Install docker Fedora package
 ---
 sudo dnf -y install dnf-plugins-core
 sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-sudo dnf install -y docker-ce docker-ce-cli containerd.io
+sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+```
+```{code-block} shell
+---
+caption: Start Docker
+---
+sudo systemctl start docker
 ```
 ````
 ````{tab} CentOS
