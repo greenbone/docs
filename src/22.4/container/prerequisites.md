@@ -8,26 +8,26 @@ output of a previous command.
 The command {command}`sudo` is used for executing commands that require privileged
 access on the system.
 
-### Install curl
+### Install dependencies
 
-[curl](https://curl.se/) is required for downloading files from this guide.
+There are a few dependencies required for the following steps like [curl](https://curl.se/), which is required for downloading files from this guide.
 
 
 `````{tabs}
 ````{tab} Debian/Ubuntu
 ```{code-block} shell
 ---
-caption: Install curl Debian package
+caption: Install ca-certificates, curl and gnupg Debian/Ubuntu packages
 ---
-sudo apt install curl
+sudo apt install ca-certificates curl gnupg
 ```
 ````
 ````{tab} Fedora/CentOS
 ```{code-block} shell
 ---
-caption: Install curl Fedora/CentOS package
+caption: Install ca-certificates, curl and gnupg Fedora/CentOS packages
 ---
-sudo dnf install curl
+sudo dnf install ca-certificates curl gnupg
 ```
 ````
 `````
