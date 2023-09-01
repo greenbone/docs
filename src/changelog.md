@@ -15,6 +15,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Update gvmd to 22.8.0
 * Update gsad to 22.5.2
 * Update GSA to 22.6.0
+* Update gvm-libs to 22.7.0
 
 ## 23.7.0 – 23-07-25
 * Update gvmd to 22.6.0
