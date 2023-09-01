@@ -21,17 +21,32 @@ set -e
 DOWNLOAD_DIR=$HOME/greenbone-community-container
 
 installed() {
-    # $1 should be the command to look for
-    if ! [ -x "$(command -v $1)" ]; then
-        echo "$1 is not available. See https://greenbone.github.io/docs/latest/$RELEASE/container/#prerequisites."
+    # $1 should be the command to look for. If $2 is set, we have arguments
+    local failed=0
+    if [ -z "$2" ]; then
+        if ! [ -x "$(command -v $1)" ]; then
+            failed=1
+        fi
+    else
+        local ret=0
+        $@ &> /dev/null || ret=$?
+        if [ "$ret" -ne 0 ]; then
+            failed=1
+        fi
+    fi
+
+    if [ $failed -ne 0 ]; then
+        echo "$@ is not available. See https://greenbone.github.io/docs/latest/$RELEASE/container/#prerequisites."
         exit 1
     fi
+
 }
 
 RELEASE="22.4"
 
 installed curl
 installed docker
+installed docker compose
 
 echo "Using Greenbone Community Containers $RELEASE"
 
