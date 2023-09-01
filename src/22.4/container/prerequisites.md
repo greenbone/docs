@@ -35,7 +35,7 @@ sudo dnf install ca-certificates curl gnupg
 ### Installing Docker
 
 [docker] is required for running the services within containers. Docker can be
-installed by running:
+installed by running (taken from the Docker Engine [install guide](https://docs.docker.com/engine/install/)):
 
 `````{tabs}
 ````{tab} Debian/Ubuntu
