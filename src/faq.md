@@ -60,7 +60,7 @@ release.
 | Release | GOS | gvmd | GMP | GSA  | gvm-libs | OpenVAS Scanner | Notus Scanner | Status | Release Date |
 |:--------|----:|------|-----|-----:|----------|-----------------|:-------------:|:------:|--------------|
 | [Greenbone Community Edition 22.4](https://forum.greenbone.net/t/greenbone-community-edition-22-4-stable-initial-release-2022-07-25/12638) | 22.04.y | 22.x.y | 22.4 | 22.x.y | 22.x.y | 22.x.y | 22.x.y | stable | 2022-07-25 |
-| [GVM 21.4](https://forum.greenbone.net/t/gvm-21-04-stable-initial-release-2021-04-16/8942) | 21.04.y | 21.4.y | 21.4 | 21.4.y | 21.4.y | 21.4.y | - | oldstable | 2021-04-16 |
+| [GVM 21.4](https://forum.greenbone.net/t/gvm-21-04-stable-initial-release-2021-04-16/8942) | 21.04.y | 21.4.y | 21.4 | 21.4.y | 21.4.y | 21.4.y | - | end-of-life ([Community Edition: since 2023-01-17](https://forum.greenbone.net/t/greenbone-community-edition-21-04-end-of-life/13837), [GOS: since 2023-04-03](https://forum.greenbone.net/t/greenbone-os-21-04-retired-final-patch-level-gos-21-04-26/14365)) | 2021-04-16 |
 | [GVM 20.08](https://forum.greenbone.net/t/gvm-20-08-stable-initial-release-2020-08-12/6312) | [20.08](https://forum.greenbone.net/t/greenbone-os-20-08-0-released/6535) | 20.8.y | 20.8 | 20.8.y | 20.8.y | 20.8.y | - | end-of-life (since 2021-12-02) | 2020-08-12 |
 | [GVM 11](https://forum.greenbone.net/t/gvm-11-stable-initial-release-2019-10-14/3674) | 6.0.y | 9.0.y | 9.0 | 9.0.y | 11.0.y | 7.0.y | - |end-of-life (since 2020-12-31) | 2019-10-14 |
 | [GVM 10](https://forum.greenbone.net/t/gvm-10-old-stable-initial-release-2019-04-05/208) | 5.0.y | 8.0.y | 8.0 | 8.0.y | 10.0.y | 6.0.y | - | end-of-life (since 2020-12-31) | 2019-04-05 |
