@@ -6,11 +6,6 @@ execute processes remotely on that system.
 It is an optional dependency of *openvas-scanner* but is required for scanning
 Windows-based systems.
 
-```{note}
-*openvas-smb* is released independently of the Greenbone Community Edition.
-Therefore, the newest compatible version is used.
-```
-
 ```{warning}
 *openvas-smb* doesn't work on CentOS at the moment!
 It is not a hard requirement.
@@ -19,7 +14,7 @@ It is not a hard requirement.
 ```{code-block}
 :caption: Setting the openvas-smb version to use
 
-export OPENVAS_SMB_VERSION=22.4.0
+export OPENVAS_SMB_VERSION=22.5.3
 ```
 
 ```{eval-rst}
@@ -50,32 +45,15 @@ export OPENVAS_SMB_VERSION=22.4.0
        heimdal-devel \
        perl
 
-     sudo cat << EOF > /lib64/pkgconfig/heimdal-krb5.pc
-     Name: heimdal-krb5
-     Description: Heimdal implementation of the Kerberos network authentication.
-     Version: 7.7.0
-     Libs: -L/usr/lib64/heimdal -lkrb5
-     Libs.private: -lhx509 -lcom_err -lhcrypto -lasn1 -lwind -lheimbase -lroken -lcrypt -pthread -lpthread -ldl  -lresolv -pthread -lpthread
-     Cflags: -I/usr/include/heimdal
-     EOF
-
-     sudo cat << EOF > /lib64/pkgconfig/heimdal-gssapi.pc
-     Name: heimdal
-     Description: Heimdal is an implementation of Kerberos 5, freely available under a three clause BSD style license.
-     Version: 7.7.0
-     URL: http://www.pdc.kth.se/heimdal/
-     Requires.private: heimdal-krb5
-     Libs: -L/usr/lib64/heimdal -lgssapi
-     Libs.private: -lheimntlm -lcrypt
-     Cflags: -I/usr/include/heimdal
-     EOF
+       sudo cp /usr/lib64/heimdal/lib/pkgconfig/heimdal-gssapi.pc /lib64/pkgconfig/heimdal-gssapi.pc
+       sudo cp /usr/lib64/heimdal/lib/pkgconfig/heimdal-krb5.pc /lib64/pkgconfig/heimdal-krb5.pc
 ```
 
 ```{code-block}
 :caption: Downloading the openvas-smb sources
 
 curl -f -L https://github.com/greenbone/openvas-smb/archive/refs/tags/v$OPENVAS_SMB_VERSION.tar.gz -o $SOURCE_DIR/openvas-smb-$OPENVAS_SMB_VERSION.tar.gz
-curl -f -L https://github.com/greenbone/openvas-smb/releases/download/v$OPENVAS_SMB_VERSION/openvas-smb-$OPENVAS_SMB_VERSION.tar.gz.asc -o $SOURCE_DIR/openvas-smb-$OPENVAS_SMB_VERSION.tar.gz.asc
+curl -f -L https://github.com/greenbone/openvas-smb/releases/download/v$OPENVAS_SMB_VERSION/openvas-smb-v$OPENVAS_SMB_VERSION.tar.gz.asc -o $SOURCE_DIR/openvas-smb-$OPENVAS_SMB_VERSION.tar.gz.asc
 ```
 
 ```{code-block}

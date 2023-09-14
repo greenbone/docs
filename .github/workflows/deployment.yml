@@ -1,3 +1,5 @@
+name: Deploy the Greenbone Documentation
+
 on:
   workflow_call:
     inputs:
@@ -10,15 +12,23 @@ on:
         required: true
         type: string
 
+permissions:
+  contents: write
+  id-token: write
+  pages: write
+
 jobs:
   deploy-docs:
     name: Deploy Documentation to GitHub Pages
     runs-on: 'ubuntu-latest'
     concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
-      cancel-in-progress: true
+      group: github-pages
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: greenbone/actions/checkout@v3
+        id: checkout
         with:
           ref: "gh-pages"
       - name: Cleanup Document Root
@@ -32,12 +42,18 @@ jobs:
           path: ${{ inputs.doc_root }}
       - name: Create GitHub Pages
         run: |
-          cd ${{ inputs.doc_root }}
           git config --global user.name "${GITHUB_ACTOR}"
           git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          git add .
-          git commit --amend -m "Updating Docs for commit ${GITHUB_SHA}"
+          git add ${{ inputs.doc_root }}
+          git commit --amend -m "Updating Docs for commit ${{ steps.checkout.outputs.sha }}"
           git push --force-with-lease
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: .
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
       - name: Job Summary
         run: |
           echo '### Deployment successful! :rocket: https://greenbone.github.io/docs/${{ inputs.doc_root }}' >> $GITHUB_STEP_SUMMARY

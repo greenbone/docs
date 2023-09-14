@@ -111,7 +111,7 @@ To execute the script following command needs to be run
 ---
 caption: Run setup and start script
 ---
-./setup-and-start-greenbone-community-edition.sh 22.4
+./setup-and-start-greenbone-community-edition.sh
 ```
 
 ```{toctree}

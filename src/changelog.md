@@ -6,13 +6,59 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
 ## Latest
+* Update pg-gvm to 22.6.1
+* Improve description of GSA and its build process in the source build
+* Use Debian 12 bookworm also for the community container docs
+* Update ospd-openvas to 22.6.0
+* Update notus-scanner to 22.6.0
+* Update openvas-scanner to 22.7.4
+* Update gvmd to 22.8.0
+* Update gsad to 22.5.2
+* Update GSA to 22.6.0
+* Update gvm-libs to 22.7.0
+* Replace docker-compose v1 with Docker Compose v2
+
+## 23.7.0 – 23-07-25
+* Update gvmd to 22.6.0
+* Update gsad to 22.5.1
+* Update GSA to 22.5.3
+* Update ospd-openvas to 22.5.3
+* Update openvas-scanner to 22.7.3
+* Update pg-gvm to 22.6.0
+* Remove *Setting the Version* chapter
+* Document how to configure a mail transport agent (MTA) for the community
+  containers
+* Add section about redis-socket error to troubleshooting chapter of the
+  community containers
+
+## 23.6.2 – 23-06-27
+* Update to use Debian 12 (bookworm)
+* Install GSA from pre-built distributable files
+* Update openvas-smb to 22.5.3
+* Update gvmd to 22.5.0
+* Update pg-gvm to 22.5.1
+* Update gsad to 22.5.0
+* Removed adjusting permissions for greenbone-feed-sync script unnecessarily
+* Enable services only after first feed sync
+* Update source build instructions for Fedora 38
+
+## 23.6.1 – 23-06-15
+* Update gvm-libs to 22.6.3
+* Update notus-scanner to 22.5.0
+* Update openvas-scanner to 22.7.2
+* Update ospd-openvas to 22.5.1
+* Update FAQ about which release contains which version
+* Don't install old `greenbone-nvt-sync` script anymore
+
+## 23.6.0 – 23-06-15
 * Fix tab title in *Setting up sudo for Scanning* section from Debian/CentOS to
   Debian/Ubuntu.
 * Update notus-scanner to 22.4.5
 * Change all documents to use markdown instead of rst
 * Change current working directory before setting up postgres database
+* Add a section about update help to FAQ
 
-## 23.3.0
+## 23.3.0 – 23-03-08
 * Unify the directory layout of the documentation files
 * Use distinct installation directories for each component
 * Add missing python3-gnupg as dependency to ospd-openvas
@@ -29,7 +75,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Switch *Choosing an Install Prefix* and *Setting the PATH* section in source
   build to allow using $INSTALL_PREFIX when setting the $PATH.
 
-## 23.1.1 - 23-01-31
+## 23.1.1 – 23-01-31
 * Set `table_drive_lsc = yes` setting for openvas scanner to enable local
   security checks scanning via notus scanner
 * Remove docs for 21.04 because it is end-of-life and wont get any updates
@@ -41,7 +87,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Update ospd-openvas.service file to depend on the mosquitto and notus-scanner
   services
 
-## 23.1.0 - 23-01-13
+## 23.1.0 – 23-01-13
 * Fix installing ospd-openvas and notus-scanner on Debian 11
 * Update components to 22.4.1 release
 

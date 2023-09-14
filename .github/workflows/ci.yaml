@@ -9,15 +9,13 @@ jobs:
     name: Build Documentation
     runs-on: "ubuntu-latest"
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python ${{ matrix.python-version }}
+      - uses: actions/checkout@v4
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.9"
+          python-version: "3.11"
       - name: Install poetry and dependencies
-        uses: greenbone/actions/poetry@v2
-        with:
-          poetry-version: "1.4.0"
+        uses: greenbone/actions/poetry@v3
       - name: Build docs
         run: poetry run sphinx-build -W --keep-going -b html src _build
       - name: Upload Documentation Artifact
@@ -30,6 +28,10 @@ jobs:
     needs: build-docs
     name: Build Documentation
     uses: ./.github/workflows/deployment.yml
+    permissions:
+      contents: write
+      id-token: write
+      pages: write
     with:
       doc_root: pr/${{ github.head_ref }}
       artifact_name: greenbone-community-docs-from-pr

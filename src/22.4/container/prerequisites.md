@@ -8,26 +8,26 @@ output of a previous command.
 The command {command}`sudo` is used for executing commands that require privileged
 access on the system.
 
-### Install curl
+### Install dependencies
 
-[curl](https://curl.se/) is required for downloading files from this guide.
+There are a few dependencies required for the following steps like [curl](https://curl.se/), which is required for downloading files from this guide.
 
 
 `````{tabs}
 ````{tab} Debian/Ubuntu
 ```{code-block} shell
 ---
-caption: Install curl Debian package
+caption: Install ca-certificates, curl and gnupg Debian/Ubuntu packages
 ---
-sudo apt install curl
+sudo apt install ca-certificates curl gnupg
 ```
 ````
 ````{tab} Fedora/CentOS
 ```{code-block} shell
 ---
-caption: Install curl Fedora/CentOS package
+caption: Install ca-certificates, curl and gnupg Fedora/CentOS packages
 ---
-sudo dnf install curl
+sudo dnf install ca-certificates curl gnupg
 ```
 ````
 `````
@@ -35,66 +35,109 @@ sudo dnf install curl
 ### Installing Docker
 
 [docker] is required for running the services within containers. Docker can be
-installed by running:
+installed by running the following commands (taken from the Docker Engine [install guide](https://docs.docker.com/engine/install/)):
 
 `````{tabs}
-````{tab} Debian/Ubuntu
+````{tab} Debian
 ```{code-block} shell
 ---
-caption: Install docker Debian/Ubuntu package
+caption: Uninstall conflicting Debian packages
 ---
-sudo apt install docker.io
+for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt remove $pkg; done
+```
+```{code-block} shell
+---
+caption: Set up the Docker repository
+---
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+```
+```{code-block} shell
+---
+caption: Install Docker Debian packages
+---
+sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+```
+````
+````{tab} Ubuntu
+```{code-block} shell
+---
+caption: Uninstall conflicting Ubuntu packages
+---
+for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt remove $pkg; done
+```
+```{code-block} shell
+---
+caption: Set up the Docker repository
+---
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+```
+```{code-block} shell
+---
+caption: Install Docker Ubuntu packages
+---
+sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 ```
 ````
 ````{tab} Fedora
+```{code-block} shell
+---
+caption: Uninstall conflicting Fedora packages
+---
+sudo dnf remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux docker-engine
+```
 ```{code-block} shell
 ---
 caption: Install docker Fedora package
 ---
 sudo dnf -y install dnf-plugins-core
 sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
-sudo dnf install -y docker-ce docker-ce-cli containerd.io
+sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+```
+```{code-block} shell
+---
+caption: Start Docker
+---
+sudo systemctl start docker
 ```
 ````
 ````{tab} CentOS
 ```{code-block} shell
 ---
-caption: Install docker Fedora package
+caption: Uninstall conflicting CentOS packages
+---
+sudo dnf remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux docker-engine
+```
+```{code-block} shell
+---
+caption: Install Docker CentOS package
 ---
 sudo dnf -y install dnf-plugins-core
 sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-sudo dnf install -y docker-ce docker-ce-cli containerd.io
+sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
+```
+```{code-block} shell
+---
+caption: Start Docker
+---
+sudo systemctl start docker
 ```
 ````
 `````
 
-### Installing docker-compose
-
-[docker-compose] version 1.29.0 or newer is required for starting and connecting
-the services of the Greenbone Community Edition. The description of the service
-orchestration is done by using [compose files](https://docs.docker.com/compose/compose-file/).
-A compose file for the Greenbone Community Edition is provided later on.
-
-`````{tabs}
-````{tab} Debian/Ubuntu
-```{code-block} shell
----
-caption: Install docker-compose Debian/Ubuntu package
----
-sudo apt install python3 python3-pip
-python3 -m pip install --user docker-compose
-```
-````
-````{tab} Fedora/CentOS
-```{code-block} shell
----
-caption: Install docker-compose Fedora/CentOS package
----
-sudo dnf install python3-pip
-python3 -m pip install --user docker-compose
-```
-````
-`````
 ### Setup
 
 To allow the current user to run {command}`docker` and therefore start the

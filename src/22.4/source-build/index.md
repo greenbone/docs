@@ -12,18 +12,6 @@
 ```{include} /22.4/source-build/prerequisites.md
 ```
 
-### Setting the Version
-
-To make the downloading easier, an environment variable for the desired release
-version will be set. Using a variable allows adjusting the version easily after
-a new release.
-
-```{code-block}
-:caption: Setting a GVM version as environment variable
-
-export GVM_VERSION=22.4.1
-```
-
 ## Building and Installing the Components
 
 ```{note}
@@ -38,7 +26,7 @@ The components should be build and installed in the listed order.
 ```{code-block}
 :caption: Setting the gvm-libs version to use
 
-export GVM_LIBS_VERSION=22.4.4
+export GVM_LIBS_VERSION=22.7.0
 ```
 
 ```{include} /22.4/source-build/gvm-libs/dependencies.md
@@ -60,7 +48,7 @@ Afterwards, gvm-libs can be build and installed.
 ```{code-block}
 :caption: Setting the gvmd version to use
 
-export GVMD_VERSION=22.4.2
+export GVMD_VERSION=22.8.0
 ```
 
 ```{include} /22.4/source-build/gvmd/dependencies.md
@@ -83,7 +71,7 @@ Details about the optional dependencies can be found at
 ```{code-block}
 :caption: Setting the pg-gvm version to use
 
-export PG_GVM_VERSION=22.4.0
+export PG_GVM_VERSION=22.6.1
 ```
 
 ```{include} /22.4/source-build/pg-gvm/dependencies.md
@@ -109,10 +97,10 @@ The Greenbone Security Assistant (GSA) sources consist of two parts:
 ```{include} /22.4/source-build/gsa/description.md
 ```
 
-```{include} /22.4/source-build/gsa/version.md
-```
+```{code-block}
+:caption: Setting the GSA version to use
 
-```{include} /22.4/source-build/gsa/dependencies.md
+export GSA_VERSION=22.6.0
 ```
 
 ```{include} /22.4/source-build/gsa/download.md
@@ -126,7 +114,10 @@ The Greenbone Security Assistant (GSA) sources consist of two parts:
 ```{include} /22.4/source-build/gsad/description.md
 ```
 
-```{include} /22.4/source-build/gsad/version.md
+```{code-block}
+:caption: Setting the GSAd version to use
+
+export GSAD_VERSION=22.5.2
 ```
 
 ```{include} /22.4/source-build/gsad/dependencies.md
@@ -148,7 +139,10 @@ The Greenbone Security Assistant (GSA) sources consist of two parts:
 ```{include} /22.4/source-build/openvas-scanner/description.md
 ```
 
-```{include} /22.4/source-build/openvas-scanner/version.md
+```{code-block}
+:caption: Setting the openvas-scanner version to use
+
+export OPENVAS_SCANNER_VERSION=22.7.4
 ```
 
 ```{include} /22.4/source-build/openvas-scanner/dependencies.md
@@ -168,7 +162,7 @@ The Greenbone Security Assistant (GSA) sources consist of two parts:
 ```{code-block}
 :caption: Setting the ospd and ospd-openvas versions to use
 
-export OSPD_OPENVAS_VERSION=22.4.6
+export OSPD_OPENVAS_VERSION=22.6.0
 ```
 
 ```{include} /22.4/source-build/ospd-openvas/dependencies.md
@@ -188,7 +182,7 @@ export OSPD_OPENVAS_VERSION=22.4.6
 ```{code-block}
 :caption: Setting the notus version to use
 
-export NOTUS_VERSION=22.4.5
+export NOTUS_VERSION=22.6.0
 ```
 
 ```{include} /22.4/source-build/notus-scanner/dependencies.md

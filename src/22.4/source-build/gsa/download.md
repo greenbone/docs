@@ -1,12 +1,8 @@
-Building the web application GSA requires the installation of several JavaScript
-dependencies. These dependencies have to be downloaded automatically by *yarn*
-(or *npm*) during the build process.
-
 ```{code-block}
 :caption: Downloading the gsa sources
 
-curl -f -L https://github.com/greenbone/gsa/archive/refs/tags/v$GSA_VERSION.tar.gz -o $SOURCE_DIR/gsa-$GSA_VERSION.tar.gz
-curl -f -L https://github.com/greenbone/gsa/releases/download/v$GSA_VERSION/gsa-$GSA_VERSION.tar.gz.asc -o $SOURCE_DIR/gsa-$GSA_VERSION.tar.gz.asc
+curl -f -L https://github.com/greenbone/gsa/releases/download/v$GSA_VERSION/gsa-dist-$GSA_VERSION.tar.gz -o $SOURCE_DIR/gsa-$GSA_VERSION.tar.gz
+curl -f -L https://github.com/greenbone/gsa/releases/download/v$GSA_VERSION/gsa-dist-$GSA_VERSION.tar.gz.asc -o $SOURCE_DIR/gsa-$GSA_VERSION.tar.gz.asc
 ```
 
 ```{code-block}
@@ -23,5 +19,6 @@ The output of both commands should be similar to:
 If the signatures are valid, the two tarballs can be extracted.
 
 ```
-tar -C $SOURCE_DIR -xvzf $SOURCE_DIR/gsa-$GSA_VERSION.tar.gz
+mkdir -p $SOURCE_DIR/gsa-$GSA_VERSION
+tar -C $SOURCE_DIR/gsa-$GSA_VERSION -xvzf $SOURCE_DIR/gsa-$GSA_VERSION.tar.gz
 ```

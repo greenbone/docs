@@ -57,7 +57,7 @@ After installing the Redis server package, a specific configuration for the
 ```{code-block}
 :caption: Adding configuration for running the Redis server for the scanner
 
-sudo cp $SOURCE_DIR/openvas-scanner-$GVM_VERSION/config/redis-openvas.conf /etc/redis/
+sudo cp $SOURCE_DIR/openvas-scanner-$OPENVAS_SCANNER_VERSION/config/redis-openvas.conf /etc/redis/
 sudo chown redis:redis /etc/redis/redis-openvas.conf
 echo "db_address = /run/redis-openvas/redis.sock" | sudo tee -a /etc/openvas/openvas.conf
 ```

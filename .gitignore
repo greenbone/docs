@@ -133,3 +133,6 @@ _build
 
 # VSCode
 .vscode
+
+# docker compose override
+*.override.yml
