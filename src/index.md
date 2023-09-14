@@ -35,5 +35,6 @@ background
 faq
 glossary
 changelog
+feed-sync
 api
 ```
