@@ -36,5 +36,6 @@ faq
 troubleshooting
 glossary
 changelog
+feed-sync
 api
 ```
