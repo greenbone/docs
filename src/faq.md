@@ -43,6 +43,11 @@ distribution ships which version of our software.
 
 This is also very similar to [Can you help with my issue on Kali, Cent OS, XYZ distribution](#can-you-help-with-my-issue-on-kali-cent-os-xyz-distribution).
 
+For updating your **source build** from a previous version of this guide see [](./22.4/source-build/workflows.md#updating-to-newer-releases).
+
+For updating your installation of the **Greenbone Community Containers** see
+[](./22.4/container/workflows.md#updating-the-greenbone-community-containers).
+
 We are **not** able to offer any help on updating installations done via any
 **external** source like Kali packages, Cent OS packages, some other guide or
 some random docker images because we are not aware of their specific needs and

@@ -261,4 +261,5 @@ export NOTUS_VERSION=22.6.0
 :hidden: true
 
 troubleshooting
+workflows
 ```
