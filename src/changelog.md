@@ -5,7 +5,7 @@ All notable changes to this documentation will be listed in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
-## Latest
+## 23.9.0 - 23-09-23
 * Update pg-gvm to 22.6.1
 * Improve description of GSA and its build process in the source build
 * Use Debian 12 bookworm also for the community container docs
