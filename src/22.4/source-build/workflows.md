@@ -21,9 +21,9 @@ In particular, make sure that the [install prefix](./index.md#choosing-an-instal
 [PATH](./index.md#setting-the-path) and the [required environment variables](./index.md#creating-a-source-build-and-install-directory)
 are set.
 
-Next you need to follow the [build and install documentation](./index.md#building-and-installing-the-components)
-as you would if you did it the first time. This will download and install the
-latest component releases. The already installed versions will be overridden by
+Next, you need to follow the [build and install documentation](./index.md#building-and-installing-the-components)
+as you would the first time. This will download and install the
+latest component releases. The already installed versions will be overwritten by
 the new ones.
 
 When updating to newer releases, a database update may be required. The database
