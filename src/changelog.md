@@ -8,6 +8,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 ## Latest
 * Add workflow page for source builds
 * Add documentation for updating source builds
+* Update GSA to 22.7.1
 
 ## 23.9.0 - 23-09-23
 * Update pg-gvm to 22.6.1
