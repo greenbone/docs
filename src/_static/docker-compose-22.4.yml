@@ -136,8 +136,6 @@ services:
   mqtt-broker:
     restart: on-failure
     image: greenbone/mqtt-broker
-    ports:
-      - 1883:1883
     networks:
       default:
         aliases:
