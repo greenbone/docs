@@ -11,6 +11,8 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Update GSA to 22.7.1
 * Don't expose MQTT broker port in docker compose setup by default
 * Add workflow for source builds on howto access GSA/gsad remotely
+* Only run gsad on 127.0.0.1 for the community containers setup
+* Add workflow for container setup on howto access GSA/gsad remotely
 
 ## 23.9.0 - 23-09-23
 * Update pg-gvm to 22.6.1
