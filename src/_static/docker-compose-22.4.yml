@@ -89,7 +89,7 @@ services:
     image: greenbone/gsa:stable
     restart: on-failure
     ports:
-      - 9392:80
+      - 127.0.0.1:9392:80
     volumes:
       - gvmd_socket_vol:/run/gvmd
     depends_on:
