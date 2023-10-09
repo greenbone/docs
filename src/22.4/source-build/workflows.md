@@ -47,11 +47,11 @@ caption: Restarting all services
 sudo systemctl start gsad gvmd notus-scanner ospd-openvas
 ```
 
-## Access Web Interface Remotely
+## Accessing the Web Interface Remotely
 
-When following the build from source guide the web server is configured to
-listen only on localhost (127.0.0.1). To allow access remotely the
-{command}`gsad` systemd service file needs to be adjusted to set up the web
+When following the build-from-source guide, the web server is configured to
+listen only on localhost (127.0.0.1). To allow remote access, the
+{command}`gsad` systemd service file must be modified to configure the web
 server {command}`gsad` to listen on all network interfaces.
 
 ```{code-block} none
@@ -81,24 +81,24 @@ EOF
 ```
 
 ```{code-block}
-:caption: Install systemd service file for gsad
+:caption: Installing the systemd service file for gsad
 
 sudo cp -v $BUILD_DIR/gsad.service /etc/systemd/system/
 ```
 
-Afterwards, the changed service file needs to be reloaded to ensure the changes
-are taken into account by systemd and the {command}`gsad` service needs to be
+Afterwards, the changed service file must be reloaded so that the changes
+are taken into account by systemd, and the {command}`gsad` service must be
 restarted.
 
 
 ```{code-block}
-:caption: Reload changed gsad.service file
+:caption: Reloading changed gsad.service file
 
 sudo systemctl daemon-reload
 ```
 
 ```{code-block}
-:caption: Restart gsad
+:caption: Restarting gsad
 
 sudo systemctl restart gsad
 ```
