@@ -198,7 +198,7 @@ Scan config Full and fast (daba56c8-73ec-11df-a475-002264764cea) has been create
 ## Accessing the Web Interface Remotely
 
 When using the docker compose file, the web server is configured to listen only
-on local address of the host (127.0.0.1). To allow remote access on all
+on the local address of the host (127.0.0.1). To allow remote access on all
 interfaces of the host, the compose file must be modified to configure the web
 server {command}`gsad` to listen on all network interfaces.
 
