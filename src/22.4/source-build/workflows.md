@@ -49,10 +49,10 @@ sudo systemctl start gsad gvmd notus-scanner ospd-openvas
 
 ## Accessing the Web Interface Remotely
 
-When following the build-from-source guide, the web server is configured to
-listen only on localhost (127.0.0.1). To allow remote access, the
-{command}`gsad` systemd service file must be modified to configure the web
-server {command}`gsad` to listen on all network interfaces.
+When following the build-from-source guide, the web server is configured to listen only
+on the local address of the host (127.0.0.1). To allow remote access on all
+interfaces of the host, the {command}`gsad` systemd service file must be modified to 
+configure the web server {command}`gsad` to listen on all network interfaces.
 
 ```{code-block} none
 :caption: Systemd service file for gsad to listen on all interfaces
