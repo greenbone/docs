@@ -46,3 +46,59 @@ caption: Restarting all services
 ---
 sudo systemctl start gsad gvmd notus-scanner ospd-openvas
 ```
+
+## Access Web Interface Remotely
+
+When following the build from source guide the web server is configured to
+listen only on localhost (127.0.0.1). To allow access remotely the
+{command}`gsad` systemd service file needs to be adjusted to set up the web
+server {command}`gsad` to listen on all network interfaces.
+
+```{code-block} none
+:caption: Systemd service file for gsad to listen on all interfaces
+
+cat << EOF > $BUILD_DIR/gsad.service
+[Unit]
+Description=Greenbone Security Assistant daemon (gsad)
+Documentation=man:gsad(8) https://www.greenbone.net
+After=network.target gvmd.service
+Wants=gvmd.service
+
+[Service]
+Type=exec
+User=gvm
+RuntimeDirectory=gsad
+RuntimeDirectoryMode=2775
+PIDFile=/run/gsad/gsad.pid
+ExecStart=/usr/local/sbin/gsad --foreground --listen=0.0.0.0 --port=9392 --http-only
+Restart=always
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target
+Alias=greenbone-security-assistant.service
+EOF
+```
+
+```{code-block}
+:caption: Install systemd service file for gsad
+
+sudo cp -v $BUILD_DIR/gsad.service /etc/systemd/system/
+```
+
+Afterwards, the changed service file needs to be reloaded to ensure the changes
+are taken into account by systemd and the {command}`gsad` service needs to be
+restarted.
+
+
+```{code-block}
+:caption: Reload changed gsad.service file
+
+sudo systemctl daemon-reload
+```
+
+```{code-block}
+:caption: Restart gsad
+
+sudo systemctl restart gsad
+```
