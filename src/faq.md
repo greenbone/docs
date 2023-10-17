@@ -174,7 +174,7 @@ It is/was only provided for backwards compatibility and does not get installed
  (by default) anymore since [`gvmd` 22.5.0](https://github.com/greenbone/gvmd/releases/tag/v22.5.0).
 
 **greenbone-nvt-sync** is the *old* sync script written in bash to download the
-vulnerability tests data (:file:`.nasl` and :file:`.notus` files). It is deprecated since
+vulnerability tests data ({file}`.nasl` and {file}`.notus` files). It is deprecated since
 [`openvas-scanner` 22.6.0](https://github.com/greenbone/openvas-scanner/releases/tag/v22.6.0).
 
 **/usr/sbin/greenbone-feed-sync** is the *old* sync script written in bash to
