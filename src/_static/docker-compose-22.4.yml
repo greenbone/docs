@@ -98,7 +98,6 @@ services:
   ospd-openvas:
     image: greenbone/ospd-openvas:stable
     restart: on-failure
-    init: true
     hostname: ospd-openvas.local
     cap_add:
       - NET_ADMIN # for capturing packages in promiscuous mode
