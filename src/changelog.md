@@ -8,13 +8,16 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 ## Latest
 * Add workflow page for source builds
 * Add documentation for updating source builds
-* Update GSA to 22.7.1
 * Don't expose MQTT broker port in docker compose setup by default
 * Add workflow for source builds on howto access GSA/gsad remotely
 * Only run gsad on 127.0.0.1 for the community containers setup
 * Add workflow for container setup on howto access GSA/gsad remotely
 * Fix log warning from tini init server in the ospd-openvas container
 * Fix manual feed sync workflow for the container setup
+* Update gvm-libs to 22.7.3
+* Update gvmd to 23.0.0
+* Update gsad to 22.7.0
+* Update GSA to 22.8.0
 
 ## 23.9.0 - 23-09-23
 * Update pg-gvm to 22.6.1
