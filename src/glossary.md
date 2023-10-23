@@ -4,7 +4,7 @@
 gvmd
 
   Management daemon shipped with GVM 10 and later. Abbreviation for
-  **G**reenbone **V**ulnerability **M**anager **D**aemon.
+  **G**reenbone **V**ulnerability **M**anagement **D**aemon.
 
 openvassd
 
