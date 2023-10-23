@@ -44,7 +44,7 @@ done automatically when the daemons are running.
 The data of the {term}`Greenbone Community Feed` is provided via several
 container images. When these images are started, they copy the data into the used
 docker volumes automatically. Afterwards, the data is picked up from the
-volumes by the running daemons .
+volumes by the running daemons.
 
 To download the latest feed data container images run
 
