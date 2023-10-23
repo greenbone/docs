@@ -8,14 +8,14 @@ Please be aware that the manually synced data will be overridden if the data
 containers are (re-)started.
 ```
 
-For the manual feed sync the [`greenbone-feed-sync`](https://github.com/greenbone/greenbone-feed-sync/)
+For the manual feed sync, the [`greenbone-feed-sync`](https://github.com/greenbone/greenbone-feed-sync/)
 script will be used. The `greenbone-feed-sync` script is also provided via a
 container image. Using the container image requires extending the docker compose
 file as follows:
 
 ```{code-block} yaml
 ---
-caption: Extend the docker compose file for performing a manual feed sync using
+caption: Extending the docker compose file for performing a manual feed sync using
     the greenbone-feed-sync script
 ---
 ...
@@ -54,7 +54,7 @@ docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-editio
 ```{code-block} shell
 ---
 caption: Downloading {term}`notus<notus-scanner>` {term}`VTs<VT>` processed by
-    the notus-scanner, this will take a while.
+    the Notus Scanner, this will take a while.
 ---
 docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
     run --rm greenbone-feed-sync greenbone-feed-sync --type notus
