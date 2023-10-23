@@ -13,6 +13,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Add workflow for source builds on howto access GSA/gsad remotely
 * Only run gsad on 127.0.0.1 for the community containers setup
 * Add workflow for container setup on howto access GSA/gsad remotely
+* Fix log warning from tini init server in the ospd-openvas container
 
 ## 23.9.0 - 23-09-23
 * Update pg-gvm to 22.6.1
