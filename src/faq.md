@@ -43,6 +43,11 @@ distribution ships which version of our software.
 
 This is also very similar to [Can you help with my issue on Kali, Cent OS, XYZ distribution](#can-you-help-with-my-issue-on-kali-cent-os-xyz-distribution).
 
+For updating your **source build** from a previous version of this guide, see [](./22.4/source-build/workflows.md#updating-to-newer-releases).
+
+For updating your installation of the **Greenbone Community Containers**, see
+[](./22.4/container/workflows.md#updating-the-greenbone-community-containers).
+
 We are **not** able to offer any help on updating installations done via any
 **external** source like Kali packages, Cent OS packages, some other guide or
 some random docker images because we are not aware of their specific needs and
@@ -169,7 +174,7 @@ It is/was only provided for backwards compatibility and does not get installed
  (by default) anymore since [`gvmd` 22.5.0](https://github.com/greenbone/gvmd/releases/tag/v22.5.0).
 
 **greenbone-nvt-sync** is the *old* sync script written in bash to download the
-vulnerability tests data (:file:`.nasl` and :file:`.notus` files). It is deprecated since
+vulnerability tests data ({file}`.nasl` and {file}`.notus` files). It is deprecated since
 [`openvas-scanner` 22.6.0](https://github.com/greenbone/openvas-scanner/releases/tag/v22.6.0).
 
 **/usr/sbin/greenbone-feed-sync** is the *old* sync script written in bash to

@@ -10,7 +10,7 @@ The architecture for the Greenbone Community Edition is grouped into three major
 
 - Executable scanner applications that run vulnerability tests (VT) against
   target systems
-- Greenbone Vulnerability Manager Daemon (gvmd)
+- Greenbone Vulnerability Management Daemon (gvmd)
 - Greenbone Security Assistant (GSA) with the Greenbone Security Assistant
   Daemon (gsad)
 
@@ -26,16 +26,16 @@ The Greenbone Community Edition is released under open-source licenses. By using
 it, Linux distributions can create and provide the software components in the
 form of installation packages.
 
-### Greenbone Vulnerability Manager Daemon (gvmd)
+### Greenbone Vulnerability Management Daemon (gvmd)
 
-The [Greenbone Vulnerability Manager (gvmd)] is the central service that
-consolidates plain vulnerability scanning into a full vulnerability management
-solution. gvmd controls the OpenVAS Scanner via Open Scanner Protocol (OSP).
+The [Greenbone Vulnerability Management Daemon (gvmd)] – also called Greenbone Vulnerability 
+Manager is the central service that consolidates plain vulnerability scanning into 
+a full vulnerability management solution. gvmd controls the OpenVAS Scanner via Open 
+Scanner Protocol (OSP).
 
-The service itself offers the XML-based, stateless
-{term}`Greenbone Management Protocol (GMP)<GMP>`. gvmd also controls an SQL
-database (PostgreSQL) where all configuration and scan result data is centrally
-stored. Furthermore, gvmd also handles user management including permissions
+The service itself offers the XML-based, {term}`Greenbone Management Protocol (GMP)<GMP>`. 
+gvmd also controls an SQL database (PostgreSQL) where all configuration and scan result data is 
+centrally stored. Furthermore, gvmd also handles user management including permissions
 control with groups and roles. And finally, the service has an internal runtime
 system for scheduled tasks and other events.
 
@@ -65,7 +65,7 @@ gvmd via ospd.
 
 ### Notus Scanner
 
-The [Notus Scanner] scans after every regular scan, so no user interaction is
+The [Notus Scanner] scans during every regular scan, so no user interaction is
 necessary. It offers better performance due to less system resource
 consumption and thus, faster scanning.
 
