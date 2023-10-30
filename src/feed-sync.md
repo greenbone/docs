@@ -43,7 +43,7 @@ python3 -m pip install greenbone-feed-sync
 ## Updating the Greenbone Feeds
 
 ### Determine Which Command Is In Use
-Before you can udpate the Greenbone feed sync, you should check which version of the commands are active when you execute the `greenbone-feed-sync` command.  To do that, use the `which` command to determine the path of the command that is executed.
+Before you can update the Greenbone feed sync, you should check which version of the commands are active when you execute the `greenbone-feed-sync` command.  To do that, use the `which` command to determine the path of the command that is executed.
 
 For example:
 ```sh
