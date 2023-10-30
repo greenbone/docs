@@ -3,7 +3,7 @@
 
 This documentation provides instructions on updating the feed for your specific version of the Greenbone Community Edition and installation method. Please note that there is currently a migration from the `/usr/local/sbin/greenbone-feed-sync` bash script to a new Python-based script with the same name: `greenbone-feed-sync`. Also, please note that Kali Linux distribution comes with its own additional bash command script `gvm-feed-update`, yet we do recommend using the native Greenbone feed-sync commands.
 
-If you are unable to achieve feed synchronization after reading this guide, or require further assistance with the feed sync update process, please consult the [Greenbone community forums](https://forum.greenbone.net/) or contact our support team for guidance.
+If you are unable to achieve feed synchronization after reading this guide, or require further assistance with the feed sync update process, please consult the [Greenbone Community Forum](https://forum.greenbone.net/) or contact our support team for guidance.
 
 ## A Note About Deprecated Sync Scripts
 The following sync scripts listed below are deprecated and no longer installed by default since gvmd 22.5.0.  If you want to check if you have these scripts installed you can try the following command:
