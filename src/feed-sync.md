@@ -84,7 +84,7 @@ The available feed types are:
 * `cert`: Synchronizes CERT data feed
 * `notus`: Fetch any newly available NOTUS vulnerability tests
 * `nasl`: Fetch any newly available NASL vulnerability tests
-* `report-format` or `report-formats`: Fetches any newly available scan report formats
+* `report-format` or `report-formats`: Fetches any newly available report formats
 * `scan-config` or `scan-configs`: Fetches any newly available scan configurations
 * `port-list` or `port-lists`: Fetches any newly available port lists
 
