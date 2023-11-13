@@ -15,9 +15,11 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Fix log warning from tini init server in the ospd-openvas container
 * Fix manual feed sync workflow for the container setup
 * Update gvm-libs to 22.7.3
-* Update gvmd to 23.0.0
+* Update gvmd to 23.0.1
 * Update gsad to 22.7.0
 * Update GSA to 22.8.0
+* Update openvas-scanner to 22.7.6
+* Update ospd-openvas to 22.6.1
 
 ## 23.9.0 - 23-09-23
 * Update pg-gvm to 22.6.1

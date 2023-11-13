@@ -48,7 +48,7 @@ Afterwards, gvm-libs can be build and installed.
 ```{code-block}
 :caption: Setting the gvmd version to use
 
-export GVMD_VERSION=23.0.0
+export GVMD_VERSION=23.0.1
 ```
 
 ```{include} /22.4/source-build/gvmd/dependencies.md
@@ -142,7 +142,7 @@ export GSAD_VERSION=22.7.0
 ```{code-block}
 :caption: Setting the openvas-scanner version to use
 
-export OPENVAS_SCANNER_VERSION=22.7.5
+export OPENVAS_SCANNER_VERSION=22.7.6
 ```
 
 ```{include} /22.4/source-build/openvas-scanner/dependencies.md
@@ -162,7 +162,7 @@ export OPENVAS_SCANNER_VERSION=22.7.5
 ```{code-block}
 :caption: Setting the ospd and ospd-openvas versions to use
 
-export OSPD_OPENVAS_VERSION=22.6.0
+export OSPD_OPENVAS_VERSION=22.6.1
 ```
 
 ```{include} /22.4/source-build/ospd-openvas/dependencies.md
