@@ -21,6 +21,18 @@ In particular, make sure that the [install prefix](./index.md#choosing-an-instal
 [PATH](./index.md#setting-the-path) and the [required environment variables](./index.md#creating-a-source-build-and-install-directory)
 are set.
 
+For being able to update `ospd-openvas`, `notus-scanner`, `greenbone-feed-sync`
+and `gvm-tools` they must be uninstalled first.
+
+```{code-block} shell
+---
+caption: Uninstall ospd-openvas, notus-scanner, greenbone-feed-sync and gvm-tools
+---
+sudo python3 -m pip uninstall --break-system-packages ospd-openvas notus-scanner greenbone-feed-sync gvm-tools
+```
+
+The `--break-system-packages` argument is required because of [PEP 668](https://peps.python.org/pep-0668/).
+
 Next, you need to follow the [build and install documentation](./index.md#building-and-installing-the-components)
 as you would the first time. This will download and install the
 latest component releases. The already installed versions will be overwritten by
@@ -51,7 +63,7 @@ sudo systemctl start gsad gvmd notus-scanner ospd-openvas
 
 When following the build-from-source guide, the web server is configured to listen only
 on the local address of the host (127.0.0.1). To allow remote access on all
-interfaces of the host, the {command}`gsad` systemd service file must be modified to 
+interfaces of the host, the {command}`gsad` systemd service file must be modified to
 configure the web server {command}`gsad` to listen on all network interfaces.
 
 ```{code-block} none
