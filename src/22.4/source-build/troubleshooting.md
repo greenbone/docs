@@ -71,19 +71,19 @@ configs have been downloaded from the {term}`feed`.
 
 ```{code-block} shell
 ---
-caption: Check if scan configs are already synced
+caption: Check if scan configs are already available
 ---
 find /var/lib/gvm/data-objects/ -name "*daba56c8-73ec-11df-a475-002264764cea*.xml"
 ```
 
 If the {command}`find` command does not return at least one XML file for your
-release, the data objects have not been synced from the {term}`feed` (yet).
+release, the data objects have not been downloaded from the {term}`feed` (yet).
 
 ```{code-block} shell
 ---
 caption: Syncing data objects processed by gvmd
 ---
-sudo -u gvm greenbone-feed-sync --type GVMD_DATA
+sudo -u gvm greenbone-feed-sync --type gvmd-data
 ```
 
 Because scan configs reference {term}`VTs<VT>` loading scan configs also
@@ -97,7 +97,7 @@ feed.
 ---
 caption: Syncing VTs processed by the openvas scanner
 ---
-sudo -u gvm greenbone-nvt-sync
+sudo -u gvm greenbone-feed-sync --type nvt
 ```
 
 Loading the VTs from the file system may take a while. From several minutes up
