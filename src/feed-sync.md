@@ -1,4 +1,5 @@
 
+
 # Feed Sync Guide
 
 This documentation provides instructions on updating the feed for your specific version of the Greenbone Community Edition and installation method. Please note that there is currently a migration from the `/usr/local/sbin/greenbone-feed-sync` bash script to a new Python-based script with the same name: `greenbone-feed-sync`. Also, please note that Kali Linux distribution comes with its own additional bash command script `gvm-feed-update`, yet we do recommend using the native Greenbone feed-sync commands.
@@ -16,7 +17,12 @@ which <feed-command>
 -   `/usr/local/sbin/greenbone-feed-sync` or `/usr/sbin/greenbone-feed-sync`: This is the old sync script written in bash to download CERT, SCAP, and GVMD_DATA. It is no longer installed by default since gvmd 22.5.0.
 
 ### Deprecated Sync Script Removal
-If you have any of the deprecated sync scripts (`greenbone-certdata-sync`, `greenbone-scapdata-sync`, `greenbone-nvt-sync`, `/usr/local/sbin/greenbone-feed-sync` or `/usr/sbin/greenbone-feed-sync`) installed, it is recommended to remove them. This step ensures a clean transition to the new sync script.
+If you have any of the deprecated sync scripts it is recommended that you delete them. This step ensures a clean transition to the new sync script. The easiest way to identify the old feed sync scripts is that they are located in the `/usr/local/sbin` directory.  These files include:
+*/usr/local/sbin/greenbone-certdata-sync
+* /usr/local/sbin/greenbone-scapdata-sync
+* /usr/local/sbin/greenbone-nvt-sync
+* /usr/local/sbin/greenbone-feed-sync
+* /usr/sbin/greenbone-feed-sync
 
 ## Introduction Of The New Python Feed Sync Script
 A new Python-based `greenbone-feed-sync` command now replaces the deprecated feed sync scripts mentioned above. This new script can be run with can be run with **Greenbone version 22.4 and later**, however, older versions are not supported. This new feed sync method will now be installed by default.  
@@ -50,7 +56,7 @@ For example:
 which greenbone-feed-sync
 /usr/local/bin/greenbone-feed-sync
 ```
-Once you determine the path of the executed command you can identify whether it is the new Python-based feed sync command or the legacy bash version.  To do that, use the `head` command to print the first line of the script.  This will indicate the interpreter used at execution run-time.
+By default, the old feed sync scripts are installed to the `sbin` subdirectory, and the new scripts are installed to the `bin` subdirectory. To make sure, you can identify whether it is the new Python-based feed sync command or the legacy bash version by using the `head` command to print the first line of the script.  This will indicate the interpreter used at execution run-time.
 
 For example:
 ```sh
@@ -60,7 +66,7 @@ head -1 /usr/local/bin/greenbone-feed-sync
 ```
 ```sh
 # If the legacy bash feed update script is active you will see
-head -1 /usr/local/bin/greenbone-feed-sync
+head -1 /usr/local/sbin/greenbone-feed-sync
 #!/bin/sh
 ```
 
