@@ -1,5 +1,7 @@
 ## Troubleshooting
 
+This page contains hints for troubleshooting source build specific issues.
+
 ```{warning}
 The commands in the following troubleshooting guidelines are only valid if you
 followed the source build documentation. If you installed the Greenbone
