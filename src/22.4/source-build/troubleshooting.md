@@ -123,21 +123,3 @@ If all these steps do not resolve the issue, it is very likely a bigger problem,
 for example with the PostgreSQL database. Therefore, the
 {file}`/var/log/gvm/ospd-openvas.log` and {file}`/var/log/gvm/gvmd.log` files
 must be inspected for possible error and warning messages.
-
-### Vulnerabilities are not found
-
-A scan report does not contain any results or some known vulnerabilities do not
-show up in the report.
-
-This may have several reasons. Most likely, the {term}`feed` synchronization is not
-finished yet. The feed data has been downloaded to the file system of the local
-machine but {command}`gvmd` and {command}`ospd-openvas` did not have enough resources
-to load them into their databases and memory yet. This can be checked on the web interface
-by opening the {menuselection}`SecInfo > NVTs` page to see whether {term}`VTs<VT>`
-are listed there and the {menuselection}`Administration > Feed Status`
-page to see whether a synchronization process is currently running.
-
-If both pages are fine, you may take a look at the following sections in our
-product manual:
-- [20.2 Why Is a Service/Product Not Detected?](https://docs.greenbone.net/GSM-Manual/gos-22.04/en/faq.html#why-is-a-service-product-not-detected)
-- [20.3 Why Is a Vulnerability Not Detected?](https://docs.greenbone.net/GSM-Manual/gos-22.04/en/faq.html#why-is-a-vulnerability-not-detected)
