@@ -52,3 +52,36 @@ For further debugging / logging the mentioned **Nmap (NASL wrapper)** and
 * Nmap (NASL wrapper)
     1. **Log nmap output** configured to **yes**: Log additional output if nmap
       was used.
+
+## OOM is Killing Redis on Large Scans
+
+During a larger scan the machine is running out of memory. Therefore the Linux
+Out-of-Memory (OOM) killer is terminating the redis database server and the scan
+got interrupted.
+
+The problem described is not easy to solve as it can have several root causes,
+from known issues to usage behavior. In particular, there can be problems with
+vHosts and CGI caching.
+
+In general, we recommend the following:
+
+* Prevent overloading the system by adjusting the usage:
+    * Do not start scan tasks all at once, use schedules to start them at intervals
+    * Reconfigure scan targets to include less hosts, split the hosts into more targets and tasks instead
+    * Do not run or schedule feed updates for times where scan tasks are running or scheduled to run
+    * Do not view or download large reports while scan tasks are running
+
+* Disable vHost expansion for scans that cause problems:
+    * Clone and edit the used scan config
+    * Set the scanner preference `expand_vhosts` to `0` and save the change
+
+* Disable CGI caching for scans that cause problems:
+    * Clone and edit the used scan config
+    * Browse to the VT family Settings
+    * Edit the VT `Global Variable Settings` (OID: *1.3.6.1.4.1.25623.1.0.12288*)
+    * Set the preference `Disable caching of web pages during CGI scanning` to `Yes` and save the change
+
+If you think that you can narrow the problem down to a specific host and/or
+vulnerability test, please either open an issue for the scanner at
+[https://github.com/greenbone/openvas-scanner/issues](https://github.com/greenbone/openvas-scanner/issues)
+or the vulnerability test at [Vulnerability Tests - Greenbone Community Forum](https://forum.greenbone.net/c/vulnerability-tests/7).
