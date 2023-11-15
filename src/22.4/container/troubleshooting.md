@@ -1,5 +1,7 @@
 ## Troubleshooting
 
+This page contains hints for troubleshooting community container specific issues.
+
 ### VTs are Up-to-Date but Not Visible on the Web Interface
 
 It may be possible, especially for the initial synchronization, that the scanner

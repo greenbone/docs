@@ -33,6 +33,7 @@ background
 22.4/source-build/index
 22.4/container/index
 faq
+troubleshooting
 glossary
 changelog
 api
