@@ -13,7 +13,7 @@ voluntary basis.
 
 ## Can you help with my issue on Kali, Cent OS, XYZ distribution?
 
-Greenbone doesn't provide any packages for any Linux distribution besides the
+Greenbone does not provide any packages for any Linux distribution besides the
 commercial Greenbone OS. If you have installed the Greenbone Community Edition
 from your distribution like Kali Linux, an external package repository
 or even some random docker image, Greenbone was not involved in providing this
@@ -29,7 +29,7 @@ to contact the provider depends and varies.
 ## Please help me with the installation of OpenVAS and also advise me on the recommended OS platform.
 
 This is very similar to [Can you help with my issue on Kali, Cent OS, XYZ distribution](#can-you-help-with-my-issue-on-kali-cent-os-xyz-distribution).
-Greenbone can't provide installation docs for the many available Linux
+Greenbone cannot provide installation docs for the many available Linux
 distributions available. Setups, configurations, build systems, packaging tools,
 available software, best practices, ... diverge to much to offer *official*
 packages, scripts or anything else from Greenbone. We offer this Greenbone Community Edition
@@ -70,11 +70,11 @@ release.
 | [GVM 10](https://forum.greenbone.net/t/gvm-10-old-stable-initial-release-2019-04-05/208) | 5.0.y | 8.0.y | 8.0 | 8.0.y | 10.0.y | 6.0.y | - | end-of-life (since 2020-12-31) | 2019-04-05 |
 | [OpenVAS  9](https://forum.greenbone.net/t/gvm-9-end-of-life-initial-release-2017-03-07/211) | 4.x.y | openvas-manager 7.0.y | OMP 7 | 7.0.y | openvas-libraries 9.0.y | 5.1.y | - | end-of-life | 2017-03-07 |
 
-## My self-compiled version isn't working as expected. Can you help me?
+## My self-compiled version is not working as expected. Can you help me?
 
 All questions should be handled at the [community forum]
 but please be aware that your questions are answered on a voluntary basis. Therefore,
-please don't expect immediate responses. The community forum is for individuals
+please do not expect immediate responses. The community forum is for individuals
 to exchange experiences and problems about a [Free Software](https://en.wikipedia.org/wiki/Free_software)
 project and not to get instant advises from the developers or professional
 support to fix your current issue.
@@ -112,7 +112,7 @@ the {doc}`Architecture <architecture>`.
 
 [community forum]: https://forum.greenbone.net
 
-## I still fail to see/understand the concept of `greenbone-feed-sync --type` vs `greenbone-nvt-sync`/`greenbone-certdata-sync`/`greenbone-scapdata-sync` vs `gvm-feed-update`
+## I still fail to see/understand the concept of `greenbone-feed-sync --type` vs. `greenbone-nvt-sync`/`greenbone-certdata-sync`/`greenbone-scapdata-sync` vs. `gvm-feed-update`
 
 **gvm-feed-update** is **NOT** maintained by Greenbone and is therefore not used
 anywhere in our docs or in code provided by Greenbone. It is maintained by the

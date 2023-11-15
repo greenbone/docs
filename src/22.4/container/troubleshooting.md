@@ -1,8 +1,8 @@
 ## Troubleshooting
 
-This page contains hints for troubleshooting community container specific issues.
+This page contains hints for troubleshooting Greenbone Community Container specific issues.
 
-### VTs are Up-to-Date but Not Visible on the Web Interface
+### VTs are up-to-date but not visible on the web interface
 
 It may be possible, especially for the initial synchronization, that the scanner
 does not notice new VT files have arrived. Therefore, it is best to restart the
@@ -16,13 +16,13 @@ docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-editio
     restart ospd-openvas
 ```
 
-### Port List, Scan Configurations, Report Formats are Up-to-Date but Not Visible on the Web Interface
+### Port list, scan configurations, report formats are up-to-date but not visible on the web interface
 
 If port lists, scan configurations, or report formats are missing on the web interface, you may run:
 
 ```{code-block} shell
 ---
-caption: Force reload of report formats, scan configs and port lists
+caption: Forcing reload of report formats, scan configs and port lists
 ---
 docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
     exec -u gvmd gvmd gvmd --rebuild-gvmd-data=all
@@ -49,7 +49,7 @@ restart the corresponding container with:
 
 ```{code-block} shell
 ---
-caption: Restart the ospd-openvas scanner
+caption: Restarting the ospd-openvas scanner
 ---
 docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
     restart ospd-openvas
@@ -59,13 +59,13 @@ If you still get errors, you need to take a look at the `ospd-openvas` logs.
 
 ```{code-block} shell
 ---
-caption: Show log message of the ospd-openvas scanner
+caption: Showing log message of the ospd-openvas scanner
 ---
 docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
     log -f ospd-openvas
 ```
 
-### Cannot Log in to the Web Interface: *Greenbone Vulnerability Manager service is not responding*
+### Cannot log in to the Wweb interface: *Greenbone Vulnerability Manager service is not responding*
 
 If it is not possible to log in to the web interface and the following error
 message is shown
@@ -84,23 +84,23 @@ had some issues accessing the PostgreSQL database.
 
 ```{code-block} shell
 ---
-caption: Restart {term}`gvmd`
+caption: Restarting {term}`gvmd`
 ---
 docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
     restart gvmd
 ```
 
-### Redis Server keeps restarting `rm: cannot remove ‘/run/redis/redis.sock’: Permission denied`
+### Redis server keeps restarting `rm: cannot remove ‘/run/redis/redis.sock’: Permission denied`
 
 Under some circumstances the [Unix Domain Socket](https://en.wikipedia.org/wiki/Unix_domain_socket)
-of the redis server has got wrong permissions. To fix this issue it is required
+of the Redis server has got wrong permissions. To fix this issue it is required
 to shutdown the `redis-server` and `ospd-openvas` containers and remove the
 `redis_socket_vol` [docker volume](https://docs.docker.com/storage/volumes/).
-The volume can be removed safely because it gets re-created on the next startup.
+The volume can be removed safely because it gets recreated on the next startup.
 
 ```{code-block} shell
 ---
-caption: Re-create redis server socket volume
+caption: Recreating the Redis server socket volume
 ---
 docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
     rm -s -f redis-server ospd-openvas
