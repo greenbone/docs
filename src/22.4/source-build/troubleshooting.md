@@ -9,7 +9,7 @@ Community Edition via a Linux Distribution (for example Kali Linux), the
 commands may be slightly different and need to be adjusted.
 ```
 
-### Facing an Issue with the Greenbone Community Edition
+### Facing an issue with the Greenbone Community Edition
 
 If you have an issue with the Greenbone Community Edition because something
 doesn't work as expected and/or you are getting an error in the web UI it is
@@ -39,7 +39,7 @@ file:
 
 ```{code-block} shell
 ---
-caption: Check if port list is already synced
+caption: Checking if port list is already synced
 ---
 find /var/lib/gvm/data-objects/ -name "*33d0cd82-57c6-11e1-8ed1-406186ea4fc5*.xml"
 ```
@@ -64,7 +64,7 @@ caption: Syncing data objects processed by gvmd
 sudo -u gvm gvmd --rebuild-gvmd-data=all
 ```
 
-### Failed to find config
+### Failed to find scan configuration
 
 This issue is similar to [Failed to find port_list](#failed-to-find-port_list-33d0cd82-57c6-11e1-8ed1-406186ea4fc5).
 It will be raised if {command}`gvmd` is not able to load the scan configs from
@@ -73,7 +73,7 @@ configs have been downloaded from the {term}`feed`.
 
 ```{code-block} shell
 ---
-caption: Check if scan configs are already available
+caption: Checking if scan configs are already available
 ---
 find /var/lib/gvm/data-objects/ -name "*daba56c8-73ec-11df-a475-002264764cea*.xml"
 ```
@@ -88,11 +88,11 @@ caption: Syncing data objects processed by gvmd
 sudo -u gvm greenbone-feed-sync --type gvmd-data
 ```
 
-Because scan configs reference {term}`VTs<VT>` loading scan configs also
+Because scan configs reference {term}`VTs<VT>`, loading scan configs also
 requires synced VTs from the {term}`feed`. You can check if the VTs are already
-loaded by looking at the {menuselection}`Secinfo --> NVTs` web UI page.
+loaded by looking at the {menuselection}`Secinfo > NVTs` page on the web interface.
 
-If there are no VTs visible in the web UI they need to be downloaded from the
+If there are no VTs visible on the web interface, they must be downloaded from the
 feed.
 
 ```{code-block} shell
@@ -102,13 +102,13 @@ caption: Syncing VTs processed by the openvas scanner
 sudo -u gvm greenbone-feed-sync --type nvt
 ```
 
-Loading the VTs from the file system may take a while. From several minutes up
+Loading the VTs from the file system may take a while, from several minutes up
 to hours depending on your system performance and number of {term}`VTs<VT>`. You
 can follow the process of loading VTs by looking at the {file}`/var/log/gvm/ospd-openvas.log`
 and {file}`/var/log/gvm/gvmd.log` files.
 
-If there are still no scan configs at {menuselection}`Configuration --> Scan Configs`
-in the web UI after some hours and the logs of gvmd and ospd-openvas don't show
+If there are still no scan configs under {menuselection}`Configuration > Scan Configs`
+on the web interface after some hours and the logs of gvmd and ospd-openvas do not show
 errors, the `Feed Import Owner` may not have been set.
 
 
@@ -119,25 +119,25 @@ caption: Setting the `Feed Import Owner`
 gvmd --modify-setting 78eceaec-3385-11ea-b237-28d24461215b --value `gvmd --get-users --verbose | grep admin | awk '{print $2}'`
 ```
 
-If all these steps don't resolve the issue it is very likely a bigger problem
-for example with the PostgreSQL database. Therefore the
+If all these steps do not resolve the issue, it is very likely a bigger problem,
+for example with the PostgreSQL database. Therefore, the
 {file}`/var/log/gvm/ospd-openvas.log` and {file}`/var/log/gvm/gvmd.log` files
-need to be inspected for possible error and warning messages.
+must be inspected for possible error and warning messages.
 
 ### Vulnerabilities are not found
 
-A scan report does not contain any results or some known vulnerabilities don't
+A scan report does not contain any results or some known vulnerabilities do not
 show up in the report.
 
-This may have several reasons. Most likely the {term}`feed` synchronization isn't
+This may have several reasons. Most likely, the {term}`feed` synchronization is not
 finished yet. The feed data has been downloaded to the file system of the local
-machine put {command}`gvmd` and {command}`ospd-openvas` hadn't enough resources
-to load them into their databases and memory yet. This can be checked by looking
-at the {menuselection}`SecInfo --> NVTs` page if {term}`VTs<VT>` are listed here
-and at the {menuselection}`Administration --> Feed Status` page for an ongoing
-sync process in the web UI.
+machine but {command}`gvmd` and {command}`ospd-openvas` did not have enough resources
+to load them into their databases and memory yet. This can be checked on the web interface
+by opening the {menuselection}`SecInfo > NVTs` page to see whether {term}`VTs<VT>`
+are listed there and the {menuselection}`Administration > Feed Status`
+page to see whether a synchronization process is currently running.
 
-If both pages are fine you may take a look at the following sections in our
+If both pages are fine, you may take a look at the following sections in our
 product manual:
 - [20.2 Why Is a Service/Product Not Detected?](https://docs.greenbone.net/GSM-Manual/gos-22.04/en/faq.html#why-is-a-service-product-not-detected)
 - [20.3 Why Is a Vulnerability Not Detected?](https://docs.greenbone.net/GSM-Manual/gos-22.04/en/faq.html#why-is-a-vulnerability-not-detected)
