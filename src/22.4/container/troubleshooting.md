@@ -65,7 +65,7 @@ docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-editio
     log -f ospd-openvas
 ```
 
-### Cannot log in to the Wweb interface: *Greenbone Vulnerability Manager service is not responding*
+### Cannot log in to the web interface: *Greenbone Vulnerability Manager service is not responding*
 
 If it is not possible to log in to the web interface and the following error
 message is shown
