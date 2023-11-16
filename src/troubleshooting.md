@@ -81,10 +81,13 @@ In general, we recommend the following:
     * Edit the VT `Global Variable Settings` (OID: *1.3.6.1.4.1.25623.1.0.12288*).
     * Set the preference `Disable caching of web pages during CGI scanning` to `Yes` and save the change.
 
-If you think that you can narrow the problem down to a specific host and/or
-vulnerability test, please either open an issue for the scanner at
-[https://github.com/greenbone/openvas-scanner/issues](https://github.com/greenbone/openvas-scanner/issues)
-or the vulnerability test at [Vulnerability Tests - Greenbone Community Forum](https://forum.greenbone.net/c/vulnerability-tests/7).
+If you think that you can narrow the problem down to a specific issue in the
+scanner please open an issue for the scanner at
+[https://github.com/greenbone/openvas-scanner/issues](https://github.com/greenbone/openvas-scanner/issues).
+
+For support on scan configuration changes like mentioned above to reduce the
+memory usage during a scan please open a topic at
+[Scanning / scan configuration - Greenbone Community Forum](https://forum.greenbone.net/c/scanning-scan-configuration/26).
 
 ## Vulnerabilities are not found
 
