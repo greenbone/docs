@@ -53,7 +53,7 @@ jobs:
           path: .
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v3
       - name: Job Summary
         run: |
           echo '### Deployment successful! :rocket: https://greenbone.github.io/docs/${{ inputs.doc_root }}' >> $GITHUB_STEP_SUMMARY

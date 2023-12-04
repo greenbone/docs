@@ -43,4 +43,4 @@ jobs:
           path: .
       - name: Deploy to GitHub Pages
         if: steps.doc-root.outputs.has-doc-root == 'true'
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v3
