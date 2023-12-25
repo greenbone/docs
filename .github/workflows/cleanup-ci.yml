@@ -38,9 +38,9 @@ jobs:
           git push --force-with-lease
       - name: Upload pages artifact
         if: steps.doc-root.outputs.has-doc-root == 'true'
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: .
       - name: Deploy to GitHub Pages
         if: steps.doc-root.outputs.has-doc-root == 'true'
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v4
