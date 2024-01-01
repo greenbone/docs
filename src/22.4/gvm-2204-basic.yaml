@@ -1,0 +1,1135 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: gvm
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: pg-gvm
+  namespace: gvm
+spec:
+  serviceName: "pg-gvm"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pg-gvm
+  template:
+    metadata:
+      labels:
+        app: pg-gvm
+    spec:
+      initContainers:
+      - name: init-copy-db
+        image: greenbone/pg-gvm@sha256:9405492141b23f255cc07fd2705612ad5a279abb103c62cbae7d9bd5bda16516 # arm64
+        imagePullPolicy: IfNotPresent
+        command: ["sh", "-c"]
+        args:
+          - |
+            #!/bin/bash
+
+            # Define source and destination directories
+            src="/var/lib/postgresql"
+            dest="/mnt"
+            marker="${dest}/copy_complete_marker"
+
+            # Function to perform the copy if the marker file does not exist
+            copy_if_needed() {
+                # Check if the marker file exists
+                if [ ! -f "$marker" ]; then
+                    # Copy the files
+                    cp -rp "${src}/"* "${dest}/"
+
+                    # Check if copy was successful
+                    if [ $? -eq 0 ]; then
+                        # Create a marker file to indicate successful copy
+                        touch "$marker"
+                    else
+                        echo "Error during copying files from ${src} to ${dest}"
+                    fi
+                else
+                    echo "Copy already completed for ${src}"
+                fi
+            }
+
+            # Perform the copy operation
+            copy_if_needed
+        volumeMounts:
+        - name: psql-data-mount
+          mountPath: /mnt
+        - name: psql-socket-mount
+          mountPath: /mnt1
+      containers:
+      - name: pg-gvm
+        image: greenbone/pg-gvm@sha256:9405492141b23f255cc07fd2705612ad5a279abb103c62cbae7d9bd5bda16516 # arm64
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - name: psql-data-mount
+          mountPath: /var/lib/postgresql
+        - name: psql-socket-mount
+          mountPath: /var/run/postgresql
+        resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
+            limits:
+              memory: "2Gi"
+              cpu: "2"
+#      - name: busybox
+#        image: busybox
+#        command: ["sleep", "infinity"]
+#        resources:
+#          requests:
+#            memory: "4Mi"
+#            cpu: "5m"
+#          limits:
+#            memory: "16Mi"
+#            cpu: "50m"
+  volumeClaimTemplates:
+  - metadata:
+      name: psql-data-mount
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 10Gi
+  - metadata:
+      name: psql-socket-mount
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 1Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gvmd
+  namespace: gvm
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: gvmd
+  template:
+    metadata:
+      labels:
+        app: gvmd
+    spec:
+      initContainers:
+
+        - name: init-gvmd
+          image: busybox
+          imagePullPolicy: IfNotPresent
+          command: ["sh", "-c"]
+          args:
+            - |
+              mkdir -p /var/lib/gvm/gvmd;
+              chown 1001:1001 /var/lib/gvm/gvmd;
+              chown 1001:1001 /var/lib/gvm;
+              chmod 755 /var/lib/gvm;
+              chown 1001:1001 /var/lib/gvm/data-objects;
+              chmod 777 /var/lib/gvm/data-objects;
+          volumeMounts:
+            - name: gvmd-data-mount
+              mountPath: /var/lib/gvm
+            - name: data-objects-mount
+              mountPath: /var/lib/gvm/data-objects/gvmd
+
+        - name: greenbone-feed-sync
+          image: greenbone/greenbone-feed-sync
+          command: ["sh", "-c"]
+          args:
+          - |
+            set -e # Exit immediately if a command exits with a non-zero status.
+
+            # chown commands
+            chown 1001:1001 /var/lib/gvm/scap-data
+            chown 1001:1001 /var/lib/gvm/cert-data
+
+            # SCAP data sync
+            echo "Starting scap sync..."
+            if ! greenbone-feed-sync --type scap -vv; then
+              echo "SCAP data sync failed, exiting..."
+              exit 1
+            fi
+
+            # CERT data sync
+            echo "Starting cert sync..."
+            if ! greenbone-feed-sync --type cert; then
+              echo "CERT data sync failed, exiting..."
+              exit 1
+            fi
+
+            # gvmd-data sync
+            echo "Starting gvmd-data sync..."
+            if ! greenbone-feed-sync --type gvmd-data -vv; then
+              echo "gvmd-data sync failed, exiting..."
+              exit 1
+            fi
+
+            # report-formats sync
+            echo "Starting report-formats sync..."
+            if ! greenbone-feed-sync --type report-formats -vv; then
+              echo "gvmd-data sync failed, exiting..."
+              exit 1
+            fi
+          volumeMounts:
+          - name: gvmd-data-mount
+            mountPath: /var/lib/gvm
+          - name: scap-data-mount
+            mountPath: /var/lib/gvm/scap-data/
+          - name: cert-data-mount
+            mountPath: /var/lib/gvm/cert-data
+          - name: data-objects-mount
+            mountPath: /var/lib/gvm/data-objects/gvmd
+
+      containers:
+        - name: gvmd
+          image: greenbone/gvmd@sha256:9196a06a6edda011f337892975654bf86a1638016bc95f5d29deaf0c1e3c392b # arm64
+          imagePullPolicy: IfNotPresent
+          command: ["/usr/local/bin/entrypoint"]
+          args: ["/mnt/gvmd-script/start-gvmd"]
+          volumeMounts:
+            - name: gvmd-data-mount
+              mountPath: /var/lib/gvm
+            - name: scap-data-mount
+              mountPath: /var/lib/gvm/scap-data/
+            - name: cert-data-mount
+              mountPath: /var/lib/gvm/cert-data
+            - name: data-objects-mount
+              mountPath: /var/lib/gvm/data-objects/gvmd
+            - name: gvmd-socket-mount
+              mountPath: /run/gvmd
+            - name: ospd-openvas-socket-mount
+              mountPath: /run/ospd
+            - name: psql-socket-mount
+              mountPath: /var/run/postgresql
+            - name: psql-data-mount
+              mountPath: /var/lib/postgresql
+            - name: start-gvmd-script-volume
+              mountPath: /mnt/gvmd-script
+            - name: gvmd-logging-conf-volume
+              mountPath: /etc/gvm/
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "500m"
+            limits:
+              memory: "4Gi"
+              cpu: "2"
+        - name: gsa
+          image: greenbone/gsa@sha256:9248a3688a81433502a609cf15bf01ed6cedff5ed7e9dd9d8d71e270a184ec23 # arm64
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /login
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 2
+            successThreshold: 1
+            failureThreshold: 3
+          volumeMounts:
+            - name: gvmd-socket-mount
+              mountPath: /run/gvmd
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "200m"
+              ephemeral-storage: "5Gi"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+              ephemeral-storage: "10Gi"
+#        - name: busybox # for troubleshooting
+#          image: busybox
+#          command: ["sleep", "infinity"]
+#          resources:
+#            requests:
+#              memory: "4Mi"
+#              cpu: "5m"
+#            limits:
+#              memory: "16Mi"
+#              cpu: "50m"
+      volumes:
+        - name: gvmd-data-mount
+          persistentVolumeClaim:
+            claimName: gvmd-data-vol
+        - name: scap-data-mount
+          persistentVolumeClaim:
+            claimName: scap-data-vol
+        - name: cert-data-mount
+          persistentVolumeClaim:
+            claimName: cert-data-vol
+        - name: data-objects-mount
+          persistentVolumeClaim:
+            claimName: data-objects-vol
+        - name: psql-data-mount
+          persistentVolumeClaim:
+            claimName: psql-data-mount-pg-gvm-0
+        - name: psql-socket-mount
+          persistentVolumeClaim:
+            claimName: psql-socket-mount-pg-gvm-0
+        - name: gvmd-socket-mount
+          persistentVolumeClaim:
+            claimName: gvmd-socket-vol
+        - name: ospd-openvas-socket-mount
+          persistentVolumeClaim:
+            claimName: ospd-openvas-socket-vol
+        - name: start-gvmd-script-volume
+          configMap:
+            name: start-gvmd-script
+            defaultMode: 0755  # Set the executable permission
+        - name: gvmd-logging-conf-volume
+          configMap:
+            name: gvmd-logging-conf
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ospd-openvas
+  namespace: gvm
+  annotations:
+    seccomp.security.alpha.kubernetes.io/pod: 'unconfined'
+    container.apparmor.security.beta.kubernetes.io/ospd-openvas: 'unconfined'
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: ospd-openvas
+  template:
+    metadata:
+      labels:
+        app: ospd-openvas
+    spec:
+      initContainers:
+        - name: gpg-data
+          image: greenbone/gpg-data
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: gpg-data-mount
+              mountPath: /mnt
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "200m"
+            limits:
+              memory: "512Mi"
+              cpu: "1"
+
+        - name: greenbone-feed-sync
+          image: greenbone/greenbone-feed-sync
+          command: ["sh", "-c"]
+          args:
+            - |
+              set -e # Exit immediately if a command exits with a non-zero status.
+
+              touch /var/lib/openvas/feed-update.lock
+              chown -R 1001:1001 /var/lib/openvas
+              chown -R 1001:1001 /var/lib/notus
+
+              # NASL data sync
+              echo "Starting nasl sync..."
+              if ! greenbone-feed-sync --type nasl -vv; then
+                echo "NASL data sync failed, exiting..."
+                exit 1
+              fi
+
+              # Notus data sync
+              echo "Starting notus sync..."
+              if ! greenbone-feed-sync --type notus -vv; then
+                echo "Notus data sync failed, exiting..."
+                exit 1
+              fi
+          volumeMounts:
+          - name: vt-data-mount-ospd
+            mountPath: /var/lib/openvas/plugins
+          - name: notus-data-mount
+            mountPath: /var/lib/notus
+
+      containers:
+        - name: ospd-openvas
+          image: greenbone/ospd-openvas@sha256:b477792a75f2a5b50136f777cf5918c1921eaf72bc43672a5bc719019cb73338 #arm64
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+                - NET_RAW
+          command:
+            - ospd-openvas
+            - "-f"
+            - "--config"
+            - "/etc/gvm/ospd-openvas.conf"
+            - "--mqtt-broker-address"
+            - "mqtt-broker.gvm.svc.cluster.local"
+            - "--mqtt-broker-port"
+            - "1883"
+            - "--notus-feed-dir"
+            - "/var/lib/notus/advisories"
+            - "-m"
+            - "666"
+          volumeMounts:
+            - name: gpg-data-mount
+              mountPath: /etc/openvas/gnupg
+            - name: vt-data-mount-ospd
+              mountPath: /var/lib/openvas/plugins
+            - name: notus-data-mount
+              mountPath: /var/lib/notus
+            - name: ospd-openvas-socket-mount
+              mountPath: /run/ospd
+            - name: redis-socket-mount
+              mountPath: /run/redis/
+            - name: ospd-openvas-config-volume
+              mountPath: /etc/gvm/
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "1"
+            limits:
+              memory: "2Gi"
+              cpu: "3"
+
+        - name: redis-server
+          image: greenbone/redis-server@sha256:d80fe73ac2d4c256f095e9da9f9480b4e7b1aff43d2360650f1f59676a02b3f7 # arm64
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: redis-socket-mount
+              mountPath: /run/redis/
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
+            limits:
+              memory: "1Gi"
+              cpu: "1"
+
+        - name: notus-scanner
+          image: greenbone/notus-scanner@sha256:b29cc50e42a3a323ba92574f7b12d3831d967272e01f877811f010b521a68ac4 # arm64
+          imagePullPolicy: IfNotPresent
+          command: ["/usr/local/bin/entrypoint"]
+          args: ["notus-scanner", "-f"]
+          volumeMounts:
+            - name: notus-data-mount
+              mountPath: /var/lib/notus
+            - name: gpg-data-mount
+              mountPath: /etc/openvas/gnupg
+          env:
+            - name: NOTUS_SCANNER_MQTT_BROKER_ADDRESS
+              value: mqtt-broker.gvm.svc.cluster.local
+            - name: NOTUS_SCANNER_MQTT_BROKER_PORT
+              value: "1883"
+            - name: NOTUS_SCANNER_PRODUCTS_DIRECTORY
+              value: /var/lib/notus/products
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "500m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+
+#        - name: busybox # for troubleshooting
+#          image: busybox
+#          command: ["sleep", "infinity"]
+#          resources:
+#            requests:
+#              memory: "4Mi"
+#              cpu: "5m"
+#            limits:
+#              memory: "16Mi"
+#              cpu: "50m"
+      volumes:
+        - name: vt-data-mount-ospd
+          persistentVolumeClaim:
+            claimName: vt-data-vol-ospd
+        - name: notus-data-mount
+          persistentVolumeClaim:
+            claimName: notus-data-vol
+        - name: gpg-data-mount
+          emptyDir: {}
+        - name: ospd-openvas-socket-mount
+          persistentVolumeClaim:
+            claimName: ospd-openvas-socket-vol
+        - name: redis-socket-mount
+          emptyDir: {}
+        - name: ospd-openvas-config-volume
+          configMap:
+            name: ospd-openvas-config
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ospd-openvas-config
+  namespace: gvm
+data:
+  ospd-openvas.conf: |
+    [OSPD - openvas]
+    ## General
+    pid_file = /run/ospd/ospd-openvas.pid
+    lock_file_dir = install-prefix/var/run/
+    stream_timeout = 10
+    max_scans = 1
+    min_free_mem_scan_queue = 1000
+    max_queued_scans = 0
+
+    # Log config
+    log_level = DEBUG
+    log_file = /var/log/gvm/ospd-openvas.log
+    #log_config = install-prefix/.config/ospd-logging.conf
+
+    ## Unix socket settings
+    socket_mode = 0o666
+    unix_socket = /run/ospd/ospd-openvas.sock
+
+    ## TLS socket settings and certificates.
+    #port = 9390
+    #bind_address = 0.0.0.0
+    #key_file = install-prefix/var/lib/gvm/private/CA/serverkey.pem
+    #cert_file = install-prefix/var/lib/gvm/CA/servercert.pem
+    #ca_file = install-prefix/var/lib/gvm/CA/cacert.pem
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mqtt-broker
+  namespace: gvm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mqtt-broker
+  template:
+    metadata:
+      labels:
+        app: mqtt-broker
+    spec:
+      containers:
+        - name: mqtt-broker
+          image: greenbone/mqtt-broker@sha256:3e8134538d2e7bce4d2c9950dc2f242f4b867e33f7c28b6697f8f36c32450ebf # arm64
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "200m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+#        - name: busybox # for troubleshooting
+#          image: busybox
+#          command: ["sleep", "infinity"]
+#          resources:
+#            requests:
+#              memory: "4Mi"
+#              cpu: "5m"
+#            limits:
+#              memory: "16Mi"
+#              cpu: "50m"
+---
+#apiVersion: batch/v1
+#kind: Job # this is a utility pod could convert to long running pod for shell access
+#metadata:
+#  name: gvm-tools
+#  namespace: gvm
+#spec:
+#  template:
+#    metadata:
+#      labels:
+#        app: gvm-tools
+#    spec:
+#      containers:
+#
+#      restartPolicy: Never
+#  backoffLimit: 0
+#          dependsOn:
+#            - condition:
+#                type: ServiceStarted
+#                status: "True"
+#              serviceName: gvmd
+#            - condition:
+#                type: ServiceStarted
+#                status: "True"
+#              serviceName: ospd-openvas
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mqtt-broker # this name is statically set in some places in greenbone so we can't change it easily
+  namespace: gvm
+spec:
+  selector:
+    app: mqtt-broker
+  ports:
+    - protocol: TCP
+      port: 1883
+      targetPort: 1883
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: broker # this name is statically set in some places in greenbone so we can't change it easily
+  namespace: gvm
+spec:
+  selector:
+    app: mqtt-broker
+  ports:
+    - protocol: TCP
+      port: 1883
+      targetPort: 1883
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gsa-service
+  namespace: gvm
+spec:
+  selector:
+    app: gvmd  # This selector should match the labels of the gsa pods in the gvmd deployment
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80  # Ensure this matches the containerPort exposed by the gsa pods
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gsa-ingress
+  namespace: gvm
+  annotations:
+    spec.ingressClassName: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+spec:
+  rules:
+  - host: example.durabledata.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: gsa-service
+            port:
+              number: 80
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: scap-data-vol
+  namespace: gvm
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cert-data-vol
+  namespace: gvm
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-objects-vol
+  namespace: gvm
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gvmd-data-vol
+  namespace: gvm
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: vt-data-vol-gvmd
+  namespace: gvm
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: vt-data-vol-ospd
+  namespace: gvm
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: notus-data-vol
+  namespace: gvm
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ospd-openvas-socket-vol
+  namespace: gvm
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: gvmd-socket-vol
+  namespace: gvm
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: start-gvmd-script
+  namespace: gvm
+data:
+  start-gvmd: |
+    #!/bin/sh
+    # Copyright (C) 2022 Greenbone AG
+    #
+    # SPDX-License-Identifier: GPL-3.0-or-later
+    #
+    # This program is free software: you can redistribute it and/or modify
+    # it under the terms of the GNU General Public License as published by
+    # the Free Software Foundation, either version 3 of the License, or
+    # (at your option) any later version.
+    #
+    # This program is distributed in the hope that it will be useful,
+    # but WITHOUT ANY WARRANTY; without even the implied warranty of
+    # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    # GNU General Public License for more details.
+    #
+    # You should have received a copy of the GNU General Public License
+    # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+    #!/bin/sh
+
+    [ -z "$USER" ] && USER="admin"
+    [ -z "$PASSWORD" ] && PASSWORD="admin"
+    [ -z "$GVMD_ARGS" ] && GVMD_ARGS="--listen-mode=666"
+    [ -z "$GVMD_USER" ] && GVMD_USER="gvmd"
+    [ -z "$PGRES_DATA"] && PGRES_DATA="/var/lib/postgresql"
+
+    if [ -n "$GVM_CERTS" ] && [ "$GVM_CERTS" = true ]; then
+      echo "Generating certs"
+      gvm-manage-certs -a
+    fi
+
+    # check for psql connection
+    FILE=$PGRES_DATA/started
+    until test -f "$FILE"; do
+      echo "waiting 1 second for ready postgres container"
+        sleep 1
+    done
+    until psql -U "$GVMD_USER" -d gvmd -c "SELECT 'connected' as connection"; do
+      echo "waiting 1 second to retry psql connection"
+      sleep 1
+    done
+
+    # migrate db if necessary
+    gvmd --migrate || true
+
+    gvmd --create-user=$USER --password=$PASSWORD || true
+
+    # set the feed import owner
+    uid=$(gvmd --get-users --verbose | grep $USER | awk '{print $2}')
+    gvmd --modify-setting 78eceaec-3385-11ea-b237-28d24461215b --value "$uid"
+
+    echo "starting gvmd"
+    gvmd $GVMD_ARGS ||
+      (cat /var/log/gvm/gvmd.log && exit 1)
+
+    tail -f /var/log/gvm/gvmd.log
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gvmd-logging-conf
+  namespace: gvm
+data:
+  pwpolicy.conf: |
+    # pwpolicy.conf                                      -*- coding: utf-8 -*-
+    #
+    # This is an example for a pattern file used to validate passwords.
+    # Passwords matching an entry in this file are considered weak and
+    # will be rejected.
+    #
+    # The file is line based with comment lines beginning on the *first*
+    # position with a '#' and followed by at least one white space.  Empty
+    # lines and lines with only white space are ignored.  The other lines
+    # may either be verbatim patterns and match as they are (trailing
+    # spaces are ignored) or Perl compatible regular expressions (pcre)
+    # indicated by a '/' in the first column and terminated by another '/'
+    # or end of line.  To reverse the meaning of a regular expression
+    # prefix it with an exclamation mark like this:
+    #
+    #   !/^.{6,}$/
+    #
+    # This will reject a passphrase with less than 6 characters.  All
+    # comparisons are case insensitive; utf-8 encoding must be used.  A
+    # few processing instructions are supported:
+    #
+    #   #+desc[:] A string describing the next pattern
+    #
+    # This is used to return meaningful error messages.  To end a group of
+    # pattern with the same description either a new "#+desc:" line may be
+    # used or the instruction:
+    #
+    #   #+nodesc
+    #
+    # To include a list of simple pattern use:
+    #
+    #   #+search[:] FILENAME
+    #
+    # Note that this is a simple linear search and stops at the first
+    # match.  Comments are not allowed in that file.  A line in the
+    # dictionary may not be longer than 255 characters.
+    #
+    # To perform checks on the username/password combination, you should
+    # use:
+    #
+    #   #+username
+    #
+    # Currently this checks whether the password matches or is included in
+    # the password. It may eventually be extended to further tests.
+
+    ############################
+    # This is an example file where all lines are explicitly prefixed with
+    # an additional "#" to comment out anything.
+    # On your own decision you may activiate policies and modify them.
+    # Be aware: By default any password is allowed.
+    ############################
+
+
+    ## Let's start with a simple test
+    ##+desc: Too short (at least 8 characters are required)
+    #!/^.{8,}$/
+    #
+    ## Check that the user name does not match the password.
+    ## (The desc string is not used here.)
+    ##+username
+    #
+    ##+desc: Only digits
+    #/^[[:digit:]]+$/
+    #
+    ##+desc: Not a mix of letters digits and control characters
+    #!/[[:alpha:]]+/
+    #!/[[:digit:]]+/
+    #!/[[:punct:]]+/
+    #
+    ##+desc: No mixed case
+    #!/(?-i)([[:lower:]]+.*[[:upper:]]+)|([[:upper:]]+.*[[:lower:]]+)/
+    #
+    ##+desc: Date string
+    ## A limited check for ISO date strings
+    #/^[012][0-9]{3}-?[012][0-9]-?[0123][0-9]$/
+    #
+    ## Reject the usual metavariables.
+    ##+desc: Meta variable
+    #foo
+    #bar
+    #baz
+    #
+    ##+desc: Common test password
+    #password
+    #passwort
+    #passphrase
+    #mantra
+    #test
+    #abc
+    #egal
+    #
+    ## Arbitrary strings
+    ##+nodesc
+    #12345678
+    #87654321
+    #qwerty
+    #qwertyuiop
+    #asdfghjkl
+    #zxcvbnm
+    #qwertzuiop
+    #yxcvbnm
+    #no-password
+    #no password
+    #
+    ##+desc: Test string used by RTTY hams
+    #the quick brown fox jumps over the lazy dogs back
+    #
+    ##+desc: German number plate
+    #/^[A-Z]{1,3}\s*-\s*[A-Z]{1,2}\s*[0-9]+$/
+    #
+    ##+desc: Dictionary word
+    ##+search: /usr/share/dict/words
+    ## Note that searching a large dictionary may take some time, it might
+    ## be better to use an offline password auditing tool instead.
+
+
+    # end of policy file
+  gvmd_log.conf: |
+    # Greenbone Vulnerability Manager logging configuration
+    #
+    # WARNING: Setting the level of any group (besides event*) to include debug
+    #          may reveal passwords in the logs.
+
+    [md   main]
+    prepend=%t %s %p
+    separator=:
+    prepend_time_format=%Y-%m-%d %Hh%M.%S %Z
+    file=/var/log/gvm/gvmd.log
+    level=127
+
+    [md manage]
+    prepend=%t %s %p
+    separator=:
+    prepend_time_format=%Y-%m-%d %Hh%M.%S %Z
+    file=/var/log/gvm/gvmd.log
+    level=127
+
+    [md    gmp]
+    prepend=%t %s %p
+    separator=:
+    prepend_time_format=%Y-%m-%d %Hh%M.%S %Z
+    file=/var/log/gvm/gvmd.log
+    level=127
+
+    [md  crypt]
+    prepend=%t %s %p
+    separator=:
+    prepend_time_format=%Y-%m-%d %Hh%M.%S %Z
+    file=/var/log/gvm/gvmd.log
+    level=127
+
+    [md  utils]
+    prepend=%t %s %p
+    separator=:
+    prepend_time_format=%Y-%m-%d %Hh%M.%S %Z
+    file=/var/log/gvm/gvmd.log
+    level=127
+
+    [libgvm base]
+    prepend=%t %s %p
+    separator=:
+    prepend_time_format=%Y-%m-%d %Hh%M.%S %Z
+    file=/var/log/gvm/gvmd.log
+    level=127
+
+    [libgvm gmp]
+    prepend=%t %s %p
+    separator=:
+    prepend_time_format=%Y-%m-%d %Hh%M.%S %Z
+    file=/var/log/gvm/gvmd.log
+    level=127
+
+    [libgvm osp]
+    prepend=%t %s %p
+    separator=:
+    prepend_time_format=%Y-%m-%d %Hh%M.%S %Z
+    file=/var/log/gvm/gvmd.log
+    level=127
+
+    [libgvm util]
+    prepend=%t %s %p
+    separator=:
+    prepend_time_format=%Y-%m-%d %Hh%M.%S %Z
+    file=/var/log/gvm/gvmd.log
+    level=127
+
+    [event syslog]
+    prepend=%t %s %p
+    separator=:
+    prepend_time_format=%Y-%m-%d %Hh%M.%S %Z
+    file=syslog
+    syslog_facility=daemon
+    level=128
+
+    [event snmp]
+    prepend=%t %s %p
+    separator=:
+    prepend_time_format=%Y-%m-%d %Hh%M.%S %Z
+    file=syslog
+    syslog_facility=local0
+    level=128
+
+    [*]
+    prepend=%t %s %p
+    separator=:
+    prepend_time_format=%Y-%m-%d %Hh%M.%S %Z
+    file=/var/log/gvm/gvmd.log
+    level=127
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: greenbone-feed-sync-gvmd
+  namespace: gvm
+spec:
+  schedule: "0 3 * * *"
+  startingDeadlineSeconds: 3600
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: greenbone-feed-sync
+            image: greenbone/greenbone-feed-sync
+            command: ["sh", "-c"]
+            args:
+              - |
+                set -e # Exit immediately if a command exits with a non-zero status.
+
+                # chown commands
+                chown 1001:1001 /var/lib/gvm/scap-data
+                chown 1001:1001 /var/lib/gvm/cert-data
+
+                # SCAP data sync
+                echo "Starting scap sync..."
+                if ! greenbone-feed-sync --type scap -vv; then
+                  echo "SCAP data sync failed, exiting..."
+                  exit 1
+                fi
+
+                # CERT data sync
+                echo "Starting cert sync..."
+                if ! greenbone-feed-sync --type cert; then
+                  echo "CERT data sync failed, exiting..."
+                  exit 1
+                fi
+
+                # gvmd-data sync
+                echo "Starting gvmd-data sync..."
+                if ! greenbone-feed-sync --type gvmd-data -vv; then
+                  echo "gvmd-data sync failed, exiting..."
+                  exit 1
+                fi
+
+                # report-formats sync
+                echo "Starting report-formats sync..."
+                if ! greenbone-feed-sync --type report-formats -vv; then
+                  echo "report-formats sync failed, exiting..."
+                  exit 1
+                fi
+            volumeMounts:
+            - name: gvmd-data-mount
+              mountPath: /var/lib/gvm
+            - name: scap-data-mount
+              mountPath: /var/lib/gvm/scap-data/
+            - name: cert-data-mount
+              mountPath: /var/lib/gvm/cert-data
+            - name: data-objects-mount
+              mountPath: /var/lib/gvm/data-objects/gvmd
+          volumes:
+            - name: gvmd-data-mount
+              persistentVolumeClaim:
+                claimName: gvmd-data-vol
+            - name: scap-data-mount
+              persistentVolumeClaim:
+                claimName: scap-data-vol
+            - name: cert-data-mount
+              persistentVolumeClaim:
+                  claimName: cert-data-vol
+            - name: data-objects-mount
+              persistentVolumeClaim:
+                claimName: data-objects-vol
+          restartPolicy: OnFailure
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: greenbone-feed-sync-ospd
+  namespace: gvm
+spec:
+  schedule: "0 3 * * *"
+  startingDeadlineSeconds: 3600
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: greenbone-feed-sync
+            image: greenbone/greenbone-feed-sync
+            command: ["sh", "-c"]
+            args:
+              - |
+                set -e # Exit immediately if a command exits with a non-zero status.
+
+                touch /var/lib/openvas/feed-update.lock
+                chown -R 1001:1001 /var/lib/openvas
+                chown -R 1001:1001 /var/lib/notus
+
+                # NASL data sync
+                echo "Starting nasl sync..."
+                if ! greenbone-feed-sync --type nasl -vv; then
+                  echo "NASL data sync failed, exiting..."
+                  exit 1
+                fi
+
+                # Notus data sync
+                echo "Starting notus sync..."
+                if ! greenbone-feed-sync --type notus -vv; then
+                  echo "Notus data sync failed, exiting..."
+                  exit 1
+                fi
+            volumeMounts:
+            - name: vt-data-mount-ospd
+              mountPath: /var/lib/openvas/plugins
+            - name: notus-data-mount
+              mountPath: /var/lib/notus
+          volumes:
+            - name: vt-data-mount-ospd
+              persistentVolumeClaim:
+                claimName: vt-data-vol-ospd
+            - name: notus-data-mount
+              persistentVolumeClaim:
+                claimName: notus-data-vol
+          restartPolicy: OnFailure
+---
