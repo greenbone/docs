@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = "Greenbone Community Documentation"
-copyright = "2021–2023, Greenbone AG"
+copyright = "2021–2024, Greenbone AG"
 author = "Greenbone AG"
 
 
@@ -79,27 +79,27 @@ html_theme_options = {
     "source_branch": "main",
     "source_directory": "src/",
     "light_css_variables": {
-        "color-content-foreground": "#4C4C4C",
-        "color-foreground-primary": "4C4C4C",
-        "color-foreground-secondary": "#7F7F7F",
+        "color-content-foreground": "#4D4D4D",
+        "color-foreground-primary": "4D4D4D",
+        "color-foreground-secondary": "#808080",
         "color-code-background": "#333333",
-        "color-code-foreground": "#E5E5E5",
+        "color-code-foreground": "#E6E6E6",
         "color-admonition-title--note": "#11AB51",
         "admonition-font-size": "0.9rem",
         "color-background-primary": "#FFFFFF",
-        "color-background-secondary": "#F3F3F3",
-        "color-sidebar-background": "#F3F3F3",
+        "color-background-secondary": "#F5F5F5",
+        "color-sidebar-background": "#F5F5F5",
     },
     "dark_css_variables": {
-        "color-content-foreground": "#F3F3F3",
-        "color-foreground-primary": "F3F3F3",
-        "color-foreground-secondary": "#E5E5E5",
+        "color-content-foreground": "#F5F5F5",
+        "color-foreground-primary": "F5F5F5",
+        "color-foreground-secondary": "#E6E6E6",
         "color-code-background": "#333333",
-        "color-code-foreground": "#E5E5E5",
+        "color-code-foreground": "#E6E6E6",
         "color-admonition-title--note": "#11AB51",
         "admonition-font-size": "0.9rem",
         "color-background-primary": "#171717",
-        "color-background-secondary": "#4C4C4C",
+        "color-background-secondary": "#4D4D4D",
         "color-sidebar-background": "#333333",
     },
     "footer_icons": [
@@ -117,8 +117,8 @@ html_theme_options = {
 }
 
 myst_html_meta = {
-    "description lang=en": "Greenbone Community Edition - Documentation",
-    "description lang=de": "Greenbone Community Edition - Dokumentation",
+    "description lang=en": "Greenbone Community Edition – Documentation",
+    "description lang=de": "Greenbone Community Edition – Dokumentation",
     "keywords": "OpenVAS, Greenbone, Community, Greenbone Community Edition, GVM, Container, Docker, Documentation",
     "property=og:locale": "en_US",
 }
