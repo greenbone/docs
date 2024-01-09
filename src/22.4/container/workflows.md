@@ -389,3 +389,48 @@ caption: Use the Google Mail services with SSL and authorization
 
 ```{include} /22.4/container/manual-feed-sync.md
 ```
+
+## Setting up SSL/TLS for GSA
+
+Enabling SSL/TLS for the the web interface ({term}`GSA`) requires generating a private key and public certificate, and adjusting the gsa container settings in the `docker-compose.yml` file.  
+
+As of September 2020, the maximum validity period for publicly trusted SSL/TLS certificates is 398 days. An expiration date of more than 397 days is not valid and may cause some browsers to block the connection. OpenSSL can be used to generate the private key and certificate:
+
+```{code-block} yaml
+openssl req -x509 -newkey rsa:4096 -keyout serverkey.pem -out servercert.pem -nodes -days 397
+```
+
+The user that executes the `docker compose` command to start the containers must have read access to the private key and certificate.  So, you must move them to an appropriate location such as the user's home directory or the `tmp` directory.
+
+```{code-block} yaml
+mkdir $HOME/.ssl && mv serverkey.pem servercert.pem $HOME/.ssl  
+```
+
+The {term}`GSA` configuration in the `docker-compose.yml` file must be modified to enable SSL/TLS. The changes include:
+
+1. Setting the environment variables to start GSA with SSL/TLS enabled.
+2. Copying the private key and certificate files from the host system into the GSA container when it is initialized
+3. Optionally, you can also change the web interface port to the standard SSL/TLS port 443 or enable remote access for GSA
+
+```diff
+---
+caption: Modify the gsa settings to enable SSL/TLS
+---
+gsa:
+  image: greenbone/gsa:stable
+  restart: on-failure
++ environment:
++   - GSAD_ARGS=--no-redirect
++   - GSAD_ARGS=--http-sts
++   - GSAD_ARGS=--gnutls-priorities=SECURE256:-VERS-TLS-ALL:+VERS-TLS1.2:+VERS-TLS1.3
+  ports:
+-   - 127.0.0.1:9293:80
++   - 127.0.0.1:443:443 # Makes GSA accessible locally on port 443
++   - 443:443 # Makes GSA accessible remotely on port 443
+  volumes:
++   - /home/<your-user>/.ssl/serverkey.pem:/var/lib/gvm/private/CA/serverkey.pem # Move the private key into the container
++   - /home/<your-user>/.ssl/servercert.pem:/var/lib/gvm/CA/servercert.pem # Move the certificate into the container
+    - gvmd_socket_vol:/run/gvmd
+  depends_on:
+    - gvmd
+```
