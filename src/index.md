@@ -37,6 +37,5 @@ troubleshooting
 glossary
 changelog
 feed-sync
-web-interface/index
 api
 ```
