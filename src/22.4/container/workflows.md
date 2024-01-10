@@ -389,3 +389,61 @@ caption: Use the Google Mail services with SSL and authorization
 
 ```{include} /22.4/container/manual-feed-sync.md
 ```
+
+## Setting up SSL/TLS for GSA
+
+Enabling SSL/TLS for the the web interface ({term}`GSA`) requires generating a private key and public certificate, and adjusting the `gsa` container settings in the `docker-compose.yml` file.  
+
+As of September 2020, the maximum validity period for publicly trusted SSL/TLS certificates is 398 days. An expiration date of more than 397 days is not valid and may cause some browsers to block the connection. OpenSSL can be used to generate the private key and certificate:
+
+```{code-block} yaml
+openssl req -x509 -newkey rsa:4096 -keyout serverkey.pem -out servercert.pem -nodes -days 397
+```
+
+The user that executes the `docker compose` command must have read access to the private key and certificate.  So, they must be placed in an appropriate location such as the user's home directory or the `tmp` directory.
+
+```{code-block} yaml
+mkdir $HOME/.ssl && mv serverkey.pem servercert.pem $HOME/.ssl  
+```
+
+Finally, the {term}`GSA` configuration in the `docker-compose.yml` file must be modified to enable SSL/TLS. The changes include:
+
+1. Setting the `GSAD_ARGS` environment variable to initialize SSL/TLS. In the example below, three arguments are set. A complete list of {term}`GSAD` arguments are in the gsad manpage (execute `gsad --help` from within the GSA container), and in the [GSAD documentation](https://github.com/greenbone/gsad/tree/main/doc) in its GitHub repository. The arguments used in this example are:
+    - `--no-redirect`: Allows HTTP and HTTPS connections to the web interface
+    - `--http-sts`: Enables HSTS (HTTP Strict Transport Security) for the GSAD web-server
+    - `--gnutls-priorities`: Disables insecure versions of TLS (1.0 and 1.1)  
+2. Copying the private key and certificate files from the host system into the GSA container upon initialization.
+3. Changing the web interface port to the standard SSL/TLS port 443 and optionally enabling remote access
+
+
+Sample `gsa` container settings to enable SSL/TLS:
+```diff
+gsa:
+  image: greenbone/gsa:stable
+  restart: on-failure
++ environment:
++   - GSAD_ARGS=--no-redirect --http-sts --gnutls-priorities=SECURE256:-VERS-TLS-ALL:+VERS-TLS1.2:+VERS-TLS1.3
+  ports:
+-   - 127.0.0.1:9293:80
+    # Make GSA accessible locally on port 443
++   - 127.0.0.1:443:443
+    # Make GSA accessible remotely on port 443
++   - 443:443
+  volumes:
+    # Move the private key into the container. Replace <username> with your own.
++   - /home/<username>/.ssl/serverkey.pem:/var/lib/gvm/private/CA/serverkey.pem
+    # Move the certificate into the container Replace <username> with your own.
++   - /home/<username>/.ssl/servercert.pem:/var/lib/gvm/CA/servercert.pem
+    - gvmd_socket_vol:/run/gvmd
+  depends_on:
+    - gvmd
+```
+
+After modifying the `docker-compose.yml` file, restart the containers to enable the changes.
+
+```{code-block} shell
+---
+caption: Restart the Greenbone Community Containers
+---
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition up -d
+```
