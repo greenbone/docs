@@ -8,6 +8,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 ## Latest
 
 ## 23.11.0
+* Add instructions to enable SSL/TLS
 * Add workflow page for source builds
 * Add documentation for updating source builds
 * Don't expose MQTT broker port in docker compose setup by default
