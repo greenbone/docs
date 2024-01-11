@@ -79,7 +79,7 @@ The available feed types are:
 
 * `all`: same as using the command without specifying a type
 * `nvt`: Fetches any newly available vulnerability tests
-* `gvmd-data`: Synchronizes GVM data feed  which includes [???]
+* `gvmd-data`: Synchronizes GVM data feed which includes port lists, scan configs and report formats
 * `scap`: Synchronizes SCAP data feed
 * `cert`: Synchronizes CERT data feed
 * `notus`: Fetch any newly available NOTUS vulnerability tests
