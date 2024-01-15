@@ -20,7 +20,12 @@ password, the following command can be used:
 ```{code-block}
 :caption: Creating an administrator user with provided password
 
-/usr/local/sbin/gvmd --create-user=admin --password=<password>
+/usr/local/sbin/gvmd --create-user=admin --password='<password>'
+```
+
+```{note}
+Please be aware if your password includes special characters like `$` it needs
+to be quoted in single quotes.
 ```
 
 If the output doesn't show
