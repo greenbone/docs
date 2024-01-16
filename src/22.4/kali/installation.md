@@ -1,4 +1,4 @@
-## Installing Greenbone Community Edition
+## Installing Greenbone Community Edition on Kali Linux
 
 ### Quick Start Install
 
