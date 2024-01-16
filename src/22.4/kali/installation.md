@@ -19,7 +19,7 @@ In this section includes a more detailed look at each step of the installation p
 
 The first step is to update the system's local package lists for repositories and PPAs (Personal Package Archives). Kali Linux is a "rolling" distribution which means that it continuously updates all of its software (the kernel, libraries, applications, and other system software) to the latest versions without requiring a complete OS reinstallation. Rolling releases typically offer the latest versions of software soon after they are released.
 
-Therefore, It's highly advised to also do a full package `upgrade` before installing `gvm` since Greenbone CE requires the newest version of PostgreSQL. If you are having trouble upgrading and configuring PostgreSQL during the installation process, see the [troubleshooting section](troubleshooting.md).
+Therefore, It's highly advised to also do a full package `upgrade` before installing `gvm` since Greenbone Community Edition requires the newest version of PostgreSQL. If you are having trouble upgrading and configuring PostgreSQL during the installation process, see the [troubleshooting section](troubleshooting.md).
 
 ```{warning} System upgrades may result in changes to the existing kernel, libraries, and software that could interfere with existing functionality. Before doing an upgrade you should make a complete backup of all critical files on your system including the contents of your PostgreSQL database.
 ```
