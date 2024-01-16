@@ -13,11 +13,7 @@ For those who want a quick start guide, here is an overview of the standard inst
 
 ### Detailed Installation Instructions
 
-<<<<<<< HEAD
 In this section includes a more detailed look at each step of the installation process.
-=======
-In this section we will take a more detailed look at each step of the installation process.
->>>>>>> 1f6d7651ca0859b0228f0b941b7299928e7338c7
 
 ### 1. Update Kali Linux
 
