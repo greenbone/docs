@@ -1,6 +1,6 @@
 ## Log And Configuration File Locations
 
-Here are the locations of the various Greenbone CE log and configuration files.
+Here are the locations of the various Greenbone Community Edition log and configuration files.
 
 ```{code-block}
 :caption: View all Greenbone CE log files
