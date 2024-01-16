@@ -6,7 +6,7 @@ For those who want a quick start guide, here is an overview of the standard inst
 
 > 1. Update Kali Linux with `sudo apt update`.
 > 2. Install Greenbone Community Edition with `sudo apt install gvm`.
-> 3. Configure Greenbone CE with `sudo gvm-setup` and note the provided *admin* password from the output
+> 3. Configure Greenbone Community Edition with `sudo gvm-setup` and note the provided *admin* password from the output
 > 4. Check the install status with `gvm-check-setup`.
 > 5. Visit [https://127.0.0.1:9392](https://127.0.0.1:9392) and log in using the credentials output in step 3.
 > 6. Verify the feed status before starting your first scan.
