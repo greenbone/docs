@@ -3,7 +3,7 @@
 Here are the locations of the various Greenbone Community Edition log and configuration files.
 
 ```{code-block}
-:caption: View all Greenbone CE log files
+:caption: View all Greenbone Community Edition log files
 ls /var/log/gvm
 ```
 
