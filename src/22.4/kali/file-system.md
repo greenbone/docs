@@ -13,6 +13,6 @@ ls /etc/openvas
 ```
 
 ```{code-block}
-:caption: View the other Greenbone CE configuration files
+:caption: View the other Greenbone Community Edition configuration files
 ls /etc/gvm
 ```
