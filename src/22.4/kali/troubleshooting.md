@@ -53,7 +53,7 @@ The output above shows two online clusters listening on ports `5432` and `5433`.
 Error: target cluster 16/main already exists
 ```
 
-To complete the upgrade the `16/main` cluster must first be stopped and deleted.
+To complete the upgrade, the `16/main` cluster must first be stopped and deleted.
 
 ```bash
 sudo pg_ctlcluster 16 main stop
