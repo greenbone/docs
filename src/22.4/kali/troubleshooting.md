@@ -307,4 +307,4 @@ sudo runuser -u _gvm -- gvmd --migrate
 
 ### ERROR: No postgresql version uses the port 5432.
 
-Greenbone CE requires a PostgreSQL connection on port 5432. [See instructions here](#2-configure-the-postgresql-port) to change the PostgreSQL port.
+Greenbone Community Edition requires a PostgreSQL connection on port 5432. [See instructions here](#2-configure-the-postgresql-port) to change the PostgreSQL port.
