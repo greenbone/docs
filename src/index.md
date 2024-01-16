@@ -32,6 +32,7 @@ Edition.
 background
 22.4/source-build/index
 22.4/container/index
+22.4/kali/index
 faq
 troubleshooting
 glossary
