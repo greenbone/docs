@@ -68,7 +68,7 @@ It seems like your GVM-22.5.0 installation is OK.
 
 #### Starting And Stopping Greenbone CE
 
-The following commands can be used to start and stop Greenbone CE and all its required services:
+The following commands can be used to start and stop Greenbone Community Edition and all its required services:
 
 ```{code-block}
 :caption: Start all Greenbone CE services
