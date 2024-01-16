@@ -44,7 +44,7 @@ Ver Cluster Port Status Owner    Data directory              Log file
 16  main    5433 online postgres /var/lib/postgresql/16/main /var/log/postgresql/postgresql-16-main.log
 ```
 
-Here we see two online clusters listening on ports `5432` and `5433`. Since the target cluster `16/main` already exists, we must temporarily delete it. Otherwise we will encounter an error `Error: target cluster 16/main already exists`. The existence of the `16/main` cluster does not necessarily mean that the old cluster has already been upgraded; it simply means that a cluster for that version is present.
+The output above shows two online clusters listening on ports `5432` and `5433`. Since the target cluster `16/main` already exists, it must be temporarily deleted to avoid the error `Error: target cluster 16/main already exists`. The existence of the `16/main` cluster does not necessarily mean that the old cluster has already been upgraded; it simply means that a cluster for that version is present.
 
 ```{code-block}
 :caption: Trying to upgrade to an existing cluster will fail.
@@ -53,14 +53,14 @@ Here we see two online clusters listening on ports `5432` and `5433`. Since the 
 Error: target cluster 16/main already exists
 ```
 
-To complete the upgrade we must first stop and delete the `16/main` cluster.
+To complete the upgrade the `16/main` cluster must first be stopped and deleted.
 
 ```bash
 sudo pg_ctlcluster 16 main stop
 sudo pg_dropcluster 16 main
 ```
 
-Now we can upgrade the old cluster to a new one. The `pg_upgradecluster` command migrates databases from the old cluster to the new cluster.
+Now upgrade the old cluster to a new one. The `pg_upgradecluster` command migrates databases from the old cluster to the new cluster.
 
 ```{code-block}
 :caption: The basic syntax of the pg_upgradecluster command.
@@ -85,7 +85,7 @@ And remove the PostgreSQL 15 packages
 sudo apt autoremove
 ```
 
-Now we are left with only the new PostgreSQL cluster.
+Now only the new PostgreSQL cluster exists.
 
 ```{code-block}
 :caption: Listing the existing PostgreSQL clusters

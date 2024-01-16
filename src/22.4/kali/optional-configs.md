@@ -1,6 +1,6 @@
 ## Optional Configurations
 
-The Greenbone CE Kali Linux installation relies on the sub-system components as the [source code installation](/22.4/source-build/index.md) and all configuration options are available. Here we will cover some common custom configurations.
+The Greenbone CE Kali Linux installation relies on the sub-system components as the [source code installation](/22.4/source-build/index.md) and all configuration options are available. Let's cover some common custom configurations.
 
 ### Configure Remote Access To The Web Interface
 
