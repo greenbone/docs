@@ -8,7 +8,7 @@ ls /var/log/gvm
 ```
 
 ```{code-block}
-:caption: View the OpenVAS configuration files
+:caption: View the OpenVAS Scanner configuration files
 ls /etc/openvas
 ```
 
