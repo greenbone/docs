@@ -30,7 +30,7 @@ sudo apt update && sudo apt upgrade
 
 ### 2. Install Greenbone Community Edition
 
-Greenbone CE and required dependencies can be installed with a single command:
+Greenbone Community Edition and required dependencies can be installed with a single command:
 
 ```bash
 sudo apt install gvm -y
