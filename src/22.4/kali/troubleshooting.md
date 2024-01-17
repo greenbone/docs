@@ -12,13 +12,13 @@ If you encounter an error regarding the PostgreSQL version when running `sudo gv
 ```{code-block}
 :caption: Error indicating the need to upgrade your PostgreSQL cluster
 ┌──(dev㉿kali)-[~]
-└─$ sudo gvm-setup       
+└─$ sudo gvm-setup
 
 [>] Starting PostgreSQL service
 [-] ERROR: The default PostgreSQL version (15) is not 16 that is required by libgvmd
 [-] ERROR: libgvmd needs PostgreSQL 16 to use the port 5432
 [-] ERROR: Use pg_upgradecluster to update your PostgreSQL cluster
-```   
+```
 
 To complete the Greenbone Community Edition setup you must:
 
@@ -34,12 +34,12 @@ To complete the Greenbone Community Edition setup you must:
 ```{warning} You should consider the contents of your existing PostgreSQL database and complete any backups of that data before you complete the following steps. It's also important to consider that upgrading Kali Linux packages could disrupt the functionality of your system.
 ```
 
-You can list all existing PostgreSQL clusters using the command `pg_lsclusters`.  
+You can list all existing PostgreSQL clusters using the command `pg_lsclusters`.
 
  ```{code-block}
  :caption: Listing the existing PostgreSQL clusters
 ┌──(dev㉿kali)-[~]
-└─$ pg_lsclusters      
+└─$ pg_lsclusters
 Ver Cluster Port Status Owner    Data directory              Log file
 15  main    5432 online postgres /var/lib/postgresql/15/main /var/log/postgresql/postgresql-15-main.log
 16  main    5433 online postgres /var/lib/postgresql/16/main /var/log/postgresql/postgresql-16-main.log
@@ -91,7 +91,7 @@ Now only the new PostgreSQL cluster exists.
 ```{code-block}
 :caption: Listing the existing PostgreSQL clusters
 ┌──(dev㉿kali)-[~]
-└─$ pg_lsclusters                   
+└─$ pg_lsclusters
 Ver Cluster Port Status Owner    Data directory              Log file
 16  main    5433 online postgres /var/lib/postgresql/16/main /var/log/postgresql/postgresql-16-main.log
 ```
@@ -108,7 +108,7 @@ sudo -u postgres psql -c 'SHOW config_file'
 ┌──(dev㉿kali)-[~]
 └─$ sudo -u postgres psql -c 'SHOW config_file'
 
-               config_file               
+               config_file
 -----------------------------------------
  /etc/postgresql/16/main/postgresql.conf
 (1 row)
@@ -157,7 +157,7 @@ You can find all available versions of `pg-gvm` using the `apt-cache search` com
 ```{code-block}
 :caption: Searching the Linux package repository for all versions of pg-gvm
 ┌──(dev㉿kali)-[~]
-└─$ apt-cache search pg-gvm              
+└─$ apt-cache search pg-gvm
 postgresql-16-pg-gvm - PostgreSQL extension for ical object manipulation
 ```
 
@@ -210,7 +210,7 @@ In order to complete the database cluster migration, you may also need to update
 ```bash
 sudo apt install pgcrypto
 
-```  
+```
 
 ### 6. Complete The Greenbone Community Edition Setup
 
