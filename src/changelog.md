@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
 ## Latest
+* Add instructions for Kali Linux installation
 * Add instructions to enable SSL/TLS
 * Quote passwords when creating an admin user via `gvmd`
 
