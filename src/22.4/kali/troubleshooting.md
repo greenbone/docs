@@ -287,7 +287,7 @@ tail -20 /var/log/gvm/ospd-openvas.log
 You can find all the Greenbone Community Edition log files in the `/var/log/gvm` directory.
 ```
 
-### ERROR: The client certificate file of GVM is not valid
+### ERROR: The client certificate file of gsad is not valid
 
 If the required SSL/TLS certificates failed to generate during the standard setup process, or if the existing certificates are not valid any longer, you must generate the necessary SSL/TLS certificate files. The script `gvm-manage-certs` is used for managing the certificates required by Greenbone Community Edition.
 
