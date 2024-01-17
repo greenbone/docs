@@ -86,6 +86,6 @@ Once the installation is complete you can log into the {term}`GSA` web interface
 
 ### 6. Verify The Feed Status
 
-Before starting the first scan, Greenbone needs to parse the vulnerability feeds and store them into the `gvmd` PostgreSQL database. This process is initialized during the setup stage, but typically takes anywhere from a few minutes to several hours to complete, depending on your system resources.
+Before starting the first scan, Greenbone needs to parse the vulnerability feeds and store them into the `gvmd` PostgreSQL database, otherwise, it will not be able to initialize or complete scans without errors. This process is initialized during the setup stage, but typically takes anywhere from a few minutes to several hours to complete, depending on your system resources.
 
 The feed status can be checked by going to the `Feed Status` page from the `Configuration` section in the top menu bar.
