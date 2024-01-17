@@ -66,7 +66,7 @@ If your installation has been successfully configured, you will see the followin
 It seems like your GVM-22.5.0 installation is OK.
 ```
 
-#### Starting And Stopping Greenbone CE
+#### Starting And Stopping Greenbone Community Edition
 
 The following commands can be used to start and stop Greenbone Community Edition and all its required services:
 
