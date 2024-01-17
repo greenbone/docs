@@ -9,6 +9,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Add instructions for Kali Linux installation
 * Add instructions to enable SSL/TLS
 * Quote passwords when creating an admin user via `gvmd`
+* Add a disclaimer that Greenbone isn't involved in packaging for Kali Linux
 
 ## 23.11.0
 * Add workflow page for source builds
