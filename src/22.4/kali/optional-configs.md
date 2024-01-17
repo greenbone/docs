@@ -4,12 +4,8 @@ The Greenbone CE Kali Linux installation relies on the sub-system components as 
 
 ### Configure Remote Access To The Web Interface
 
-By default Greenbone CE is installed with only `localhost` access to the {term}`GSA` web interface. This means Greenbone CE can only be accessed via the IP address `127.0.0.1`. To enable remote access to the web interface, the {term}`gsad` systemd service file must be modified.
+By default Greenbone Community Edition is installed with only `localhost` access to the {term}`GSA` web interface. This means Greenbone Community Edition can only be accessed via the IP address `127.0.0.1`. To enable remote access to the web interface, the {term}`gsad` systemd service file must be modified.
 
-```{code-block}
-:caption: Find the location of the gsad.sevice file
-sudo find / -name gsad.service -type f
-```  
 
 Edit the contents of the `gsad.service` systemd service file:
 
@@ -30,6 +26,6 @@ Change the value of the `--listen` argument to `0.0.0.0` and optionally change t
 The password policy configuration file defines the rules for user passwords such as minimum length, complexity, and expiration period, ensuring that all user passwords adhere to the desired security standards.
 
 ```{code-block}
-:caption: Edit the Greenbone CE password policy configuration
+:caption: Edit the Greenbone Community Edition password policy configuration
 nano /etc/gvm/pwpolicy.conf
 ```

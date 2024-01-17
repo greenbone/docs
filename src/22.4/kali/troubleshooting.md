@@ -6,7 +6,6 @@ Here are some common issues encountered during installation and steps to fix the
 
 If you encounter an error regarding the PostgreSQL version when running `sudo gvm-setup`, you must upgrade the installed version of PostgreSQL to the newest version required by the Kali native `gvm` package. In the example below shows the upgrade from PostgreSQL version 15 to version 16, but these steps will work to upgrade between any versions.
 
-[MORE: Can this be avoided by doing `sudo apt upgrade` before installation?]
 
 ```{code-block}
 :caption: Error indicating the need to upgrade your PostgreSQL cluster
@@ -19,14 +18,14 @@ If you encounter an error regarding the PostgreSQL version when running `sudo gv
 [-] ERROR: Use pg_upgradecluster to update your PostgreSQL cluster
 ```   
 
-To complete the Greenbone CE setup you must:
+To complete the Greenbone Community Edition setup you must:
 
 1. Migrate PostgreSQL settings and data to a new upgraded cluster
 2. Configure the new cluster to use port `5432`
 3. Install the newest pg-gvm extension
 4. Fix the gmvd database COLLATION mismatch
 5. Resolve Any Outstanding Dependencies
-6. Complete the Greenbone CE Setup
+6. Complete the Greenbone Community Edition Setup
 
 ### 1. Upgrade PostgreSQL Cluster
 
@@ -96,7 +95,7 @@ Ver Cluster Port Status Owner    Data directory              Log file
 ```
 ### 2. Configure The PostgreSQL Port
 
-Typically, the `pg_upgradecluster` will also configure the new version of PostgreSQL to use the standard port `5432`, which is required by Greenbone CE. However, if the port is not automatically changed, you must change it manually by editing the `postgresql.conf` configuration file and restarting the PostgreSQL systemd service. On Kali the `postgresql.conf` configuration file is located in the `/etc/postgresql/<version>/main` directory, but to be sure you can issue a command to locate the configuration file.
+Typically, the `pg_upgradecluster` will also configure the new version of PostgreSQL to use the standard port `5432`, which is required by Greenbone Community Edition. However, if the port is not automatically changed, you must change it manually by editing the `postgresql.conf` configuration file and restarting the PostgreSQL systemd service. On Kali the `postgresql.conf` configuration file is located in the `/etc/postgresql/<version>/main` directory, but to be sure you can issue a command to locate the configuration file.
 
 ```bash
 sudo -u postgres psql -c 'SHOW config_file'
@@ -211,7 +210,7 @@ sudo apt install pgcrypto
 
 ```  
 
-### 6. Complete The Greenbone CE Setup
+### 6. Complete The Greenbone Community Edition Setup
 
 You can now run the `gvm-setup` command to complete the setup.
 
@@ -235,7 +234,7 @@ During setup it's important to note and record the default password created for 
 ## Other Common Setup Errors
 
 ```{note}
-Here are some other common setup errors you may encounter when installing Greenbone CE from the native Kali Linux package. In most cases, hints are available in the `gvm-setup` and `gvm-check-setup` command output.
+Here are some other common setup errors you may encounter when installing Greenbone Community Edition from the native Kali Linux package. In most cases, hints are available in the `gvm-setup` and `gvm-check-setup` command output.
 ```
 
 ### ERROR: extention "pg-gvm" is not available
@@ -247,12 +246,12 @@ Here are some other common setup errors you may encounter when installing Greenb
 If you encounter the error **ERROR: No users found.** when running `sudo gvm-check-setup`, you will need to create at least one an admin user. Replace `<your-password>` with your own password.
 
 ```bash
-sudo runuser -u _gvm -- gvmd --create-user=admin --password=<your-password>
+sudo runuser -u _gvm -- gvmd --create-user=admin --password='<your-password>'
 ```
 
 ### ERROR: The Postgresql DB does not exist
 
-If the PostgreSQL database was not created during initial setup of Greenbone CE, or not transferred when migrating to a new cluster, you must manually create the database with the following command:
+If the PostgreSQL database was not created during initial setup of Greenbone Community Edition, or not transferred when migrating to a new cluster, you must manually create the database with the following command:
 
 ```
 sudo runuser -u postgres -- /usr/share/gvm/create-postgresql-database
@@ -260,7 +259,7 @@ sudo runuser -u postgres -- /usr/share/gvm/create-postgresql-database
 
 ### ERROR: Required systemd service did not start
 
-If the ospd-openvas service or any other required Greenbone `systemd` services did not start during the setup or initialization, you can attempt to manually start the process.  Here is an example for troubleshooting the `ospd-openvas` systemd service, but you can use this process for other services as well:
+If the ospd-openvas service or any other required Greenbone `systemd` services did not start during the setup or initialization, you can attempt to manually start the process. Here is an example for troubleshooting the `ospd-openvas` systemd service, but you can use this process for other services as well:
 
 ```{code-block}
 :caption: Try to manually start the service
@@ -285,12 +284,12 @@ tail -20 /var/log/gvm/ospd-openvas.log
 ```
 
 ```{note}
-You can find all the Greenbone CE log files in the `/var/log/gvm` directory.
+You can find all the Greenbone Community Edition log files in the `/var/log/gvm` directory.
 ```
 
 ### ERROR: The client certificate file of GVM is not valid
 
-If the required SSL/TLS certificates failed to generate during the standard setup process, or if the existing certificates are not valid any longer, you must generate the necessary SSL/TLS certificate files. The script `gvm-manage-certs` is used for managing the certificates required by Greenbone CE.
+If the required SSL/TLS certificates failed to generate during the standard setup process, or if the existing certificates are not valid any longer, you must generate the necessary SSL/TLS certificate files. The script `gvm-manage-certs` is used for managing the certificates required by Greenbone Community Edition.
 
 ```{code-block}
 :caption: Generate all required SSL/TLS certificates
@@ -299,7 +298,7 @@ sudo runuser -u _gvm -- gvm-manage-certs -a -f
 
 ### ERROR: Database is wrong version. You have installed a new gvmd version
 
-When upgrading Greenbone CE, you may need to also update the `gvmd` PostgreSQL database schema. You can update the `gvmd` database to the with the following command:
+When upgrading Greenbone Community Edition, you may need to also update the `gvmd` PostgreSQL database schema. You can update the `gvmd` database to the with the following command:
 
 ```bash
 sudo runuser -u _gvm -- gvmd --migrate
