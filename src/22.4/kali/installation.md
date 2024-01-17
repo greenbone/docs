@@ -45,7 +45,7 @@ sudo apt install openvas -y
 After installing the required packages, a configuration script must be run to complete the installation. To run the automatic configuration execute the command:
 
 ```{note}
-During `gvm-setup` you must record the default password created for the GVM admin user.
+During `gvm-setup` you must record the default password created for the admin user.
 ```
 
 ```bash
