@@ -260,6 +260,6 @@ export NOTUS_VERSION=22.6.0
 ```{toctree}
 :hidden: true
 
-troubleshooting
 workflows
+troubleshooting
 ```
