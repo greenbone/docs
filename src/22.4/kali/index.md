@@ -12,8 +12,11 @@
 ```{include} /22.4/kali/optional-configs.md
 ```
 
-```{include} /22.4/kali/troubleshooting.md
+```{include} /22.4/kali/file-system.md
 ```
 
-```{include} /22.4/kali/file-system.md
+```{toctree}
+:hidden: true
+
+troubleshooting
 ```

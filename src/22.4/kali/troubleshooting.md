@@ -1,3 +1,5 @@
+# Troubleshooting
+
 ## Troubleshooting A Kali Linux Installation
 
 Here are some common issues encountered during installation and steps to fix them.
