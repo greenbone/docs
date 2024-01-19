@@ -4,7 +4,7 @@
 
 Here are some common issues encountered during installation and steps to fix them.
 
-### Upgrading The Default PostgreSQL Version
+## Upgrading The Default PostgreSQL Version
 
 If you encounter an error regarding the PostgreSQL version when running `sudo gvm-setup`, you must upgrade the installed version of PostgreSQL to the newest version required by the Kali native `gvm` package. In the example below shows the upgrade from PostgreSQL version 15 to version 16, but these steps will work to upgrade between any versions.
 
