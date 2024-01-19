@@ -6,6 +6,7 @@ Greenbone Community Edition.
 - For source build specific troubleshooting, see
 [Troubleshooting the source build](./22.4/source-build/troubleshooting.md).
 - For community container specific troubleshooting see [Troubleshooting the community containers](./22.4/container/troubleshooting.md).
+- For Kali Linux specific troubleshooting see [Troubleshooting a Kali Linux installation](./22.4/kali/troubleshooting.md).
 
 ## My scan does not show any results
 
