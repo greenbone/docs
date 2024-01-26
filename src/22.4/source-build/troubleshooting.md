@@ -9,26 +9,6 @@ Community Edition via a Linux Distribution (for example Kali Linux), the
 commands may be slightly different and need to be adjusted.
 ```
 
-### Facing an issue with the Greenbone Community Edition
-
-If you have an issue with the Greenbone Community Edition because something
-doesn't work as expected and/or you are getting an error in the web UI it is
-necessary to check the log files to get some technical hints about the issue.
-
-If something doesn't work during the scan the {file}`/var/log/gvm/ospd-openvas.log`
-and {file}`/var/log/gvm/openvas.log` files should be checked for errors.
-
-Otherwise the {file}`/var/log/gvm/gvmd.log` file needs to be inspected.
-
-Afterwards using the collected error messages in the [search of our Community Forum](https://forum.greenbone.net/search)
-may bring up possible results to resolve the issue already.
-
-If no fitting results can be found feel free to create a new topic at our
-[Community Forum](https://forum.greenbone.net/). A post in the forum should
-always contain the installation method and the version of the Greenbone
-Community Edition (build from source via this guide, official community
-containers, Kali packages, ...) and the found error message.
-
 ### Failed to find port_list ‘33d0cd82-57c6-11e1-8ed1-406186ea4fc5‘
 
 This error can occur when tying to use the Task Wizard to create a quick scan
