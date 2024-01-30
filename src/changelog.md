@@ -12,6 +12,14 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Add a disclaimer that Greenbone isn't involved in packaging for Kali Linux
 * Move `Facing an issue with the Greenbone Community Edition` section from
   source build troubleshooting to generic troubleshooting page
+* Update gvm-libs to 22.8.0
+* Update gvmd to 23.2.0
+* Update pg-gvm to 22.6.4
+* Update gsad to 22.9.0
+* Update GSA to 23.0.0
+* Update OpenVAS Scanner to 22.7.9
+* Update notus-scanner to 22.6.2
+* Update ospd-openvas to 22.6.2
 
 ## 23.11.0
 * Add workflow page for source builds
