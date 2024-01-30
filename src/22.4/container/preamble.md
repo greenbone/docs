@@ -2,7 +2,7 @@ Running the Greenbone Community Edition from containers requires knowledge about
 
 * Using a terminal
 * Using [docker]
-* Running services via [docker-compose]
+* Running services via [docker compose][docker-compose]
 
 Additionally, a basic knowledge about the {doc}`architecture </architecture>`
 of the Greenbone Community Edition is required to understand the setup.
