@@ -2,6 +2,64 @@
 
 This page contains hints for troubleshooting Greenbone Community Container specific issues.
 
+### Facing an issue with the Greenbone Community Containers
+
+If you have an issue with the Greenbone Community Containers because something
+doesn't work as expected and/or you are getting an error in the web UI it is
+necessary to check the log output to get some technical hints about the issue.
+
+To inspect the logs you can use the [`docker compose logs`](https://docs.docker.com/engine/reference/commandline/compose_logs/)
+command. For displaying the complete log output you can run
+
+```{code-block} shell
+---
+caption: Display all logs
+---
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+    logs
+```
+
+To follow the current log output to display log messages as they occur use the
+following command
+
+```{code-block} shell
+---
+caption: Follow current log output
+---
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+    logs -f
+```
+
+It's also possible to just display the logs of a specific container by using
+`docker compose logs <service>` where service is the [name of the container
+within the docker compose file](./index.md#description).
+
+```{code-block} shell
+---
+caption: Follow the log messages of the gvmd container only
+---
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+    logs -f gvmd
+```
+
+Additionally it is possible to bypass the `docker compose log` command and
+access the log files directly. For example run the following command to display
+the content of the OpenVAS scanner log file via {command}`cat`
+
+```{code-block} shell
+---
+caption: Print messages from /var/log/gvm/openvas.log
+---
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+    exec ospd-openvas cat /var/log/gvm/openvas.log
+```
+
+Afterwards using the collected error messages in the [search of our Community Forum](https://forum.greenbone.net/search)
+may bring up possible results to resolve the issue already.
+
+If no fitting results can be found feel free to create a new topic the
+[Community Containers category in our Community Forum](https://forum.greenbone.net/c/community-containers/40).
+
 ### VTs are up-to-date but not visible on the web interface
 
 It may be possible, especially for the initial synchronization, that the scanner
