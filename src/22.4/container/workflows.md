@@ -409,7 +409,7 @@ mkdir $HOME/.ssl && mv serverkey.pem servercert.pem $HOME/.ssl
 Finally, the {term}`GSA` configuration in the `docker-compose.yml` file must be modified to enable SSL/TLS. The changes include:
 
 1. Setting the `GSAD_ARGS` environment variable to initialize SSL/TLS. In the example below, three arguments are set. A complete list of {term}`GSAD` arguments are in the gsad manpage (execute `gsad --help` from within the GSA container), and in the [GSAD documentation](https://github.com/greenbone/gsad/tree/main/doc) in its GitHub repository. The arguments used in this example are:
-    - `--no-redirect`: Allows HTTP and HTTPS connections to the web interface
+    - `--no-redirect`: Don't redirect HTTP to HTTPS and only allow HTTPS connections to the web interface
     - `--http-sts`: Enables HSTS (HTTP Strict Transport Security) for the GSAD web-server
     - `--gnutls-priorities`: Disables insecure versions of TLS (1.0 and 1.1)  
 2. Copying the private key and certificate files from the host system into the GSA container upon initialization.
