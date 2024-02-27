@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "greenbone-docs"
 version = "1.0.0"
-description = "Documentation for the Community around the Greenbone Source Edition"
+description = "Documentation for the Greenbone Community Edition"
 authors = ["Greenbone Networks <info@greenbone.net>"]
 
 [tool.poetry.dependencies]
