@@ -11,6 +11,8 @@ For a manual build locally Python >= 3.9 and [poetry] is required.
 
 ## Install Poetry
 
+The project requires poetry >= 1.8.0.
+
 To install poetry it is recommended to use [pipx]. pipx can be installed with
 the following command on Debian based systems:
 
@@ -31,7 +33,7 @@ and up to date. To install for the first time or to update the project
 dependencies via [poetry] run:
 
 ```sh
-poetry install --no-root
+poetry install
 ```
 
 You should run this command once a week to install the latest dependencies.

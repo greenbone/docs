@@ -3,6 +3,7 @@ name = "greenbone-docs"
 version = "1.0.0"
 description = "Documentation for the Greenbone Community Edition"
 authors = ["Greenbone Networks <info@greenbone.net>"]
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.9"
