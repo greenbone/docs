@@ -85,7 +85,7 @@ data is loaded. For port lists, these messages are similar to:
 ```{code-block} none
 :caption: gvmd port list loaded log message
 
- Port list All IANA assigned TCP (33d0cd82-57c6-11e1-8ed1-406186ea4fc5) has been created by admin
+Port list All IANA assigned TCP (33d0cd82-57c6-11e1-8ed1-406186ea4fc5) has been created by admin
 ```
 
 For report formats:
