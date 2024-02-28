@@ -24,8 +24,8 @@ caption: Checking if port list is already synced
 find /var/lib/gvm/data-objects/ -name "*33d0cd82-57c6-11e1-8ed1-406186ea4fc5*.xml"
 ```
 
-If the {command}`find` command does not return an XML file for your release, the
-data objects have not been synced from the {term}`feed` (yet).
+If the {command}`find` command does not return an XML file, the data objects
+have not been synced from the {term}`feed` (yet).
 
 ```{code-block} shell
 ---
@@ -42,6 +42,15 @@ the port lists from the disk.
 caption: Syncing data objects processed by gvmd
 ---
 sudo -u gvm gvmd --rebuild-gvmd-data=all
+```
+
+When {command}`gvmd` has loaded the port list successfully the {file}`/var/log/gvm/gvmd.log`
+file shows the following output
+
+```{code-block} none
+:caption: gvmd port list loaded log message
+
+Port list All IANA assigned TCP (33d0cd82-57c6-11e1-8ed1-406186ea4fc5) has been created by admin
 ```
 
 ### Failed to find scan configuration
