@@ -1,4 +1,4 @@
-# Building 22.4 from Source
+# Building from Source
 
 ```{include} /22.4/source-build/introduction.md
 ```

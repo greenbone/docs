@@ -1,4 +1,4 @@
-# Greenbone Community Containers 22.4
+# Greenbone Community Containers
 
 ```{include} /22.4/container/preamble.md
 ```
