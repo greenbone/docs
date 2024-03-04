@@ -3,7 +3,7 @@
 When the OpenVAS project was launched, it only consisted of an engine for scanning
 vulnerabilities.
 
-Shortly after that, the company Greenbone was founded to achieve
+Shortly after that, the company [Greenbone] was founded to achieve
 professional support for vulnerability scanning. Greenbone started to lead the
 development of OpenVAS, added several software components and turned OpenVAS
 into a vulnerability management solution while keeping the values of free
@@ -12,12 +12,12 @@ software. This vulnerability management solution was later named
 brand changes. Therefore, after the release of the OpenVAS 9
 framework, the following releases got named GVM.
 
-With this in mind, Greenbone OpenVAS could mean
+With this in mind, OpenVAS could mean
 
 - a vulnerability scanner (OpenVAS Scanner),
 - a name for a software framework of several components (GVM),
-- a software project led by Greenbone (Greenbone Source Edition),
-- a source code release of a vulnerability management solution (OpenVAS 9, GVM 20.08), or
+- a software project led by the company [Greenbone] (Greenbone Source Edition),
+- a source code release of a vulnerability management solution (OpenVAS 9, GVM 20.08, ...), or
 - a community of users and developers (Greenbone Community)
 
 depending on the context.

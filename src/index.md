@@ -8,8 +8,8 @@
 
 # Greenbone Community Edition – Documentation
 
-The Greenbone Community Edition covers the actual source code of the [Greenbone
-OpenVAS](https://www.openvas.org/) stack.
+The Greenbone Community Edition covers the actual source code of the Greenbone
+Vulnerability Management software stack, which is also known as [OpenVAS](./history.md).
 
 It is available as regularly updated source code snapshots/release archives
 confirmed to work and as source code checkouts directly from the git source code
@@ -20,8 +20,7 @@ issues and incomplete functionality may appear.
 The sources of the Greenbone Community Edition are adopted by third parties, for
 example Linux distributions like Kali, Alpine, etc.
 
-This documentation covers the stable (22.4) version of the Greenbone Community
-Edition.
+This documentation covers the stable version of the Greenbone Community Edition.
 
 ```{image} _static/greenbone-banner.png
 ```

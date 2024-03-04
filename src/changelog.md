@@ -14,6 +14,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
   source build troubleshooting to generic troubleshooting page
 * Add section about getting the log messages for the Community Containers
 * Extend history about current release changes and semver usage
+* Improved troubleshooting for *Failed to find port_list*
 * Update gvm-libs to 22.8.0
 * Update gvmd to 23.2.0
 * Update pg-gvm to 22.6.4
