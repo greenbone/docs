@@ -13,6 +13,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Move `Facing an issue with the Greenbone Community Edition` section from
   source build troubleshooting to generic troubleshooting page
 * Add section about getting the log messages for the Community Containers
+* Extend history about current release changes and semver usage
 * Improved troubleshooting for *Failed to find port_list*
 * Update gvm-libs to 22.8.0
 * Update gvmd to 23.2.0

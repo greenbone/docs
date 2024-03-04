@@ -113,12 +113,19 @@ This concept essentially replaces the old stateful, permanent and proprietary
 OTP (OpenVAS Transfer Protocol) by the new stateless, request-response
 XML-based and generic {term}`OSP (Open Scanner Protocol)<OSP>`.
 
-With GVM 20.08, the release versioning changed to [Calendar Versioning](https://calver.org/).
+With [GVM 20.08](https://forum.greenbone.net/t/gvm-20-08-end-of-life-initial-release-2020-08-12/6312),
+the release versioning changed to [Calendar Versioning](https://calver.org/).
 Most important change in this release was to ship and sync the gvmd object data
 consisting of the report formats, port lists, policies and scan configs with the
 feed.
 
-Besides removing legacy features like GMP scanners, the 21.4 release got support
-for CVSSv3/CVSSv3.1.
+Besides removing legacy features like GMP scanners, the [21.4 release](https://forum.greenbone.net/t/gvm-21-04-end-of-life-initial-release-2021-04-16/8942)
+got support for CVSSv3.0/CVSSv3.1.
 
-The 22.4 release added the Notus Scanner.
+The [Greenbone Community Edition 22.4](https://forum.greenbone.net/t/greenbone-community-edition-22-4-stable-initial-release-2022-07-25/12638)
+release added the Notus Scanner and removed some legacy features like support
+for generic OSP scanners.
+
+During 2023 the decision was taken to allow more flexible development of the
+components and to release them independently of each other. To allow to express
+software compatibility most components switched to [semantic versioning](https://semver.org/).
