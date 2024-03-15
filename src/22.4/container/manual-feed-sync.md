@@ -90,5 +90,5 @@ policies, port lists and report formats.
 caption: Downloading data objects processed by gvmd
 ---
 docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
-    run --rm gvmd greenbone-feed-sync --type gvmd-data
+    run --rm greenbone-feed-sync greenbone-feed-sync --type gvmd-data
 ```
