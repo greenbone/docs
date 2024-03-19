@@ -1,6 +1,9 @@
 
 # Feed Sync Guide
-This documentation provides instructions on updating the various feeds for your specific Greenbone version and installation method, as well as information about the legacy feed sync scripts, and some tips for troubleshooting a failed feed sync. Please note that different methods are required for completing a feed sync with the official Greenbone Docker containers. Feed sync information for Docker containers can be [found here](https://greenbone.github.io/docs/latest/22.4/container/workflows.html#performing-a-feed-synchronization).
+This documentation provides instructions on updating the various feeds for your specific Greenbone version and installation method, as well as information about the legacy feed sync scripts, and some tips for troubleshooting a failed feed sync. Please note that different methods are required for completing a feed sync with the official Greenbone Docker containers.
+
+```{warning} Feed sync information for Docker containers can be [found here](https://greenbone.github.io/docs/latest/22.4/container/workflows.html#performing-a-feed-synchronization).
+```
 
 If you are unable to achieve feed synchronization after reading this guide, or require further assistance with the feed sync process, please consult the [Greenbone community forums](https://forum.greenbone.net/) or contact our support team for guidance.
 
@@ -62,7 +65,8 @@ python3 -m pip install greenbone-feed-sync
 
 ## Updating the Greenbone Feeds
 ### Updating Feeds For Greenbone Docker Containers
-Please note that different methods are required for completing a feed sync when using the official **Greenbone Docker containers**, which can be [found here](https://greenbone.github.io/docs/latest/22.4/container/workflows.html#performing-a-feed-synchronization).
+```{warning} Please note that different methods are required for completing a feed sync when using the official **Greenbone Docker containers**, which can be [found here](https://greenbone.github.io/docs/latest/22.4/container/workflows.html#performing-a-feed-synchronization).
+```
 
 ### Determining The Script Version In Use
 If you are unsure of which version of the feed sync script is active, you should check before you execute the `greenbone-feed-sync` command.One way to check is by using the `--version` argument. The legacy bash scripts will output the GVMD version, while the new Python scripts will output the version of the `greenbone-feed-sync` package itself. Otherwise, the script header can help distinguish which file is in use with certainty.
@@ -175,7 +179,8 @@ After the sync operation completes, you can verify the successful update of the 
 ## Automating Feed Sync Updates
 The Greenbone feeds are not automatically synced for the Greenbone Community source code installations, Greenbone Community Docker containers, or Greenbone native Kali Linux installation. The suggested method for automating the Greenbone feed sync is to create a `crontab` file to schedule the feed sync command execution. For standard source-code installations, the `crontab` should be run under the `sudo` or `root` user context.
 
-Please note that different methods are required for completing a feed sync when using the official **Greenbone Docker containers**, which can be [found here](https://greenbone.github.io/docs/latest/22.4/container/workflows.html#performing-a-feed-synchronization). These commands can also be scheduled via `crontab`.
+```{warning} Please note that different methods are required for completing a feed sync when using the official **Greenbone Docker containers**, which can be [found here](https://greenbone.github.io/docs/latest/22.4/container/workflows.html#performing-a-feed-synchronization). These commands can also be scheduled via **crontab**.
+```
 
 ## Troubleshooting A Connection To The Greenbone Feeds
 To trouble shoot a connection to the Greenbone feeds, you can issue the following command from a terminal.
