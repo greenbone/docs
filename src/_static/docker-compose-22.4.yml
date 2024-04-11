@@ -94,7 +94,39 @@ services:
       - gvmd_socket_vol:/run/gvmd
     depends_on:
       - gvmd
-
+  # Sets log level of openvas to the set LOG_LEVEL within the env
+  # and changes log output to /var/log/openvas instead /var/log/gvm
+  # to reduce likelyhood of unwanted log interferences
+  configure-openvas:
+    image: greenbone/openvas-scanner:stable
+    volumes:
+      - openvas_data_vol:/mnt
+    environment:
+      LOG_LEVEL: 128
+    command: 
+      - /bin/sh
+      - -c
+      - |
+        cp /etc/openvas/openvas.conf /mnt/
+        sed "s/127/128/" /etc/openvas/openvas_log.conf | sed 's/gvm/openvas/' > /mnt/openvas_log.conf
+        chmod 644 /mnt/openvas.conf
+        chmod 644 /mnt/openvas_log.conf
+  # shows logs of openvas
+  openvas:
+    image: greenbone/openvas-scanner:stable
+    restart: on-failure
+    volumes:
+      - openvas_data_vol:/etc/openvas
+      - openvas_log_data_vol:/var/log/openvas
+    command:
+      - /bin/sh
+      - -c
+      - |
+        cat /etc/openvas/openvas.conf
+        tail -f /var/log/openvas/openvas.log
+    depends_on:
+      configure-openvas:
+        condition: service_completed_successfully
   ospd-openvas:
     image: greenbone/ospd-openvas:stable
     restart: on-failure
@@ -124,12 +156,16 @@ services:
       - notus_data_vol:/var/lib/notus
       - ospd_openvas_socket_vol:/run/ospd
       - redis_socket_vol:/run/redis/
+      - openvas_data_vol:/etc/openvas
+      - openvas_log_data_vol:/var/log/openvas
     depends_on:
       redis-server:
         condition: service_started
       gpg-data:
         condition: service_completed_successfully
       vulnerability-tests:
+        condition: service_completed_successfully
+      configure-openvas:
         condition: service_completed_successfully
 
   mqtt-broker:
@@ -177,3 +213,5 @@ volumes:
   gvmd_socket_vol:
   ospd_openvas_socket_vol:
   redis_socket_vol:
+  openvas_data_vol:
+  openvas_log_data_vol:
