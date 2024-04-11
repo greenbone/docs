@@ -142,7 +142,7 @@ export GSAD_VERSION=22.9.0
 ```{code-block}
 :caption: Setting the openvas-scanner version to use
 
-export OPENVAS_SCANNER_VERSION=22.7.9
+export OPENVAS_SCANNER_VERSION=23.0.1
 ```
 
 ```{include} /22.4/source-build/openvas-scanner/dependencies.md
@@ -174,24 +174,24 @@ export OSPD_OPENVAS_VERSION=22.6.2
 ```{include} /22.4/source-build/ospd-openvas/build.md
 ```
 
-### notus-scanner
+### openvasd
 
-```{include} /22.4/source-build/notus-scanner/description.md
+```{include} /22.4/source-build/openvasd/description.md
 ```
 
 ```{code-block}
-:caption: Setting the notus version to use
+:caption: Setting the openvas versions to use
 
-export NOTUS_VERSION=22.6.2
+export OPENVAS_DAEMON=23.0.1
 ```
 
-```{include} /22.4/source-build/notus-scanner/dependencies.md
+```{include} /22.4/source-build/openvasd/dependencies.md
 ```
 
-```{include} /22.4/source-build/notus-scanner/download.md
+```{include} /22.4/source-build/openvasd/download.md
 ```
 
-```{include} /22.4/source-build/notus-scanner/build.md
+```{include} /22.4/source-build/openvasd/build.md
 ```
 
 ### greenbone-feed-sync
@@ -219,9 +219,6 @@ export NOTUS_VERSION=22.6.2
 ## Performing a System Setup
 
 ```{include} /22.4/source-build/redis.md
-```
-
-```{include} /22.4/source-build/mqtt-broker.md
 ```
 
 ```{include} /22.4/source-build/directory-permissions.md
