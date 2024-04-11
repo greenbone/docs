@@ -101,13 +101,11 @@ services:
     image: greenbone/openvas-scanner:stable
     volumes:
       - openvas_data_vol:/mnt
-    environment:
-      LOG_LEVEL: 128
     command: 
       - /bin/sh
       - -c
       - |
-        cp /etc/openvas/openvas.conf /mnt/
+        printf "table_driven_lsc = yes\nopenvasd_server = http://openvasd:80\n" > /mnt/openvas.conf
         sed "s/127/128/" /etc/openvas/openvas_log.conf | sed 's/gvm/openvas/' > /mnt/openvas_log.conf
         chmod 644 /mnt/openvas.conf
         chmod 644 /mnt/openvas_log.conf
@@ -127,6 +125,36 @@ services:
     depends_on:
       configure-openvas:
         condition: service_completed_successfully
+
+  openvasd:
+    image: greenbone/openvas-scanner:stable
+    restart: on-failure
+    environment:
+      # `service_notus` is set to disable everything but notus,
+      # if you want to utilize openvasd directly removed `OPENVAS_MOD`
+      OPENVASD_MOD: service_notus
+      GNUPGHOME: /etc/openvas/gnupg
+      LISTENING: 0.0.0.0:80
+    volumes:
+      - openvas_data_vol:/etc/openvas
+      - openvas_log_data_vol:/var/log/openvas
+      - gpg_data_vol:/etc/openvas/gnupg
+      - notus_data_vol:/var/lib/notus
+    # enable port forwarding when you want to use the http api from your host machine
+    # ports:
+    #   - 127.0.0.1:3000:80
+    depends_on:
+      vulnerability-tests:
+        condition: service_completed_successfully
+      configure-openvas:
+        condition: service_completed_successfully
+      gpg-data:
+        condition: service_completed_successfully
+    networks:
+      default:
+        aliases:
+          - openvasd
+
   ospd-openvas:
     image: greenbone/ospd-openvas:stable
     restart: on-failure
@@ -143,8 +171,6 @@ services:
         "-f",
         "--config",
         "/etc/gvm/ospd-openvas.conf",
-        "--mqtt-broker-address",
-        "mqtt-broker",
         "--notus-feed-dir",
         "/var/lib/notus/advisories",
         "-m",
@@ -167,29 +193,6 @@ services:
         condition: service_completed_successfully
       configure-openvas:
         condition: service_completed_successfully
-
-  mqtt-broker:
-    restart: on-failure
-    image: greenbone/mqtt-broker
-    networks:
-      default:
-        aliases:
-          - mqtt-broker
-          - broker
-
-  notus-scanner:
-    restart: on-failure
-    image: greenbone/notus-scanner:stable
-    volumes:
-      - notus_data_vol:/var/lib/notus
-      - gpg_data_vol:/etc/openvas/gnupg
-    environment:
-      NOTUS_SCANNER_MQTT_BROKER_ADDRESS: mqtt-broker
-      NOTUS_SCANNER_PRODUCTS_DIRECTORY: /var/lib/notus/products
-    depends_on:
-      - mqtt-broker
-      - gpg-data
-      - vulnerability-tests
 
   gvm-tools:
     image: greenbone/gvm-tools
