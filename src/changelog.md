@@ -22,9 +22,8 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Update pg-gvm to 22.6.4
 * Update gsad to 22.9.0
 * Update GSA to 23.0.0
-* Update OpenVAS Scanner to 22.7.9
-* Update notus-scanner to 22.6.2
-* Update ospd-openvas to 22.6.2
+* Update OpenVAS Scanner to 23.0.1
+* Drop notus-scanner in favor of the new OpenVAS Daemon (openvasd). This made the Mosquitto MQTT broker obsolete too.
 
 ## 23.11.0
 * Add workflow page for source builds
