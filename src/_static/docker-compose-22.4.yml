@@ -101,6 +101,7 @@ services:
     image: greenbone/openvas-scanner:stable
     volumes:
       - openvas_data_vol:/mnt
+      - openvas_log_data_vol:/var/log/openvas
     command: 
       - /bin/sh
       - -c
@@ -109,6 +110,8 @@ services:
         sed "s/127/128/" /etc/openvas/openvas_log.conf | sed 's/gvm/openvas/' > /mnt/openvas_log.conf
         chmod 644 /mnt/openvas.conf
         chmod 644 /mnt/openvas_log.conf
+        touch /var/log/openvas/openvas.log
+        chmod 666 /var/log/openvas/openvas.log
   # shows logs of openvas
   openvas:
     image: greenbone/openvas-scanner:stable
@@ -182,7 +185,7 @@ services:
       - notus_data_vol:/var/lib/notus
       - ospd_openvas_socket_vol:/run/ospd
       - redis_socket_vol:/run/redis/
-      - openvas_data_vol:/etc/openvas
+      - openvas_data_vol:/etc/openvas/
       - openvas_log_data_vol:/var/log/openvas
     depends_on:
       redis-server:
