@@ -14,6 +14,9 @@ cmake $SOURCE_DIR/openvas-scanner-$OPENVAS_SCANNER_VERSION \
 
 make -j$(nproc)
 ```
+```{warning}
+If missing libcurl error in Ubuntu install libcurl4-openssl-dev `sudo apt install -y libcurl4-openssl-dev`
+```
 
 ```{code-block}
 :caption: Installing openvas-scanner
