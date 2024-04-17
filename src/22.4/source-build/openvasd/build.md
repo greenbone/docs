@@ -4,7 +4,7 @@
     .. code-block::
       :caption: Installing openvas-scanner
 
-      cd $SOURCE_DIR/openvas-scanner-$NOTUS_VERSION/rust/openvasd
+      cd $SOURCE_DIR/openvas-scanner-$OPENVAS_DAEMON/rust/openvasd
 
       cargo build --release
 
@@ -15,7 +15,7 @@
       :caption: Installing openvas-scanner
 
 
-      cd $SOURCE_DIR/openvas-scanner-$NOTUS_VERSION/rust/openvasd
+      cd $SOURCE_DIR/openvas-scanner-$OPENVAS_DAEMON/rust/openvasd
 
       cargo build --release
 
