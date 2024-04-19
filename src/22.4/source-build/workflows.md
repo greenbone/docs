@@ -13,7 +13,7 @@ First, the services should be stopped to be able to replace them later on.
 ---
 caption: Stopping all services
 ---
-sudo systemctl stop gsad gvmd notus-scanner ospd-openvas
+sudo systemctl stop gsad gvmd ospd-openvas
 ```
 
 Afterwards, you must verify that all [prerequisites](./index.md#prerequisites) are met.
@@ -21,14 +21,14 @@ In particular, make sure that the [install prefix](./index.md#choosing-an-instal
 [PATH](./index.md#setting-the-path) and the [required environment variables](./index.md#creating-a-source-build-and-install-directory)
 are set.
 
-For being able to update `ospd-openvas`, `notus-scanner`, `greenbone-feed-sync`
-and `gvm-tools` they must be uninstalled first.
+For being able to update `ospd-openvas`, `greenbone-feed-sync` and `gvm-tools`
+they must be uninstalled first.
 
 ```{code-block} shell
 ---
-caption: Uninstall ospd-openvas, notus-scanner, greenbone-feed-sync and gvm-tools
+caption: Uninstall ospd-openvas, greenbone-feed-sync and gvm-tools
 ---
-sudo python3 -m pip uninstall --break-system-packages ospd-openvas notus-scanner greenbone-feed-sync gvm-tools
+sudo python3 -m pip uninstall --break-system-packages ospd-openvas greenbone-feed-sync gvm-tools
 ```
 
 The `--break-system-packages` argument is required because of [PEP 668](https://peps.python.org/pep-0668/).
@@ -56,7 +56,7 @@ been updated, the last step is to restart the services.
 ---
 caption: Restarting all services
 ---
-sudo systemctl start gsad gvmd notus-scanner ospd-openvas
+sudo systemctl start gsad gvmd ospd-openvas
 ```
 
 ## Accessing the Web Interface Remotely

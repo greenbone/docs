@@ -1,7 +1,7 @@
 ### Setting up Services for *Systemd*
 
 [Systemd](https://systemd.io/) is used to start the daemons *ospd-openvas*,
-*notus-scanner*, *gvmd* and *gsad*. Therefore, service files are required.
+*gvmd* and *gsad*. Therefore, service files are required.
 
 ```{code-block}
 :caption: Systemd service file for ospd-openvas
@@ -10,8 +10,8 @@ cat << EOF > $BUILD_DIR/ospd-openvas.service
 [Unit]
 Description=OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)
 Documentation=man:ospd-openvas(8) man:openvas(8)
-After=network.target networking.service redis-server@openvas.service mosquitto.service
-Wants=redis-server@openvas.service mosquitto.service notus-scanner.service
+After=network.target networking.service redis-server@openvas.service
+Wants=redis-server@openvas.service
 ConditionKernelCommandLine=!recovery
 
 [Service]
@@ -21,7 +21,7 @@ Group=gvm
 RuntimeDirectory=ospd
 RuntimeDirectoryMode=2775
 PIDFile=/run/ospd/ospd-openvas.pid
-ExecStart=/usr/local/bin/ospd-openvas --foreground --unix-socket /run/ospd/ospd-openvas.sock --pid-file /run/ospd/ospd-openvas.pid --log-file /var/log/gvm/ospd-openvas.log --lock-file-dir /var/lib/openvas --socket-mode 0o770 --mqtt-broker-address localhost --mqtt-broker-port 1883 --notus-feed-dir /var/lib/notus/advisories
+ExecStart=/usr/local/bin/ospd-openvas --foreground --unix-socket /run/ospd/ospd-openvas.sock --pid-file /run/ospd/ospd-openvas.pid --log-file /var/log/gvm/ospd-openvas.log --lock-file-dir /var/lib/openvas --socket-mode 0o770 --notus-feed-dir /var/lib/notus/advisories
 SuccessExitStatus=SIGKILL
 Restart=always
 RestartSec=60
@@ -35,39 +35,6 @@ EOF
 :caption: Install systemd service file for ospd-openvas
 
 sudo cp -v $BUILD_DIR/ospd-openvas.service /etc/systemd/system/
-```
-
-```{code-block}
-:caption: Systemd service file for notus-scanner
-
-cat << EOF > $BUILD_DIR/notus-scanner.service
-[Unit]
-Description=Notus Scanner
-Documentation=https://github.com/greenbone/notus-scanner
-After=mosquitto.service
-Wants=mosquitto.service
-ConditionKernelCommandLine=!recovery
-
-[Service]
-Type=exec
-User=gvm
-RuntimeDirectory=notus-scanner
-RuntimeDirectoryMode=2775
-PIDFile=/run/notus-scanner/notus-scanner.pid
-ExecStart=/usr/local/bin/notus-scanner --foreground --products-directory /var/lib/notus/products --log-file /var/log/gvm/notus-scanner.log
-SuccessExitStatus=SIGKILL
-Restart=always
-RestartSec=60
-
-[Install]
-WantedBy=multi-user.target
-EOF
-```
-
-```{code-block}
-:caption: Install systemd service file for notus-scanner
-
-sudo cp -v $BUILD_DIR/notus-scanner.service /etc/systemd/system/
 ```
 
 ```{code-block}

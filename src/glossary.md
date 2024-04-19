@@ -21,6 +21,10 @@ openvas
   and to store scan results into a Redis database. Used in
   GVM 11 and later. It has originated from the {term}`openvassd`.
 
+openvasd
+
+  A new ? introduced with the OpenVAS Scanner release 23.0. Describe me further!
+
 OSPd
 
   A [framework](https://github.com/greenbone/ospd) for several scanner
@@ -143,12 +147,12 @@ CVE
 
 notus-scanner
 
-  A new scanner that got introduced in the 22.4 release to improve the so-called
-  local security checks. Local security checks are comparisons of
-  vulnerable and installed versions of a software. Before notus-scanner, all
-  checks have been implemented in {term}`NASL` scripts and each {term}`NASL`
-  script ran in an own openvas-scanner process. With notus-scanner, checks are
-  run in one go per host.
+  A scanner to improve the so-called local security checks. Local security
+  checks are comparisons of vulnerable and installed versions of a software.
+  Before notus-scanner, all checks have been implemented in {term}`NASL` scripts
+  and each {term}`NASL` script ran in an own openvas-scanner process.
+  With notus-scanner, checks are run in one go per host. With the
+  OpenVAS Scanner release 23.0 it got replaced by {term}`openvasd`.
 
 Feed
 
