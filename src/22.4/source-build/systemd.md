@@ -1,7 +1,7 @@
 ### Setting up Services for *Systemd*
 
 [Systemd](https://systemd.io/) is used to start the daemons *ospd-openvas*,
-*gvmd* and *gsad*. Therefore, service files are required.
+*openvasd*, *gvmd* and *gsad*. Therefore, service files are required.
 
 ```{code-block}
 :caption: Systemd service file for ospd-openvas
@@ -109,4 +109,30 @@ Afterwards, the services need to be activated and started.
 :caption: Making systemd aware of the new service files
 
 sudo systemctl daemon-reload
+```
+
+```{code-block}
+:caption: Systemd service file for openvasd
+cat << EOF > $BUILD_DIR/openvasd.service
+[Unit]
+Description=OpenVASD
+Documentation=https://github.com/greenbone/openvas-scanner/tree/main/rust/openvasd
+ConditionKernelCommandLine=!recovery
+[Service]
+Type=exec
+User=gvm
+RuntimeDirectory=openvasd
+RuntimeDirectoryMode=2775
+ExecStart=/usr/local/bin/openvasd --mode service_notus --products /var/lib/notus/products --advisories /var/lib/notus/advisories --listening 127.0.0.1:3000
+SuccessExitStatus=SIGKILL
+Restart=always
+RestartSec=60
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+```{code-block}
+:caption: Install systemd service file for openvasd
+sudo cp -v $BUILD_DIR/notus-scanner.service /etc/systemd/system/
 ```
