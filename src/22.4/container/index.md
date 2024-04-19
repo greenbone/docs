@@ -59,7 +59,7 @@ and their services in detail.
 | report-formats | | A container that copies report formats into the `data_objects_vol` volume on startup. Shows the license and exits afterwards. |
 | configure-openvas | | A container for setting up the configuration for OpenVAS Scanner |
 | openvas | | A container that shows the logs of OpenVAS Scanner |
-| openvasd | ? | ? |
+| openvasd | openvasd | A container for [openvasd](https://github.com/greenbone/openvas-scanner/tree/main/rust/openvasd). It is providing notus, a static vulnerability engine, functionality. |
 
 ```{include} /22.4/container/starting.md
 ```
