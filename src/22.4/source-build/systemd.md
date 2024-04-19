@@ -134,5 +134,5 @@ EOF
 
 ```{code-block}
 :caption: Install systemd service file for openvasd
-sudo cp -v $BUILD_DIR/notus-scanner.service /etc/systemd/system/
+sudo cp -v $BUILD_DIR/openvasd.service /etc/systemd/system/
 ```
