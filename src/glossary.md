@@ -23,7 +23,10 @@ openvas
 
 openvasd
 
-  A new ? introduced with the OpenVAS Scanner release 23.0. Describe me further!
+  A new service introduced with the OpenVAS Scanner release 23.0 to execute nasl scripts and provide static version comparisons.
+  It has a http based [API](https://greenbone.github.io/scanner-api/) to control scans and get results.
+  The adaptation will be done in various downwards compatible ways. As of 23.0.1 `openvas` is using the `/notus` endpoint for version checks, additionally `OpenVASD` is setting up redis and controls `openvas` for scanning. 
+  In the next phases it will gradually take over `openvas` functionality with the end goal of replacing `ospd-openvas` and `openvas` completely.
 
 OSPd
 
