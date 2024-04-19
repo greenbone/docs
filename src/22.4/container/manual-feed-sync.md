@@ -34,13 +34,7 @@ caption: Extending the docker compose file for performing a manual feed sync usi
 ### Syncing Vulnerability Tests
 
 VT data contains {file}`.nasl` and {file}`.notus` files for creating results
-during a vulnerability scan. The `.nasl` files are processed by the OpenVAS
-Scanner and the `.notus` files by the {term}`Notus Scanner <notus-scanner>`.
-
-```{hint}
-{file}`.notus` files and the {term}`Notus Scanner <notus-scanner>` are only
-available for 22.4.
-```
+during a vulnerability scan.
 
 ```{code-block} shell
 ---
@@ -53,8 +47,8 @@ docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-editio
 
 ```{code-block} shell
 ---
-caption: Downloading {term}`notus<notus-scanner>` {term}`VTs<VT>` processed by
-    the Notus Scanner, this will take a while.
+caption: Downloading `notus` {term}`VTs<VT>` processed for local security checks,
+    this will take a while.
 ---
 docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
     run --rm greenbone-feed-sync greenbone-feed-sync --type notus
