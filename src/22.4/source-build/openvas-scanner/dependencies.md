@@ -15,6 +15,7 @@
        rsync \
        nmap \
        libjson-glib-dev \
+       libcurl4-gnutls-dev \
        libbsd-dev
 
    .. code-block::
@@ -39,6 +40,7 @@
        rsync \
        nmap \
        json-glib-devel \
+       libcurl-devel \
        libbsd-devel
 
    .. code-block::
@@ -62,5 +64,6 @@
        rsync \
        nmap \
        json-glib-devel \
+       libcurl-devel \
        libbsd-devel
 ```
