@@ -1,23 +1,12 @@
-```{eval-rst}
-.. tabs::
-  .. tab:: Debian/Ubuntu
-    .. code-block::
-      :caption: Installing openvas-scanner
+```
+mkdir -p $INSTALL_DIR/openvasd/usr/local/bin
+cd $SOURCE_DIR/openvas-scanner-$OPENVAS_DAEMON/rust/openvasd
+cargo build --release
 
-      cd $SOURCE_DIR/openvas-scanner-$OPENVAS_DAEMON/rust/openvasd
+cd $SOURCE_DIR/openvas-scanner-$OPENVAS_DAEMON/rust/scannerctl
+cargo build --release
 
-      cargo build --release
-
-      sudo cp -v ../target/release/openvasd /usr/local/bin/
-
-  .. tab:: Fedora/CentOS
-    .. code-block::
-      :caption: Installing openvas-scanner
-
-
-      cd $SOURCE_DIR/openvas-scanner-$OPENVAS_DAEMON/rust/openvasd
-
-      cargo build --release
-
-      sudo cp -v ../target/release/openvasd /usr/local/bin/
+sudo cp -v ../target/release/openvasd $INSTALL_DIR/usr/local/bin/
+sudo cp -v ../target/release/scannerctl $INSTALL_DIR/usr/local/bin/
+sudo cp -rv $INSTALL_DIR/openvasd/* /
 ```
