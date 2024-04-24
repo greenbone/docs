@@ -13,7 +13,7 @@ First, the services should be stopped to be able to replace them later on.
 ---
 caption: Stopping all services
 ---
-sudo systemctl stop gsad gvmd ospd-openvas
+sudo systemctl stop gsad gvmd ospd-openvas openvasd
 ```
 
 Afterwards, you must verify that all [prerequisites](./index.md#prerequisites) are met.
@@ -56,7 +56,7 @@ been updated, the last step is to restart the services.
 ---
 caption: Restarting all services
 ---
-sudo systemctl start gsad gvmd ospd-openvas
+sudo systemctl start gsad gvmd ospd-openvas openvasd
 ```
 
 ## Accessing the Web Interface Remotely
