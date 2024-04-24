@@ -10,8 +10,8 @@ cat << EOF > $BUILD_DIR/ospd-openvas.service
 [Unit]
 Description=OSPd Wrapper for the OpenVAS Scanner (ospd-openvas)
 Documentation=man:ospd-openvas(8) man:openvas(8)
-After=network.target networking.service redis-server@openvas.service
-Wants=redis-server@openvas.service
+After=network.target networking.service redis-server@openvas.service openvasd.service
+Wants=redis-server@openvas.service openvasd.service
 ConditionKernelCommandLine=!recovery
 
 [Service]
