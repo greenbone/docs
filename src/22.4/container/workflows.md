@@ -344,6 +344,7 @@ to [msmtp documentation](https://marlam.de/msmtp/msmtp.html), note that not all
   - `MTA_TLS`: Enable or disable TLS (_on|off'_).
   - `MTA_STARTTLS`: TLS variant: start TLS from within the session (_‘on’, default_), or
 tunnel the session through TLS (_‘off’_).
+  - `MTA_TLS_CERTCHECK`: Enable or disable checks of the server certificate. (WARNING: When the checks are disabled, TLS sessions will not be secure!) (_'on'|'off'_).
   - `MTA_AUTH`: Enable or disable authentication and optionally choose a method to use
 (_'on'|'off'|'method'_).
   - `MTA_USER`: Username for authentication.
