@@ -4,14 +4,14 @@ The Greenbone Community Edition on Kali Linux installation relies on the same su
 
 ### Configure Remote Access To The Web Interface
 
-By default Greenbone Community Edition is installed with only `localhost` access to the {term}`GSA` web interface. This means Greenbone Community Edition can only be accessed via the IP address `127.0.0.1`. To enable remote access to the web interface, the {term}`gsad` systemd service file must be modified.
+By default Greenbone Community Edition is installed with only `localhost` access to the {term}`GSA` web interface. This means Greenbone Community Edition can only be accessed via the IP address `127.0.0.1`. To enable remote access to the web interface, the {term}`gsad` systemd service file must be modified and the gsad service must be restarted.
 
 
 Edit the contents of the `gsad.service` systemd service file:
 
 ```{code-block}
 :caption: Use nano to edit the gsad.sevice file
-nano /usr/lib/systemd/service/gsad.service
+nano /usr/lib/systemd/system/gsad.service
 ```
 
 Change the value of the `--listen` argument to `0.0.0.0` and optionally change the value of `--port` to the standard SSL/TLS port 443:
@@ -19,6 +19,11 @@ Change the value of the `--listen` argument to `0.0.0.0` and optionally change t
 ```diff
 -ExecStart=/usr/local/sbin/gsad --foreground --listen=127.0.0.1 --port=9392
 +ExecStart=/usr/local/sbin/gsad --foreground --listen=0.0.0.0 --port=443
+```
+Restart the `gsad` service:
+```{code-block}
+sudo systemctl daemon-reload
+sudo systemctl restart gsad
 ```
 
 ### Setting A Password Policy
