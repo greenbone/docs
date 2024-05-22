@@ -3,6 +3,9 @@
 The Mosquitto MQTT broker is used for communication between
 *ospd-openvas* and *openvas-scanner*.
 
+```{note}
+In the future, planned changes to `ospd-openvas` will remove dependence on the Mosquitto MQTT broker, but for now it is still a requirement.
+```
 
 ```{eval-rst}
 .. tabs::
