@@ -221,6 +221,9 @@ export OPENVAS_DAEMON=23.0.1
 ```{include} /22.4/source-build/redis.md
 ```
 
+```{include} /22.4/source-build/mqtt-broker.md
+```
+
 ```{include} /22.4/source-build/directory-permissions.md
 ```
 

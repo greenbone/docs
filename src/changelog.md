@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
 ## Latest
+* Re-added the installation and configuration of Mosquitto MQTT service to support `ospd-openvas`
 * Corrected the path for moving the openvasd built files
 * Add instructions for Kali Linux installation
 * Add instructions to enable SSL/TLS
