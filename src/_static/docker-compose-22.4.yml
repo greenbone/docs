@@ -160,7 +160,7 @@ services:
           - openvasd
 
   ospd-openvas:
-    image: registry.community.greenbone.net/community/ospd-openvas:edge
+    image: registry.community.greenbone.net/community/ospd-openvas
     restart: on-failure
     hostname: ospd-openvas.local
     cap_add:
