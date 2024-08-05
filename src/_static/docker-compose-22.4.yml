@@ -1,40 +1,40 @@
 services:
   vulnerability-tests:
-    image: greenbone/vulnerability-tests
+    image: registry.community.greenbone.net/communityvulnerability-tests
     environment:
       STORAGE_PATH: /var/lib/openvas/22.04/vt-data/nasl
     volumes:
       - vt_data_vol:/mnt
 
   notus-data:
-    image: greenbone/notus-data
+    image: registry.community.greenbone.net/communitynotus-data
     volumes:
       - notus_data_vol:/mnt
 
   scap-data:
-    image: greenbone/scap-data
+    image: registry.community.greenbone.net/communityscap-data
     volumes:
       - scap_data_vol:/mnt
 
   cert-bund-data:
-    image: greenbone/cert-bund-data
+    image: registry.community.greenbone.net/communitycert-bund-data
     volumes:
       - cert_data_vol:/mnt
 
   dfn-cert-data:
-    image: greenbone/dfn-cert-data
+    image: registry.community.greenbone.net/communitydfn-cert-data
     volumes:
       - cert_data_vol:/mnt
     depends_on:
       - cert-bund-data
 
   data-objects:
-    image: greenbone/data-objects
+    image: registry.community.greenbone.net/community/data-objects
     volumes:
       - data_objects_vol:/mnt
 
   report-formats:
-    image: greenbone/report-formats
+    image: registry.community.greenbone.net/communityreport-formats
     volumes:
       - data_objects_vol:/mnt
     depends_on:
@@ -52,7 +52,7 @@ services:
       - redis_socket_vol:/run/redis/
 
   pg-gvm:
-    image: greenbone/pg-gvm
+    image: registry.community.greenbone.net/communitypg-gvm
     restart: on-failure
     volumes:
       - psql_data_vol:/var/lib/postgresql
@@ -98,7 +98,7 @@ services:
   # and changes log output to /var/log/openvas instead /var/log/gvm
   # to reduce likelyhood of unwanted log interferences
   configure-openvas:
-    image: greenbone/openvas-scanner
+    image: registry.community.greenbone.net/communityopenvas-scanner
     volumes:
       - openvas_data_vol:/mnt
       - openvas_log_data_vol:/var/log/openvas
@@ -115,7 +115,7 @@ services:
 
   # shows logs of openvas
   openvas:
-    image: greenbone/openvas-scanner
+    image: registry.community.greenbone.net/communityopenvas-scanner
     restart: on-failure
     volumes:
       - openvas_data_vol:/etc/openvas
@@ -131,7 +131,7 @@ services:
         condition: service_completed_successfully
 
   openvasd:
-    image: greenbone/openvas-scanner
+    image: registry.community.greenbone.net/community/openvas-scanner
     restart: on-failure
     environment:
       # `service_notus` is set to disable everything but notus,
