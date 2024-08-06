@@ -59,7 +59,7 @@ services:
       - psql_socket_vol:/var/run/postgresql
 
   gvmd:
-    image: registry.community.greenbone.net/community/gvmd:stable
+    image: greenbone/gvmd:stable
     restart: on-failure
     volumes:
       - gvmd_data_vol:/var/lib/gvm
@@ -199,7 +199,7 @@ services:
         condition: service_completed_successfully
 
   gvm-tools:
-    image: registry.community.greenbone.net/community/gvm-tools
+    image: greenbone/gvm-tools
     volumes:
       - gvmd_socket_vol:/run/gvmd
       - ospd_openvas_socket_vol:/run/ospd
