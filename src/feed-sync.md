@@ -1,6 +1,6 @@
 
 # Feed Sync Guide
-This documentation provides instructions on updating the various feeds for your specific Greenbone version and installation method, as well as information about the legacy feed sync scripts, and some tips for troubleshooting a failed feed sync. Please note that different methods are required for completing a feed sync with the official Greenbone Docker containers.
+This documentation provides instructions on updating the various feeds for your specific Greenbone version and installation method, as well as information about the legacy feed sync scripts, and some tips for troubleshooting a failed feed sync. Please note that different methods are required for completing a feed sync with the official Greenbone Community Containers.
 
 ```{warning} Feed sync information for Docker containers can be [found here](https://greenbone.github.io/docs/latest/22.4/container/workflows.html#performing-a-feed-synchronization).
 ```
