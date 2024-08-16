@@ -26,7 +26,7 @@ Once you have identified the active feed sync executable path, you can verify wh
 head -1 /path/to/<feed-command-filename>
 ```
 
-### Deprecated Sync Script Removal
+### Removing Deprecated Sync Scripts
 If you have any of the deprecated bash scripts installed, it is recommended to delete them. This ensures a clean transition to the new sync script.
 
 ### Legacy Feed Sync Filenames
