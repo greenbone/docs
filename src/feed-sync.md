@@ -214,7 +214,7 @@ community  Greenbone community feed, see https://community.greenbone.net/
 If you are unable to connect to the Greenbone feeds using the `rsync` command, we suggest you troubleshoot your network connection to identify any firewalls, content proxies, or network configurations that could be blocking the connection. Here are some suggested methods:
 
 ### Using nping
-The `nping` command is part of the `nmap` tool and is availble for Linux and Windows systems. It can be used to track a TCP connection on a specific port while `traceroute` cannot be configured to test a specific port. This will help identify port-based firewall rules as well as host/IP-based firewall rules that maybe blocking the `rsync` port `873`. Please note `nping --tcp` command requires `sudo` or root permissions. You can find more information at the [nping reference guide](https://nmap.org/book/nping-man.html).
+The `nping` command is part of the `nmap` tool and is availble for Linux and Windows systems. It can be used to track a TCP connection on a specific port while `traceroute` cannot be configured to test a specific port. This will help identify port-based firewall rules as well as host/IP-based firewall rules that may be blocking the `rsync` port `873`. Please note that the `nping --tcp` command requires `sudo` or root permissions. You can find more information in the [nping reference guide](https://nmap.org/book/nping-man.html).
 ```{code-block}
 :caption: Using nping to test the connectivity of port 873
 sudo nping --tcp --traceroute -c 13 -p 873 feed.community.greenbone.net
