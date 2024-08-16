@@ -222,6 +222,7 @@ sudo nping --tcp --traceroute -c 13 -p 873 feed.community.greenbone.net
 
 ### Using tcptraceroute
 If you cannot install `nmap` on your host, you can use `tcptraceroute` on Linux/Unix based systems.
+
 ```{code-block}
 :caption: Using tcptraceroute to test the connectivity of port 873
 tcptraceroute -p 873 feed.community.greenbone.net
