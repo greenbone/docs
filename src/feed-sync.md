@@ -178,7 +178,7 @@ The Python-based feed sync scripts will automatically change context to the `gvm
 After the sync operation completes, you can verify the successful update of the feed data by visiting the `/feedstatus` page which can be found under the **Administration** item in the top menu bar of Greenbone's web-interface. If a feed has successfully updated you will see **Current** beside the particular feed and the **Version** column will indicate the date/time of the feed's release.
 
 ## Automating Feed Sync Updates
-The Greenbone feeds are not automatically synced for the Greenbone Community source code installations, Greenbone Community Docker containers, or Greenbone native Kali Linux installation. The suggested method for automating the Greenbone feed sync is to create a `crontab` file to schedule the feed sync command execution. For standard source-code installations, the `crontab` should be run under the `sudo` or `root` user context.
+The Greenbone feeds are not automatically synced for the Greenbone Community source-code installations, Greenbone Community Docker containers, or Greenbone native Kali Linux installation. The suggested method for automating the Greenbone feed sync is to create a `crontab` file to schedule the feed sync command execution. For standard source-code installations, the `crontab` should be run under the `sudo` or `root` user context.
 
 ```{warning} Please note that different methods are required for completing a feed sync when using the official **Greenbone Docker containers**, which can be [found here](https://greenbone.github.io/docs/latest/22.4/container/workflows.html#performing-a-feed-synchronization). These commands can also be scheduled via **crontab**.
 ```
