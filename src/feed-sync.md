@@ -220,7 +220,7 @@ The `nping` command is part of the `nmap` tool and is availble for Linux and Win
 sudo nping --tcp --traceroute -c 13 -p 873 feed.community.greenbone.net
 ```
 
-### Use tcptraceroute
+### Using tcptraceroute
 If you cannot install `nmap` on your host, you can use `tcptraceroute` on Linux/Unix based systems.
 ```{code-block}
 :caption: Using tcptraceroute to test the connectivity of port 873
