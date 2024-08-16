@@ -48,7 +48,7 @@ A set of new Python-based scripts has now replaced the deprecated feed sync scri
 More information about executing the scripts can be [found here](#updating-feeds-with-new-python-script).
 
 ### Installation
-Python 3.9 and later is supported. Also note that sycing feeds requires the `rsync` tool being installed and available within the operating system **PATH**, which is normally configured as part of Greenbone Community Edition's source code and Docker container installation methods.
+Python 3.9 and later is supported. Also note that syncing feeds requires the `rsync` tool being installed and available within the operating system **PATH**, which is normally configured as part of Greenbone Community Edition's source code and Docker container installation methods.
 
 #### Install using pipx
 You can install the latest stable release of **greenbone-feed-sync** from the Python Package Index (pypi) using [pipx](https://pypa.github.io/pipx/).
