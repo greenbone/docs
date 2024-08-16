@@ -38,7 +38,7 @@ These are the legacy feed sync files and a description of their functionality:
 *   `greenbone-nvt-sync`: This script is equivalent to `greenbone-feed-sync --type GVMD_DATA`.
 
 ## The New Python Feed Sync Scripts
-A set of new Python-based scripts have now replaced the deprecated feed sync scripts mentioned above. The new scripts are supported by **Greenbone version 22.4 and later**. However, older versions are not supported. The new Python-based scripts are now installed by default as of **Greenbone Community Edition version 22.5.0**. For backwards compatibility the new Python scripts have identical names to the original bash scripts.
+A set of new Python-based scripts has now replaced the deprecated feed sync scripts mentioned above. The new scripts are supported by **Greenbone version 22.4 and later**. However, older versions are not supported. The new Python-based scripts are now installed by default as of **Greenbone Community Edition version 22.5.0**. For backwards compatibility the new Python scripts have identical names to the original bash scripts.
 
 *   `greenbone-feed-sync`: This is the base script. if no `--type` argument is set, all feed types will be updated. The `--type <TYPE>` argument can be used to specify which data to synchronize. A list of available feed types can be [found here](#available-feed-types).
 *   `greenbone-certdata-sync`: This script is equivalent to `greenbone-feed-sync --type cert` and is provided for backwards compatibility only.
