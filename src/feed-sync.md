@@ -18,7 +18,9 @@ If you want to check which scripts you have installed you can use the `which` co
 :caption: Verifying the path of the active feed command executable
 which <feed-command-filename>
 ```
+
 Once you have identified the active feed sync executable path, you can verify whether it is a legacy bash feed sync script, or the newer Python-based script by checking the file header. The first line of the legacy scripts will be `#!/bin/sh` while the newer versions will be `#!/usr/bin/python3`.
+
 ```{code-block}
 :caption: Check the shebang to determine the script type
 head -1 /path/to/<feed-command-filename>
