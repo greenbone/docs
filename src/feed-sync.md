@@ -7,7 +7,7 @@ This documentation provides instructions on updating the various feeds for your 
 
 If you are unable to achieve feed synchronization after reading this guide, or require further assistance with the feed sync process, please consult the [Greenbone Community Forum](https://forum.greenbone.net/).
 
-## A Note About Deprecated Sync Scripts
+## About Deprecated Sync Scripts
 Please note that there is currently a migration from the older set of bash scripts to a new set of Python-based script with the same names, but with added features. Also, please note that older versions of the Kali Linux distribution came with a wrapper script `gvm-feed-update`. However, this script has been depreciated in favor of using the official Greenbone Python scripts directly.
 
 Usually, legacy feed sync scripts can be identified by their location. The depreciated bash scripts are usually found in the `/usr/local/sbin` or `/usr/sbin` directories, while the newer Python-based scripts are typically located in the `/usr/local/bin` or `$HOME/.local/bin` directories, depending on your installation method.
