@@ -182,7 +182,7 @@ export OSPD_OPENVAS_VERSION=22.7.1
 ```{code-block}
 :caption: Setting the openvas versions to use
 
-export OPENVAS_DAEMON=23.8.2
+export OPENVAS_DAEMON=22.7.1
 ```
 
 ```{include} /22.4/source-build/openvasd/dependencies.md
