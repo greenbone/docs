@@ -13,6 +13,7 @@ Please note that there is currently a migration from the older set of bash scrip
 Usually, legacy feed sync scripts can be identified by their location. The depreciated bash scripts are usually found in the `/usr/local/sbin` or `/usr/sbin` directories, while the newer Python-based scripts are typically located in the `/usr/local/bin` or `$HOME/.local/bin` directories, depending on your installation method.
 
 If you want to check which scripts you have installed you can use the `which` command to identify the active script's path:
+
 ```{code-block}
 :caption: Verify the path of the active feed command executable
 which <feed-command-filename>
