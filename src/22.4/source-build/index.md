@@ -26,7 +26,7 @@ The components should be build and installed in the listed order.
 ```{code-block}
 :caption: Setting the gvm-libs version to use
 
-export GVM_LIBS_VERSION=22.8.0
+export GVM_LIBS_VERSION=22.10.0
 ```
 
 ```{include} /22.4/source-build/gvm-libs/dependencies.md
@@ -48,14 +48,14 @@ Afterwards, gvm-libs can be build and installed.
 ```{code-block}
 :caption: Setting the gvmd version to use
 
-export GVMD_VERSION=23.2.0
+export GVMD_VERSION=23.8.1
 ```
 
 ```{include} /22.4/source-build/gvmd/dependencies.md
 ```
 
 Details about the optional dependencies can be found at
-<https://github.com/greenbone/gvmd/blob/stable/INSTALL.md#prerequisites-for-optional-features>
+<https://github.com/greenbone/gvmd/blob/stable/INSTALL.md#prerequisites-for-optional-features>.
 
 ```{include} /22.4/source-build/gvmd/download.md
 ```
@@ -71,7 +71,7 @@ Details about the optional dependencies can be found at
 ```{code-block}
 :caption: Setting the pg-gvm version to use
 
-export PG_GVM_VERSION=22.6.4
+export PG_GVM_VERSION=22.6.5
 ```
 
 ```{include} /22.4/source-build/pg-gvm/dependencies.md
@@ -100,7 +100,7 @@ The Greenbone Security Assistant (GSA) sources consist of two parts:
 ```{code-block}
 :caption: Setting the GSA version to use
 
-export GSA_VERSION=23.0.0
+export GSA_VERSION=23.2.1
 ```
 
 ```{include} /22.4/source-build/gsa/download.md
@@ -117,7 +117,7 @@ export GSA_VERSION=23.0.0
 ```{code-block}
 :caption: Setting the GSAd version to use
 
-export GSAD_VERSION=22.9.0
+export GSAD_VERSION=22.11.0
 ```
 
 ```{include} /22.4/source-build/gsad/dependencies.md
@@ -142,7 +142,7 @@ export GSAD_VERSION=22.9.0
 ```{code-block}
 :caption: Setting the openvas-scanner version to use
 
-export OPENVAS_SCANNER_VERSION=23.0.1
+export OPENVAS_SCANNER_VERSION=23.8.2
 ```
 
 ```{include} /22.4/source-build/openvas-scanner/dependencies.md
@@ -162,7 +162,7 @@ export OPENVAS_SCANNER_VERSION=23.0.1
 ```{code-block}
 :caption: Setting the ospd and ospd-openvas versions to use
 
-export OSPD_OPENVAS_VERSION=22.6.2
+export OSPD_OPENVAS_VERSION=22.7.1
 ```
 
 ```{include} /22.4/source-build/ospd-openvas/dependencies.md
@@ -182,7 +182,7 @@ export OSPD_OPENVAS_VERSION=22.6.2
 ```{code-block}
 :caption: Setting the openvas versions to use
 
-export OPENVAS_DAEMON=23.0.1
+export OPENVAS_DAEMON=23.8.2
 ```
 
 ```{include} /22.4/source-build/openvasd/dependencies.md

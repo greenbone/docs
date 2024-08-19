@@ -40,6 +40,16 @@ a {
 }
 
 a:hover {
+	color: #11AB51 !important;
+	border-bottom: 1px solid var(--color-content-foreground);
+}
+
+a:visited {
+	color: var(--color-content-foreground);
+	border-bottom: 1px solid var(--color-content-foreground);
+}
+
+a:active {
 	color: #11AB51;
 	border-bottom: 1px solid var(--color-content-foreground);
 }
@@ -191,12 +201,12 @@ div.sphinxsidebarwrapper img {
 }
 
 
-div.edit-this-page > a.muted-link, svg.icon-tabler-shadow, svg.theme-icon-when-dark, svg.theme-icon-when-light, .toctree-checkbox ~ label .icon svg {
+div.edit-this-page > a.muted-link, div.view-this-page > a.muted-link, svg.icon-tabler-shadow, svg.theme-icon-when-dark, svg.theme-icon-when-light, .toctree-checkbox ~ label .icon svg {
 	color:var(--color-content-foreground);
 }
 
 
-div.edit-this-page > a.muted-link:hover, svg.icon.icon-tabler.icon-tabler-copy:hover, svg.icon-tabler-shadow:hover, svg.theme-icon-when-dark:hover, svg.theme-icon-when-light:hover, .toctree-checkbox ~ label .icon svg:hover {
+div.edit-this-page > a.muted-link:hover, div.view-this-page > a.muted-link:hover, svg.icon.icon-tabler.icon-tabler-copy:hover, svg.icon-tabler-shadow:hover, svg.theme-icon-when-dark:hover, svg.theme-icon-when-light:hover, .toctree-checkbox ~ label .icon svg:hover {
 	color:#11AB51;
 }
 
