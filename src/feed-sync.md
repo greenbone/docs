@@ -1,6 +1,6 @@
 
 # Feed Sync Guide
-This documentation provides instructions for updating the various feeds using the new Python-based [`greenbone-feed-sync`](https://github.com/greenbone/greenbone-feed-sync) tool, as well as information about the legacy feed sync scripts, and some tips for troubleshooting a failed feed sync. Please note that different methods are required for completing a feed sync with the official Greenbone Community Containers.
+This documentation provides instructions for updating the Greenbone Community Feed using the new Python-based [`greenbone-feed-sync`](https://github.com/greenbone/greenbone-feed-sync) tool, as well as information about the legacy feed sync scripts, and some tips for troubleshooting a failed feed sync. Please note that different methods are required for completing a feed sync with the official Greenbone Community Containers.
 
 ```{warning} Feed sync information for Greenbone Community Containers can be [found here](https://greenbone.github.io/docs/latest/22.4/container/workflows.html#performing-a-feed-synchronization).
 ```
