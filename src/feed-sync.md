@@ -1,6 +1,6 @@
 
 # Feed Sync Guide
-This documentation provides instructions on updating the various feeds for your specific Greenbone version and installation method, as well as information about the legacy feed sync scripts, and some tips for troubleshooting a failed feed sync. Please note that different methods are required for completing a feed sync with the official Greenbone Community Containers.
+This documentation provides instructions for updating the various feeds using the new Python-based [`greenbone-feed-sync`](https://github.com/greenbone/greenbone-feed-sync) tool, as well as information about the legacy feed sync scripts, and some tips for troubleshooting a failed feed sync. Please note that different methods are required for completing a feed sync with the official Greenbone Community Containers.
 
 ```{warning} Feed sync information for Greenbone Community Containers can be [found here](https://greenbone.github.io/docs/latest/22.4/container/workflows.html#performing-a-feed-synchronization).
 ```
@@ -59,8 +59,9 @@ python3 -m pipx install greenbone-feed-sync
 ```
 
 #### Installation Using pip
-:::{note}
+```{note}
 The pip install command no longer works out-of-the-box in newer distributions like Ubuntu 23.04 because of [PEP 668](https://peps.python.org/pep-0668). Please use the [installation via pipx](https://github.com/greenbone/greenbone-feed-sync/tree/main#install-using-pipx) instead.
+```
 
 You can install the latest stable release of **greenbone-feed-sync** from the Python Package Index (pypi) using [pip](https://pip.pypa.io/).
 
