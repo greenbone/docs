@@ -19,7 +19,7 @@ $ which <feed-command>
 **[???]Should I include this** If you have any of the deprecated sync scripts (`greenbone-certdata-sync`, `greenbone-scapdata-sync`, `greenbone-nvt-sync`, `/usr/local/sbin/greenbone-feed-sync` or `/usr/sbin/greenbone-feed-sync`) installed, it is recommended to remove them. This step ensures a clean transition to the new sync script.
     
 ## Introduction Of The New Python Feed Sync Script
-A new Python-based `greenbone-feed-sync` command now replaces the deprecated feed sync scripts mentioned above. This new script can be run with can be run with **Greenbone version 22.4 and later**, however, older versions are not supported. This new feed sync method will now be installed by default as of **Greenbone Community Edition version 22.5.0**.  
+A new Python-based `greenbone-feed-sync` command now replaces the deprecated feed sync scripts mentioned above. This new script can be used within Greenbone products with **`gvmd 22.4` and later**, however, older versions are not supported. This new feed sync method will now be installed by default as of Greenbone products with **gvmd 22.5**.
 
 The new script can handle various use cases, including the functionality provided by the `gvm-feed-update` which is provided by the Kali/Debian packagers. Full documentation for the new Python-based feed update script can be found [here](https://github.com/greenbone/greenbone-feed-sync/).
 
