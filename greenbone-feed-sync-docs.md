@@ -11,7 +11,7 @@ The following sync scripts listed below are deprecated and no longer installed b
 $ which <feed-command>
 ```
 -   `greenbone-certdata-sync`: This script is equivalent to `greenbone-feed-sync --type CERT`, and it was primarily provided for backwards compatibility.  
--   `greenbone-scapdata-sync`: This script is equivalent to greenbone-feed-sync --type SCAP 1, and it was primarily provided for backwards compatibility.
+-   `greenbone-scapdata-sync`: This script is equivalent to `greenbone-feed-sync --type SCAP 1`, and it was primarily provided for backwards compatibility.
 -   `greenbone-nvt-sync`: This script, written in bash, was used to download vulnerability tests data (nasl and notus files). It is deprecated since openvas-scanner 22.6.0.
 -   `/usr/local/sbin/greenbone-feed-sync` or `/usr/sbin/greenbone-feed-sync`: This is the old sync script written in bash to download CERT, SCAP, and GVMD_DATA. It is no longer installed by default since gvmd 22.5.0.
 
