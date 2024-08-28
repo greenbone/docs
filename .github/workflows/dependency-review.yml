@@ -7,6 +7,8 @@ permissions:
 jobs:
   dependency-review:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - name: 'Dependency Review'
         uses: greenbone/actions/dependency-review@v3
