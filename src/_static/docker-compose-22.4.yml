@@ -1,4 +1,3 @@
-
 services:
   vulnerability-tests:
     image: registry.community.greenbone.net/community/vulnerability-tests:stable
