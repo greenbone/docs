@@ -1,52 +1,52 @@
 services:
   vulnerability-tests:
-    image: registry.community.greenbone.net/community/vulnerability-tests:stable
+    image: registry.community.greenbone.net/community/vulnerability-tests
     environment:
       STORAGE_PATH: /var/lib/openvas/22.04/vt-data/nasl
     volumes:
       - vt_data_vol:/mnt
 
   notus-data:
-    image: registry.community.greenbone.net/community/notus-data:stable
+    image: registry.community.greenbone.net/community/notus-data
     volumes:
       - notus_data_vol:/mnt
 
   scap-data:
-    image: registry.community.greenbone.net/community/scap-data:stable
+    image: registry.community.greenbone.net/community/scap-data
     volumes:
       - scap_data_vol:/mnt
 
   cert-bund-data:
-    image: registry.community.greenbone.net/community/cert-bund-data:stable
+    image: registry.community.greenbone.net/community/cert-bund-data
     volumes:
       - cert_data_vol:/mnt
 
   dfn-cert-data:
-    image: registry.community.greenbone.net/community/dfn-cert-data:stable
+    image: registry.community.greenbone.net/community/dfn-cert-data
     volumes:
       - cert_data_vol:/mnt
     depends_on:
       - cert-bund-data
 
   data-objects:
-    image: registry.community.greenbone.net/community/data-objects:stable
+    image: registry.community.greenbone.net/community/data-objects
     volumes:
       - data_objects_vol:/mnt
 
   report-formats:
-    image: registry.community.greenbone.net/community/report-formats:stable
+    image: registry.community.greenbone.net/community/report-formats
     volumes:
       - data_objects_vol:/mnt
     depends_on:
       - data-objects
 
   gpg-data:
-    image: registry.community.greenbone.net/community/gpg-data:stable
+    image: registry.community.greenbone.net/community/gpg-data
     volumes:
       - gpg_data_vol:/mnt
 
   redis-server:
-    image: registry.community.greenbone.net/community/redis-server:stable
+    image: registry.community.greenbone.net/community/redis-server
     restart: on-failure
     volumes:
       - redis_socket_vol:/run/redis/
@@ -199,7 +199,7 @@ services:
         condition: service_completed_successfully
 
   gvm-tools:
-    image: registry.community.greenbone.net/community/gvm-tools:stable
+    image: registry.community.greenbone.net/community/gvm-tools
     volumes:
       - gvmd_socket_vol:/run/gvmd
       - ospd_openvas_socket_vol:/run/ospd
