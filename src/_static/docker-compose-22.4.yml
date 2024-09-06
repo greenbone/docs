@@ -1,65 +1,65 @@
 services:
   vulnerability-tests:
-    image: greenbone/vulnerability-tests
+    image: registry.community.greenbone.net/community/vulnerability-tests
     environment:
       STORAGE_PATH: /var/lib/openvas/22.04/vt-data/nasl
     volumes:
       - vt_data_vol:/mnt
 
   notus-data:
-    image: greenbone/notus-data
+    image: registry.community.greenbone.net/community/notus-data
     volumes:
       - notus_data_vol:/mnt
 
   scap-data:
-    image: greenbone/scap-data
+    image: registry.community.greenbone.net/community/scap-data
     volumes:
       - scap_data_vol:/mnt
 
   cert-bund-data:
-    image: greenbone/cert-bund-data
+    image: registry.community.greenbone.net/community/cert-bund-data
     volumes:
       - cert_data_vol:/mnt
 
   dfn-cert-data:
-    image: greenbone/dfn-cert-data
+    image: registry.community.greenbone.net/community/dfn-cert-data
     volumes:
       - cert_data_vol:/mnt
     depends_on:
       - cert-bund-data
 
   data-objects:
-    image: greenbone/data-objects
+    image: registry.community.greenbone.net/community/data-objects
     volumes:
       - data_objects_vol:/mnt
 
   report-formats:
-    image: greenbone/report-formats
+    image: registry.community.greenbone.net/community/report-formats
     volumes:
       - data_objects_vol:/mnt
     depends_on:
       - data-objects
 
   gpg-data:
-    image: greenbone/gpg-data
+    image: registry.community.greenbone.net/community/gpg-data
     volumes:
       - gpg_data_vol:/mnt
 
   redis-server:
-    image: greenbone/redis-server
+    image: registry.community.greenbone.net/community/redis-server
     restart: on-failure
     volumes:
       - redis_socket_vol:/run/redis/
 
   pg-gvm:
-    image: greenbone/pg-gvm:stable
+    image: registry.community.greenbone.net/community/pg-gvm:stable
     restart: on-failure
     volumes:
       - psql_data_vol:/var/lib/postgresql
       - psql_socket_vol:/var/run/postgresql
 
   gvmd:
-    image: greenbone/gvmd:stable
+    image: registry.community.greenbone.net/community/gvmd:stable
     restart: on-failure
     volumes:
       - gvmd_data_vol:/var/lib/gvm
@@ -86,7 +86,7 @@ services:
         condition: service_completed_successfully
 
   gsa:
-    image: greenbone/gsa:stable
+    image: registry.community.greenbone.net/community/gsa:stable
     restart: on-failure
     ports:
       - 127.0.0.1:9392:80
@@ -98,7 +98,7 @@ services:
   # and changes log output to /var/log/openvas instead /var/log/gvm
   # to reduce likelyhood of unwanted log interferences
   configure-openvas:
-    image: greenbone/openvas-scanner:stable
+    image: registry.community.greenbone.net/community/openvas-scanner:stable
     volumes:
       - openvas_data_vol:/mnt
       - openvas_log_data_vol:/var/log/openvas
@@ -115,7 +115,7 @@ services:
 
   # shows logs of openvas
   openvas:
-    image: greenbone/openvas-scanner:stable
+    image: registry.community.greenbone.net/community/openvas-scanner:stable
     restart: on-failure
     volumes:
       - openvas_data_vol:/etc/openvas
@@ -131,7 +131,7 @@ services:
         condition: service_completed_successfully
 
   openvasd:
-    image: greenbone/openvas-scanner:stable
+    image: registry.community.greenbone.net/community/openvas-scanner:stable
     restart: on-failure
     environment:
       # `service_notus` is set to disable everything but notus,
@@ -160,7 +160,7 @@ services:
           - openvasd
 
   ospd-openvas:
-    image: greenbone/ospd-openvas:stable
+    image: registry.community.greenbone.net/community/ospd-openvas:stable
     restart: on-failure
     hostname: ospd-openvas.local
     cap_add:
@@ -199,7 +199,7 @@ services:
         condition: service_completed_successfully
 
   gvm-tools:
-    image: greenbone/gvm-tools
+    image: registry.community.greenbone.net/community/gvm-tools
     volumes:
       - gvmd_socket_vol:/run/gvmd
       - ospd_openvas_socket_vol:/run/ospd
