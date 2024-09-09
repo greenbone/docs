@@ -29,5 +29,5 @@ As of version 23.0 the `openvasd_server` configuration needs to be set to a runn
 
 ```{code-block}
 printf "table_driven_lsc = yes\n" | sudo tee /etc/openvas/openvas.conf
-sudo printf "openvasd_server = http://127.0.0.1:3000\n" | sudo tee -a /etc/openvas/openvas.conf
+printf "openvasd_server = http://127.0.0.1:3000\n" | sudo tee -a /etc/openvas/openvas.conf
 ```
