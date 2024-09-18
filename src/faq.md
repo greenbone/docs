@@ -56,7 +56,7 @@ changes! Please contact the author(s) of your installation method.
 
 It was often confusing to find out which software component of the
 {term}`Greenbone Community Edition` belongs to which release. Additionally, the
-{term}`Greenbone OS <GOS>` used in the [Greenbone Enterprise TRIAL](https://www.greenbone.net/en/testnow/)
+{term}`Greenbone OS <GOS>` used in the [Greenbone Free](https://www.greenbone.net/en/greenbone-free/)
 had a different versioning scheme than the Community Edition. The following
 table contains an overview which component in which version belongs to a
 release.
@@ -81,7 +81,7 @@ support to fix your current issue.
 
 If you are using a self-compiled version of the Greenbone software stack not build from this
 guide or packages from an external third party like a distribution please always
-check if you can reproduce the same behavior with the [Greenbone Enterprise TRIAL Virtual Machine](https://www.greenbone.net/en/testnow/)
+check if you can reproduce the same behavior with the [Greenbone Free](https://www.greenbone.net/en/greenbone-free/)
 If we are able to reproduce your issue it will be much easier to fix.
 
 ## Can I mix components from different releases?
