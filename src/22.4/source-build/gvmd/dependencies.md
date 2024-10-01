@@ -7,6 +7,7 @@
      sudo apt install -y \
        libglib2.0-dev \
        libgnutls28-dev \
+       libcjson-dev \
        libpq-dev \
        postgresql-server-dev-15 \
        libical-dev \
@@ -48,6 +49,7 @@
      sudo apt install -y \
        libglib2.0-dev \
        libgnutls28-dev \
+       libcjson-dev \
        libpq-dev \
        postgresql-server-dev-14 \
        libical-dev \

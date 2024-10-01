@@ -7,9 +7,10 @@
      sudo apt install -y \
        libglib2.0-dev \
        libgpgme-dev \
+       libcjson-dev \
        libgnutls28-dev \
        uuid-dev \
-       libssh-gcrypt-dev \
+       libssh-dev \
        libhiredis-dev \
        libxml2-dev \
        libpcap-dev \
