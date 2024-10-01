@@ -25,6 +25,9 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Update GSA to 23.0.0
 * Update OpenVAS Scanner to 23.0.1
 * Drop notus-scanner in favor of the new OpenVAS Daemon (openvasd). This made the Mosquitto MQTT broker obsolete too.
+* Switch Community Container to self-hosted registry registry.community.greenbone.net/community and updated compose file to use this registry.
+* Add missing dependency `libcjson-dev` for gvmd
+* Replace deprecated `libssh-gcrypt-dev` with `libssh-dev`
 
 ## 23.11.0
 * Add workflow page for source builds
