@@ -38,8 +38,7 @@
        python3 \
        smbclient \
        python3-lxml \
-       gnutls-bin \
-       xml-twig-tools
+       gnutls-bin
 
   .. tab:: Ubuntu
    .. code-block::
@@ -79,8 +78,7 @@
        python3 \
        smbclient \
        python3-lxml \
-       gnutls-bin \
-       xml-twig-tools
+       gnutls-bin
 
   .. tab:: Fedora
    .. code-block::
@@ -122,8 +120,7 @@
        socat \
        samba-client \
        python3-lxml \
-       gnutls-utils \
-       perl-XML-Twig
+       gnutls-utils
 
   .. tab:: CentOS
    .. code-block::
@@ -157,6 +154,5 @@
        socat \
        samba-client \
        python3-lxml \
-       gnutls-utils \
-       perl-XML-Twig
+       gnutls-utils
 ```

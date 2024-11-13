@@ -80,8 +80,7 @@ $APT_INSTALL \
   python3 \
   smbclient \
   python3-lxml \
-  gnutls-bin \
-  xml-twig-tools
+  gnutls-bin
 
 curl -f -L https://github.com/greenbone/gvmd/archive/refs/tags/v$GVMD_VERSION.tar.gz -o $SOURCE_DIR/gvmd-$GVMD_VERSION.tar.gz
 

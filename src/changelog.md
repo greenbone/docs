@@ -25,6 +25,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Update GSA to 23.0.0
 * Update OpenVAS Scanner to 23.0.1
 * Drop notus-scanner in favor of the new OpenVAS Daemon (openvasd). This made the Mosquitto MQTT broker obsolete too.
+* Drop mention of obsolete dependency on xml-twig-tools / perl-XML-Twig
 
 ## 23.11.0
 * Add workflow page for source builds
