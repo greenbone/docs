@@ -24,19 +24,19 @@ installed() {
     # $1 should be the command to look for. If $2 is set, we have arguments
     local failed=0
     if [ -z "$2" ]; then
-        if ! [ -x "$(command -v $1)" ]; then
+        if ! [ -x "$(command -v "$1")" ]; then
             failed=1
         fi
     else
         local ret=0
-        $@ &> /dev/null || ret=$?
+        "$@" &> /dev/null || ret=$?
         if [ "$ret" -ne 0 ]; then
             failed=1
         fi
     fi
 
     if [ $failed -ne 0 ]; then
-        echo "$@ is not available. See https://greenbone.github.io/docs/latest/$RELEASE/container/#prerequisites."
+        echo "$* is not available. See https://greenbone.github.io/docs/latest/$RELEASE/container/#prerequisites."
         exit 1
     fi
 
@@ -50,22 +50,22 @@ installed docker compose
 
 echo "Using Greenbone Community Containers $RELEASE"
 
-mkdir -p $DOWNLOAD_DIR && cd $DOWNLOAD_DIR
+mkdir -p "$DOWNLOAD_DIR" && cd "$DOWNLOAD_DIR"
 
 echo "Downloading docker-compose file..."
 curl -f -O https://greenbone.github.io/docs/latest/_static/docker-compose-$RELEASE.yml
 
 echo "Pulling Greenbone Community Containers $RELEASE"
-docker compose -f $DOWNLOAD_DIR/docker-compose-$RELEASE.yml -p greenbone-community-edition pull
+docker compose -f "$DOWNLOAD_DIR"/docker-compose-$RELEASE.yml -p greenbone-community-edition pull
 echo
 
 echo "Starting Greenbone Community Containers $RELEASE"
-docker compose -f $DOWNLOAD_DIR/docker-compose-$RELEASE.yml -p greenbone-community-edition up -d
+docker compose -f "$DOWNLOAD_DIR"/docker-compose-$RELEASE.yml -p greenbone-community-edition up -d
 echo
 
-read -s -p "Password for admin user: " password
-docker compose -f $DOWNLOAD_DIR/docker-compose-$RELEASE.yml -p greenbone-community-edition \
-    exec -u gvmd gvmd gvmd --user=admin --new-password=$password
+read -r -s -p "Password for admin user: " password
+docker compose -f "$DOWNLOAD_DIR"/docker-compose-$RELEASE.yml -p greenbone-community-edition \
+    exec -u gvmd gvmd gvmd --user=admin --new-password="$password"
 
 echo
 echo "The feed data will be loaded now. This process may take several minutes up to hours."
