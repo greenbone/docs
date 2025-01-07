@@ -33,7 +33,7 @@ it can be downloaded with the following command directly:
 ---
 caption: Downloading docker-compose file
 ---
-cd $DOWNLOAD_DIR && curl -f -L https://greenbone.github.io/docs/latest/_static/docker-compose-22.4.yml -o docker-compose.yml
+curl -f -O -L https://greenbone.github.io/docs/latest/_static/docker-compose.yml --output-dir "$DOWNLOAD_DIR"
 ```
 
 ### Description
