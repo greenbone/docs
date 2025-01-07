@@ -1,3 +1,5 @@
+name: greenbone-community-edition
+
 services:
   vulnerability-tests:
     image: registry.community.greenbone.net/community/vulnerability-tests

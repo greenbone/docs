@@ -29,6 +29,9 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Drop mention of obsolete dependency on xml-twig-tools / perl-XML-Twig
 * Update supported Ubuntu version for docker compose guide to 24.04
 * Use unversioned `docker-compose.yml` file for the download
+* Set [docker compose project](https://docs.docker.com/reference/compose-file/version-and-name/#name-top-level-element)
+via compose file. This allows to remove the `-p greenbone-community-edition`
+argument from all docker compose commands.
 
 ## 23.11.0
 

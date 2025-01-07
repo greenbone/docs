@@ -10,14 +10,14 @@ be done with:
 ---
 caption: Downloading the Greenbone Community Containers
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition pull
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml pull
 ```
 
 ```{code-block} shell
 ---
 caption: Starting the Greenbone Community Containers
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition up -d
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml up -d
 ```
 
 ## Performing a Feed Synchronization
@@ -52,7 +52,7 @@ To download the latest feed data container images run
 ---
 caption: Downloading the Greenbone Community Edition feed data containers
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition pull notus-data vulnerability-tests scap-data dfn-cert-data cert-bund-data report-formats data-objects
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml pull notus-data vulnerability-tests scap-data dfn-cert-data cert-bund-data report-formats data-objects
 ```
 
 To copy the data from the images to the volumes run
@@ -61,7 +61,7 @@ To copy the data from the images to the volumes run
 ---
 caption: Starting the Greenbone Community feed data containers
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition up -d notus-data vulnerability-tests scap-data dfn-cert-data cert-bund-data report-formats data-objects
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml up -d notus-data vulnerability-tests scap-data dfn-cert-data cert-bund-data report-formats data-objects
 ```
 
 ### Loading the Feed Changes
@@ -90,6 +90,7 @@ take a few minutes, please wait...
 ```
 
 The loading of the VT data is finished if the log message can be found:
+
 ```{code-block} none
 ---
 caption: ospd-openvas VTs loading finished log message
@@ -232,10 +233,10 @@ by running:
 ---
 caption: Remove containers and volumes (all data)
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition down -v
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml down -v
 ```
 
-##  Gaining a Terminal for a Container
+## Gaining a Terminal for a Container
 
 If you want to debug something in a container, install additional software, take
 a look at the file content, or change some configuration, it is possible to gain
@@ -247,7 +248,7 @@ To access a container with a bash shell as a root user, you can run:
 ---
 caption: Gain a Terminal for a Container
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition exec <container-name> /bin/bash
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml exec <container-name> /bin/bash
 ```
 
 Afterwards, you can execute standard bash commands within the running container.
@@ -262,7 +263,7 @@ can be started with:
 ---
 caption: Start container for gvm-tools CLI access
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition run --rm gvm-tools
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml run --rm gvm-tools
 ```
 
 Afterwards, a bash shell is provided and `gvm-cli`, `gvm-pyshell` or `gvm-script`
@@ -322,7 +323,7 @@ In the next step, the docker compose file must be changed as follows:
 After restarting the containers with
 
 ```bash
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition up -d
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml up -d
 ```
 
 the Unix socket should be available at `/tmp/gvm/gvmd/gvmd.sock`. For example,
@@ -369,6 +370,7 @@ caption: Use a local network relay without authorization
       - MTA_AUTH=off
 ...
 ```
+
 ```{code-block} yaml
 ---
 caption: Use the Google Mail services with SSL and authorization
@@ -440,11 +442,12 @@ gsa:
     - gvmd
 ```
 
-After modifying the `docker-compose.yml` file, restart the containers to enable the changes.
+After modifying the `docker-compose.yml` file, restart the containers to enable
+the changes.
 
 ```{code-block} shell
 ---
 caption: Restart the Greenbone Community Containers
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition up -d
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml up -d
 ```
