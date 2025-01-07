@@ -34,7 +34,7 @@ via compose file. This allows to remove the `-p greenbone-community-edition`
 argument from all docker compose commands.
 * Update image names in examples where the compose file is adjusted
 
-## 23.11.0
+## 23.11.0 - 23-11-21
 
 * Add workflow page for source builds
 * Add documentation for updating source builds
