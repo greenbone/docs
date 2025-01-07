@@ -14,6 +14,12 @@
 
 ## Docker Compose File
 
+```{important}
+Please always ensure to use the latest version of the `docker-compose.yml` file
+when following this guide. The file might got updates and important changes
+since your last download.
+```
+
 To run the Greenbone Community Edition with containers, the following compose
 file should be used:
 
