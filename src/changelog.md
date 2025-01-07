@@ -32,6 +32,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Set [docker compose project](https://docs.docker.com/reference/compose-file/version-and-name/#name-top-level-element)
 via compose file. This allows to remove the `-p greenbone-community-edition`
 argument from all docker compose commands.
+* Update image names in examples where the compose file is adjusted
 
 ## 23.11.0
 

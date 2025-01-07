@@ -20,7 +20,7 @@ caption: Extending the docker compose file for performing a manual feed sync usi
 ---
 ...
   greenbone-feed-sync:
-    image: greenbone/greenbone-feed-sync
+    image: registry.community.greenbone.net/community/greenbone-feed-sync
     volumes:
       - vt_data_vol:/var/lib/openvas/plugins
       - notus_data_vol:/var/lib/notus
