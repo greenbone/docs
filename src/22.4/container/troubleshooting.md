@@ -15,8 +15,7 @@ command. For displaying the complete log output you can run
 ---
 caption: Display all logs
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
-    logs
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml logs
 ```
 
 To follow the current log output to display log messages as they occur use the
@@ -26,8 +25,7 @@ following command
 ---
 caption: Follow current log output
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
-    logs -f
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml logs -f
 ```
 
 It's also possible to just display the logs of a specific container by using
@@ -38,8 +36,7 @@ within the docker compose file](./index.md#description).
 ---
 caption: Follow the log messages of the gvmd container only
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
-    logs -f gvmd
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml logs -f gvmd
 ```
 
 Additionally it is possible to bypass the `docker compose log` command and
@@ -50,7 +47,7 @@ the content of the OpenVAS scanner log file via {command}`cat`
 ---
 caption: Print messages from /var/log/gvm/openvas.log
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml \
     exec ospd-openvas cat /var/log/gvm/openvas.log
 ```
 
@@ -70,8 +67,7 @@ scanner.
 ---
 caption: Restart the scanner to ensure that new {term}`VTs<VT>` are loaded
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
-    restart ospd-openvas
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml restart ospd-openvas
 ```
 
 ### Port list, scan configurations, report formats are up-to-date but not visible on the web interface
@@ -82,7 +78,7 @@ If port lists, scan configurations, or report formats are missing on the web int
 ---
 caption: Forcing reload of report formats, scan configs and port lists
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml \
     exec -u gvmd gvmd gvmd --rebuild-gvmd-data=all
 ```
 
@@ -109,8 +105,7 @@ restart the corresponding container with:
 ---
 caption: Restarting the ospd-openvas scanner
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
-    restart ospd-openvas
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml restart ospd-openvas
 ```
 
 If you still get errors, you need to take a look at the `ospd-openvas` logs.
@@ -119,8 +114,7 @@ If you still get errors, you need to take a look at the `ospd-openvas` logs.
 ---
 caption: Showing log message of the ospd-openvas scanner
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
-    log -f ospd-openvas
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml log -f ospd-openvas
 ```
 
 ### Cannot log in to the web interface: *Greenbone Vulnerability Manager service is not responding*
@@ -144,8 +138,7 @@ had some issues accessing the PostgreSQL database.
 ---
 caption: Restarting {term}`gvmd`
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
-    restart gvmd
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml restart gvmd
 ```
 
 ### Redis server keeps restarting `rm: cannot remove ‘/run/redis/redis.sock’: Permission denied`
@@ -160,9 +153,8 @@ The volume can be removed safely because it gets recreated on the next startup.
 ---
 caption: Recreating the Redis server socket volume
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml  \
     rm -s -f redis-server ospd-openvas
 docker volume rm greenbone-community-edition_redis_socket_vol
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
-    up -d
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml up -d
 ```

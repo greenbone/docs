@@ -41,7 +41,7 @@ during a vulnerability scan.
 caption: Downloading {term}`NASL<NASL>` {term}`VTs<VT>` processed by the
     ospd-openvas scanner, this will take a while.
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml \
     run --rm greenbone-feed-sync greenbone-feed-sync --type nasl
 ```
 
@@ -50,9 +50,10 @@ docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-editio
 caption: Downloading `notus` {term}`VTs<VT>` processed for local security checks,
     this will take a while.
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml \
     run --rm greenbone-feed-sync greenbone-feed-sync --type notus
 ```
+
 ### Syncing SCAP, CERT and GVMD Data
 
 {term}`SCAP` data contains {term}`CPE` and {term}`CVE` information.
@@ -61,7 +62,7 @@ docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-editio
 ---
 caption: Downloading SCAP data processed by gvmd, this will take a while
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml \
     run --rm greenbone-feed-sync greenbone-feed-sync --type scap
 ```
 
@@ -72,7 +73,7 @@ and [CERT-Bund](https://cert-bund.de/) agencies.
 ---
 caption: Downloading CERT data processed by gvmd
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml \
     run --rm greenbone-feed-sync greenbone-feed-sync --type cert
 ```
 
@@ -83,6 +84,6 @@ policies, port lists and report formats.
 ---
 caption: Downloading data objects processed by gvmd
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml -p greenbone-community-edition \
+docker compose -f $DOWNLOAD_DIR/docker-compose.yml \
     run --rm greenbone-feed-sync greenbone-feed-sync --type gvmd-data
 ```
