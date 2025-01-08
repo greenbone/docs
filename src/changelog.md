@@ -27,6 +27,8 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Update OpenVAS Scanner to 23.0.1
 * Drop notus-scanner in favor of the new OpenVAS Daemon (openvasd). This made the Mosquitto MQTT broker obsolete too.
 * Drop mention of obsolete dependency on xml-twig-tools / perl-XML-Twig
+* Changed container registry from DockerHub to registry.community.greenbone.net
+in compose file
 * Update supported Ubuntu version for docker compose guide to 24.04
 * Use unversioned `docker-compose.yml` file for the download
 * Set [docker compose project](https://docs.docker.com/reference/compose-file/version-and-name/#name-top-level-element)
