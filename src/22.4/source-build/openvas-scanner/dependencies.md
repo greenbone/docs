@@ -16,7 +16,8 @@
        nmap \
        libjson-glib-dev \
        libcurl4-gnutls-dev \
-       libbsd-dev
+       libbsd-dev \
+       libkrb5-dev
 
    .. code-block::
      :caption: Debian optional dependencies for openvas-scanner
@@ -41,7 +42,8 @@
        nmap \
        json-glib-devel \
        libcurl-devel \
-       libbsd-devel
+       libbsd-devel \
+       krb5-devel
 
    .. code-block::
      :caption: Fedora optional dependencies for openvas-scanner
@@ -65,5 +67,6 @@
        nmap \
        json-glib-devel \
        libcurl-devel \
-       libbsd-devel
+       libbsd-devel \
+       krb5-devel
 ```
