@@ -29,7 +29,7 @@ export OPENVAS_SMB_VERSION=22.5.3
        libglib2.0-dev \
        libpopt-dev \
        libunistring-dev \
-       heimdal-dev \
+       heimdal-multidev \
        perl-base
 
   .. tab:: Fedora
