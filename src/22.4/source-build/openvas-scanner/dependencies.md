@@ -17,7 +17,7 @@
        libjson-glib-dev \
        libcurl4-gnutls-dev \
        libbsd-dev \
-       libkrb5-dev
+       krb5-multidev
 
    .. code-block::
      :caption: Debian optional dependencies for openvas-scanner
