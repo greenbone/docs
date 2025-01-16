@@ -32,21 +32,6 @@ export OPENVAS_SMB_VERSION=22.5.3
        heimdal-multidev \
        perl-base
 
-  .. tab:: Fedora
-   .. code-block::
-     :caption: Required dependencies for openvas-smb
-
-     sudo dnf install -y \
-       glib2-devel \
-       gnutls-devel \
-       popt-devel \
-       mingw64-gcc \
-       libunistring-devel \
-       heimdal-devel \
-       perl
-
-       sudo cp /usr/lib64/heimdal/lib/pkgconfig/heimdal-gssapi.pc /lib64/pkgconfig/heimdal-gssapi.pc
-       sudo cp /usr/lib64/heimdal/lib/pkgconfig/heimdal-krb5.pc /lib64/pkgconfig/heimdal-krb5.pc
 ```
 
 ```{code-block}
