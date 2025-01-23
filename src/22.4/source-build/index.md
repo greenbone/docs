@@ -142,7 +142,7 @@ export GSAD_VERSION=22.11.0
 ```{code-block}
 :caption: Setting the openvas-scanner version to use
 
-export OPENVAS_SCANNER_VERSION=23.14.1
+export OPENVAS_SCANNER_VERSION=23.15.3
 ```
 
 ```{include} /22.4/source-build/openvas-scanner/dependencies.md
@@ -182,7 +182,7 @@ export OSPD_OPENVAS_VERSION=22.7.1
 ```{code-block}
 :caption: Setting the openvas versions to use
 
-export OPENVAS_DAEMON=23.14.1
+export OPENVAS_DAEMON=23.15.3
 ```
 
 ```{include} /22.4/source-build/openvasd/dependencies.md
