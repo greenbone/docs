@@ -7,6 +7,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 
 ## Latest
 
+* Fix file path to compose file in setup and start script
 
 ## 25.1.0 - 2025-01-09
 
