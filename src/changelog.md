@@ -12,6 +12,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Update openvas-scanner dependecy from libkrb5-dev to krb5-multidev
 * Update openvas-scanner and openvasd to 23.15.3
 * Remove fedora in openvas-smb.
+* Fix openvasd path to binaries after file path structure changes.
 
 ## 25.1.0 - 2025-01-09
 
