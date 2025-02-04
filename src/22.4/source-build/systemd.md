@@ -103,14 +103,6 @@ EOF
 sudo cp -v $BUILD_DIR/gsad.service /etc/systemd/system/
 ```
 
-Afterwards, the services need to be activated and started.
-
-```{code-block}
-:caption: Making systemd aware of the new service files
-
-sudo systemctl daemon-reload
-```
-
 ```{code-block}
 :caption: Systemd service file for openvasd
 cat << EOF > $BUILD_DIR/openvasd.service
@@ -135,4 +127,12 @@ EOF
 ```{code-block}
 :caption: Install systemd service file for openvasd
 sudo cp -v $BUILD_DIR/openvasd.service /etc/systemd/system/
+```
+
+Afterwards, the services need to be activated and started.
+
+```{code-block}
+:caption: Making systemd aware of the new service files
+
+sudo systemctl daemon-reload
 ```
