@@ -8,8 +8,8 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 ## Latest
 
 * Fix file path to compose file in setup and start script
-* Update openvas-smb dependecy from heimdal-dev to heimdal-multidev
-* Update openvas-scanner dependecy from libkrb5-dev to krb5-multidev
+* Update openvas-smb dependency from heimdal-dev to heimdal-multidev
+* Update openvas-scanner dependency from libkrb5-dev to krb5-multidev
 * Update openvas-scanner and openvasd to 23.15.3
 * Remove fedora in openvas-smb.
 * Fix openvasd path to binaries after file path structure changes.
