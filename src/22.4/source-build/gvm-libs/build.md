@@ -4,19 +4,21 @@
    .. code-block::
       :caption: Building gvm-libs
 
-      mkdir -p $BUILD_DIR/gvm-libs && cd $BUILD_DIR/gvm-libs
+      mkdir -p $BUILD_DIR/gvm-libs
 
-      cmake $SOURCE_DIR/gvm-libs-$GVM_LIBS_VERSION \
+      cmake \
+        -S $SOURCE_DIR/gvm-libs-$GVM_LIBS_VERSION \
+        -B $BUILD_DIR/gvm-libs \
         -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
         -DCMAKE_BUILD_TYPE=Release \
         -DSYSCONFDIR=/etc \
         -DLOCALSTATEDIR=/var
 
-      make -j$(nproc)
+      cmake --build $BUILD_DIR/gvm-libs -j$(nproc)
   .. tab:: Fedora/CentOS
    .. code-block::
       :caption: Building gvm-libs
- 
+
       mkdir -p $BUILD_DIR/gvm-libs && cd $BUILD_DIR/gvm-libs
 
       cmake $SOURCE_DIR/gvm-libs-$GVM_LIBS_VERSION \
@@ -33,7 +35,7 @@
 ```{code-block}
 :caption: Installing gvm-libs
 
-mkdir -p $INSTALL_DIR/gvm-libs
+mkdir -p $INSTALL_DIR/gvm-libs && cd $BUILD_DIR/gvm-libs
 
 make DESTDIR=$INSTALL_DIR/gvm-libs install
 
