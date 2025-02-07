@@ -10,6 +10,7 @@ cmake $SOURCE_DIR/gsad-$GSAD_VERSION \
   -DLOCALSTATEDIR=/var \
   -DGVMD_RUN_DIR=/run/gvmd \
   -DGSAD_RUN_DIR=/run/gsad \
+  -DGVM_LOG_DIR=/var/log/gvm \
   -DLOGROTATE_DIR=/etc/logrotate.d
 
 make -j$(nproc)
