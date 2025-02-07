@@ -1,84 +1,45 @@
 ```{eval-rst}
 .. tabs::
-  .. tab:: Debian
+  .. tab:: Debian/Ubuntu
    .. code-block::
      :caption: Required dependencies for gvmd
 
      sudo apt install -y \
+       lcov \
+       libbsd-dev \
+       libcjson-dev \
        libglib2.0-dev \
        libgnutls28-dev \
-       libpq-dev \
-       postgresql-server-dev-15 \
+       libgpgme-dev \
        libical-dev \
-       xsltproc \
+       libpq-dev \
+       postgresql-server-dev-all \
        rsync \
-       libbsd-dev \
-       libgpgme-dev
-
+       xsltproc
 
    .. code-block::
      :caption: Optional dependencies for gvmd
 
      sudo apt install -y --no-install-recommends \
-       texlive-latex-extra \
-       texlive-fonts-recommended \
-       xmlstarlet \
-       zip \
-       rpm \
-       fakeroot \
        dpkg \
-       nsis \
-       gnupg \
-       gpgsm \
-       wget \
-       sshpass \
-       openssh-client \
-       socat \
-       snmp \
-       python3 \
-       smbclient \
-       python3-lxml \
-       gnutls-bin
-
-  .. tab:: Ubuntu
-   .. code-block::
-     :caption: Required dependencies for gvmd
-
-     sudo apt install -y \
-       libglib2.0-dev \
-       libgnutls28-dev \
-       libpq-dev \
-       postgresql-server-dev-14 \
-       libical-dev \
-       xsltproc \
-       rsync \
-       libbsd-dev \
-       libgpgme-dev
-
-
-   .. code-block::
-     :caption: Optional dependencies for gvmd
-
-     sudo apt install -y --no-install-recommends \
-       texlive-latex-extra \
-       texlive-fonts-recommended \
-       xmlstarlet \
-       zip \
-       rpm \
        fakeroot \
-       dpkg \
-       nsis \
        gnupg \
+       gnutls-bin \
        gpgsm \
-       wget \
-       sshpass \
+       nsis \
        openssh-client \
-       socat \
-       snmp \
        python3 \
-       smbclient \
        python3-lxml \
-       gnutls-bin
+       rpm \
+       smbclient \
+       snmp \
+       socat \
+       sshpass \
+       texlive-fonts-recommended \
+       texlive-latex-extra \
+       wget \
+       xmlstarlet \
+       zip
 
   .. tab:: Fedora
    .. code-block::

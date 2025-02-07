@@ -1,22 +1,13 @@
 ```{eval-rst}
 .. tabs::
-  .. tab:: Debian
+  .. tab:: Debian/Ubuntu
    .. code-block::
      :caption: Required dependencies for pg-gvm
 
      sudo apt install -y \
        libglib2.0-dev \
-       postgresql-server-dev-15 \
-       libical-dev
-
-  .. tab:: Ubuntu
-   .. code-block::
-     :caption: Required dependencies for pg-gvm
-
-     sudo apt install -y \
-       libglib2.0-dev \
-       postgresql-server-dev-14 \
-       libical-dev
+       libical-dev \
+       postgresql-server-dev-all
 
   .. tab:: Fedora/CentOS
    .. code-block::
@@ -25,6 +16,6 @@
      sudo dnf install -y \
        glib2-devel \
        gnutls-devel \
-       postgresql-server-devel \
-       libical-devel
+       libical-devel \
+       postgresql-server-devel
 ```
