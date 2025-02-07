@@ -61,19 +61,21 @@ tar -C $SOURCE_DIR -xvzf $SOURCE_DIR/openvas-smb-$OPENVAS_SMB_VERSION.tar.gz
 ```{code-block}
 :caption: Building openvas-smb
 
-mkdir -p $BUILD_DIR/openvas-smb && cd $BUILD_DIR/openvas-smb
+mkdir -p $BUILD_DIR/openvas-smb
 
-cmake $SOURCE_DIR/openvas-smb-$OPENVAS_SMB_VERSION \
+cmake \
+  -S $SOURCE_DIR/openvas-smb-$OPENVAS_SMB_VERSION \
+  -B $BUILD_DIR/openvas-smb \
   -DCMAKE_INSTALL_PREFIX=$INSTALL_PREFIX \
   -DCMAKE_BUILD_TYPE=Release
 
-make -j$(nproc)
+cmake --build $BUILD_DIR/openvas-smb -j$(nproc)
 ```
 
 ```{code-block}
 :caption: Installing openvas-smb
 
-mkdir -p $INSTALL_DIR/openvas-smb
+mkdir -p $INSTALL_DIR/openvas-smb && cd $BUILD_DIR/openvas-smb
 
 make DESTDIR=$INSTALL_DIR/openvas-smb install
 

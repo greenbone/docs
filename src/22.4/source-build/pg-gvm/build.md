@@ -4,12 +4,14 @@
     .. code-block::
       :caption: Building pg-gvm
 
-      mkdir -p $BUILD_DIR/pg-gvm && cd $BUILD_DIR/pg-gvm
+      mkdir -p $BUILD_DIR/pg-gvm
 
-      cmake $SOURCE_DIR/pg-gvm-$PG_GVM_VERSION \
+      cmake \
+        -S $SOURCE_DIR/pg-gvm-$PG_GVM_VERSION \
+        -B $BUILD_DIR/pg-gvm \
         -DCMAKE_BUILD_TYPE=Release
 
-      make -j$(nproc)
+      cmake --build $BUILD_DIR/pg-gvm -j$(nproc)
 
   .. tab:: Fedora/CentOS
     .. code-block::
@@ -26,7 +28,7 @@
 ```{code-block}
 :caption: Installing pg-gvm
 
-mkdir -p $INSTALL_DIR/pg-gvm
+mkdir -p $INSTALL_DIR/pg-gvm && cd $BUILD_DIR/pg-gvm
 
 make DESTDIR=$INSTALL_DIR/pg-gvm install
 
