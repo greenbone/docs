@@ -5,10 +5,11 @@
      :caption: Required dependencies for gsad
 
      sudo apt install -y \
-       libmicrohttpd-dev \
-       libxml2-dev \
+       libbrotli-dev \
        libglib2.0-dev \
-       libgnutls28-dev
+       libgnutls28-dev \
+       libmicrohttpd-dev \
+       libxml2-dev
 
   .. tab:: Fedora/CentOS
    .. code-block::

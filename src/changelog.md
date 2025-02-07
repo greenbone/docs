@@ -17,7 +17,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Update gvm-libs to 22.17.0
 * Update gvmd to 25.0.0
 * Update pg-gvm to 22.6.7
-* Update gsad to 24.2.0
+* Update gsad to 24.2.0 and support brotli compression
 * Update GSA to 24.2.0
 
 ## 25.1.0 - 2025-01-09
