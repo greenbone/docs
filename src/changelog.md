@@ -14,6 +14,11 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Remove fedora in openvas-smb.
 * Fix openvasd path to binaries after file path structure changes.
 * Call `systemctl daemon-reload` after all service files are installed
+* Update gvm-libs to 22.17.0
+* Update gvmd to 25.0.0
+* Update pg-gvm to 22.6.7
+* Update gsad to 24.2.0
+* Update GSA to 24.2.0
 
 ## 25.1.0 - 2025-01-09
 
