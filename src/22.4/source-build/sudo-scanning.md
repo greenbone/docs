@@ -15,25 +15,11 @@ be used for exploits. See
 
 ```{eval-rst}
 .. tabs::
-  .. tab:: Debian/Ubuntu
+  .. tab:: Debian/Ubuntu/Fedora
     .. code-block:: none
 
-      sudo visudo
-
-      ...
-
-      # allow users of the gvm group run openvas
-      %gvm ALL = NOPASSWD: /usr/local/sbin/openvas
-
-  .. tab:: Fedora
-    .. code-block:: none
-
-      sudo visudo
-
-      ...
-
-      # allow users of the gvm group run openvas
-      %gvm ALL = NOPASSWD: /usr/local/sbin/openvas
+      echo "%gvm ALL = NOPASSWD: /usr/local/sbin/openvas" | sudo tee /etc/sudoers.d/gvm \
+      && sudo chmod 0440 /etc/sudoers.d/gvm
 
   .. tab:: CentOS
     .. code-block:: none
