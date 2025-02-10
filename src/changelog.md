@@ -19,6 +19,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Update pg-gvm to 22.6.7
 * Update gsad to 24.2.0 and support brotli compression
 * Update GSA to 24.2.0 and the description
+* Drop python3-defusedxml from dependencies of gvm-tools
 
 ## 25.1.0 - 2025-01-09
 
