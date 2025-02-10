@@ -20,6 +20,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Update gsad to 24.2.0 and support brotli compression
 * Update GSA to 24.2.0 and the description
 * Drop python3-defusedxml from dependencies of gvm-tools
+* Simplify instructions for setting up sudo
 
 ## 25.1.0 - 2025-01-09
 
