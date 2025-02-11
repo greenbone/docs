@@ -4,7 +4,7 @@ services:
   vulnerability-tests:
     image: registry.community.greenbone.net/community/vulnerability-tests
     environment:
-      STORAGE_PATH: /var/lib/openvas/22.04/vt-data/nasl
+      FEED_RELEASE: 24.10
     volumes:
       - vt_data_vol:/mnt
 
@@ -32,11 +32,15 @@ services:
 
   data-objects:
     image: registry.community.greenbone.net/community/data-objects
+    environment:
+      FEED_RELEASE: 24.10
     volumes:
       - data_objects_vol:/mnt
 
   report-formats:
     image: registry.community.greenbone.net/community/report-formats
+    environment:
+      FEED_RELEASE: 24.10
     volumes:
       - data_objects_vol:/mnt
     depends_on:
@@ -180,7 +184,7 @@ services:
         "--notus-feed-dir",
         "/var/lib/notus/advisories",
         "-m",
-        "666"
+        "666",
       ]
     volumes:
       - gpg_data_vol:/etc/openvas/gnupg

@@ -21,6 +21,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Update GSA to 24.2.0 and the description
 * Drop python3-defusedxml from dependencies of gvm-tools
 * Simplify instructions for setting up sudo
+* Update docker compose file for using the 24.10 feed release
 
 ## 25.1.0 - 2025-01-09
 
