@@ -4,7 +4,7 @@ services:
   vulnerability-tests:
     image: registry.community.greenbone.net/community/vulnerability-tests
     environment:
-      FEED_RELEASE: 24.10
+      FEED_RELEASE: "24.10"
     volumes:
       - vt_data_vol:/mnt
 
@@ -33,14 +33,14 @@ services:
   data-objects:
     image: registry.community.greenbone.net/community/data-objects
     environment:
-      FEED_RELEASE: 24.10
+      FEED_RELEASE: "24.10"
     volumes:
       - data_objects_vol:/mnt
 
   report-formats:
     image: registry.community.greenbone.net/community/report-formats
     environment:
-      FEED_RELEASE: 24.10
+      FEED_RELEASE: "24.10"
     volumes:
       - data_objects_vol:/mnt
     depends_on:
