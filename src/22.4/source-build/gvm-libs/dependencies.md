@@ -5,18 +5,19 @@
      :caption: Required dependencies for gvm-libs
 
      sudo apt install -y \
-      libcurl4-gnutls-dev \
-      libgcrypt-dev \
-      libglib2.0-dev \
-      libgnutls28-dev \
-      libgpgme-dev \
-      libhiredis-dev \
-      libnet1-dev \
-      libpaho-mqtt-dev \
-      libpcap-dev \
-      libssh-dev \
-      libxml2-dev \
-      uuid-dev
+       libcjson-dev \
+       libcurl4-gnutls-dev \
+       libgcrypt-dev \
+       libglib2.0-dev \
+       libgnutls28-dev \
+       libgpgme-dev \
+       libhiredis-dev \
+       libnet1-dev \
+       libpaho-mqtt-dev \
+       libpcap-dev \
+       libssh-dev \
+       libxml2-dev \
+       uuid-dev
 
    .. code-block::
      :caption: Optional dependencies for gvm-libs

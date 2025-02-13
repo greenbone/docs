@@ -22,6 +22,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Drop python3-defusedxml from dependencies of gvm-tools
 * Simplify instructions for setting up sudo
 * Update docker compose file for using the 24.10 feed release
+* Add libcjson dependency for gvm-libs
 
 ## 25.1.0 - 2025-01-09
 
