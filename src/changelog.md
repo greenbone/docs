@@ -7,6 +7,11 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 
 ## Latest
 
+* Update gvm-libs to 22.18.0
+* Update gvmd to 25.1.1
+* Update gsad to 24.2.2
+* Update GSA to 24.3.0
+
 ## 25.2.0 - 2025-02-18
 
 * Fix file path to compose file in setup and start script
