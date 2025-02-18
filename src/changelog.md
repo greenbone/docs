@@ -5,7 +5,7 @@ All notable changes to this documentation will be listed in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
-## Latest
+## 25.2.0 - 2025-02-18
 
 * Fix file path to compose file in setup and start script
 * Update openvas-smb dependency from heimdal-dev to heimdal-multidev
