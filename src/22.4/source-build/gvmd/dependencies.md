@@ -5,7 +5,6 @@
      :caption: Required dependencies for gvmd
 
      sudo apt install -y \
-       lcov \
        libbsd-dev \
        libcjson-dev \
        libglib2.0-dev \

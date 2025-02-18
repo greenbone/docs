@@ -11,6 +11,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Update gvmd to 25.1.1
 * Update gsad to 24.2.2
 * Update GSA to 24.3.0
+* Drop `lcov` development dependency in gvmd install instructions
 
 ## 25.2.0 - 2025-02-18
 
@@ -160,7 +161,7 @@ argument from all docker compose commands.
 
 * Set `table_drive_lsc = yes` setting for openvas scanner to enable local
   security checks scanning via notus scanner
-* Remove docs for 21.04 because it is end-of-life and wont get any updates
+* Remove docs for 21.04 because it is end-of-life and won't get any updates
   anymore.
 * Extend FAQ for no results after finished scan
 * Update systemd service files to start the daemons in foreground to avoid
