@@ -14,6 +14,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Drop `lcov` development dependency in gvmd install instructions
 * Fix - Docs copy (Feed Status moved to Administration)
 * Update source build guide for a section explaining the environment variables
+* Add section about getting a 404 to source guide troubleshooting
 
 ## 25.2.0 - 2025-02-18
 
