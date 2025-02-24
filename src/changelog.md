@@ -12,7 +12,8 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Update gsad to 24.2.2
 * Update GSA to 24.3.0
 * Drop `lcov` development dependency in gvmd install instructions
-* Fix - Docs copy (Feed Status moved to Administration) 
+* Fix - Docs copy (Feed Status moved to Administration)
+* Update source build guide for a section explaining the environment variables
 
 ## 25.2.0 - 2025-02-18
 
