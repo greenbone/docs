@@ -100,7 +100,6 @@ If there are still no scan configs under {menuselection}`Configuration > Scan Co
 on the web interface after some hours and the logs of gvmd and ospd-openvas do not show
 errors, the `Feed Import Owner` may not have been set.
 
-
 ```{code-block} shell
 ---
 caption: Setting the `Feed Import Owner`
@@ -112,3 +111,13 @@ If all these steps do not resolve the issue, it is very likely a bigger problem,
 for example with the PostgreSQL database. Therefore, the
 {file}`/var/log/gvm/ospd-openvas.log` and {file}`/var/log/gvm/gvmd.log` files
 must be inspected for possible error and warning messages.
+
+### curl: (22) The requested URL returned error: 404
+
+While downloading some source file of the software components the URL can't be
+found and {command}`curl` returns a HTTP status code 404.
+
+Please ensure the version variable of the to be downloaded component and all
+[required environment variables](./index.md#setting-environment-variables) are
+set. If that doesn't work try to replace the variables in the curl command with
+the actual content.

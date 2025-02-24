@@ -42,7 +42,20 @@ sudo usermod -aG gvm $USER
 su $USER
 ```
 
-### Choosing an Install Prefix
+### Setting Environment Variables
+
+For easier installation and not having to repeat the same directory paths over
+and over again the build from source guide uses [environment variables](https://en.wikipedia.org/wiki/Environment_variable).
+These environment variables are used later in the guide.
+
+```{attention}
+If you close your linux shell/terminal or start a new one, for example due to a
+system reboot while following this guide, you need to set the environment
+variables again. Environment variables are only valid in your current
+shell/terminal.
+```
+
+#### Choosing an Install Prefix
 
 Before building the software stack, a (root) directory must be chosen where
 the built software will finally be installed. For example, when building packages,
@@ -58,7 +71,7 @@ to be able to reference it later.
 export INSTALL_PREFIX=/usr/local
 ```
 
-### Setting the PATH
+#### Setting the PATH
 
 On Debian systems the locations {file}`/sbin`, {file}`/usr/sbin` and
 {file}`/usr/local/sbin` are not in the {envvar}`PATH` of normal users. To run
@@ -71,7 +84,7 @@ environment variable should be adjusted.
 export PATH=$PATH:$INSTALL_PREFIX/sbin
 ```
 
-### Creating a Source, Build and Install Directory
+#### Setting a Source, Build and Install Directory
 
 To separate the sources and the build artifacts, a source and a build directory
 must be created.
