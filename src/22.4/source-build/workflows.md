@@ -17,8 +17,7 @@ sudo systemctl stop gsad gvmd ospd-openvas openvasd
 ```
 
 Afterwards, you must verify that all [prerequisites](./index.md#prerequisites) are met.
-In particular, make sure that the [install prefix](./index.md#choosing-an-install-prefix), the
-[PATH](./index.md#setting-the-path) and the [required environment variables](./index.md#creating-a-source-build-and-install-directory)
+In particular, make sure that the [required environment variables](./index.md#setting-environment-variables)
 are set.
 
 For being able to update `ospd-openvas`, `greenbone-feed-sync` and `gvm-tools`
