@@ -141,7 +141,7 @@ services:
     restart: on-failure
     environment:
       # `service_notus` is set to disable everything but notus,
-      # if you want to utilize openvasd directly remove `OPENVASD_MODE`
+      # if you want to utilize openvasd directly, remove `OPENVASD_MODE`
       OPENVASD_MODE: service_notus
       GNUPGHOME: /etc/openvas/gnupg
       LISTENING: 0.0.0.0:80
