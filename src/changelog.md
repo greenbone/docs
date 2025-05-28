@@ -7,10 +7,13 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 
 ## Latest
 
-* Update gvm-libs to 22.18.0
-* Update gvmd to 25.1.1
-* Update gsad to 24.2.2
-* Update GSA to 24.3.0
+* Update gvm-libs to 22.22.0
+* Update gvmd to 26.0.0
+* Update gsad to 24.3.0
+* Update GSA to 25.0.0
+* Update pg-gvm to 22.6.9
+* Update openvas-scanner to 23.20.1
+* Update ospd-openvas to 22.9.0
 * Drop `lcov` development dependency in gvmd install instructions
 * Fix - Docs copy (Feed Status moved to Administration)
 * Update source build guide for a section explaining the environment variables
