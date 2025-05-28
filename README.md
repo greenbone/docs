@@ -41,6 +41,7 @@ You should run this command once a week to install the latest dependencies.
 ## Manual Build
 
 After installing [poetry] and the project's dependencies, the docs can be built with:
+
 ```sh
 poetry run make html
 ```
