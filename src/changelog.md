@@ -7,6 +7,9 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 
 ## Latest
 
+* Improve hints about following rustup.sh instructions on Debian and CentOS to
+  build openvasd
+
 ## 25.5.0 - 2025-05-30
 
 * Update gvm-libs to 22.22.0
