@@ -7,6 +7,8 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 
 ## Latest
 
+## 25.5.0 - 2025-05-30
+
 * Update gvm-libs to 22.22.0
 * Update gvmd to 26.0.0
 * Update gsad to 24.3.0
