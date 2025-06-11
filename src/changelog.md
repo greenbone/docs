@@ -10,6 +10,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Improve hints about following rustup.sh instructions on Debian and CentOS to
   build openvasd
 * Require Ubuntu 24.04 for source build to fix building gvm-libs
+* Ensure cargo is up-to-date by running `rustup update stable` for openvasd
 
 ## 25.5.0 - 2025-05-30
 
