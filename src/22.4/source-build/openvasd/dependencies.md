@@ -8,29 +8,35 @@
    .. code-block::
      :caption: Required dependencies for openvasd
 
-     # Follow instructions of https://rustup.rs to install cargo and afterwards run
+     # Follow instructions of https://rustup.rs to install rustup and afterwards run
 
      sudo apt install -y \
        pkg-config \
        libssl-dev
+
+     rustup update stable
 
   .. tab:: Ubuntu
    .. code-block::
      :caption: Required dependencies for openvasd
 
      sudo apt install -y \
-       cargo \
+       rustup \
        pkg-config \
        libssl-dev
+
+     rustup update stable
 
   .. tab:: Fedora
    .. code-block::
      :caption: Required dependencies for openvasd
 
      sudo dnf install -y \
-       cargo \
+       rustup \
        pkg-config \
        openssl-devel
+
+     rustup update stable
 
   .. tab:: CentOS
 
@@ -40,9 +46,11 @@
    .. code-block::
      :caption: Required dependencies for openvasd
 
-     # Follow instructions of https://rustup.rs to install cargo and afterwards run
+     # Follow instructions of https://rustup.rs to install rustup and afterwards run
 
      sudo dnf install -y \
        pkg-config \
        openssl-devel
+
+     rustup update stable
 ```
