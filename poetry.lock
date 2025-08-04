@@ -94,14 +94,14 @@ lxml = ["lxml"]
 
 [[package]]
 name = "certifi"
-version = "2025.7.14"
+version = "2025.8.3"
 description = "Python package for providing Mozilla's CA Bundle."
 optional = false
 python-versions = ">=3.7"
 groups = ["main", "dev"]
 files = [
-    {file = "certifi-2025.7.14-py3-none-any.whl", hash = "sha256:6b31f564a415d79ee77df69d757bb49a5bb53bd9f756cbbe24394ffd6fc1f4b2"},
-    {file = "certifi-2025.7.14.tar.gz", hash = "sha256:8ea99dbdfaaf2ba2f9bac77b9249ef62ec5218e7c2b2e903378ed5fccf765995"},
+    {file = "certifi-2025.8.3-py3-none-any.whl", hash = "sha256:f6c12493cfb1b06ba2ff328595af9350c65d6644968e5d3a2ffd78699af217a5"},
+    {file = "certifi-2025.8.3.tar.gz", hash = "sha256:e564105f78ded564e3ae7c923924435e1daa7463faeab5bb932bc53ffae63407"},
 ]
 
 [[package]]
@@ -889,14 +889,14 @@ test = ["pytest"]
 
 [[package]]
 name = "sphinxext-opengraph"
-version = "0.10.0"
+version = "0.11.0"
 description = "Sphinx Extension to enable OGP support"
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "sphinxext_opengraph-0.10.0-py3-none-any.whl", hash = "sha256:8afd33f96a02d9506d9dc8f284840888ca8948482ac93015a68d88493df43712"},
-    {file = "sphinxext_opengraph-0.10.0.tar.gz", hash = "sha256:5781149c1dfc306c3701661acdd02c512c2e6f21d2253487bf0b39639017fc24"},
+    {file = "sphinxext_opengraph-0.11.0-py3-none-any.whl", hash = "sha256:200d7492aaf25813062ed68b34ba65201a6adba83089cc11324c92e25066e83f"},
+    {file = "sphinxext_opengraph-0.11.0.tar.gz", hash = "sha256:8f145274ae7add372277f69d57fca768d2349ea9a202637f506a6fdde5808cf4"},
 ]
 
 [package.dependencies]
