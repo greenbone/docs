@@ -56,5 +56,24 @@ To open the served docs with Firefox you can run:
 firefox http://127.0.0.1:8000
 ```
 
+## Writing Content
+
+The documentation uses [Sphinx](https://www.sphinx-doc.org/) in conjunction with
+[myst](https://myst-parser.readthedocs.io) to create the HTML content. Each
+document uses [Markdown](https://en.wikipedia.org/wiki/Markdown) with
+[extended syntax](https://myst-parser.readthedocs.io/en/latest/intro.html#extend-markdown-with-myst-syntax)
+to integrate with Docutils and Sphinx. All Markdown files are in the [src](./src) folder or one of its sub-folders.
+
+The entry point is the [index.md](./src/index.md) file. It contains a [toctree directive](https://myst-parser.readthedocs.io/en/latest/syntax/organising_content.html#using-toctree-to-include-other-documents-as-children)
+to reference and include other Markdown files.
+
+When a Pull Request is reviewed and merged, the HTML content is build
+automatically and published afterwards to [https://greenbone.github.io/docs/](https://greenbone.github.io/docs/)
+via a GitHub Actions [workflow](.github/workflows/github-pages.yml).
+
+For viewing the HTML content during development, please take a look at the
+[auto rebuild](#auto-rebuild) and/or [manual build](#manual-build) sections in
+this README.
+
 [uv]: https://docs.astral.sh/uv/
 [pipx]: https://pipx.pypa.io/stable/
