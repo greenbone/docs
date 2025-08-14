@@ -67,7 +67,7 @@ to integrate with Docutils and Sphinx. All Markdown files are in the [src](./src
 The entry point is the [index.md](./src/index.md) file. It contains a [toctree directive](https://myst-parser.readthedocs.io/en/latest/syntax/organising_content.html#using-toctree-to-include-other-documents-as-children)
 to reference and include other Markdown files.
 
-When a Pull Request is reviewed and merged, the HTML content is build
+When a Pull Request is reviewed and merged, the HTML content is built
 automatically and published afterwards to [https://greenbone.github.io/docs/](https://greenbone.github.io/docs/)
 via a GitHub Actions [workflow](.github/workflows/github-pages.yml).
 
