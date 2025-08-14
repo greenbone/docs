@@ -4,4 +4,3 @@
 # devops
 .github/          @greenbone/devops @greenbone/docs-maintainers
 pyproject.toml    @greenbone/devops @greenbone/docs-maintainers
-poetry.lock       @greenbone/devops @greenbone/docs-maintainers
