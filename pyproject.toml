@@ -1,22 +1,24 @@
-[tool.poetry]
-name = "greenbone-docs"
+[project]
+name = "greenbone-community-docs"
 version = "1.0.0"
 description = "Documentation for the Greenbone Community Edition"
-authors = ["Greenbone Networks <info@greenbone.net>"]
-package-mode = false
+authors = [{ name = "Greenbone Networks", email = "info@greenbone.net" }]
+requires-python = ">=3.9.0"
+dependencies = [
+    "Sphinx>=7.0.1",
+    "myst-parser>=2.0.0",
+    "sphinx-copybutton>=0.5.2",
+    "sphinx-tabs>=3.4.1",
+    "sphinxext-opengraph>=0.8.2",
+    "furo>=2023.5.20",
+]
 
-[tool.poetry.dependencies]
-python = "^3.9"
-Sphinx = ">=7.0.1"
-myst-parser = ">=2.0.0"
-sphinx-copybutton = ">=0.5.2"
-sphinx-tabs = ">=3.4.1"
-sphinxext-opengraph = ">=0.8.2"
-furo = ">=2023.5.20"
+[dependency-groups]
+dev = ["sphinx-autobuild>=2021.3.14"]
 
-[tool.poetry.group.dev.dependencies]
-sphinx-autobuild = ">=2021.3.14"
+[tool.uv]
+package = false
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"

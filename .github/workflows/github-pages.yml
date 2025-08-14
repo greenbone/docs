@@ -15,10 +15,10 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Install poetry and dependencies
-        uses: greenbone/actions/poetry@v3
+      - name: Install uv
+        uses: greenbone/actions/uv@v3
       - name: Build docs
-        run: poetry run sphinx-build -b html src _build
+        run: uv run sphinx-build -b html src _build
       - name: Upload Documentation Artifact
         uses: actions/upload-artifact@v4
         with:
