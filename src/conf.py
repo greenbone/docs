@@ -89,7 +89,7 @@ html_theme_options = {
         "color-background-primary": "#FFFFFF",
         "color-background-secondary": "#F5F5F5",
         "color-sidebar-background": "#F5F5F5",
-        "color-link--hover": "#0E823E";
+        "color-link--hover": "#0E823E",
     },
     "dark_css_variables": {
         "color-content-foreground": "#F5F5F5",
@@ -102,7 +102,7 @@ html_theme_options = {
         "color-background-primary": "#171717",
         "color-background-secondary": "#4D4D4D",
         "color-sidebar-background": "#333333",
-        "color-link--hover": "#11AB51";
+        "color-link--hover": "#11AB51",
     },
     "footer_icons": [
         {
