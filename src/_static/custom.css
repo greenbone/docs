@@ -50,7 +50,7 @@ a:visited {
 }
 
 a:active {
-	color: #11AB51;
+	color: var(--color-link--hover);
 	border-bottom: 1px solid var(--color-content-foreground);
 }
 
@@ -62,7 +62,7 @@ a:active {
 
 .related-pages a:hover .page-info .title, .bottom-of-page a:hover {
     text-decoration: none;
-	color: #11AB51;
+	color: var(--color-link--hover);
 	border-bottom: 1px solid var(--color-foreground-secondary);
 }
 
@@ -72,7 +72,7 @@ a.muted-link  {
 
 a.muted-link:hover {
 	border-bottom:0;
-	color:#11AB51;
+	color:var(--color-link--hover);
 }
 
 a.sidebar-brand, .toctree-l1 > a.reference, .toctree-l2 > a.reference, toc-tree a.reference {
@@ -81,7 +81,7 @@ a.sidebar-brand, .toctree-l1 > a.reference, .toctree-l2 > a.reference, toc-tree 
 
 .toctree-l1 > a.reference:hover, .toctree-l2 > a.reference:hover, .toc-tree a.reference:hover {
 	border-bottom: 0;
-	color: #11AB51;
+	color: var(--color-link--hover);
 }
 
 .related-pages a {
@@ -197,7 +197,7 @@ div.sphinxsidebarwrapper img {
 }
 
 .code-block-caption a:hover {
-	color:#11AB51;
+	color:var(--color-link--hover);
 }
 
 
@@ -207,7 +207,7 @@ div.edit-this-page > a.muted-link, div.view-this-page > a.muted-link, svg.icon-t
 
 
 div.edit-this-page > a.muted-link:hover, div.view-this-page > a.muted-link:hover, svg.icon.icon-tabler.icon-tabler-copy:hover, svg.icon-tabler-shadow:hover, svg.theme-icon-when-dark:hover, svg.theme-icon-when-light:hover, .toctree-checkbox ~ label .icon svg:hover {
-	color:#11AB51;
+	color:var(--color-link--hover);
 }
 
 .highlight {
@@ -263,7 +263,7 @@ div.toctree-wrapper.compound a.reference.internal {
 }
 
 .sidebar-logo {
-  max-width: 50%;
+  max-width: 60%;
 }
 
 .sidebar-logo-container {
