@@ -71,7 +71,6 @@ html_favicon = "favicon.png"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 html_css_files = ["custom.css"]
-html_logo = "_static/logo.svg"
 
 repo_url = "https://github.com/greenbone/docs/"
 html_theme_options = {
