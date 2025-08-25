@@ -71,24 +71,26 @@ html_favicon = "favicon.png"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 html_css_files = ["custom.css"]
-html_logo = "_static/logo.svg"
 
 repo_url = "https://github.com/greenbone/docs/"
 html_theme_options = {
     "source_repository": repo_url,
     "source_branch": "main",
     "source_directory": "src/",
+    "light_logo": "logo-light.svg",
+    "dark_logo": "logo-dark.svg",
     "light_css_variables": {
         "color-content-foreground": "#4D4D4D",
         "color-foreground-primary": "4D4D4D",
         "color-foreground-secondary": "#808080",
         "color-code-background": "#333333",
         "color-code-foreground": "#E6E6E6",
-        "color-admonition-title--note": "#11AB51",
+        "color-admonition-title--note": "#0E823E",
         "admonition-font-size": "0.9rem",
         "color-background-primary": "#FFFFFF",
         "color-background-secondary": "#F5F5F5",
         "color-sidebar-background": "#F5F5F5",
+        "color-link--hover": "#0E823E",
     },
     "dark_css_variables": {
         "color-content-foreground": "#F5F5F5",
@@ -101,6 +103,7 @@ html_theme_options = {
         "color-background-primary": "#171717",
         "color-background-secondary": "#4D4D4D",
         "color-sidebar-background": "#333333",
+        "color-link--hover": "#11AB51",
     },
     "footer_icons": [
         {
