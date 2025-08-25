@@ -77,8 +77,8 @@ html_theme_options = {
     "source_repository": repo_url,
     "source_branch": "main",
     "source_directory": "src/",
-    "light_logo": "_static/logo-light.svg",
-    "dark_logo": "_static/logo-dark.svg",
+    "light_logo": "logo-light.svg",
+    "dark_logo": "logo-dark.svg",
     "light_css_variables": {
         "color-content-foreground": "#4D4D4D",
         "color-foreground-primary": "4D4D4D",
