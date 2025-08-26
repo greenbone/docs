@@ -48,7 +48,7 @@ jobs:
           git commit --amend -m "Updating Docs for commit ${{ steps.checkout.outputs.sha }}"
           git push --force-with-lease
       - name: Upload pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: .
       - name: Deploy to GitHub Pages
