@@ -2,6 +2,12 @@
 
 ## Updating the Greenbone Community Containers
 
+```{important}
+Please always ensure to use the latest version of the
+[docker-compose.yml](#docker-compose-file) file when following these steps. The
+file might got updates and important changes since your last download.
+```
+
 To update the Greenbone Community Containers to the latest version, it is required
 to pull the images and restart the containers which have new images. This can
 be done with:

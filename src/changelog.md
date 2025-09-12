@@ -11,6 +11,8 @@ and this project adheres to [Calendar Versioning](https://calver.org).
   build openvasd
 * Require Ubuntu 24.04 for source build to fix building gvm-libs
 * Ensure cargo is up-to-date by running `rustup update stable` for openvasd
+* Include info to update the `docker-compose.yml` file before updating the
+  Docker container
 
 ## 25.5.0 - 2025-05-30
 

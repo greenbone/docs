@@ -12,6 +12,7 @@
 ```{include} /22.4/container/prerequisites.md
 ```
 
+(docker-compose-file)=
 ## Docker Compose File
 
 ```{important}
