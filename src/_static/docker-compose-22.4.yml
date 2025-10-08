@@ -52,7 +52,7 @@ services:
       - gpg_data_vol:/mnt
 
   redis-server:
-    image: registry.community.greenbone.net/community/redis-server:8.2.2
+    image: registry.community.greenbone.net/community/redis-server:latest
     restart: on-failure
     volumes:
       - redis_socket_vol:/run/redis/
