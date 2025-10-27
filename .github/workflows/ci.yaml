@@ -19,7 +19,7 @@ jobs:
       - name: Build docs
         run: uv run sphinx-build -W --keep-going -b html src _build
       - name: Upload Documentation Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: greenbone-community-docs-from-pr
           path: _build/
