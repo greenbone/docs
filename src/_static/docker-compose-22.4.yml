@@ -60,6 +60,8 @@ services:
   pg-gvm:
     image: registry.community.greenbone.net/community/pg-gvm:stable
     restart: on-failure
+    environment:
+      POSTGRES_VERSION: 15
     volumes:
       - psql_data_vol:/var/lib/postgresql
       - psql_socket_vol:/var/run/postgresql
