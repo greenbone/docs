@@ -5,35 +5,46 @@ services:
     image: registry.community.greenbone.net/community/vulnerability-tests
     environment:
       FEED_RELEASE: "24.10"
+      KEEP_ALIVE: 1
     volumes:
       - vt_data_vol:/mnt
 
   notus-data:
     image: registry.community.greenbone.net/community/notus-data
+    environment:
+      KEEP_ALIVE: 1
     volumes:
       - notus_data_vol:/mnt
 
   scap-data:
     image: registry.community.greenbone.net/community/scap-data
+    environment:
+      KEEP_ALIVE: 1
     volumes:
       - scap_data_vol:/mnt
 
   cert-bund-data:
     image: registry.community.greenbone.net/community/cert-bund-data
+    environment:
+      KEEP_ALIVE: 1
     volumes:
       - cert_data_vol:/mnt
 
   dfn-cert-data:
     image: registry.community.greenbone.net/community/dfn-cert-data
+    environment:
+      KEEP_ALIVE: 1
     volumes:
       - cert_data_vol:/mnt
     depends_on:
-      - cert-bund-data
+      cert-bund-data:
+        condition: service_healthy
 
   data-objects:
     image: registry.community.greenbone.net/community/data-objects
     environment:
       FEED_RELEASE: "24.10"
+      KEEP_ALIVE: 1
     volumes:
       - data_objects_vol:/mnt
 
@@ -41,10 +52,12 @@ services:
     image: registry.community.greenbone.net/community/report-formats
     environment:
       FEED_RELEASE: "24.10"
+      KEEP_ALIVE: 1
     volumes:
       - data_objects_vol:/mnt
     depends_on:
-      - data-objects
+      data-objects:
+        condition: service_healthy
 
   gpg-data:
     image: registry.community.greenbone.net/community/gpg-data
@@ -81,15 +94,15 @@ services:
       pg-gvm:
         condition: service_started
       scap-data:
-        condition: service_completed_successfully
+        condition: service_healthy
       cert-bund-data:
-        condition: service_completed_successfully
+        condition: service_healthy
       dfn-cert-data:
-        condition: service_completed_successfully
+        condition: service_healthy
       data-objects:
-        condition: service_completed_successfully
+        condition: service_healthy
       report-formats:
-        condition: service_completed_successfully
+        condition: service_healthy
 
   gsa:
     image: registry.community.greenbone.net/community/gsa:stable
@@ -99,7 +112,8 @@ services:
     volumes:
       - gvmd_socket_vol:/run/gvmd
     depends_on:
-      - gvmd
+      gvmd:
+        condition: service_started
   # Sets log level of openvas to the set LOG_LEVEL within the env
   # and changes log output to /var/log/openvas instead /var/log/gvm
   # to reduce likelyhood of unwanted log interferences
@@ -155,7 +169,9 @@ services:
     #   - 127.0.0.1:3000:80
     depends_on:
       vulnerability-tests:
-        condition: service_completed_successfully
+        condition: service_healthy
+      notus-data:
+        condition: service_healthy
       configure-openvas:
         condition: service_completed_successfully
       gpg-data:
@@ -199,10 +215,12 @@ services:
         condition: service_started
       gpg-data:
         condition: service_completed_successfully
-      vulnerability-tests:
-        condition: service_completed_successfully
       configure-openvas:
         condition: service_completed_successfully
+      vulnerability-tests:
+        condition: service_healthy
+      notus-data:
+        condition: service_healthy
 
   gvm-tools:
     image: registry.community.greenbone.net/community/gvm-tools

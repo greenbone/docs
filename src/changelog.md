@@ -13,6 +13,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Ensure cargo is up-to-date by running `rustup update stable` for openvasd
 * Include info to update the `docker-compose.yml` file before updating the
   Docker container
+* Keep data containers alive to restart them only if a new image is pulled
 
 ## 25.5.0 - 2025-05-30
 
