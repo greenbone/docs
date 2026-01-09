@@ -72,7 +72,17 @@ services:
 
   pg-gvm:
     image: registry.community.greenbone.net/community/pg-gvm:stable
-    restart: on-failure
+    restart: on-failure:10
+    volumes:
+      - psql_data_vol:/var/lib/postgresql
+      - psql_socket_vol:/var/run/postgresql
+    depends_on:
+      pg-gvm-migrator:
+        condition: service_completed_successfully
+
+  pg-gvm-migrator:
+    image: registry.community.greenbone.net/community/pg-gvm-migrator:stable
+    restart: no
     volumes:
       - psql_data_vol:/var/lib/postgresql
       - psql_socket_vol:/var/run/postgresql
