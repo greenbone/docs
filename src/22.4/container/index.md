@@ -17,7 +17,7 @@
 
 ```{important}
 Please always ensure to use the latest version of the `docker-compose.yml` file
-when following this guide. The file might got updates and important changes
+when following this guide. The file might get updates and important changes
 since your last download.
 ```
 
