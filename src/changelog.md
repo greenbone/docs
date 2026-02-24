@@ -5,7 +5,7 @@ All notable changes to this documentation will be listed in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
-## Latest
+## 26.2.0 - 2026-02-24
 
 * Improve hints about following rustup.sh instructions on Debian and CentOS to
   build openvasd
