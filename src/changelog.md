@@ -5,6 +5,17 @@ All notable changes to this documentation will be listed in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Calendar Versioning](https://calver.org).
 
+## Latest
+
+* Provide a single docker-compose.yml file and remove the versioned compose
+  file. The compose setup follows a rolling release model.
+* Update the compose architecture:
+  * Use nginx to serve the GSA frontend.
+  * Run gsad in API-only mode.
+  * Introduce a new gvm-config container that configures nginx and generates a self-signed TLS certificate.
+  * Use https in the default setup.
+  * Port 9392 now redirects to 443.
+
 ## 26.2.0 - 2026-02-24
 
 * Improve hints about following rustup.sh instructions on Debian and CentOS to

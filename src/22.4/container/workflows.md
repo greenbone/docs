@@ -207,25 +207,45 @@ Scan config Full and fast (daba56c8-73ec-11df-a475-002264764cea) has been create
 When using the docker compose file, the web server is configured to listen only
 on the local address of the host (127.0.0.1). To allow remote access on all
 interfaces of the host, the compose file must be modified to configure the web
-server {command}`gsad` to listen on all network interfaces.
+server {command}`nginx` to listen on all network interfaces.
 
-The following change of the docker compose file must be applied:
+The following change of the docker compose file can be applied (it also changes
+to the default http port 80 as an example):
 
 ```{code-block} diff
 ---
 caption: Allowing access on all host interfaces
 ---
 ...
-  gsa:
-    image: greenbone/gsa:stable
-    restart: on-failure
+  nginx:
+    image: nginx
+    environment:
+      NGINX_HOST: "localhost"
+-     NGINX_HTTP_PORT: 9392
++     NGINX_HTTP_PORT: 80
+      NGINX_HTTPS_PORT: 443
+      NGINX_SERVER_CERT: "/etc/nginx/certs/server.cert.pem"
+      NGINX_SERVER_KEY: "/etc/nginx/certs/server.key"
+      NGINX_ACCESS_CONTROL_ALLOW_ORIGIN_HEADER: "https://localhost"
+      NGINX_X_FRAME_OPTIONS_HEADER: "SAMEORIGIN"
+      NGINX_CONTENT_SECURITY_POLICY_HEADER: "default-src 'none'; object-src 'none'; base-uri 'none'; connect-src 'self'; script-src 'self'; script-src-elem 'self' 'unsafe-inline';frame-ancestors 'none'; form-action 'self'; style-src-elem 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self';img-src 'self' blob: data:;"
+      NGINX_STRICT_TRANSPORT_SECURITY_HEADER: "max-age=31536000; includeSubDomains;"
     ports:
--      - 127.0.0.1:9392:80
-+      - 9392:80
+-     - 127.0.0.1:443:443
+-     - 127.0.0.1:9392:9392
++     - 80:80
++     - 443:443
     volumes:
-      - gvmd_socket_vol:/run/gvmd
+      - nginx_templates_vol:/etc/nginx/templates:ro
+      - nginx_certificates_vol:/etc/nginx/certs:ro
+      - gsa_data_vol:/usr/share/nginx/html:ro
     depends_on:
-      - gvmd
+      gvm-config:
+        condition: service_completed_successfully
+      gsa:
+        condition: service_healthy
+      gsad:
+        condition: service_started
 ...
 ```
 
@@ -302,28 +322,28 @@ In the next step, the docker compose file must be changed as follows:
     image: greenbone/gvmd:stable
     restart: on-failure
     volumes:
-       - gvmd_data_vol:/var/lib/gvm
-       - vt_data_vol:/var/lib/openvas
-       - psql_data_vol:/var/lib/postgresql
--      - gvmd_socket_vol:/run/gvmd
-+      - /tmp/gvm/gvmd:/run/gvmd
-       - ospd_openvas_socket_vol:/run/ospd
-       - psql_socket_vol:/var/run/postgresql
-     depends_on:
+      - gvmd_data_vol:/var/lib/gvm
+      - vt_data_vol:/var/lib/openvas
+      - psql_data_vol:/var/lib/postgresql
+-     - gvmd_socket_vol:/run/gvmd
++     - /tmp/gvm/gvmd:/run/gvmd
+      - ospd_openvas_socket_vol:/run/ospd
+      - psql_socket_vol:/var/run/postgresql
+    depends_on:
       - pg-gvm
 
 ...
-
-  gsa:
-    image: greenbone/gsa:stable
+  gsad:
+    image: registry.community.greenbone.net/community/gsad:stable
     restart: on-failure
-     ports:
-       - 9392:80
-     volumes:
--      - gvmd_socket_vol:/run/gvmd
-+      - /tmp/gvm/gvmd:/run/gvmd
-     depends_on:
-       - gvmd
+    environment:
+      GSAD_ARGS: "--listen=0.0.0.0 --http-only --api-only -f"
+    volumes:
+-     - gvmd_socket_vol:/run/gvmd
++     - /tmp/gvm/gvmd:/run/gvmd
+    depends_on:
+      gvmd:
+        condition: service_started
 ```
 
 After restarting the containers with
@@ -346,18 +366,19 @@ gvm-cli socket --socketpath /tmp/gvm/gvmd/gvmd.sock --pretty --xml "<get_version
 within compose file or command line. Available variables (for detailed explanation refer
 to [msmtp documentation](https://marlam.de/msmtp/msmtp.html), note that not all
 `mstmp` options implemented in `gvmd` container):
-  - `MTA_HOST`: The SMTP server to send the mail to. (_Mandatory parameter_).
-  - `MTA_PORT`: The port that the SMTP server listens on. (_default = '25'_).
-  - `MTA_TLS`: Enable or disable TLS (_on|off'_).
-  - `MTA_STARTTLS`: TLS variant: start TLS from within the session (_‘on’, default_), or
-tunnel the session through TLS (_‘off’_).
-  - `MTA_TLS_CERTCHECK`: Enable or disable checks of the server certificate. (WARNING: When the checks are disabled, TLS sessions will not be secure!) (_'on'|'off'_).
-  - `MTA_AUTH`: Enable or disable authentication and optionally choose a method to use
-(_'on'|'off'|'method'_).
-  - `MTA_USER`: Username for authentication.
-  - `MTA_PASSWORD`: Password for authentication.
-  - `MTA_FROM`: Set the envelope-from address.
-  - `MTA_LOGFILE`: Enable logging to the specified file.
+
+- `MTA_HOST`: The SMTP server to send the mail to. (_Mandatory parameter_).
+- `MTA_PORT`: The port that the SMTP server listens on. (_default = '25'_).
+- `MTA_TLS`: Enable or disable TLS (_on|off'_).
+- `MTA_STARTTLS`: TLS variant: start TLS from within the session (_‘on’, default_), or
+nnel the session through TLS (_‘off’_).
+- `MTA_TLS_CERTCHECK`: Enable or disable checks of the server certificate. (WARNING: When the checks are disabled, TLS sessions will not be secure!) (_'on'|'off'_).
+- `MTA_AUTH`: Enable or disable authentication and optionally choose a method to use
+'on'|'off'|'method'_).
+- `MTA_USER`: Username for authentication.
+- `MTA_PASSWORD`: Password for authentication.
+- `MTA_FROM`: Set the envelope-from address.
+- `MTA_LOGFILE`: Enable logging to the specified file.
 
 Examples:
 
@@ -402,8 +423,9 @@ caption: Use the Google Mail services with SSL and authorization
 ## Setting up SSL/TLS for GSA
 
 Enabling SSL/TLS for the the web interface ({term}`GSA`) requires generating a
-private key and public certificate, and adjusting the `gsa` container settings
-in the `docker-compose.yml` file.
+private key and public certificate. By default a self signed certificate is
+generated automatically. To provide an own certificate the following steps are
+necessary.
 
 As of September 2020, the maximum validity period for publicly trusted SSL/TLS
 certificates is 398 days. An expiration date of more than 397 days is not valid
@@ -411,7 +433,7 @@ and may cause some browsers to block the connection. OpenSSL can be used to
 generate the private key and certificate:
 
 ```{code-block} yaml
-openssl req -x509 -newkey rsa:4096 -keyout serverkey.pem -out servercert.pem -nodes -days 397
+openssl req -x509 -newkey rsa:4096 -keyout server.key -out servercert.cert.pem -nodes -days 397
 ```
 
 The user that executes the `docker compose` command must have read access to the
@@ -419,47 +441,42 @@ private key and certificate.  So, they must be placed in an appropriate location
 such as the user's home directory or the `tmp` directory.
 
 ```{code-block} yaml
-mkdir $HOME/.ssl && mv serverkey.pem servercert.pem $HOME/.ssl
+mkdir $HOME/.ssl && mv server.key server.cert.pem $HOME/.ssl
 ```
 
-Finally, the {term}`GSA` configuration in the `docker-compose.yml` file must be
-modified to enable SSL/TLS. The changes include:
+Finally, the nginx configuration in the `docker-compose.yml` file must be
+modified to use the new certificate files.
 
-1. Setting the `GSAD_ARGS` environment variable to initialize SSL/TLS. In the
-example below, three arguments are set. A complete list of {term}`GSAD`
-arguments are in the gsad manpage (execute `gsad --help` from within the GSA
-container), and in the [gsad documentation](https://github.com/greenbone/gsad/tree/main/doc)
-in its GitHub repository. The arguments used in this example are:
-    - `--no-redirect`: Don't redirect HTTP to HTTPS and only allow HTTPS connections to the web interface
-    - `--http-sts`: Enables HSTS (HTTP Strict Transport Security) for the GSAD web-server
-    - `--gnutls-priorities`: Disables insecure versions of TLS (1.0 and 1.1)
-2. Copying the private key and certificate files from the host system into the
-GSA container upon initialization.
-3. Changing the web interface port to the standard SSL/TLS port 443 and
-optionally enabling remote access
-
-Sample `gsa` container settings to enable SSL/TLS:
+Sample `nginx` service settings to use own TLS certificate files:
 
 ```diff
-gsa:
-  image: registry.community.greenbone.net/community/gsa:stable
-  restart: on-failure
-+ environment:
-+   - GSAD_ARGS=--no-redirect --http-sts --gnutls-priorities=SECURE256:-VERS-TLS-ALL:+VERS-TLS1.2:+VERS-TLS1.3
-  ports:
--   - 127.0.0.1:9293:80
-    # Make GSA accessible locally on port 443
-+   - 127.0.0.1:443:443
-    # Make GSA accessible remotely on port 443
-+   - 443:443
-  volumes:
-    # Move the private key into the container. Replace <username> with your own.
-+   - /home/<username>/.ssl/serverkey.pem:/var/lib/gvm/private/CA/serverkey.pem
-    # Move the certificate into the container Replace <username> with your own.
-+   - /home/<username>/.ssl/servercert.pem:/var/lib/gvm/CA/servercert.pem
-    - gvmd_socket_vol:/run/gvmd
-  depends_on:
-    - gvmd
+  nginx:
+    image: nginx
+    environment:
+      NGINX_HOST: "localhost"
+      NGINX_HTTP_PORT: 9392
+      NGINX_HTTPS_PORT: 443
+      NGINX_SERVER_CERT: "/etc/nginx/certs/server.cert.pem"
+      NGINX_SERVER_KEY: "/etc/nginx/certs/server.key"
+      NGINX_ACCESS_CONTROL_ALLOW_ORIGIN_HEADER: "https://localhost"
+      NGINX_X_FRAME_OPTIONS_HEADER: "SAMEORIGIN"
+      NGINX_CONTENT_SECURITY_POLICY_HEADER: "default-src 'none'; object-src 'none'; base-uri 'none'; connect-src 'self'; script-src 'self'; script-src-elem 'self' 'unsafe-inline';frame-ancestors 'none'; form-action 'self'; style-src-elem 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self';img-src 'self' blob: data:;"
+      NGINX_STRICT_TRANSPORT_SECURITY_HEADER: "max-age=31536000; includeSubDomains;"
+    ports:
+      - 127.0.0.1:443:443
+      - 127.0.0.1:9392:9392
+    volumes:
+      - nginx_templates_vol:/etc/nginx/templates:ro
+      - nginx_certificates_vol:/etc/nginx/certs:ro
++     - /home/<username>/.ssl/:/etc/nginx/certs:ro
+      - gsa_data_vol:/usr/share/nginx/html:ro
+    depends_on:
+      gvm-config:
+        condition: service_completed_successfully
+      gsa:
+        condition: service_healthy
+      gsad:
+        condition: service_started
 ```
 
 After modifying the `docker-compose.yml` file, restart the containers to enable
