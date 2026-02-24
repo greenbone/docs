@@ -34,7 +34,7 @@ If necessary the PostgreSQL database server needs to be started manually
    .. code-block::
      :caption: Starting the PostgreSQL database server
 
-     sudo systemctl start postgresql@14-main
+     sudo systemctl start postgresql@16-main
 
   .. tab:: Fedora/CentOS
    .. code-block::
