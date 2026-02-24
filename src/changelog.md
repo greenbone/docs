@@ -29,6 +29,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Keep data containers alive to restart them only if a new image is pulled
 * Add new `pg-gvm-migrator` container for handling PostgreSQL major version changes
 * Fix typo in gvmd build for Fedora/Centos
+* Upgrade PostgreSQL to v16 for Ubuntu
 
 ## 25.5.0 - 2025-05-30
 
