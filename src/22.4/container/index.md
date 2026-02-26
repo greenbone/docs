@@ -16,7 +16,7 @@
 ## Docker Compose File
 
 ```{important}
-Please always ensure to use the latest version of the `docker-compose.yml` file
+Please always ensure to use the latest version of the `compose.yaml` file
 when following this guide. The file might get updates and important changes
 since your last download.
 ```
@@ -24,7 +24,7 @@ since your last download.
 To run the Greenbone Community Edition with containers, the following compose
 file should be used:
 
-```{literalinclude} docker-compose.yml
+```{literalinclude} compose.yaml
 ---
 language: yaml
 caption: "Docker Compose File"
@@ -38,9 +38,9 @@ it can be downloaded with the following command directly:
 
 ```{code-block} shell
 ---
-caption: Downloading docker-compose file
+caption: Downloading Docker compose file
 ---
-curl -f -O -L https://greenbone.github.io/docs/latest/_static/docker-compose.yml --output-dir "$DOWNLOAD_DIR"
+curl -f -O -L https://greenbone.github.io/docs/latest/_static/compose.yaml --output-dir "$DOWNLOAD_DIR"
 ```
 
 ### Description
@@ -54,7 +54,10 @@ and their services in detail.
 | pg-gvm              | [postgresql](https://www.postgresql.org/) | A PostgreSQL database cluster setup for use with {term}`gvmd`. The actual data is stored in the `psql_data_vol` volume.                                                                                                                                                          |
 | pg-gvm-migrator     |                                           | A container for migrating the database from one PostgreSQL major version to another                                                                                                                                                                                              |
 | gvmd                | gvmd                                      | A container for {term}`gvmd` that uses unix sockets in volumes to communicate with the PostgreSQL database and ospd-openvas scanner. The downloaded feed data is stored in the `gvmd_data_vol` volume. To verify the feed data, the GPG keyring from the `gpg_data_vol` is used. |
-| gsa                 | gsad                                      | A container running the {term}`gsad` web server for providing the web application {term}`GSA`. The web interface is available at localhost on port 9392. For communication with gvmd, a unix socket in a volume is used.                                                         |
+| gsad                | gsad                                      | A container running the {term}`gsad` service for providing the web API. It translates between http and {term}`GMP`. For communication with gvmd, a unix socket in a volume is used.                                                                                              |
+| gsa                 |                                           | A container that copies the static content for the web application {term}`GSA` to the `gsa_data_vol` volume on startup.                                                                                                                                                          |
+| gvm-config          |                                           | A container providing the nginx config and self-signed certificates for https communication.                                                                                                                                                                                     |
+| nginx               | nginx                                     | A nginx web server providing {term}`GSA`. It forwards API requests to the gsad service.                                                                                                                                                                                          |
 | ospd-openvas        | ospd-openvas                              | A container providing the vulnerability scanner. The VT data from the feed is stored in the `vt_data_vol` volume. To verify the feed data, the GPG keyring from the `gpg_data_vol` is used. The connection to the redis server is established via a unix socket in a volume.     |
 | gvm-tools           |                                           | A container providing the [gvm-tools](https://github.com/greenbone/gvm-tools/) CLI to query and control gvmd and ospd-openvas.                                                                                                                                                   |
 | gpg-data            |                                           | A container that copies a GPG keyring with Greenbone's public signing keys into the `gpg_data_vol` volume on startup. It exits afterwards.                                                                                                                                       |
