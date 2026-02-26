@@ -16,7 +16,7 @@
 ## Docker Compose File
 
 ```{important}
-Please always ensure to use the latest version of the `docker-compose.yml` file
+Please always ensure to use the latest version of the `compose.yaml` file
 when following this guide. The file might get updates and important changes
 since your last download.
 ```
@@ -24,7 +24,7 @@ since your last download.
 To run the Greenbone Community Edition with containers, the following compose
 file should be used:
 
-```{literalinclude} docker-compose.yml
+```{literalinclude} compose.yaml
 ---
 language: yaml
 caption: "Docker Compose File"
@@ -38,9 +38,9 @@ it can be downloaded with the following command directly:
 
 ```{code-block} shell
 ---
-caption: Downloading docker-compose file
+caption: Downloading Docker compose file
 ---
-curl -f -O -L https://greenbone.github.io/docs/latest/_static/docker-compose.yml --output-dir "$DOWNLOAD_DIR"
+curl -f -O -L https://greenbone.github.io/docs/latest/_static/compose.yaml --output-dir "$DOWNLOAD_DIR"
 ```
 
 ### Description
