@@ -7,8 +7,10 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 
 ## Latest
 
-* Provide a single docker-compose.yml file and remove the versioned compose
-  file. The compose setup follows a rolling release model.
+* Provide a single compose file and remove the versioned compose file. The
+  compose setup follows a rolling release model.
+* Rename `docker-compose.yml` to `compose.yaml` as the later one is the
+  preferred canonical name nowadays.
 * Update the compose architecture:
   * Use nginx to serve the GSA frontend.
   * Run gsad in API-only mode.
