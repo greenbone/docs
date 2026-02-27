@@ -139,29 +139,19 @@ services:
   gvm-config:
     image: registry.community.greenbone.net/community/gvm-config:latest
     environment:
-      ENABLE_NGINX_CONFIG: 1
-      ENABLE_TLS_GENERATION: 1
+      ENABLE_NGINX_CONFIG: true
+      ENABLE_TLS_GENERATION: true
     volumes:
-      - nginx_templates_vol:/mnt/nginx/templates
+      - nginx_config_vol:/mnt/nginx/configs
       - nginx_certificates_vol:/mnt/nginx/certs
 
   nginx:
-    image: nginx
-    environment:
-      NGINX_HOST: "localhost"
-      NGINX_HTTP_PORT: 9392
-      NGINX_HTTPS_PORT: 443
-      NGINX_SERVER_CERT: "/etc/nginx/certs/server.cert.pem"
-      NGINX_SERVER_KEY: "/etc/nginx/certs/server.key"
-      NGINX_ACCESS_CONTROL_ALLOW_ORIGIN_HEADER: "https://localhost"
-      NGINX_X_FRAME_OPTIONS_HEADER: "SAMEORIGIN"
-      NGINX_CONTENT_SECURITY_POLICY_HEADER: "default-src 'none'; object-src 'none'; base-uri 'none'; connect-src 'self'; script-src 'self'; script-src-elem 'self' 'unsafe-inline';frame-ancestors 'none'; form-action 'self'; style-src-elem 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self';img-src 'self' blob: data:;"
-      NGINX_STRICT_TRANSPORT_SECURITY_HEADER: "max-age=31536000; includeSubDomains;"
+    image: registry.community.greenbone.net/community/nginx:latest
     ports:
       - 127.0.0.1:443:443
       - 127.0.0.1:9392:9392
     volumes:
-      - nginx_templates_vol:/etc/nginx/templates:ro
+      - nginx_config_vol:/etc/nginx/conf.d:ro
       - nginx_certificates_vol:/etc/nginx/certs:ro
       - gsa_data_vol:/usr/share/nginx/html:ro
     depends_on:
@@ -305,5 +295,5 @@ volumes:
   openvas_data_vol:
   openvas_log_data_vol:
   gsa_data_vol:
-  nginx_templates_vol:
+  nginx_config_vol:
   nginx_certificates_vol:
