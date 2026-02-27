@@ -210,33 +210,31 @@ interfaces of the host, the compose file must be modified to configure the web
 server {command}`nginx` to listen on all network interfaces.
 
 The following change of the docker compose file can be applied (it also changes
-to the default http port 80 as an example):
+to the default http port to port 80 as an example):
 
 ```{code-block} diff
 ---
 caption: Allowing access on all host interfaces
 ---
 ...
-  nginx:
-    image: nginx
+  gvm-config:
+    image: registry.community.greenbone.net/community/gvm-config:latest
     environment:
-      NGINX_HOST: "localhost"
--     NGINX_HTTP_PORT: 9392
+      NGINX_HOST: "<your-ip-or-domain>"
 +     NGINX_HTTP_PORT: 80
-      NGINX_HTTPS_PORT: 443
-      NGINX_SERVER_CERT: "/etc/nginx/certs/server.cert.pem"
-      NGINX_SERVER_KEY: "/etc/nginx/certs/server.key"
-      NGINX_ACCESS_CONTROL_ALLOW_ORIGIN_HEADER: "https://localhost"
-      NGINX_X_FRAME_OPTIONS_HEADER: "SAMEORIGIN"
-      NGINX_CONTENT_SECURITY_POLICY_HEADER: "default-src 'none'; object-src 'none'; base-uri 'none'; connect-src 'self'; script-src 'self'; script-src-elem 'self' 'unsafe-inline';frame-ancestors 'none'; form-action 'self'; style-src-elem 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self';img-src 'self' blob: data:;"
-      NGINX_STRICT_TRANSPORT_SECURITY_HEADER: "max-age=31536000; includeSubDomains;"
++     NGINX_ACCESS_CONTROL_ALLOW_ORIGIN_HEADER: "https://<your-ip-or-domain>"
+
+...
+
+  nginx:
+    image: registry.community.greenbone.net/community/nginx:latest
     ports:
 -     - 127.0.0.1:443:443
 -     - 127.0.0.1:9392:9392
 +     - 80:80
 +     - 443:443
     volumes:
-      - nginx_templates_vol:/etc/nginx/templates:ro
+      - nginx_config_vol:/etc/nginx/templates:ro
       - nginx_certificates_vol:/etc/nginx/certs:ro
       - gsa_data_vol:/usr/share/nginx/html:ro
     depends_on:
@@ -451,23 +449,13 @@ Sample `nginx` service settings to use own TLS certificate files:
 
 ```diff
   nginx:
-    image: nginx
-    environment:
-      NGINX_HOST: "localhost"
-      NGINX_HTTP_PORT: 9392
-      NGINX_HTTPS_PORT: 443
-      NGINX_SERVER_CERT: "/etc/nginx/certs/server.cert.pem"
-      NGINX_SERVER_KEY: "/etc/nginx/certs/server.key"
-      NGINX_ACCESS_CONTROL_ALLOW_ORIGIN_HEADER: "https://localhost"
-      NGINX_X_FRAME_OPTIONS_HEADER: "SAMEORIGIN"
-      NGINX_CONTENT_SECURITY_POLICY_HEADER: "default-src 'none'; object-src 'none'; base-uri 'none'; connect-src 'self'; script-src 'self'; script-src-elem 'self' 'unsafe-inline';frame-ancestors 'none'; form-action 'self'; style-src-elem 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self';img-src 'self' blob: data:;"
-      NGINX_STRICT_TRANSPORT_SECURITY_HEADER: "max-age=31536000; includeSubDomains;"
+    image: registry.community.greenbone.net/community/nginx:latest
     ports:
       - 127.0.0.1:443:443
       - 127.0.0.1:9392:9392
     volumes:
-      - nginx_templates_vol:/etc/nginx/templates:ro
-      - nginx_certificates_vol:/etc/nginx/certs:ro
+      - nginx_config_vol:/etc/nginx/templates:ro
+-     - nginx_certificates_vol:/etc/nginx/certs:ro
 +     - /home/<username>/.ssl/:/etc/nginx/certs:ro
       - gsa_data_vol:/usr/share/nginx/html:ro
     depends_on:
