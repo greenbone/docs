@@ -87,7 +87,7 @@ the {term}`Greenbone Security Assistant web interface – GSA –<GSA>` can be o
 ---
 caption: Opening Greenbone Security Assistant in the browser
 ---
-xdg-open "http://127.0.0.1:9392" 2>/dev/null >/dev/null &
+xdg-open "https://127.0.0.1" 2>/dev/null >/dev/null &
 ```
 
 The browser will show the login page of GSA and after using the credentials
