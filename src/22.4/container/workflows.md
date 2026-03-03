@@ -220,8 +220,13 @@ caption: Allowing access on all host interfaces
   gvm-config:
     image: registry.community.greenbone.net/community/gvm-config:latest
     environment:
-      NGINX_HOST: "<your-ip-or-domain>"
+      ENABLE_NGINX_CONFIG: true
+      ENABLE_TLS_GENERATION: true
++     # e.g. "greenbone.your-domain.com" (default is localhost)
++     NGINX_HOST: "<your-ip-or-domain>"
++     # change http port to 80 (default is 9392)
 +     NGINX_HTTP_PORT: 80
++     # e.g. "https://greenbone.your-domain.com:443" (default is https://${NGINX_HOST}:${NGINX_HTTPS_PORT})
 +     NGINX_ACCESS_CONTROL_ALLOW_ORIGIN_HEADER: "https://<your-ip-or-domain>"
 
 ...
