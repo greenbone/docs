@@ -26,7 +26,7 @@ The components should be build and installed in the listed order.
 ```{code-block}
 :caption: Setting the gvm-libs version to use
 
-export GVM_LIBS_VERSION=22.22.0
+export GVM_LIBS_VERSION=22.31.1
 ```
 
 ```{include} /22.4/source-build/gvm-libs/dependencies.md
