@@ -3,7 +3,7 @@ name = "greenbone-community-docs"
 version = "1.0.0"
 description = "Documentation for the Greenbone Community Edition"
 authors = [{ name = "Greenbone Networks", email = "info@greenbone.net" }]
-requires-python = ">=3.9.0"
+requires-python = ">=3.10"
 dependencies = [
     "Sphinx>=7.0.1",
     "myst-parser>=2.0.0",
