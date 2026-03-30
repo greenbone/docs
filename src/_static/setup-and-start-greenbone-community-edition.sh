@@ -50,19 +50,19 @@ installed docker compose
 
 mkdir -p "$DOWNLOAD_DIR" && cd "$DOWNLOAD_DIR"
 
-echo "Downloading docker-compose file..."
-curl -f -O https://greenbone.github.io/docs/latest/_static/docker-compose.yml
+echo "Downloading docker compose file..."
+curl -f -O https://greenbone.github.io/docs/latest/_static/compose.yaml
 
 echo "Pulling Greenbone Community Containers"
-docker compose -f "$DOWNLOAD_DIR"/docker-compose.yml pull
+docker compose -f "$DOWNLOAD_DIR"/compose.yaml pull
 echo
 
 echo "Starting Greenbone Community Containers"
-docker compose -f "$DOWNLOAD_DIR"/docker-compose.yml up -d
+docker compose -f "$DOWNLOAD_DIR"/compose.yaml up -d
 echo
 
 read -r -s -p "Password for admin user: " password
-docker compose -f "$DOWNLOAD_DIR"/docker-compose.yml \
+docker compose -f "$DOWNLOAD_DIR"/compose.yaml \
     exec -u gvmd gvmd gvmd --user=admin --new-password="$password"
 
 echo

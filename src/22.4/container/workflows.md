@@ -3,8 +3,8 @@
 ## Updating the Greenbone Community Containers
 
 ```{important}
-Please always ensure to use the latest version of the
-[docker-compose.yml](#docker-compose-file) file when following these steps. The
+Please always ensure to use the latest version of the docker
+[compose.yaml](#docker-compose-file) file when following these steps. The
 file might got updates and important changes since your last download.
 ```
 
@@ -16,14 +16,14 @@ be done with:
 ---
 caption: Downloading the Greenbone Community Containers
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml pull
+docker compose -f $DOWNLOAD_DIR/compose.yaml pull
 ```
 
 ```{code-block} shell
 ---
 caption: Starting the Greenbone Community Containers
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml up -d
+docker compose -f $DOWNLOAD_DIR/compose.yaml up -d
 ```
 
 ## Performing a Feed Synchronization
@@ -58,7 +58,7 @@ To download the latest feed data container images run
 ---
 caption: Downloading the Greenbone Community Edition feed data containers
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml pull notus-data vulnerability-tests scap-data dfn-cert-data cert-bund-data report-formats data-objects
+docker compose -f $DOWNLOAD_DIR/compose.yaml pull notus-data vulnerability-tests scap-data dfn-cert-data cert-bund-data report-formats data-objects
 ```
 
 To copy the data from the images to the volumes run
@@ -67,7 +67,7 @@ To copy the data from the images to the volumes run
 ---
 caption: Starting the Greenbone Community feed data containers
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml up -d notus-data vulnerability-tests scap-data dfn-cert-data cert-bund-data report-formats data-objects
+docker compose -f $DOWNLOAD_DIR/compose.yaml up -d notus-data vulnerability-tests scap-data dfn-cert-data cert-bund-data report-formats data-objects
 ```
 
 ### Loading the Feed Changes
@@ -262,7 +262,7 @@ by running:
 ---
 caption: Remove containers and volumes (all data)
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml down -v
+docker compose -f $DOWNLOAD_DIR/compose.yaml down -v
 ```
 
 ## Gaining a Terminal for a Container
@@ -277,7 +277,7 @@ To access a container with a bash shell as a root user, you can run:
 ---
 caption: Gain a Terminal for a Container
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml exec <container-name> /bin/bash
+docker compose -f $DOWNLOAD_DIR/compose.yaml exec <container-name> /bin/bash
 ```
 
 Afterwards, you can execute standard bash commands within the running container.
@@ -292,7 +292,7 @@ can be started with:
 ---
 caption: Start container for gvm-tools CLI access
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml run --rm gvm-tools
+docker compose -f $DOWNLOAD_DIR/compose.yaml run --rm gvm-tools
 ```
 
 Afterwards, a bash shell is provided and `gvm-cli`, `gvm-pyshell` or `gvm-script`
@@ -352,7 +352,7 @@ In the next step, the docker compose file must be changed as follows:
 After restarting the containers with
 
 ```bash
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml up -d
+docker compose -f $DOWNLOAD_DIR/compose.yaml up -d
 ```
 
 the Unix socket should be available at `/tmp/gvm/gvmd/gvmd.sock`. For example,
@@ -447,7 +447,7 @@ such as the user's home directory or the `tmp` directory.
 mkdir $HOME/.ssl && mv server.key server.cert.pem $HOME/.ssl
 ```
 
-Finally, the nginx configuration in the `docker-compose.yml` file must be
+Finally, the nginx configuration in the `compose.yaml` file must be
 modified to use the new certificate files.
 
 Sample `nginx` service settings to use own TLS certificate files:
@@ -472,12 +472,12 @@ Sample `nginx` service settings to use own TLS certificate files:
         condition: service_started
 ```
 
-After modifying the `docker-compose.yml` file, restart the containers to enable
+After modifying the `compose.yaml` file, restart the containers to enable
 the changes.
 
 ```{code-block} shell
 ---
 caption: Restart the Greenbone Community Containers
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml up -d
+docker compose -f $DOWNLOAD_DIR/compose.yaml up -d
 ```
