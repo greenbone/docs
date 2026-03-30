@@ -20,6 +20,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Upgrade PostgreSQL to v16 for Ubuntu
 * Update gvm-libs to 22.31.1
 * Update gvmd to 26.10.0
+* Use [`restart_policy`](https://docs.docker.com/reference/compose-file/deploy/#restart_policy) for container services
 
 ## 26.2.0 - 2026-02-24
 
