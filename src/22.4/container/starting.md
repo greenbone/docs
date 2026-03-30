@@ -7,14 +7,14 @@ and the containers can be started in the background.
 ---
 caption: Downloading the Greenbone Community Containers
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml pull
+docker compose -f $DOWNLOAD_DIR/compose.yaml pull
 ```
 
 ```{code-block} shell
 ---
 caption: Starting the Greenbone Community Containers
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml up -d
+docker compose -f $DOWNLOAD_DIR/compose.yaml up -d
 ```
 
 To get a continuous stream of the log output of all services, run the following
@@ -24,7 +24,7 @@ command:
 ---
 caption: Show log messages of all services from the running containers
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml logs -f
+docker compose -f $DOWNLOAD_DIR/compose.yaml logs -f
 ```
 
 The log stream can be stopped by pressing {kbd}`Ctrl-C`.

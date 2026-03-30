@@ -12,7 +12,7 @@ generated password, the following command can be used:
 ---
 caption: Updating password of administrator user
 ---
-docker compose -f $DOWNLOAD_DIR/docker-compose.yml \
+docker compose -f $DOWNLOAD_DIR/compose.yaml \
     exec -u gvmd gvmd gvmd --user=admin --new-password='<password>'
 ```
 
