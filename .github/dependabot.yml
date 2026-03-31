@@ -1,25 +1,24 @@
 version: 2
 updates:
+  - package-ecosystem: pip
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      time: "04:00"
+    groups:
+      python-packages:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: "Deps"
+    open-pull-requests-limit: 10
+    allow:
+      - dependency-type: direct
+      - dependency-type: indirect
 
-- package-ecosystem: pip
-  directory: "/"
-  schedule:
-    interval: "weekly"
-    time: "04:00"
-  groups:
-    python-packages:
-      patterns:
-        - "*"
-  open-pull-requests-limit: 10
-  allow:
-  - dependency-type: direct
-  - dependency-type: indirect
-
-- package-ecosystem: "github-actions"
-  directory: "/"
-  schedule:
-    interval: "weekly"
-  groups:
-    github-actions:
-      patterns:
-        - "*"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "Deps"
