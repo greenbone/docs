@@ -2,13 +2,15 @@ name: Build the Greenbone Documentation
 
 on:
   pull_request:
-    branches: [ main ]
-    types: [ closed ]
+    branches:
+      - main
+    types:
+      - closed
 
 jobs:
   build-docs:
     name: Cleanup CI build
-    runs-on: 'ubuntu-latest'
+    runs-on: "ubuntu-latest"
     env:
       DOC_ROOT: pr/${{ github.head_ref }}
     permissions:
@@ -28,7 +30,7 @@ jobs:
           else
             echo "has-doc-root=false" >> $GITHUB_OUTPUT
           fi
-      - name:  Cleanup Document Root and Update GitHub Pages
+      - name: Cleanup Document Root and Update GitHub Pages
         if: steps.doc-root.outputs.has-doc-root == 'true'
         run: |
           git config --global user.name "${GITHUB_ACTOR}"
