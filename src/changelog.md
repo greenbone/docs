@@ -22,6 +22,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Update gvmd to 26.10.0
 * Use [`restart_policy`](https://docs.docker.com/reference/compose-file/deploy/#restart_policy) for container services
 * Use `compose.yaml` instead of `docker-compose.yml` everywhere in the docs
+* Use environment variables for the settings of gsad
 
 ## 26.2.0 - 2026-02-24
 

@@ -128,7 +128,7 @@ services:
       MOUNT_PATH: "/mnt/web"
       KEEP_ALIVE: 1
     healthcheck:
-      test: ["CMD-SHELL", "test -e /run/gsa/copying.done"]
+      test: [ "CMD-SHELL", "test -e /run/gsa/copying.done" ]
       start_period: 5s
     volumes:
       - gsa_data_vol:/mnt/web
@@ -139,7 +139,9 @@ services:
       restart_policy:
         condition: any
     environment:
-      GSAD_ARGS: "--listen=0.0.0.0 --http-only --api-only -f"
+      GSAD_HTTP_ONLY: "true"
+      GSAD_API_ONLY: "true"
+      GSAD_FOREGROUND: "true"
     volumes:
       - gvmd_socket_vol:/run/gvmd
     depends_on:
