@@ -10,3 +10,5 @@ For more information see:
 - <https://greenbone.github.io/scanner-api/>
 - <https://github.com/greenbone/openvas-scanner/tree/main/rust/src/openvasd>
 - <https://github.com/greenbone/openvas-scanner/blob/main/rust/examples/openvasd/config.example.toml>
+
+To use the recommended archive setup, you must have either Podman or Docker installed. If not, follow the instructions in [build-doc](https://github.com/greenbone/openvas-scanner/blob/main/rust/doc/build.md).

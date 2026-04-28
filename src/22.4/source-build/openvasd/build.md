@@ -1,9 +1,7 @@
 ```
 mkdir -p $INSTALL_DIR/openvasd/usr/local/bin
-cd $SOURCE_DIR/openvas-scanner-$OPENVAS_DAEMON/rust/src/openvasd
-cargo build --release
-
-cd $SOURCE_DIR/openvas-scanner-$OPENVAS_DAEMON/rust/src/scannerctl
+cd $SOURCE_DIR/openvas-scanner-$OPENVAS_DAEMON/rust
+make
 cargo build --release
 
 sudo cp -v ../../target/release/openvasd $INSTALL_DIR/openvasd/usr/local/bin/
