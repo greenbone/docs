@@ -6,7 +6,7 @@ authors = [{ name = "Greenbone Networks", email = "info@greenbone.net" }]
 requires-python = ">=3.12"
 dependencies = [
     "sphinx>=7.0.1",
-    "myst-parser>=4.0.1",
+    "myst-parser>=5.1.0",
     "sphinx-copybutton>=0.5.2",
     "sphinx-tabs>=3.5.0",
     "sphinxext-opengraph>=0.13.0",
