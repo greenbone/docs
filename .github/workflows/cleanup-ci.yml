@@ -18,7 +18,7 @@ jobs:
       id-token: write
       pages: write
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           ref: "gh-pages"
       - name: Test Document Root Exists
