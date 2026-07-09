@@ -1,4 +1,4 @@
-## Setting up an Admin User
+## Changing The Admin Password
 
 ```{warning}
 By default, a user *admin* with the password *admin* is created. This is insecure
@@ -18,5 +18,5 @@ docker compose -f $DOWNLOAD_DIR/compose.yaml \
 
 ```{note}
 Please be aware if your password includes special characters like `$` it needs
-to be quoted in single quotes.
+to be quoted in single quotes or escaped in shell contexts.
 ```

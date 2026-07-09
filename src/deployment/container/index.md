@@ -13,7 +13,7 @@
 ```
 
 (docker-compose-file)=
-## Docker Compose File
+## Docker Compose
 
 ```{important}
 Please always ensure to use the latest version of the `compose.yaml` file
@@ -27,7 +27,7 @@ file should be used:
 ```{literalinclude} compose.yaml
 ---
 language: yaml
-caption: "Docker Compose File"
+caption: "Docker Compose"
 ---
 ```
 
@@ -40,7 +40,7 @@ it can be downloaded with the following command directly:
 ---
 caption: Downloading Docker compose file
 ---
-curl -f -O -L https://greenbone.github.io/docs/latest/_static/compose.yaml --output-dir "$DOWNLOAD_DIR"
+curl -fL --output "$DOWNLOAD_DIR/compose.yaml" https://greenbone.github.io/docs/latest/_static/compose.yaml
 ```
 
 ### Description
@@ -75,10 +75,10 @@ and their services in detail.
 ```{include} /deployment/container/starting.md
 ```
 
-```{include} /deployment/container/admin-user.md
+```{include} /deployment/container/admin-creation.md
 ```
 
-## Starting the Vulnerability Management
+## Starting The Vulnerability Management
 
 After the services have started and [all feed data has been loaded](./workflows.md#loading-the-feed-changes),
 the {term}`Greenbone Security Assistant web interface – GSA –<GSA>` can be opened in the browser.
@@ -93,14 +93,14 @@ xdg-open "https://127.0.0.1" 2>/dev/null >/dev/null &
 The browser will show the login page of GSA and after using the credentials
 created before, it is possible to start with vulnerability scanning.
 
-```{figure} /images/GSA-22.4.png
+```{figure} /images/GSA-20260709.png
 ---
 alt: Launching Greenbone Security Assistant for the first time
 ---
 Greenbone Security Assistant after logging in for the first time
 ```
 
-## Setup and Start Script
+## Setup And Start Script
 
 ```{note}
 Please remember to follow the instructions described in the [Prerequisites](#prerequisites)
@@ -114,7 +114,7 @@ script can be downloaded with the following command directly:
 ---
 caption: Downloading setup and start script to the current working dir
 ---
-curl -f -O https://greenbone.github.io/docs/latest/_static/setup-and-start-greenbone-community-edition.sh && chmod u+x setup-and-start-greenbone-community-edition.sh
+curl -fL --output ./setup-and-start-greenbone-ce.sh https://greenbone.github.io/docs/latest/_static/setup-and-start-greenbone-ce.sh && chmod u+x setup-and-start-greenbone-ce.sh
 ```
 
 To execute the script following command needs to be run
@@ -123,7 +123,7 @@ To execute the script following command needs to be run
 ---
 caption: Run setup and start script
 ---
-./setup-and-start-greenbone-community-edition.sh
+./setup-and-start-greenbone-ce.sh
 ```
 
 ```{toctree}

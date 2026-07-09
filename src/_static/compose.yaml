@@ -1,39 +1,43 @@
-name: greenbone-community-edition
+# YAML Anchors
+x-keepalive: &keepalive
+  KEEP_ALIVE: 1
+x-feed: &feed
+  FEED_RELEASE: "25.0"
 
+name: greenbone-ce
 services:
   vulnerability-tests:
     image: registry.community.greenbone.net/community/vulnerability-tests
     environment:
-      FEED_RELEASE: "24.10"
-      KEEP_ALIVE: 1
+      <<: [*feed, *keepalive]
     volumes:
       - vt_data_vol:/mnt
 
   notus-data:
     image: registry.community.greenbone.net/community/notus-data
     environment:
-      KEEP_ALIVE: 1
+      <<: *keepalive
     volumes:
       - notus_data_vol:/mnt
 
   scap-data:
     image: registry.community.greenbone.net/community/scap-data
     environment:
-      KEEP_ALIVE: 1
+      <<: *keepalive
     volumes:
       - scap_data_vol:/mnt
 
   cert-bund-data:
     image: registry.community.greenbone.net/community/cert-bund-data
     environment:
-      KEEP_ALIVE: 1
+      <<: *keepalive
     volumes:
       - cert_data_vol:/mnt
 
   dfn-cert-data:
     image: registry.community.greenbone.net/community/dfn-cert-data
     environment:
-      KEEP_ALIVE: 1
+      <<: *keepalive
     volumes:
       - cert_data_vol:/mnt
     depends_on:
@@ -43,16 +47,14 @@ services:
   data-objects:
     image: registry.community.greenbone.net/community/data-objects
     environment:
-      FEED_RELEASE: "24.10"
-      KEEP_ALIVE: 1
+      <<: [*feed, *keepalive]
     volumes:
       - data_objects_vol:/mnt
 
   report-formats:
     image: registry.community.greenbone.net/community/report-formats
     environment:
-      FEED_RELEASE: "24.10"
-      KEEP_ALIVE: 1
+      <<: [*feed, *keepalive]
     volumes:
       - data_objects_vol:/mnt
     depends_on:
@@ -66,17 +68,13 @@ services:
 
   redis-server:
     image: registry.community.greenbone.net/community/redis-server
-    deploy:
-      restart_policy:
-        condition: any
+    restart: unless-stopped
     volumes:
       - redis_socket_vol:/run/redis/
 
   pg-gvm:
     image: registry.community.greenbone.net/community/pg-gvm:stable
-    deploy:
-      restart_policy:
-        condition: any
+    restart: unless-stopped
     volumes:
       - psql_data_vol:/var/lib/postgresql
       - psql_socket_vol:/var/run/postgresql
@@ -86,18 +84,14 @@ services:
 
   pg-gvm-migrator:
     image: registry.community.greenbone.net/community/pg-gvm-migrator:stable
-    deploy:
-      restart_policy:
-        condition: none
+    restart: no
     volumes:
       - psql_data_vol:/var/lib/postgresql
       - psql_socket_vol:/var/run/postgresql
 
   gvmd:
     image: registry.community.greenbone.net/community/gvmd:stable
-    deploy:
-      restart_policy:
-        condition: any
+    restart: unless-stopped
     volumes:
       - gvmd_data_vol:/var/lib/gvm
       - scap_data_vol:/var/lib/gvm/scap-data/
@@ -126,7 +120,7 @@ services:
     image: registry.community.greenbone.net/community/gsa:stable-slim
     environment:
       MOUNT_PATH: "/mnt/web"
-      KEEP_ALIVE: 1
+      <<: *keepalive
     healthcheck:
       test: [ "CMD-SHELL", "test -e /run/gsa/copying.done" ]
       start_period: 5s
@@ -135,9 +129,7 @@ services:
 
   gsad:
     image: registry.community.greenbone.net/community/gsad:stable
-    deploy:
-      restart_policy:
-        condition: any
+    restart: unless-stopped
     environment:
       GSAD_HTTP_ONLY: "true"
       GSAD_API_ONLY: "true"
@@ -159,6 +151,7 @@ services:
 
   nginx:
     image: registry.community.greenbone.net/community/nginx:latest
+    restart: unless-stopped
     ports:
       - 127.0.0.1:443:443
       - 127.0.0.1:9392:9392
@@ -166,9 +159,6 @@ services:
       - nginx_config_vol:/etc/nginx/conf.d:ro
       - nginx_certificates_vol:/etc/nginx/certs:ro
       - gsa_data_vol:/usr/share/nginx/html:ro
-    deploy:
-      restart_policy:
-        condition: any
     depends_on:
       gvm-config:
         condition: service_completed_successfully
@@ -196,27 +186,9 @@ services:
         touch /var/log/openvas/openvas.log
         chmod 666 /var/log/openvas/openvas.log
 
-  # shows logs of openvas
-  openvas:
-    image: registry.community.greenbone.net/community/openvas-scanner:stable
-    volumes:
-      - openvas_data_vol:/etc/openvas
-      - openvas_log_data_vol:/var/log/openvas
-    command:
-      - /bin/sh
-      - -c
-      - |
-        cat /etc/openvas/openvas.conf
-        tail -f /var/log/openvas/openvas.log
-    depends_on:
-      configure-openvas:
-        condition: service_completed_successfully
-
   openvasd:
     image: registry.community.greenbone.net/community/openvas-scanner:stable
-    deploy:
-      restart_policy:
-        condition: any
+    restart: unless-stopped
     environment:
       # `service_notus` is set to disable everything but notus,
       # if you want to utilize openvasd directly, remove `OPENVASD_MODE`
@@ -245,11 +217,25 @@ services:
         aliases:
           - openvasd
 
+  # shows logs of openvas
+  openvas-logger:
+    image: registry.community.greenbone.net/community/openvas-scanner:stable
+    volumes:
+      - openvas_data_vol:/etc/openvas
+      - openvas_log_data_vol:/var/log/openvas
+    command:
+      - /bin/sh
+      - -c
+      - |
+        cat /etc/openvas/openvas.conf
+        tail -f /var/log/openvas/openvas.log
+    depends_on:
+      configure-openvas:
+        condition: service_completed_successfully
+
   ospd-openvas:
     image: registry.community.greenbone.net/community/ospd-openvas:stable
-    deploy:
-      restart_policy:
-        condition: any
+    restart: unless-stopped
     hostname: ospd-openvas.local
     cap_add:
       - NET_ADMIN # for capturing packages in promiscuous mode

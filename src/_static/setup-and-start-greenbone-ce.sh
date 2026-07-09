@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (C) 2022 - 2025 Greenbone AG
+# Copyright (C) 2022 - 2026 Greenbone AG
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
@@ -16,11 +16,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-set -e
+set -eux
 
-DOWNLOAD_DIR=$HOME/greenbone-community-container
-RELEASE="22.4"
-
+DOWNLOAD_DIR=$HOME/greenbone-ce
 
 installed() {
     # $1 should be the command to look for. If $2 is set, we have arguments
@@ -38,7 +36,7 @@ installed() {
     fi
 
     if [ $failed -ne 0 ]; then
-        echo "$* is not available. See https://greenbone.github.io/docs/latest/$RELEASE/container/#prerequisites."
+        echo "$* is not available. See https://greenbone.github.io/docs/latest/deployment/container/#prerequisites."
         exit 1
     fi
 

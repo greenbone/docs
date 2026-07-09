@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = "Greenbone Community Documentation"
-copyright = "2021–2024, Greenbone AG"
-author = "Greenbone AG"
+copyright = "2021-2026, Greenbone AG"
+author = "Greenbone AG and contributors"
 
 
 # -- General configuration ---------------------------------------------------
