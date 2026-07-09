@@ -115,7 +115,7 @@ script can be downloaded with the following command directly:
 caption: Downloading setup and start script to the current working dir
 ---
 curl -fL --output ./setup-and-start-greenbone-ce.sh https://greenbone.github.io/docs/latest/_static/setup-and-start-greenbone-ce.sh
-chmod u+x setup-and-start-greenbone-ce.sh
+chmod u+x ./setup-and-start-greenbone-ce.sh
 ```
 
 To execute the script following command needs to be run:
