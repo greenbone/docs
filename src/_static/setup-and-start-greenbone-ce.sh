@@ -23,7 +23,7 @@ DOWNLOAD_DIR=$HOME/greenbone-ce
 installed() {
     # $1 should be the command to look for. If $2 is set, we have arguments
     local failed=0
-    if [ -z "$2" ]; then
+    if [ -z "${2:-}" ]; then
         if ! [ -x "$(command -v "$1")" ]; then
             failed=1
         fi
