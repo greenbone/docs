@@ -114,16 +114,26 @@ script can be downloaded with the following command directly:
 ---
 caption: Downloading setup and start script to the current working dir
 ---
-curl -fL --output ./setup-and-start-greenbone-ce.sh https://greenbone.github.io/docs/latest/_static/setup-and-start-greenbone-ce.sh && chmod u+x setup-and-start-greenbone-ce.sh
+curl -fL --output ./setup-and-start-greenbone-ce.sh https://greenbone.github.io/docs/latest/_static/setup-and-start-greenbone-ce.sh
+chmod u+x setup-and-start-greenbone-ce.sh
 ```
 
-To execute the script following command needs to be run
+To execute the script following command needs to be run:
 
 ```{code-block} shell
 ---
 caption: Run setup and start script
 ---
 ./setup-and-start-greenbone-ce.sh
+```
+
+To execute the script with debugging details, add the following environment variable:
+
+```{code-block} shell
+---
+caption: Run setup and start script with DEBUG on
+---
+DEBUG=1 ./setup-and-start-greenbone-ce.sh
 ```
 
 ```{toctree}

@@ -16,7 +16,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-set -eux
+set -euo pipefail
+if [ "${DEBUG:-0}" -eq 1 ]; then
+    set -x
+fi
 
 DOWNLOAD_DIR=$HOME/greenbone-ce
 
