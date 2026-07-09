@@ -1,13 +1,11 @@
 version: 2
 updates:
-  - package-ecosystem: uv
+  - package-ecosystem: "uv"
     directory: "/"
     schedule:
       interval: "weekly"
-      time: "04:00"
     commit-message:
       prefix: "Deps"
-    open-pull-requests-limit: 10
 
   - package-ecosystem: "github-actions"
     directory: "/"
