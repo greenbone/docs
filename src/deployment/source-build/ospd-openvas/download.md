@@ -13,7 +13,7 @@ gpg --verify $SOURCE_DIR/ospd-openvas-$OSPD_OPENVAS_VERSION.tar.gz.asc $SOURCE_D
 
 The output of the last command should be similar to:
 
-```{include} /22.4/source-build/verify.md
+```{include} /deployment/source-build/verify.md
 ```
 
 If the signatures are valid, the tarballs can be extracted.

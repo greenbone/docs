@@ -1,15 +1,15 @@
 # Greenbone Community Containers
 
-```{include} /22.4/container/preamble.md
+```{include} /deployment/container/preamble.md
 ```
 
-```{include} /22.4/container/introduction.md
+```{include} /deployment/container/introduction.md
 ```
 
-```{include} /22.4/container/hardware.md
+```{include} /deployment/container/hardware.md
 ```
 
-```{include} /22.4/container/prerequisites.md
+```{include} /deployment/container/prerequisites.md
 ```
 
 (docker-compose-file)=
@@ -72,10 +72,10 @@ and their services in detail.
 | openvas             |                                           | A container that shows the logs of OpenVAS Scanner                                                                                                                                                                                                                               |
 | openvasd            | openvasd                                  | A container for [openvasd](https://github.com/greenbone/openvas-scanner/tree/main/rust/openvasd). It is providing notus, a static vulnerability engine, functionality.                                                                                                           |
 
-```{include} /22.4/container/starting.md
+```{include} /deployment/container/starting.md
 ```
 
-```{include} /22.4/container/admin-user.md
+```{include} /deployment/container/admin-user.md
 ```
 
 ## Starting the Vulnerability Management

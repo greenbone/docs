@@ -29,9 +29,9 @@ This documentation covers the stable version of the Greenbone Community Edition.
 :hidden: true
 
 background
-22.4/source-build/index
-22.4/container/index
-22.4/kali/index
+deployment/source-build/index
+deployment/container/index
+deployment/kali/index
 faq
 troubleshooting
 glossary

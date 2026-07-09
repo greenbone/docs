@@ -13,7 +13,7 @@ gpg --verify $SOURCE_DIR/gsad-$GSAD_VERSION.tar.gz.asc $SOURCE_DIR/gsad-$GSAD_VE
 
 The output of both commands should be similar to:
 
-```{include} /22.4/source-build/verify.md
+```{include} /deployment/source-build/verify.md
 ```
 
 If the signatures are valid, the two tarballs can be extracted.

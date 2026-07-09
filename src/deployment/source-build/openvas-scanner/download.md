@@ -13,7 +13,7 @@ gpg --verify $SOURCE_DIR/openvas-scanner-$OPENVAS_SCANNER_VERSION.tar.gz.asc $SO
 
 The output of the last command should be similar to:
 
-```{include} /22.4/source-build/verify.md
+```{include} /deployment/source-build/verify.md
 ```
 
 If the signature is valid, the tarball can be extracted.

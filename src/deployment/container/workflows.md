@@ -420,7 +420,7 @@ caption: Use the Google Mail services with SSL and authorization
 ...
 ```
 
-```{include} /22.4/container/manual-feed-sync.md
+```{include} /deployment/container/manual-feed-sync.md
 ```
 
 ## Setting up SSL/TLS for GSA

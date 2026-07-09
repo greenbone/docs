@@ -13,7 +13,7 @@ gpg --verify $SOURCE_DIR/pg-gvm-$PG_GVM_VERSION.tar.gz.asc $SOURCE_DIR/pg-gvm-$P
 
 The output of the last command should be similar to:
 
-```{include} /22.4/source-build/verify.md
+```{include} /deployment/source-build/verify.md
 ```
 
 If the signature is valid the tarball can be extracted.
