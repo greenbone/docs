@@ -8,14 +8,14 @@ updates:
       prefix: "Deps"
 
   - package-ecosystem: "github-actions"
-    directory: "/"
+    directory: ".github"
     schedule:
       interval: "weekly"
     commit-message:
       prefix: "Deps"
 
   - package-ecosystem: "docker-compose"
-    directory: "/"
+    directory: "src/_static"
     schedule:
       interval: "weekly"
     commit-message:
