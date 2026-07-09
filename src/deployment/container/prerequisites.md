@@ -8,7 +8,7 @@ output of a previous command.
 The command `sudo` is used for executing commands that require privileged
 access on the system.
 
-### Install dependencies
+### Install Dependencies
 
 There are a few dependencies required for the following steps like [curl](https://curl.se/) (or [wget](https://www.gnu.org/software/wget/)), which is required for downloading files from this guide.
 

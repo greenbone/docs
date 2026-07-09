@@ -1,4 +1,4 @@
-## Starting the Greenbone Community Containers
+## Starting The Greenbone Community Containers
 
 Using the docker compose file, the container images can be downloaded (*pulled*)
 and the containers can be started in the background.
