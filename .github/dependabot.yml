@@ -13,3 +13,10 @@ updates:
       interval: "weekly"
     commit-message:
       prefix: "Deps"
+
+  - package-ecosystem: "docker-compose"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "Deps"
