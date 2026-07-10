@@ -2,7 +2,7 @@
 x-keepalive: &keepalive
   KEEP_ALIVE: 1
 x-feed: &feed
-  FEED_RELEASE: "25.0"
+  FEED_RELEASE: "24.10"
 
 name: greenbone-ce
 services:
