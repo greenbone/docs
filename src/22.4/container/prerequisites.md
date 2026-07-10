@@ -39,7 +39,7 @@ sudo dnf install ca-certificates curl
 [Docker](https://www.docker.com/) (alternatively [podman](https://podman.io/)) 
 is the application with which the Greenbone stack will be deployed.  
 Docker can be installed by following the instructions provided directly by them.  
-Please refer to the: [Official Docker Engine Installation Guide](https://docs.docker.com/engine/install/)):
+Please refer to the: [Official Docker Engine Installation Guide](https://docs.docker.com/engine/install/):
 
 
 ### Setting up Docker

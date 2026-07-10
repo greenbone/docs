@@ -1,6 +1,6 @@
 Running the Greenbone Community Edition from containers requires knowledge about:
 
-* Using a terminal/shell (e.g. [bash] or [sh]).
+* Using a terminal/shell (e.g. {command}`bash` or {command}`sh`).
 * Using [docker](https://www.docker.com/) and/or [podman](https://podman.io/).
 * Running services via [docker compose](https://docs.docker.com/compose/).
 
