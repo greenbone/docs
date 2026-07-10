@@ -24,6 +24,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Use `compose.yaml` instead of `docker-compose.yml` everywhere in the docs
 * Use environment variables for the settings of gsad
 * Refresh the GSA dashboard image
+* Reorder the topics on the navigation
 
 ## 26.2.0 - 2026-02-24
 
