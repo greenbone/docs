@@ -63,5 +63,5 @@ a destination directory should be created.
 ---
 caption: Create download directory
 ---
-export DOWNLOAD_DIR=$HOME/greenbone-ce && mkdir -p $DOWNLOAD_DIR
+export DOWNLOAD_DIR=$HOME/greenbone-community-edition && mkdir -p $DOWNLOAD_DIR
 ```
