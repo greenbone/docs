@@ -12,13 +12,7 @@ This guide is intended for users who want to test the newest features
 and/or want to get familiar with the Greenbone Community Edition. It is not
 intended for production setups.
 
-Currently the docs support the following distributions
+Currently the docs support the following appliances:
 
-* **Debian stable** [(trixie)](https://www.debian.org/releases/stable)
-* **Ubuntu 26.04 LTS**
-* **Fedora 44 and 43**
-* **CentOS 10 Stream**
-
-Most likely, other Debian derivatives like Mint and Kali will also work with
-only minor adjustments required.
+* **Docker** [(Tested with version: 29.6.1)](https://docs.docker.com/engine/release-notes/29/)
 ```
