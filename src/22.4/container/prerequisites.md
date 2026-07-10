@@ -5,7 +5,7 @@ Please follow the guide step by step.
 Later steps might require settings or output of a previous command.
 ```
 
-The `sudo`-command is used for executing commands and binaries that require privileged access on the system.  
+The {command}`sudo`-command is used for executing commands and binaries that require privileged access on the system.  
 
 ### Dependencies
 
