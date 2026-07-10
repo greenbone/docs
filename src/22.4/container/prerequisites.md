@@ -44,9 +44,9 @@ Please refer to the: [Official Docker Engine Installation Guide](https://docs.do
 
 ### Setting up Docker
 
-To allow the current user to run `docker`-commands and therefore start the containers, 
+To allow the current user to run {command}`docker`-commands and therefore start the containers, 
 they must be added to the *docker* user group (or be run as root). 
-To make the group change effective, either logout and login again or use the `su`-command.
+To make the group change effective, either logout and login again or use the {command}`su`-command.
 
 ```{code-block} shell
 ---
