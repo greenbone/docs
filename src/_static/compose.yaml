@@ -69,6 +69,8 @@ services:
   redis-server:
     image: registry.community.greenbone.net/community/redis-server
     restart: unless-stopped
+    expose:
+      - 6379
     volumes:
       - redis_socket_vol:/run/redis/
 
