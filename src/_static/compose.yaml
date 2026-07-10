@@ -216,7 +216,7 @@ services:
           - openvasd
 
   # shows logs of openvas
-  openvas-logger:
+  openvas:
     image: registry.community.greenbone.net/community/openvas-scanner:stable
     volumes:
       - openvas_data_vol:/etc/openvas
