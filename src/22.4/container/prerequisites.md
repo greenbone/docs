@@ -10,7 +10,7 @@ The {command}`sudo`-command is used for executing commands and binaries that req
 ### Dependencies
 
 There are a few dependencies required for the following steps like [curl](https://curl.se/) 
-(alternatively [wget](https://www.gnu.org/software/wget/)) and [docker](https://www.docker.com/), 
+and [docker](https://www.docker.com/), 
 of which the former is required to downloading files from this guide.  
 [curl](https://curl.se/) can be separately downloaded through the instructions below, 
 but it will also be installed when following the Docker engine installation docs.  
