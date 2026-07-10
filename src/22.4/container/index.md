@@ -93,7 +93,7 @@ xdg-open "https://127.0.0.1" 2>/dev/null >/dev/null &
 The browser will show the login page of GSA and after using the credentials
 created before, it is possible to start with vulnerability scanning.
 
-```{figure} /images/GSA-22.4.png
+```{figure} /images/GSA-20260709.png
 ---
 alt: Launching Greenbone Security Assistant for the first time
 ---
