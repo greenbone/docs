@@ -14,10 +14,10 @@ intended for production setups.
 
 Currently the docs support the following distributions
 
-* **Debian stable** [(bookworm)](https://www.debian.org/releases/stable)
-* **Ubuntu 24.04 LTS**
-* **Fedora 35 and 36**
-* **CentOS 9 Stream**
+* **Debian stable** [(trixie)](https://www.debian.org/releases/stable)
+* **Ubuntu 26.04 LTS**
+* **Fedora 44 and 43**
+* **CentOS 10 Stream**
 
 Most likely, other Debian derivatives like Mint and Kali will also work with
 only minor adjustments required.
