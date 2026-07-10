@@ -184,7 +184,8 @@ services:
         printf "table_driven_lsc = yes\nopenvasd_server = http://openvasd:80\n" > /mnt/openvas.conf
         sed "s/127/128/" /etc/openvas/openvas_log.conf | sed 's/gvm/openvas/' > /mnt/openvas_log.conf
         touch /var/log/openvas/openvas.log
-        chmod 644 /mnt/openvas.conf /mnt/openvas_log.conf /var/log/openvas/openvas.log
+        chmod 644 /mnt/openvas.conf /mnt/openvas_log.conf
+        chmod 666 /var/log/openvas/openvas.log
 
   openvasd:
     image: registry.community.greenbone.net/community/openvas-scanner:stable
