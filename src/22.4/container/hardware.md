@@ -1,13 +1,20 @@
 ## Hardware Requirements
 
-Minimal:
+```{list-table}
+:header-rows: 1
+:width: 100%
+:widths: 70 15 15
 
-* CPU Cores: 2
-* Random-Access Memory: 4GB
-* Hard Disk: 20GB free
-
-Recommended:
-
-* CPU Cores: 4
-* Random-Access Memory: 8GB
-* Hard Disk: 60GB free
+* - Component
+  - Minimal
+  - Recommended
+* - CPU Cores (Compute)
+  - 2
+  - 4
+* - Random-Access Memory (RAM)
+  - 4 GB
+  - 8 GB
+* - Available Storage
+  - 20 GB
+  - 60 GB
+```
