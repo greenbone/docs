@@ -23,6 +23,8 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Use [`restart_policy`](https://docs.docker.com/reference/compose-file/deploy/#restart_policy) for container services
 * Use `compose.yaml` instead of `docker-compose.yml` everywhere in the docs
 * Use environment variables for the settings of gsad
+* Refresh the GSA dashboard image
+* Revise the hardware specifications view
 * Rewrite the containre pre-requisites and -amble files
 
 ## 26.2.0 - 2026-02-24
