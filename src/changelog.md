@@ -25,6 +25,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
 * Use environment variables for the settings of gsad
 * Refresh the GSA dashboard image
 * Revise the hardware specifications view
+* Rewrite the containre pre-requisites and -amble files
 
 ## 26.2.0 - 2026-02-24
 
