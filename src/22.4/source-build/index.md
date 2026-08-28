@@ -26,7 +26,7 @@ The components should be build and installed in the listed order.
 ```{code-block}
 :caption: Setting the gvm-libs version to use
 
-export GVM_LIBS_VERSION=22.31.1
+export GVM_LIBS_VERSION=23.9.3
 ```
 
 ```{include} /22.4/source-build/gvm-libs/dependencies.md
@@ -48,7 +48,7 @@ Afterwards, gvm-libs can be build and installed.
 ```{code-block}
 :caption: Setting the gvmd version to use
 
-export GVMD_VERSION=26.10.0
+export GVMD_VERSION=26.37.0
 ```
 
 ```{include} /22.4/source-build/gvmd/dependencies.md
@@ -100,7 +100,7 @@ The Greenbone Security Assistant (GSA) sources consist of two parts:
 ```{code-block}
 :caption: Setting the GSA version to use
 
-export GSA_VERSION=25.0.0
+export GSA_VERSION=28.3.0
 ```
 
 ```{include} /22.4/source-build/gsa/download.md
@@ -117,7 +117,7 @@ export GSA_VERSION=25.0.0
 ```{code-block}
 :caption: Setting the GSAd version to use
 
-export GSAD_VERSION=24.3.0
+export GSAD_VERSION=27.2.0
 ```
 
 ```{include} /22.4/source-build/gsad/dependencies.md
@@ -162,7 +162,7 @@ export OPENVAS_SCANNER_VERSION=23.20.1
 ```{code-block}
 :caption: Setting the ospd and ospd-openvas versions to use
 
-export OSPD_OPENVAS_VERSION=22.9.0
+export OSPD_OPENVAS_VERSION=22.10.5
 ```
 
 ```{include} /22.4/source-build/ospd-openvas/dependencies.md
