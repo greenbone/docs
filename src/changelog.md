@@ -18,14 +18,19 @@ and this project adheres to [Calendar Versioning](https://calver.org).
   * Use https in the default setup.
   * Port 9392 now redirects to 443.
 * Upgrade PostgreSQL to v16 for Ubuntu
-* Update gvm-libs to 22.31.1
-* Update gvmd to 26.10.0
 * Use [`restart_policy`](https://docs.docker.com/reference/compose-file/deploy/#restart_policy) for container services
 * Use `compose.yaml` instead of `docker-compose.yml` everywhere in the docs
 * Use environment variables for the settings of gsad
 * Refresh the GSA dashboard image
 * Revise the hardware specifications view
-* Rewrite the containre pre-requisites and -amble files
+* Rewrite the container pre-requisites and -amble files
+* Update component versions for source build
+  * Update gvm-libs to 23.9.3
+  * Update gvmd to 26.37.0
+  * Update gsad to 27.2.0
+  * Update gsa to 28.3.0
+  * Update pg-gvm to 22.6.18
+  * Update ospd-openvas to 22.10.5
 
 ## 26.2.0 - 2026-02-24
 
