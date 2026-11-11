@@ -77,3 +77,60 @@ this README.
 
 [uv]: https://docs.astral.sh/uv/
 [pipx]: https://pipx.pypa.io/stable/
+
+## HTML Search
+
+The `section_search` extension builds a section-level index from rendered
+HTML and directory HTML pages. `src/_templates/search.html` loads it only on the
+search page. Each section stores its own contiguous text runs, excluding child
+sections, hidden content and content marked `no-search` or `nohighlight`.
+
+`src/_static/search-phrase.js` supplies one language-aware whole-phrase matcher for
+result selection, preview snippets and destination highlighting. All query words
+must occur next to each other in the original order within a text run. Words
+split across paragraphs, table cells or child sections do not form a match.
+Partial-word matches, isolated index keywords and synthetic breadcrumb text
+cannot independently create a result. Matching section headings are ranked
+first, with no minimum query-to-heading length ratio.
+
+`src/_static/section-search.js` links each result to the matching section heading and
+builds the preview around an actual full-phrase match. Sphinx's individual-token
+preview highlighting is disabled. The index is regenerated on every HTML build,
+including incremental builds, without changing Sphinx's own index. No external
+search service is needed. Other output formats are unchanged.
+
+The integration depends on Sphinx's JavaScript search API. When updating Sphinx or
+Furo, run the search regression tests (Node.js 24 and the uv dependencies are
+required):
+
+```sh
+npm ci --prefix tests --ignore-scripts
+npm test --prefix tests
+uv run python -m unittest discover -s tests -v
+```
+
+The tests build English HTML and German directory HTML fixtures and check title
+matches, section links, nested sections, language stemming and incremental builds.
+
+Search-result links carry the original query in a `highlight` URL parameter.
+On destination pages, `search-highlight.js` compares whole words using the same
+language-specific Sphinx stemmer as the search. All query words must match in
+order and next to each other, including stopwords. Thus `support bundle` also
+highlights `support bundles`, but not standalone `support` or `bundle`, or words
+separated by additional words or punctuation. Stemming is heuristic, not full
+linguistic lemmatization. Internal hyphens are normalized before stemming:
+`Support-Paket` and `Supportpaket` match in both directions, including German
+inflections such as `Support-Pakete`. ASCII hyphens, Unicode hyphens, nonbreaking
+hyphens and soft hyphens are supported; en/em dashes remain boundaries.
+Adjacent query words can also match a complete compound: `Feed Update` finds
+`Feed Update`, `Feed-Update` and `Feedupdate`. All query words must still match in
+order, without extra words or partial-compound matches. This does not perform
+arbitrary compound splitting: a joined query does not infer spaces in the text.
+The original spelling is preserved in highlights, including across inline markup.
+Queries containing other punctuation (such as `C++`) retain
+literal phrase matching. `src/_templates/page.html` loads the language data on
+chapter pages; the search page continues to load it exactly once via Furo.
+Inline formatting and whitespace differences are supported. Highlighting stays
+inside the article, does not cross paragraph boundaries, and does not affect
+normal visits without this parameter. The phrase also survives opening a result
+in a new tab. Search-result snippets use the same whole-phrase highlighting.
