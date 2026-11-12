@@ -107,6 +107,26 @@ German forms
 
 Technische Berichte und technischen Berichten folgen Beispiele.
 
+Exact first
+-----------
+
+Exactneedle.
+
+Prefix longer
+-------------
+
+Exactneedlelong.
+
+Prefix example
+--------------
+
+Authentifiziert und Authentifizierung.
+
+Prefix unrelated
+----------------
+
+Reauthentifiziert. Support provides bundled software.
+
 Feed compound
 -------------
 

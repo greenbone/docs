@@ -80,6 +80,22 @@ function highlight(dom) {
     'https://docs.example/agents.html?highlight=das+Feed+Update+starten');
   assert.deepEqual(highlight(dom), ['das Feed-Update starten', 'das Feedupdate starten']);
   dom.window.close();
+  for (const query of ['authenti*', 'AUTHENTI*']) {
+    dom = page('<article role="main">authenti; authentifiziert; Authenti<strong>fizierung</strong>; reauthentifiziert; authentisch</article>',
+      'https://docs.example/agents.html?highlight=' + encodeURIComponent(query));
+    assert.deepEqual(highlight(dom), ['authenti', 'authentifiziert', 'Authenti', 'fizierung', 'authentisch']);
+    dom.window.close();
+  }
+  dom = page('<article role="main">support bundles; support bundled; bundled; support extra bundled; bundled support; support</article>',
+    'https://docs.example/agents.html?highlight=support+bund*');
+  assert.deepEqual(highlight(dom), ['support bundles', 'support bundled']);
+  dom.window.close();
+  for (const query of ['*', '*authenti', 'auth*enti', 'authenti**']) {
+    dom = page('<article role="main">authentifiziert</article>',
+      'https://docs.example/agents.html?highlight=' + encodeURIComponent(query));
+    assert.deepEqual(highlight(dom), []);
+    dom.window.close();
+  }
   if (languageData) {
     dom = page('<article role="main">support bundle; support bundles; support; bundles; support extra bundles; bundles support; support, bundles</article>');
     assert.deepEqual(highlight(dom), ['support bundle', 'support bundles']);
@@ -109,6 +125,18 @@ function highlight(dom) {
       dom.window.close();
     }
   }
+
+  dom = page('<div id="search-results"></div>', 'https://docs.example/search.html?q=authenti');
+  vm.runInContext('const Search = {highlightQuery: "authenti*"};', dom.getInternalVMContext());
+  dom.window.document.getElementById('search-results').innerHTML =
+    '<ul><li><a href="agents.html#auth">Authentication</a><p class="context" data-highlight-query="authenti*">Authentifizierung</p></li></ul>';
+  await new Promise(resolve => setTimeout(resolve, 0));
+  const fallbackURL = new URL(dom.window.document.querySelector('a').href);
+  assert.equal(fallbackURL.searchParams.get('highlight'), 'authenti*');
+  const fallbackPage = page('<article role="main">Authentifizierung; authentifiziert; reauthentifiziert</article>', fallbackURL.href);
+  assert.deepEqual(highlight(fallbackPage), ['Authentifizierung', 'authentifiziert']);
+  fallbackPage.window.close();
+  dom.window.close();
 
   // Results arrive asynchronously. Copied/new-tab links must carry the phrase,
   // without disturbing directory-HTML paths, existing parameters or anchors.

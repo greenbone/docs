@@ -4,6 +4,14 @@
 
 // One matcher for result selection, previews and destination highlighting.
 const ManualSearch = {
+  // Only plain word phrases are eligible; explicit wildcard/punctuation queries
+  // retain their requested semantics.
+  prefixQuery: (query) => {
+    const word = /[\p{L}\p{M}\p{N}_]+(?:[-\u2010\u2011\u00ad][\p{L}\p{M}\p{N}_]+)*/u;
+    const phrase = new RegExp(`^${word.source}(?:\\s+${word.source})*$`, "u");
+    return phrase.test(query.trim())
+      ? query.trim().split(/\s+/).map(word => word + "*").join(" ") : query;
+  },
   matcher: (query) => {
     // Reuse the page language's Sphinx stemmer, but retain every query word
     // (including stopwords), its order and adjacency. Adjacent query words
@@ -12,18 +20,28 @@ const ManualSearch = {
     query = query.trim();
     const stemmer = typeof Stemmer === "undefined" ? null : new Stemmer();
     const cache = new Map();
+    const normalize = (word) => word.normalize("NFC").toLowerCase().replace(/[-\u2010\u2011\u00ad]/gu, "");
     const stem = (word) => {
       // Normalize compound spelling before stemming, retaining original offsets.
-      const normalized = word.normalize("NFC").toLowerCase().replace(/[-\u2010\u2011\u00ad]/gu, "");
+      const normalized = normalize(word);
       if (!cache.has(normalized)) cache.set(normalized, stemmer ? stemmer.stemWord(normalized) : normalized);
       return cache.get(normalized);
     };
     const wordPattern = /[\p{L}\p{M}\p{N}_]+(?:[-\u2010\u2011\u00ad][\p{L}\p{M}\p{N}_]+)*/gu;
-    const wordPhrase = new RegExp(`^${wordPattern.source}(?:\\s+${wordPattern.source})*$`, "u");
+    const queryWord = `${wordPattern.source}\\*?`;
+    const wordPhrase = new RegExp(`^${queryWord}(?:\\s+${queryWord})*$`, "u");
     const queryWords = wordPhrase.test(query) ? query.split(/\s+/) : null;
     const queryGroups = queryWords && queryWords.map((_, start) =>
-      queryWords.slice(start).map((_, offset) =>
-        stem(queryWords.slice(start, start + offset + 1).join(""))));
+      queryWords.slice(start).map((_, offset) => {
+        const group = queryWords.slice(start, start + offset + 1);
+        // A wildcard applies to one complete text word, never intervening words.
+        // Do not stem prefixes: their literal spelling defines the match.
+        if (group.some(word => word.endsWith("*"))) {
+          return group.length === 1
+            ? {prefix: normalize(group[0].slice(0, -1))} : null;
+        }
+        return {stem: stem(group.join(""))};
+      }));
     // Queries containing punctuation (e.g. C++) keep literal phrase matching.
     const escaped = query.split(/\s+/).map((word) =>
       word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
@@ -48,7 +66,11 @@ const ManualSearch = {
           }
           const actual = stem(words[textIndex][0]);
           for (let count = 1; count <= queryWords.length - queryIndex; count++) {
-            if (queryGroups[queryIndex][count - 1] !== actual) continue;
+            const expected = queryGroups[queryIndex][count - 1];
+            if (!expected) continue;
+            if (expected.prefix !== undefined
+              ? !normalize(words[textIndex][0]).startsWith(expected.prefix)
+              : expected.stem !== actual) continue;
             const end = align(queryIndex + count, textIndex + 1);
             if (end !== null) return end;
           }

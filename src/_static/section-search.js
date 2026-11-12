@@ -15,7 +15,7 @@
     return parsed;
   };
 
-  Search._performSearch = (query) => {
+  const performSearch = (query) => {
     const matches = ManualSearch.matcher(query);
     const index = SECTION_SEARCH_INDEX;
     const results = [];
@@ -37,12 +37,32 @@
     return results.sort(_orderResultsByScoreThenName);
   };
 
+  Search._performSearch = (query, summaryQueries) => {
+    let effectiveQuery = query;
+    let results = performSearch(query);
+    if (!results.length) {
+      const prefixQuery = ManualSearch.prefixQuery(query);
+      if (prefixQuery !== query) {
+        effectiveQuery = prefixQuery;
+        results = performSearch(prefixQuery);
+      }
+    }
+    // Keep the effective phrase with this request for asynchronous previews.
+    if (summaryQueries) {
+      summaryQueries.clear();
+      summaryQueries.add(effectiveQuery);
+    }
+    Search.highlightQuery = effectiveQuery;
+    return results;
+  };
+
   Search.makeSearchSummary = (html, queries, anchor) => {
     const matches = ManualSearch.matcher([...queries][0] || "");
     const page = new DOMParser().parseFromString(html, "text/html");
     const root = anchor ? page.getElementById(anchor.slice(1)) : page.querySelector('[role="main"]');
     const summary = document.createElement("p");
     summary.className = "context";
+    summary.dataset.highlightQuery = [...queries][0] || "";
     if (!root) return summary;
     for (const nodes of ManualSearch.textRuns(root, true)) {
       const text = nodes.map((node) => node.nodeValue).join("");

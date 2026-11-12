@@ -134,3 +134,26 @@ Inline formatting and whitespace differences are supported. Highlighting stays
 inside the article, does not cross paragraph boundaries, and does not affect
 normal visits without this parameter. The phrase also survives opening a result
 in a new tab. Search-result snippets use the same whole-phrase highlighting.
+
+### Automatic prefix fallback
+
+Search first uses the normal complete-phrase matcher, including stemming and
+compound spelling variants. Only if it returns zero results across the entire
+manual does search automatically retry plain word queries as prefixes: `authenti`
+becomes `authenti*`, and `supp bund` becomes `supp* bund*`. No second click is
+needed. All query words must still match adjacently and in order. Existing normal
+results suppress fallback entirely; no prefix results are mixed into them.
+Previews and copied/new-tab result links carry the effective query so destination
+highlighting uses the same matching mode. Punctuation queries are not broadened.
+
+### Explicit prefix search
+
+Append `*` to a word to search for its literal prefix, case-insensitively:
+`authenti*` finds `authentifiziert` and `Authentifizierung`. Prefixes are not
+stemmed; ordinary words retain stemming. `support bund*` still requires the
+complete adjacent phrase, so `bundled` alone cannot produce a result.
+The complete matched word/phrase is highlighted in previews and destination pages.
+A wildcard applies to one complete word (including a hyphenated compound), not
+to arbitrary text between words. Compound joining remains supported for ordinary
+query words, but not across wildcard-bearing query words. Only a single trailing
+asterisk on a nonempty word is an operator; other punctuation retains literal matching.

@@ -50,6 +50,22 @@ assert.equal(search('hiddenbranchneedle').length, 0);
 assert.equal(search('nestedexcludedneedle').length, 0);
 assert.equal(search('nonexistentneedle').length, 0);
 assert.equal(search('').length, 0);
+assert.deepEqual(search('authenti*').map(r => r[2]), ['#prefix-example']);
+assert(search('support bund*').some(r => r[2] === '#plural-phrasing'));
+assert(!search('support bund*').some(r => r[2] === '#prefix-unrelated'));
+assert.deepEqual(search('authenti').map(r => r[2]), ['#prefix-example']);
+assert.deepEqual(search('authenti'), search('authenti*'));
+assert.deepEqual(search('exactneedle').map(r => r[2]), ['#exact-first']);
+assert.equal(search('exactneedle*').length, 2);
+assert(!search('supp bund').some(r => r[2] === '#prefix-unrelated'));
+assert(search('supp bund').some(r => r[2] === '#plural-phrasing'));
+assert.deepEqual(search('support bundle'), search('support bundles'));
+vm.runInContext(`const fallbackQuery = Search._parseQuery('authenti');
+  Search._performSearch(...fallbackQuery);`, context);
+assert.equal(vm.runInContext('[...fallbackQuery[1]][0]', context), 'authenti*');
+vm.runInContext(`const normalQuery = Search._parseQuery('support bundle');
+  Search._performSearch(...normalQuery);`, context);
+assert.equal(vm.runInContext('[...normalQuery[1]][0]', context), 'support bundle');
 for (const query of ['Supportpaket', 'Support-Paket', 'Support‐Paket', 'Support‑Paket']) {
   assert.deepEqual(search(query).map(r => r[2]).sort(), ['#compound-hyphenated', '#compound-joined']);
 }
@@ -63,14 +79,14 @@ if (process.argv[3] === 'de') {
 assert(vm.runInContext('Search._index !== SECTION_SEARCH_INDEX', context));
 // Every result must produce a snippet containing a highlighted full phrase.
 // The same matcher highlights the destination's own content.
-for (const query of ['support bundle', 'OPENVAS BASIC', 'diagnostic archives', 'C++', 'support and bundle', 'Support-Paket', 'Supportpaket', 'Feed Update']) {
+for (const query of ['support bundle', 'OPENVAS BASIC', 'diagnostic archives', 'C++', 'support and bundle', 'Support-Paket', 'Supportpaket', 'Feed Update', 'authenti', 'authenti*', 'support bund*']) {
   for (const result of search(query)) {
     const file = fs.existsSync(path.join(output, result[0] + '.html'))
       ? path.join(output, result[0] + '.html') : path.join(output, result[0], 'index.html');
     context.pageHTML = fs.readFileSync(file, 'utf8');
     context.anchor = result[2];
     context.query = query;
-    const summary = vm.runInContext('Search.makeSearchSummary(pageHTML, new Set([query]), anchor)', context);
+    const summary = vm.runInContext('Search.makeSearchSummary(pageHTML, (() => { const p = Search._parseQuery(query); Search._performSearch(...p); return p[1]; })(), anchor)', context);
     assert(summary.querySelector('.highlighted'), `No matching snippet: ${query} ${result[2]}`);
     const highlighted = [...summary.querySelectorAll('.highlighted')].map(el => el.textContent);
     if (query === 'support bundle') assert(highlighted.every(text => /^support bundles?$/i.test(text)));

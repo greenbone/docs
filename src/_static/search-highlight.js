@@ -13,7 +13,9 @@
     const updateLinks = () => {
       results.querySelectorAll("li > a").forEach((link) => {
         const url = new URL(link.href);
-        url.searchParams.set("highlight", phrase);
+        const effective = link.parentElement.querySelector(".context")?.dataset.highlightQuery
+          || (typeof Search !== "undefined" && Search.highlightQuery) || phrase;
+        url.searchParams.set("highlight", effective);
         if (link.href !== url.href) link.href = url.href;
       });
     };
