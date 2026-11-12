@@ -10,9 +10,9 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
+sys.path.insert(0, os.path.abspath('.'))
 
 
 # -- Project information -----------------------------------------------------
@@ -28,6 +28,7 @@ author = "Greenbone AG"
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'section_search',
     "sphinx.ext.githubpages",
     "sphinx.ext.napoleon",
     "myst_parser",
@@ -145,3 +146,6 @@ ogp_image = "https://greenbone.github.io/docs/latest/_images/greenbone-banner.pn
 
 
 copybutton_selector = "div:not(.no-copybutton) > div.highlight > pre"
+
+# Keep phrase matching shared between search previews and destination pages.
+html_js_files = ["search-phrase.js", "search-highlight.js"]
