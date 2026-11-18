@@ -1,0 +1,28 @@
+name: Test section search
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  test-section-search:
+    name: Test section search
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v7.0.1
+      - name: Install uv
+        uses: greenbone/actions/uv@v3
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+      - name: Install Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Install DOM test dependencies
+        run: npm ci --prefix tests --ignore-scripts
+      - name: Test phrase highlighting
+        run: npm test --prefix tests
+      - name: Test section search
+        run: uv run python -m unittest discover -s tests -v

@@ -137,3 +137,7 @@ _build
 
 # docker compose override
 *.override.yml
+
+# Search regression dependencies and Python caches
+tests/node_modules/
+__pycache__/

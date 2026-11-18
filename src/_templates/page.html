@@ -1,0 +1,11 @@
+{# SPDX-FileCopyrightText: 2026 Greenbone AG
+   SPDX-License-Identifier: AGPL-3.0-or-later #}
+{% extends "!page.html" %}
+
+{% block regular_scripts %}
+{{ super() }}
+{# Furo's search template already loads this file. Never declare it twice. #}
+{% if pagename != 'search' and builder in ('html', 'dirhtml') %}
+<script src="{{ pathto('_static/language_data.js', 1) }}"></script>
+{% endif %}
+{% endblock %}

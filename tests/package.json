@@ -1,0 +1,7 @@
+{
+  "name": "docs-search-tests",
+  "private": true,
+  "license": "AGPL-3.0-or-later",
+  "scripts": {"test": "node highlight-regression.cjs"},
+  "devDependencies": {"jsdom": "^27.2.0"}
+}
