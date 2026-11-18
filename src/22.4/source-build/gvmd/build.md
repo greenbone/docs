@@ -41,9 +41,6 @@
        -DSYSTEMD_SERVICE_DIR=/lib/systemd/system \
        -DLOGROTATE_DIR=/etc/logrotate.d
 
-     sudo mkdir /usr/include/postgresql
-     sudo cp /usr/include/libpq-fe.h /usr/include/postgresql/libpq-fe.h
-
      make -j$(nproc)
 ```
 
@@ -69,7 +66,4 @@
      make DESTDIR=$INSTALL_DIR/gvmd install
 
      sudo cp -rv $INSTALL_DIR/gvmd/* /
-
-
-     sudo rm /usr/include/postgresql/libpq-fe.h && sudo rmdir /usr/include/postgresql
 ```

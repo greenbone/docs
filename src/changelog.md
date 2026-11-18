@@ -31,6 +31,7 @@ and this project adheres to [Calendar Versioning](https://calver.org).
   * Update gsa to 28.3.0
   * Update pg-gvm to 22.6.18
   * Update ospd-openvas to 22.10.5
+* Simplify gvmd build instructions for Fedora/Centos
 
 ## 26.2.0 - 2026-02-24
 
